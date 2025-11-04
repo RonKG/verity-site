@@ -64,7 +64,7 @@ export default function Home() {
               lineHeight: "1.6",
             }}
           >
-            Data-driven. Curated. Verified. Homes.
+            Curated. Verified. Data-driven.
           </p>
 
           <p
