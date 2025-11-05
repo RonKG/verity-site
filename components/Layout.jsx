@@ -1,4 +1,14 @@
+import Link from "next/link";
+
 export default function Layout({ children }) {
+  const linkStyle = {
+    color: "#cfcfcf",
+    textDecoration: "none",
+    fontSize: "0.95rem",
+    marginLeft: "1.8rem",
+    transition: "color 0.3s ease",
+  };
+
   return (
     <div
       style={{
@@ -13,27 +23,91 @@ export default function Layout({ children }) {
       {/* Header */}
       <header
         style={{
-          padding: "20px 40px",
-          borderBottom: "1px solid #1e1e1e",
+          padding: "16px 40px",
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          backgroundColor: "#0e0e0e",
+          position: "sticky",
+          top: 0,
+          zIndex: 1000,
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          background: "rgba(14,14,14,0.7)",
+          boxShadow: "0 2px 12px rgba(0,0,0,0.3)",
         }}
       >
-        <h2 style={{ margin: 0, fontWeight: "400", color: "#f5f5f5" }}>
-          The Registry
-        </h2>
-        <nav>
-          <a href="/" style={linkStyle}>Home</a>
-          <a href="/listings" style={linkStyle}>Listings</a>
-          <a href="/insights" style={linkStyle}>Insights</a>
-          <a href="/about" style={linkStyle}>About</a>
+        {/* Logo Section */}
+        <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
+          {/* Gold circular icon */}
+          <div
+            style={{
+              width: "36px",
+              height: "36px",
+              borderRadius: "50%",
+              border: "1.5px solid #c2a675",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#c2a675",
+              fontWeight: "500",
+              fontSize: "1.1rem",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "#c2a675";
+              e.target.style.color = "#0e0e0e";
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = "transparent";
+              e.target.style.color = "#c2a675";
+            }}
+          >
+            R
+          </div>
+
+          {/* Title text */}
+          <h2
+            style={{
+              margin: 0,
+              fontWeight: "500",
+              color: "#f5f5f5",
+              fontSize: "1.35rem",
+              letterSpacing: "0.3px",
+              transition: "color 0.3s ease",
+            }}
+            onMouseEnter={(e) => (e.target.style.color = "#c2a675")}
+            onMouseLeave={(e) => (e.target.style.color = "#f5f5f5")}
+          >
+            The Registry
+          </h2>
+        </Link>
+
+        {/* Navigation */}
+        <nav style={{ display: "flex", alignItems: "center" }}>
+          {[
+            { href: "/", label: "Home" },
+            { href: "/listings", label: "Listings" },
+            { href: "/insights", label: "Insights" },
+            { href: "/heatmap", label: "Heatmap" },
+            { href: "/about", label: "About" },
+          ].map((link) => (
+            <Link key={link.href} href={link.href} style={linkStyle}>
+              <span
+                onMouseEnter={(e) => (e.target.style.color = "#c2a675")}
+                onMouseLeave={(e) => (e.target.style.color = "#cfcfcf")}
+              >
+                {link.label}
+              </span>
+            </Link>
+          ))}
         </nav>
       </header>
 
+      {/* Page Content */}
       <main style={{ flexGrow: 1 }}>{children}</main>
 
+      {/* Footer */}
       <footer
         style={{
           textAlign: "center",
@@ -54,10 +128,3 @@ export default function Layout({ children }) {
     </div>
   );
 }
-
-const linkStyle = {
-  marginRight: 20,
-  color: "#cfcfcf",
-  textDecoration: "none",
-  fontSize: "0.95rem",
-};
