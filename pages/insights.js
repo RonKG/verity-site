@@ -70,15 +70,6 @@ export default function Insights() {
     { region: "Nyari", price: 392 },
   ]);
 
-  const months = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-  ];
-  const regions = [
-    "Karen", "Runda", "Lavington", "Kitisuru", "Gigiri",
-    "Muthaiga", "Westlands", "Kilimani", "Riverside", "Nyari",
-  ];
-
   return (
     <Layout>
       <section
@@ -187,53 +178,7 @@ export default function Insights() {
           </div>
         </div>
 
-        {/* Top Cards */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "2rem",
-            width: "95%",
-            maxWidth: "1150px",
-            marginBottom: "1rem",
-          }}
-        >
-          <div className="card">
-            <h3 style={{ marginBottom: "1rem", color: "#f0f0f0" }}>
-              Nairobi Prime Market Snapshot (Q4 2025)
-            </h3>
-            <ul style={{ listStyle: "none", padding: 0, marginBottom: "1.5rem" }}>
-              <li>Average home price: <b>KSh 385 million</b></li>
-              <li>Quarterly growth rate: <b>+4.8%</b></li>
-              <li>Fastest-moving market: <b>Riverside</b></li>
-              <li>Average listing period: <b>42 days</b></li>
-              <li>New developments: <b>+7% YoY</b></li>
-            </ul>
-            <p style={{ color: "#aaa" }}>
-              Verified signals from Nairobi’s top-tier residential markets —  
-              data aggregated from active listings and verified agent disclosures.
-            </p>
-          </div>
-
-          <div className="card">
-            <h3 style={{ marginBottom: "1rem", color: "#f0f0f0" }}>
-              Quick Market Indicators
-            </h3>
-            <ul style={{ listStyle: "none", padding: 0, marginBottom: "1.5rem" }}>
-              <li>Buyer demand: <b>↑ 6.3%</b> vs last quarter</li>
-              <li>Average days on market: <b>42 → 38 days</b></li>
-              <li>Foreign interest: <b>+15% YTD</b></li>
-              <li>Active listings: <b>~2,150</b> across key suburbs</li>
-              <li>Luxury segment share: <b>24%</b></li>
-            </ul>
-            <p style={{ color: "#aaa" }}>
-              Reflects momentum from premium listings and renewed foreign-buyer confidence
-              following macroeconomic stability.
-            </p>
-          </div>
-        </div>
-
-        {/* Dynamic Content Section */}
+        {/* Market Overview Tab */}
         {activeTab === "market" && (
           <div className="card" style={{ width: "95%", maxWidth: "1150px", marginBottom: "2rem" }}>
             <h3
@@ -277,6 +222,7 @@ export default function Insights() {
           </div>
         )}
 
+        {/* Price Trends Tab */}
         {activeTab === "trends" && (
           <div className="card" style={{ width: "95%", maxWidth: "1150px", marginBottom: "2rem" }}>
             <h3
@@ -384,222 +330,164 @@ export default function Insights() {
           </div>
         )}
 
-        {/* Heatmap */}
-        <div
-          className="card"
-          style={{
-            width: "95%",
-            maxWidth: "1150px",
-            overflowX: "auto",
-            paddingBottom: "3rem",
-            position: "relative",
-          }}
-        >
-          <div
-            style={{
+        {/* Regional Analysis Tab */}
+        {activeTab === "regions" && (
+          <div className="card" style={{ width: "95%", maxWidth: "1150px", marginBottom: "2rem" }}>
+            <div style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              marginBottom: "1rem",
-            }}
-          >
-            <h3 style={{ color: "#f5f5f5", fontWeight: "400", margin: 0 }}>
-              Monthly Price Density — Top 10 Regions
-            </h3>
-            <div
-              style={{
+              marginBottom: "2rem"
+            }}>
+              <h3 style={{ color: "#f5f5f5", fontWeight: "400", margin: 0 }}>
+                Regional Price Analysis
+              </h3>
+              <div style={{
                 background: "#222",
                 border: "1px solid #333",
                 borderRadius: "8px",
                 display: "flex",
-                overflow: "hidden",
-              }}
-            >
-              {["KSH", "USD"].map((cur) => (
-                <button
-                  key={cur}
-                  onClick={() => setCurrency(cur)}
-                  style={{
-                    background: currency === cur ? "#f5b942" : "transparent",
-                    color: currency === cur ? "#000" : "#ccc",
-                    border: "none",
-                    padding: "6px 14px",
-                    cursor: "pointer",
-                    fontSize: "0.85rem",
-                    fontWeight: "500",
-                  }}
-                >
-                  {cur}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div
-            style={{
-              overflowX: "auto",
-              border: "1px solid #222",
-              borderRadius: "8px",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "120px repeat(12, 1fr)",
-                minWidth: "800px",
-                fontSize: "clamp(0.7rem, 0.9vw, 0.85rem)",
-              }}
-            >
-              {/* Header Row */}
-              <div style={{ background: "#1b1b1b", padding: "8px", color: "#ccc", fontWeight: 500 }}>
-                Region
-              </div>
-              {months.map((m) => (
-                <div
-                  key={m}
-                  style={{
-                    background: "#1b1b1b",
-                    padding: "8px",
-                    textAlign: "center",
-                    color: "#ccc",
-                    borderLeft: "1px solid #222",
-                    position: "sticky",
-                    top: 0,
-                    zIndex: 1,
-                  }}
-                >
-                  {m}
-                </div>
-              ))}
-
-              {/* Data Rows */}
-              {regions.map((region) => (
-                <>
-                  <div
-                    key={region}
+                overflow: "hidden"
+              }}>
+                {["KSH", "USD"].map((cur) => (
+                  <button
+                    key={cur}
+                    onClick={() => setCurrency(cur)}
                     style={{
-                      padding: "10px 6px",
-                      color: "#ddd",
-                      background: "#191919",
-                      borderTop: "1px solid #222",
-                      fontWeight: 500,
-                      position: "sticky",
-                      left: 0,
-                      backgroundClip: "padding-box",
-                      zIndex: 1,
+                      background: currency === cur ? "#f5b942" : "transparent",
+                      color: currency === cur ? "#000" : "#ccc",
+                      border: "none",
+                      padding: "6px 14px",
+                      cursor: "pointer",
+                      fontSize: "0.85rem",
+                      fontWeight: "500"
                     }}
                   >
-                    {region}
-                  </div>
+                    {cur}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-                  {Array.from({ length: 12 }).map((_, i) => {
-                    let base = 125 + i * 15 + Math.random() * 40 + Math.sin(i + region.length) * 80;
-                    const regionAdjustments = {
-                      Runda: 260,
-                      Kitisuru: 220,
-                      Muthaiga: 210,
-                      Gigiri: 200,
-                      Karen: 190,
-                      Riverside: 185,
-                      Lavington: 170,
-                      Westlands: 165,
-                      Kilimani: 160,
-                      Nyari: 175,
-                    };
-                    const valueKsh = base + (regionAdjustments[region] || 150);
-                    const value = currency === "USD" ? valueKsh / 130 : valueKsh;
-                    const intensity = Math.min(Math.max((valueKsh - 300) / 250, 0), 1);
-                    const hue = 40;
-                    const lightness = 88 - intensity * 55;
-
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "2rem",
+              marginBottom: "2rem"
+            }}>
+              {[
+                { title: "Premium Areas", regions: ["Muthaiga", "Runda", "Kitisuru"] },
+                { title: "Business Districts", regions: ["Westlands", "Kilimani", "Riverside"] },
+                { title: "Diplomatic Zones", regions: ["Karen", "Gigiri", "Lavington"] }
+              ].map((area, idx) => (
+                <div key={idx} style={{
+                  background: "linear-gradient(to bottom right, rgba(194,166,117,0.1), transparent)",
+                  padding: "1.5rem",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(194,166,117,0.2)"
+                }}>
+                  <h4 style={{
+                    color: "#c2a675",
+                    marginBottom: "1rem",
+                    fontSize: "1.1rem",
+                    fontWeight: "500"
+                  }}>{area.title}</h4>
+                  {area.regions.map(region => {
+                    const price = snapshotData.find(d => d.region === region)?.price || 0;
                     return (
-                      <div
-                        key={`${region}-${i}`}
-                        style={{
-                          padding: "10px 0",
-                          textAlign: "center",
-                          backgroundColor: `hsl(${hue}, 95%, ${lightness}%)`,
-                          color: lightness < 55 ? "#fff" : "#000",
-                          borderLeft: "1px solid #222",
-                          borderTop: "1px solid #222",
-                        }}
-                      >
-                        {currency === "USD"
-                          ? `$${value.toFixed(0)}K`
-                          : `${value.toFixed(0)}K`}
+                      <div key={region} style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        marginBottom: "0.75rem",
+                        padding: "0.5rem",
+                        borderRadius: "6px",
+                        background: "rgba(255,255,255,0.03)"
+                      }}>
+                        <span style={{ color: "#fff" }}>{region}</span>
+                        <span style={{ color: "#c2a675" }}>
+                          {currency === "USD" 
+                            ? `$${(price/130).toFixed(0)}K`
+                            : `${price}K`}
+                        </span>
                       </div>
                     );
                   })}
-                </>
+                </div>
               ))}
             </div>
-          </div>
 
-          {/* Legend + Info */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              marginTop: "1.5rem",
-              color: "#aaa",
-              fontSize: "0.85rem",
+            <div style={{
+              background: "#1a1a1a",
+              padding: "2rem",
+              borderRadius: "12px",
+              marginBottom: "1rem"
+            }}>
+              <h4 style={{
+                color: "#f5f5f5",
+                marginBottom: "1.5rem",
+                fontSize: "1.1rem",
+                fontWeight: "400",
+                textAlign: "center"
+              }}>Price Range Distribution</h4>
+              <SafeResponsiveContainer height={300}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={snapshotData} margin={{ top: 10, right: 30, left: 20, bottom: 20 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#2b2b2b" />
+                    <XAxis 
+                      dataKey="region" 
+                      stroke="#888" 
+                      tick={{ fill: "#aaa", fontSize: 11 }}
+                      interval={0}
+                      angle={-45}
+                      textAnchor="end"
+                    />
+                    <YAxis
+                      stroke="#888"
+                      tick={{ fill: "#aaa", fontSize: 11 }}
+                      label={{
+                        value: currency === "USD" ? "USD (thousands)" : "KES (thousands)",
+                        angle: -90,
+                        position: "insideLeft",
+                        style: { fill: "#aaa" }
+                      }}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "#222",
+                        border: "1px solid #333",
+                        borderRadius: "8px",
+                        color: "#fff"
+                      }}
+                      formatter={(value) => [
+                        currency === "USD" 
+                          ? `$${(value/130).toFixed(0)}K`
+                          : `${value}K`,
+                        "Price per Sq.M"
+                      ]}
+                    />
+                    <Bar 
+                      dataKey="price" 
+                      fill="#c2a675"
+                      radius={[4, 4, 0, 0]}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </SafeResponsiveContainer>
+            </div>
+
+            <div style={{
               textAlign: "center",
-            }}
-          >
-            <div
-              style={{
-                background:
-                  "linear-gradient(to right, hsl(40,95%,85%), hsl(40,95%,55%), hsl(40,95%,35%))",
-                height: "12px",
-                width: "220px",
-                borderRadius: "6px",
-                border: "1px solid #333",
-                marginBottom: "0.4rem",
-              }}
-            />
-            <div style={{ display: "flex", justifyContent: "space-between", width: "240px" }}>
-              <span>Low</span>
-              <span style={{ fontWeight: "500" }}>→</span>
-              <span>High</span>
-            </div>
-
-            <div
-              onMouseEnter={() => setShowInfo(true)}
-              onMouseLeave={() => setShowInfo(false)}
-              style={{
-                cursor: "help",
-                color: "#f5b942",
-                fontSize: "0.9rem",
-                marginTop: "0.8rem",
-                userSelect: "none",
-              }}
-            >
-              ⓘ Hover for interpretation
-            </div>
-
-            <div
-              style={{
-                opacity: showInfo ? 1 : 0,
-                transition: "opacity 0.4s ease",
-                background: "rgba(25,25,25,0.95)",
-                color: "#ddd",
-                border: "1px solid #333",
-                borderRadius: "8px",
-                padding: "0.8rem 1rem",
-                fontSize: "0.85rem",
-                maxWidth: "550px",
-                position: "absolute",
-                bottom: "3.2rem",
-                pointerEvents: "none",
-              }}
-            >
-              The heatmap highlights pricing momentum — darker gold tones signal higher average
-              price per Sq.Ft. Runda and Muthaiga consistently anchor the upper range, while Karen
-              and Riverside show steady mid-tier stability.
+              color: "#888",
+              fontSize: "0.9rem",
+              maxWidth: "600px",
+              margin: "0 auto"
+            }}>
+              Regional analysis based on verified listings and recent transactions.
+              Prices shown are average per square meter for luxury residential properties.
             </div>
           </div>
-        </div>
+        )}
 
         {/* Common card styling */}
         <style>
