@@ -1,18 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    document.body.style.overflow = !isOpen ? 'hidden' : 'auto';
+  };
 
-  useEffect(() => {
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [isOpen]);
-
-  const menuLinks = [
+  const menuItems = [
     { href: "/", label: "Home" },
     { href: "/listings", label: "Listings" },
     { href: "/insights", label: "Insights" },
@@ -21,30 +18,42 @@ export default function MobileMenu() {
   ];
 
   return (
-    <div className="mobile-menu">
+    <div className="mobile-menu" style={{ position: 'relative', zIndex: 1000 }}>
       {/* Hamburger Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggleMenu}
         className="menu-button"
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
         aria-expanded={isOpen}
+        style={{
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: '12px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '5px',
+          width: '44px',
+          height: '44px',
+        }}
       >
-        <div style={{
+        <span style={{
           width: '24px',
           height: '2px',
           background: '#f0f0f0',
-          transition: 'all 0.3s ease',
+          transition: 'transform 0.3s ease',
           transform: isOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none',
         }} />
-        <div style={{
+        <span style={{
           width: '24px',
           height: '2px',
           background: '#f0f0f0',
-          margin: '5px 0',
-          transition: 'all 0.3s ease',
+          transition: 'opacity 0.3s ease',
           opacity: isOpen ? 0 : 1,
         }} />
-        <div style={{
+        <span style={{
           width: '24px',
           height: '2px',
           background: '#f0f0f0',
@@ -54,32 +63,30 @@ export default function MobileMenu() {
       </button>
 
       {/* Mobile Menu Overlay */}
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: 'rgba(14,14,14,0.98)',
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
-        zIndex: 1000,
-        opacity: isOpen ? 1 : 0,
-        visibility: isOpen ? 'visible' : 'hidden',
-        transition: 'all 0.3s ease',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '2rem',
-      }}>
+      {isOpen && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(14,14,14,0.98)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          zIndex: 999,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '2rem',
+        }}>
         <nav style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '2rem',
           textAlign: 'center',
         }}>
-          {menuLinks.map((link) => (
+          {menuItems.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -104,6 +111,7 @@ export default function MobileMenu() {
           ))}
         </nav>
       </div>
+      )}
 
       <style jsx global>{`
         @media (min-width: 768px) {
