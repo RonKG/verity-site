@@ -71,7 +71,7 @@ const propertyDetails = {
         description: "Double-height living space with valley views"
       },
       {
-        url: "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
+        url: "https://kitchenmastersllc.com/wp-content/uploads/2022/04/kitchenmasterkitchenremodeling-2880w.webp",
         title: "Kitchen",
         description: "Gourmet kitchen with premium appliances"
       },
@@ -81,7 +81,7 @@ const propertyDetails = {
         description: "Primary bedroom with private terrace access"
       },
       {
-        url: "https://images.unsplash.com/photo-1645327430660-843bcfebe0f3",
+        url: "https://www.decorilla.com/online-decorating/wp-content/uploads/2024/06/Chic-luxury-master-bath-layout-with-seamless-glass-shower-by-Decorilla-1024x683.jpeg",
         title: "Master Bath",
         description: "Spa-inspired master bathroom"
       },
@@ -91,7 +91,7 @@ const propertyDetails = {
         description: "Infinity pool with entertainment deck"
       },
       {
-        url: "https://images.unsplash.com/photo-1613977257365-aaae5a9817ff",
+        url: "https://www.peerspace.com/resources/wp-content/uploads/Houston-Mansion-for-Next-Production-1.avif",
         title: "Garden",
         description: "Landscaped gardens with mature trees"
       },
