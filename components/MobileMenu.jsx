@@ -79,7 +79,8 @@ export default function MobileMenu() {
             { href: '/listings', label: 'Listings' },
             { href: '/insights', label: 'Insights' },
             { href: '/heatmap', label: 'Heatmap' },
-            { href: '/about', label: 'About' }
+            { href: '/about', label: 'About' },
+            { href: '/contact', label: 'Contact' }
           ].map(({ href, label }) => (
             <Link
               key={href}

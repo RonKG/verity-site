@@ -104,6 +104,7 @@ export default function Layout({ children }) {
             { href: "/insights", label: "Insights" },
             { href: "/heatmap", label: "Heatmap" },
             { href: "/about", label: "About" },
+            { href: "/contact", label: "Contact" },
           ].map((link) => (
             <Link key={link.href} href={link.href} style={{
               color: "#cfcfcf",
