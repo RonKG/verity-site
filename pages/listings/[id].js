@@ -16,11 +16,7 @@ const propertyDetails = {
       parking: "4 cars",
       style: "Contemporary Modern",
     },
-    description: `
-      Perched elegantly on Kitisuru Ridge, this architectural masterpiece represents the pinnacle of modern luxury living in Nairobi. The Ridge Residence seamlessly blends contemporary design with environmental consciousness, creating an unparalleled living experience that celebrates both sophistication and sustainability.
-
-      This exclusive property spans 12,000 square feet of meticulously crafted living space, set within 0.6 acres of sculpted gardens. The residence features clean architectural lines, floor-to-ceiling windows, and thoughtfully designed spaces that maximize natural light while maintaining privacy.
-    `,
+    description: "Perched elegantly on Kitisuru Ridge, this architectural masterpiece represents the pinnacle of modern luxury living in Nairobi. The Ridge Residence seamlessly blends contemporary design with environmental consciousness, creating an unparalleled living experience that celebrates both sophistication and sustainability.\n\nThis exclusive property spans 12,000 square feet of meticulously crafted living space, set within 0.6 acres of sculpted gardens. The residence features clean architectural lines, floor-to-ceiling windows, and thoughtfully designed spaces that maximize natural light while maintaining privacy.",
     features: [
       {
         category: "Interior Features",
@@ -105,11 +101,7 @@ const propertyDetails = {
       }
     ],
     neighborhood: {
-      description: `
-        Kitisuru remains one of Nairobi's most prestigious addresses, known for its diplomatic residences and luxury homes. The Ridge Residence enjoys an elevated position that provides both privacy and stunning views while being conveniently located near premium amenities.
-        
-        The property is within easy reach of international schools, high-end shopping centers, and diplomatic missions. The serene environment is complemented by excellent security and well-maintained infrastructure.
-      \`,
+      description: "Kitisuru remains one of Nairobi's most prestigious addresses, known for its diplomatic residences and luxury homes. The Ridge Residence enjoys an elevated position that provides both privacy and stunning views while being conveniently located near premium amenities.\n\nThe property is within easy reach of international schools, high-end shopping centers, and diplomatic missions. The serene environment is complemented by excellent security and well-maintained infrastructure.",
       nearbyAmenities: [
         {
           category: "Education",
@@ -180,7 +172,7 @@ export default function PropertyDetail() {
           position: "relative",
           height: "70vh",
           minHeight: "600px",
-          backgroundImage: \`url(\${property.gallery[0].url}?auto=format&fit=crop&w=1920&q=80)\`,
+          backgroundImage: "url(" + property.gallery[0].url + "?auto=format&fit=crop&w=1920&q=80)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}>
@@ -318,7 +310,7 @@ export default function PropertyDetail() {
                   overflow: "hidden",
                 }}>
                   <img
-                    src={\`\${image.url}?auto=format&fit=crop&w=600&q=80\`}
+                    src={image.url + "?auto=format&fit=crop&w=600&q=80"}
                     alt={image.title}
                     style={{
                       width: "100%",
