@@ -8,6 +8,10 @@ import {
   Tooltip,
   CartesianGrid,
   ResponsiveContainer,
+  LineChart,
+  Line,
+  Area,
+  AreaChart,
 } from "recharts";
 
 // Safe wrapper to avoid Canvas width=0 errors
@@ -34,6 +38,24 @@ function SafeResponsiveContainer({ children, height = 350 }) {
 export default function Insights() {
   const [currency, setCurrency] = useState("KSH");
   const [showInfo, setShowInfo] = useState(false);
+  const [activeTab, setActiveTab] = useState("market");
+  const [selectedTimeframe, setSelectedTimeframe] = useState("1Y");
+
+  // Market trend data
+  const [trendData] = useState([
+    { month: "Nov 24", price: 355, volume: 180, growth: 2.1 },
+    { month: "Dec 24", price: 362, volume: 195, growth: 2.0 },
+    { month: "Jan 25", price: 368, volume: 185, growth: 1.7 },
+    { month: "Feb 25", price: 371, volume: 210, growth: 0.8 },
+    { month: "Mar 25", price: 375, volume: 205, growth: 1.1 },
+    { month: "Apr 25", price: 378, volume: 220, growth: 0.8 },
+    { month: "May 25", price: 380, volume: 215, growth: 0.5 },
+    { month: "Jun 25", price: 382, volume: 225, growth: 0.5 },
+    { month: "Jul 25", price: 383, volume: 230, growth: 0.3 },
+    { month: "Aug 25", price: 384, volume: 235, growth: 0.3 },
+    { month: "Sep 25", price: 384, volume: 240, growth: 0.0 },
+    { month: "Oct 25", price: 385, volume: 245, growth: 0.3 },
+  ]);
 
   const [snapshotData] = useState([
     { region: "Karen", price: 385 },
@@ -70,16 +92,99 @@ export default function Insights() {
         }}
       >
         {/* Intro */}
-        <div style={{ marginBottom: "2rem", textAlign: "center", maxWidth: "850px" }}>
-          <h1 style={{ fontSize: "2rem", fontWeight: "400", marginBottom: "0.5rem" }}>
+        <div style={{ 
+          marginBottom: "2rem", 
+          textAlign: "center", 
+          maxWidth: "850px",
+          position: "relative",
+        }}>
+          <h1 style={{ 
+            fontSize: "2.4rem", 
+            fontWeight: "400", 
+            marginBottom: "0.5rem",
+            background: "linear-gradient(45deg, #f5b942, #c2a675)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}>
             Market Insights
           </h1>
           <p style={{ color: "#d6d6d6", fontSize: "1.05rem", lineHeight: "1.6" }}>
             Our data blends verified listings, valuation trends, and neighborhood velocity to
-            highlight Kenya’s most dynamic property zones.  
+            highlight Kenya's most dynamic property zones.  
             This page presents a snapshot of current conditions and the price movement shaping
-            Nairobi’s prime markets.
+            Nairobi's prime markets.
           </p>
+
+          {/* Tab Navigation */}
+          <div style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "1rem",
+            marginTop: "2rem",
+            borderBottom: "1px solid #222",
+            paddingBottom: "1rem",
+          }}>
+            {[
+              { id: "market", label: "Market Overview" },
+              { id: "trends", label: "Price Trends" },
+              { id: "regions", label: "Regional Analysis" }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: activeTab === tab.id ? "#f5b942" : "#888",
+                  padding: "8px 16px",
+                  cursor: "pointer",
+                  fontSize: "1rem",
+                  position: "relative",
+                  transition: "color 0.3s",
+                }}
+              >
+                {tab.label}
+                {activeTab === tab.id && (
+                  <div style={{
+                    position: "absolute",
+                    bottom: "-1rem",
+                    left: 0,
+                    right: 0,
+                    height: "2px",
+                    background: "#f5b942",
+                  }} />
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Timeframe Selection */}
+          <div style={{
+            display: "flex",
+            gap: "0.5rem",
+            position: "absolute",
+            top: 0,
+            right: 0,
+          }}>
+            {["3M", "6M", "1Y"].map(time => (
+              <button
+                key={time}
+                onClick={() => setSelectedTimeframe(time)}
+                style={{
+                  background: selectedTimeframe === time ? "#f5b942" : "#222",
+                  color: selectedTimeframe === time ? "#0e0e0e" : "#888",
+                  border: "none",
+                  borderRadius: "4px",
+                  padding: "4px 8px",
+                  fontSize: "0.8rem",
+                  cursor: "pointer",
+                  transition: "all 0.3s",
+                }}
+              >
+                {time}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Top Cards */}
@@ -128,47 +233,156 @@ export default function Insights() {
           </div>
         </div>
 
-        {/* Bar Chart */}
-        <div className="card" style={{ width: "95%", maxWidth: "1150px", marginBottom: "2rem" }}>
-          <h3
-            style={{
-              textAlign: "center",
-              marginBottom: "1rem",
-              color: "#f5f5f5",
-              fontWeight: "400",
-            }}
-          >
-            Average Price per Sq.Ft — Nairobi Prime (2025)
-          </h3>
-          <SafeResponsiveContainer height={350}>
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={snapshotData} margin={{ top: 10, right: 20, left: 0, bottom: 10 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#2b2b2b" />
-                <XAxis dataKey="region" stroke="#888" tick={{ fill: "#aaa", fontSize: 11 }} />
-                <YAxis
-                  stroke="#888"
-                  tick={{ fill: "#aaa", fontSize: 11 }}
-                  label={{
-                    value: "KES (thousands)",
-                    angle: -90,
-                    position: "insideLeft",
-                    style: { fill: "#aaa", fontSize: 11 },
-                  }}
-                />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "#222",
-                    border: "1px solid #333",
-                    borderRadius: "8px",
-                    color: "#fff",
-                  }}
-                  formatter={(v) => [`KES ${v}K`, "Avg. Price"]}
-                />
-                <Bar dataKey="price" fill="#f5b942" radius={[6, 6, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </SafeResponsiveContainer>
-        </div>
+        {/* Dynamic Content Section */}
+        {activeTab === "market" && (
+          <div className="card" style={{ width: "95%", maxWidth: "1150px", marginBottom: "2rem" }}>
+            <h3
+              style={{
+                textAlign: "center",
+                marginBottom: "1rem",
+                color: "#f5f5f5",
+                fontWeight: "400",
+              }}
+            >
+              Average Price per Sq.Ft — Nairobi Prime (2025)
+            </h3>
+            <SafeResponsiveContainer height={350}>
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={snapshotData} margin={{ top: 10, right: 20, left: 0, bottom: 10 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#2b2b2b" />
+                  <XAxis dataKey="region" stroke="#888" tick={{ fill: "#aaa", fontSize: 11 }} />
+                  <YAxis
+                    stroke="#888"
+                    tick={{ fill: "#aaa", fontSize: 11 }}
+                    label={{
+                      value: "KES (thousands)",
+                      angle: -90,
+                      position: "insideLeft",
+                      style: { fill: "#aaa", fontSize: 11 },
+                    }}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "#222",
+                      border: "1px solid #333",
+                      borderRadius: "8px",
+                      color: "#fff",
+                    }}
+                    formatter={(v) => [`KES ${v}K`, "Avg. Price"]}
+                  />
+                  <Bar dataKey="price" fill="#f5b942" radius={[6, 6, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </SafeResponsiveContainer>
+          </div>
+        )}
+
+        {activeTab === "trends" && (
+          <div className="card" style={{ width: "95%", maxWidth: "1150px", marginBottom: "2rem" }}>
+            <h3
+              style={{
+                textAlign: "center",
+                marginBottom: "1rem",
+                color: "#f5f5f5",
+                fontWeight: "400",
+              }}
+            >
+              Price Trends & Market Volume
+            </h3>
+            <SafeResponsiveContainer height={400}>
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={trendData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                  <defs>
+                    <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#f5b942" stopOpacity={0.2}/>
+                      <stop offset="95%" stopColor="#f5b942" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#2b2b2b" />
+                  <XAxis dataKey="month" stroke="#888" tick={{ fill: "#aaa", fontSize: 11 }} />
+                  <YAxis
+                    yAxisId="left"
+                    stroke="#888"
+                    tick={{ fill: "#aaa", fontSize: 11 }}
+                    label={{
+                      value: "Avg. Price (KES M)",
+                      angle: -90,
+                      position: "insideLeft",
+                      style: { fill: "#aaa", fontSize: 11 },
+                    }}
+                  />
+                  <YAxis
+                    yAxisId="right"
+                    orientation="right"
+                    stroke="#888"
+                    tick={{ fill: "#aaa", fontSize: 11 }}
+                    label={{
+                      value: "Volume",
+                      angle: 90,
+                      position: "insideRight",
+                      style: { fill: "#aaa", fontSize: 11 },
+                    }}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "#222",
+                      border: "1px solid #333",
+                      borderRadius: "8px",
+                      color: "#fff",
+                    }}
+                  />
+                  <Area
+                    yAxisId="left"
+                    type="monotone"
+                    dataKey="price"
+                    stroke="#f5b942"
+                    fillOpacity={1}
+                    fill="url(#colorPrice)"
+                  />
+                  <Line
+                    yAxisId="right"
+                    type="monotone"
+                    dataKey="volume"
+                    stroke="#888"
+                    strokeWidth={2}
+                    dot={{ fill: "#888", strokeWidth: 2 }}
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </SafeResponsiveContainer>
+            
+            {/* Growth Rate Indicators */}
+            <div style={{
+              display: "flex",
+              justifyContent: "space-around",
+              marginTop: "2rem",
+              flexWrap: "wrap",
+              gap: "1rem",
+            }}>
+              {trendData.slice(-3).map((data, index) => (
+                <div key={index} style={{
+                  background: "#191919",
+                  padding: "1rem",
+                  borderRadius: "8px",
+                  minWidth: "200px",
+                }}>
+                  <div style={{ fontSize: "0.9rem", color: "#888", marginBottom: "0.5rem" }}>
+                    {data.month}
+                  </div>
+                  <div style={{ 
+                    fontSize: "1.2rem", 
+                    color: data.growth > 0 ? "#4caf50" : data.growth < 0 ? "#f44336" : "#888"
+                  }}>
+                    {data.growth > 0 ? "+" : ""}{data.growth}%
+                  </div>
+                  <div style={{ fontSize: "0.8rem", color: "#666", marginTop: "0.3rem" }}>
+                    Monthly Growth
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Heatmap */}
         <div
