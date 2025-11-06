@@ -1,9 +1,34 @@
 import Layout from "../components/Layout";
+import CredibilitySection from "../components/CredibilitySection";
 
 export default function Home() {
+
+  const accolades = [
+    { 
+      quote: "Setting new standards in property verification",
+      source: "Business Daily Africa"
+    },
+    {
+      quote: "The future of luxury real estate in Kenya",
+      source: "The Standard"
+    },
+    {
+      quote: "Transforming how premium properties are presented",
+      source: "Property Watch EA"
+    }
+  ];
+
+  const partners = [
+    { name: "Kenya Bankers Association", type: "Financial" },
+    { name: "Architectural Association of Kenya", type: "Design" },
+    { name: "Kenya Property Developers Association", type: "Industry" },
+    { name: "Estate Agents Registration Board", type: "Regulatory" }
+  ];
+
   const stats = [
-    { number: "98%", label: "Accuracy Rate" },
-    { number: "2.4K", label: "Properties Analyzed" },
+    { number: "KSh 82B+", label: "Portfolio Value" },
+    { number: "98%", label: "Client Satisfaction" },
+    { number: "2.4K+", label: "Verified Properties" },
     { number: "72hrs", label: "Avg. Verification Time" }
   ];
 
@@ -78,6 +103,7 @@ export default function Home() {
               marginTop: "1.5rem",
               fontSize: "1.05rem",
               color: "#bcbcbc",
+              marginBottom: "3rem"
             }}
           >
             Because finding a home should feel inspiring — and certain.
@@ -85,12 +111,12 @@ export default function Home() {
 
           {/* Stats display */}
           <div style={{
-            display: "flex",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
             gap: "2rem",
-            marginTop: "3rem",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            marginBottom: "6rem" // Added margin to create space for scroll indicator
+            maxWidth: "900px",
+            width: "100%",
+            marginTop: "2rem"
           }}>
             {stats.map((stat, index) => (
               <div key={index} style={{
@@ -364,6 +390,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Credibility Section */}
+      <CredibilitySection accolades={accolades} partners={partners} />
     </Layout>
   );
 }

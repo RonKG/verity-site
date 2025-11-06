@@ -3,6 +3,29 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-primary: 'Cormorant Garamond', serif;
+  --font-secondary: 'Montserrat', sans-serif;
+  --color-gold: #c2a675;
+}
+
+/* Typography */
+.quote-text {
+  font-family: var(--font-primary);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+.author-name {
+  font-family: var(--font-secondary);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.author-handle {
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  color: var(--color-gold);
 }
 
 /* Mobile responsive fixes */
