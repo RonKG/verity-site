@@ -75,26 +75,55 @@ export default function MobileMenu() {
           gap: '2rem'
         }}>
           {[
-            { href: '/', label: 'Home' },
-            { href: '/listings', label: 'Listings' },
-            { href: '/insights', label: 'Insights' },
-            { href: '/heatmap', label: 'Heatmap' },
-            { href: '/about', label: 'About' },
-            { href: '/contact', label: 'Contact' }
-          ].map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={handleToggle}
+            [{ href: '/', label: 'Home' }],
+            [
+              { href: '/listings', label: 'Listings' },
+              { href: '/insights', label: 'Insights' },
+              { href: '/heatmap', label: 'Heatmap' },
+            ],
+            [
+              { href: '/about', label: 'About' },
+              { href: '/contact', label: 'Contact' },
+            ]
+          ].map((group, groupIndex) => (
+            <div 
+              key={groupIndex}
               style={{
-                color: '#f0f0f0',
-                textDecoration: 'none',
-                fontSize: '1.5rem',
-                padding: '12px'
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '1rem',
+                position: 'relative',
+                paddingBottom: groupIndex < 2 ? '2rem' : 0,
+                marginBottom: groupIndex < 2 ? '2rem' : 0,
               }}
             >
-              {label}
-            </Link>
+              {groupIndex < 2 && (
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  width: '40px',
+                  height: '1px',
+                  background: '#333',
+                  marginTop: '1rem',
+                }} />
+              )}
+              {group.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={handleToggle}
+                  style={{
+                    color: '#f0f0f0',
+                    textDecoration: 'none',
+                    fontSize: '1.5rem',
+                    padding: '12px'
+                  }}
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
           ))}
         </nav>
       )}

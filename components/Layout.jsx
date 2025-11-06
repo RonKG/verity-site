@@ -95,29 +95,49 @@ export default function Layout({ children }) {
           alignItems: "center",
           flexWrap: "wrap",
           justifyContent: "center",
-          gap: "1rem",
+          gap: "0.5rem",
           fontSize: "0.9rem",
         }}>
           {[
-            { href: "/", label: "Home" },
-            { href: "/listings", label: "Listings" },
-            { href: "/insights", label: "Insights" },
-            { href: "/heatmap", label: "Heatmap" },
-            { href: "/about", label: "About" },
-            { href: "/contact", label: "Contact" },
-          ].map((link) => (
-            <Link key={link.href} href={link.href} style={{
-              color: "#cfcfcf",
-              textDecoration: "none",
-              transition: "color 0.3s ease"
+            [{ href: "/", label: "Home" }],
+            [
+              { href: "/listings", label: "Listings" },
+              { href: "/insights", label: "Insights" },
+              { href: "/heatmap", label: "Heatmap" },
+            ],
+            [
+              { href: "/about", label: "About" },
+              { href: "/contact", label: "Contact" },
+            ]
+          ].map((group, groupIndex) => (
+            <div key={groupIndex} style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
             }}>
-              <span
-                onMouseEnter={(e) => (e.target.style.color = "#c2a675")}
-                onMouseLeave={(e) => (e.target.style.color = "#cfcfcf")}
-              >
-                {link.label}
-              </span>
-            </Link>
+              {group.map((link, linkIndex) => (
+                <Link key={link.href} href={link.href} style={{
+                  color: "#cfcfcf",
+                  textDecoration: "none",
+                  transition: "color 0.3s ease",
+                  display: "flex",
+                  alignItems: "center",
+                }}>
+                  <span
+                    onMouseEnter={(e) => (e.target.style.color = "#c2a675")}
+                    onMouseLeave={(e) => (e.target.style.color = "#cfcfcf")}
+                  >
+                    {link.label}
+                  </span>
+                </Link>
+              ))}
+              {groupIndex < 2 && (
+                <span style={{ 
+                  color: "#333",
+                  margin: "0 0.5rem",
+                }}>|</span>
+              )}
+            </div>
           ))}
         </nav>
       </header>
