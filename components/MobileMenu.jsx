@@ -3,123 +3,109 @@ import Link from 'next/link';
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  
-  const toggleMenu = () => {
+
+  const handleToggle = () => {
     setIsOpen(!isOpen);
     document.body.style.overflow = !isOpen ? 'hidden' : 'auto';
   };
 
-  const menuItems = [
-    { href: "/", label: "Home" },
-    { href: "/listings", label: "Listings" },
-    { href: "/insights", label: "Insights" },
-    { href: "/heatmap", label: "Heatmap" },
-    { href: "/about", label: "About" },
-  ];
-
   return (
-    <div className="mobile-menu" style={{ position: 'relative', zIndex: 1000 }}>
-      {/* Hamburger Button */}
+    <>
       <button
-        onClick={toggleMenu}
-        className="menu-button"
+        onClick={handleToggle}
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
-        aria-expanded={isOpen}
         style={{
+          position: 'fixed',
+          top: '12px',
+          right: '12px',
+          zIndex: 1001,
           background: 'none',
           border: 'none',
-          cursor: 'pointer',
           padding: '12px',
+          cursor: 'pointer',
+          width: '44px',
+          height: '44px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          alignItems: 'center',
-          gap: '5px',
-          width: '44px',
-          height: '44px',
+          gap: '6px',
         }}
       >
         <span style={{
+          display: 'block',
           width: '24px',
           height: '2px',
           background: '#f0f0f0',
-          transition: 'transform 0.3s ease',
-          transform: isOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none',
+          transform: isOpen ? 'rotate(45deg) translate(5px, 6px)' : 'none',
+          transition: 'transform 0.3s ease'
         }} />
         <span style={{
+          display: 'block',
           width: '24px',
           height: '2px',
           background: '#f0f0f0',
-          transition: 'opacity 0.3s ease',
           opacity: isOpen ? 0 : 1,
+          transition: 'opacity 0.2s ease'
         }} />
         <span style={{
+          display: 'block',
           width: '24px',
           height: '2px',
           background: '#f0f0f0',
-          transition: 'all 0.3s ease',
-          transform: isOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none',
+          transform: isOpen ? 'rotate(-45deg) translate(5px, -6px)' : 'none',
+          transition: 'transform 0.3s ease'
         }} />
       </button>
 
-      {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div style={{
+        <nav style={{
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'rgba(14,14,14,0.98)',
-          backdropFilter: 'blur(10px)',
-          WebkitBackdropFilter: 'blur(10px)',
-          zIndex: 999,
+          background: 'rgba(14, 14, 14, 0.98)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          zIndex: 1000,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '2rem',
+          gap: '2rem'
         }}>
-        <nav style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '2rem',
-          textAlign: 'center',
-        }}>
-          {menuItems.map((link) => (
+          {[
+            { href: '/', label: 'Home' },
+            { href: '/listings', label: 'Listings' },
+            { href: '/insights', label: 'Insights' },
+            { href: '/heatmap', label: 'Heatmap' },
+            { href: '/about', label: 'About' }
+          ].map(({ href, label }) => (
             <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => {
-                toggleMenu();
-              }}
+              key={href}
+              href={href}
+              onClick={handleToggle}
               style={{
                 color: '#f0f0f0',
                 textDecoration: 'none',
                 fontSize: '1.5rem',
-                fontWeight: '400',
-                transition: 'color 0.3s ease',
+                padding: '12px'
               }}
             >
-              <span
-                onMouseEnter={(e) => (e.target.style.color = '#c2a675')}
-                onMouseLeave={(e) => (e.target.style.color = '#f0f0f0')}
-              >
-                {link.label}
-              </span>
+              {label}
             </Link>
           ))}
         </nav>
-      </div>
       )}
 
       <style jsx global>{`
         @media (min-width: 768px) {
-          .mobile-menu {
-            display: none;
+          button[aria-label="Open menu"],
+          button[aria-label="Close menu"] {
+            display: none !important;
           }
         }
       `}</style>
-    </div>
+    </>
   );
 }
