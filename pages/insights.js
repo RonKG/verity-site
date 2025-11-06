@@ -86,7 +86,7 @@ export default function Insights() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
             gap: "2rem",
             width: "95%",
             maxWidth: "1150px",

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MobileMenu from "./MobileMenu";
 
 export default function Layout({ children }) {
   const linkStyle = {
@@ -21,9 +22,10 @@ export default function Layout({ children }) {
       }}
     >
       {/* Header */}
-      <header
+      <header 
+        className="main-header"
         style={{
-          padding: "16px 40px",
+          padding: "16px 20px",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
           display: "flex",
           justifyContent: "space-between",
@@ -35,8 +37,7 @@ export default function Layout({ children }) {
           WebkitBackdropFilter: "blur(12px)",
           background: "rgba(14,14,14,0.7)",
           boxShadow: "0 2px 12px rgba(0,0,0,0.3)",
-        }}
-      >
+        }}>
         {/* Logo Section */}
         <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
           {/* Gold circular icon */}
@@ -83,8 +84,20 @@ export default function Layout({ children }) {
           </h2>
         </Link>
 
-        {/* Navigation */}
-        <nav style={{ display: "flex", alignItems: "center" }}>
+        {/* Mobile Menu */}
+        <div className="mobile-nav">
+          <MobileMenu />
+        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="desktop-nav" style={{
+          display: "flex",
+          alignItems: "center",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "1rem",
+          fontSize: "0.9rem",
+        }}>
           {[
             { href: "/", label: "Home" },
             { href: "/listings", label: "Listings" },
@@ -92,7 +105,11 @@ export default function Layout({ children }) {
             { href: "/heatmap", label: "Heatmap" },
             { href: "/about", label: "About" },
           ].map((link) => (
-            <Link key={link.href} href={link.href} style={linkStyle}>
+            <Link key={link.href} href={link.href} style={{
+              color: "#cfcfcf",
+              textDecoration: "none",
+              transition: "color 0.3s ease"
+            }}>
               <span
                 onMouseEnter={(e) => (e.target.style.color = "#c2a675")}
                 onMouseLeave={(e) => (e.target.style.color = "#cfcfcf")}
@@ -125,6 +142,32 @@ export default function Layout({ children }) {
           Built on insight, powered by design.
         </p>
       </footer>
+
+      <style jsx global>{`
+        /* Navigation visibility */
+        .mobile-nav {
+          display: block;
+        }
+        .desktop-nav {
+          display: none;
+        }
+        
+        @media (min-width: 768px) {
+          .mobile-nav {
+            display: none;
+          }
+          .desktop-nav {
+            display: flex;
+          }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) {
+          a, button {
+            padding: 12px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

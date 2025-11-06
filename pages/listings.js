@@ -62,6 +62,7 @@ export default function Listings() {
             gap: "2.5rem",
             maxWidth: "1200px",
             margin: "0 auto",
+            padding: "0 1rem",
           }}
         >
           {listings.map((home) => (

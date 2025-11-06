@@ -47,7 +47,7 @@ export default function Home() {
         <div style={{ position: "relative", zIndex: 2 }}>
           <h1
             style={{
-              fontSize: "3.5rem",
+              fontSize: "clamp(2rem, 5vw, 3.5rem)",
               fontWeight: "400",
               marginBottom: "1rem",
               letterSpacing: "0.5px",
