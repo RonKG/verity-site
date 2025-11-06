@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { useState, useCallback, useEffect } from 'react';
 import Layout from "../../components/Layout";
 
 // Detailed property data
@@ -75,22 +76,22 @@ const propertyDetails = {
         description: "Gourmet kitchen with premium appliances"
       },
       {
-        url: "https://images.unsplash.com/photo-1600566752547-e92b5e3ca627",
+        url: "https://images.unsplash.com/photo-1617325247661-675ab4b64ae2",
         title: "Master Suite",
         description: "Primary bedroom with private terrace access"
       },
       {
-        url: "https://images.unsplash.com/photo-1600566752421-3ec9c3ec7c8c",
+        url: "https://images.unsplash.com/photo-1645327430660-843bcfebe0f3",
         title: "Master Bath",
         description: "Spa-inspired master bathroom"
       },
       {
-        url: "https://images.unsplash.com/photo-1600566752734-2a0cd53c8d76",
+        url: "https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4",
         title: "Pool Area",
         description: "Infinity pool with entertainment deck"
       },
       {
-        url: "https://images.unsplash.com/photo-1600566752878-2f5bb0fe7e9d",
+        url: "https://images.unsplash.com/photo-1613977257365-aaae5a9817ff",
         title: "Garden",
         description: "Landscaped gardens with mature trees"
       },
@@ -143,6 +144,34 @@ export default function PropertyDetail() {
   const router = useRouter();
   const { id } = router.query;
   const property = propertyDetails[id];
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+
+  const handleKeyPress = useCallback((e) => {
+    if (!isGalleryOpen) return;
+    
+    if (e.key === 'Escape') {
+      setIsGalleryOpen(false);
+      return;
+    }
+
+    if (!property?.gallery) return;
+
+    const currentIndex = selectedImage !== null 
+      ? property.gallery.findIndex(img => img.url === selectedImage.url)
+      : -1;
+
+    if (e.key === 'ArrowRight' && currentIndex < property.gallery.length - 1) {
+      setSelectedImage(property.gallery[currentIndex + 1]);
+    } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+      setSelectedImage(property.gallery[currentIndex - 1]);
+    }
+  }, [isGalleryOpen, selectedImage, property?.gallery]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [handleKeyPress]);
 
   if (!property) {
     return (
@@ -304,11 +333,26 @@ export default function PropertyDetail() {
               gap: "1.5rem",
             }}>
               {property.gallery.map((image, index) => (
-                <div key={index} style={{
-                  backgroundColor: "#151515",
-                  borderRadius: "12px",
-                  overflow: "hidden",
-                }}>
+                <div 
+                  key={index} 
+                  style={{
+                    backgroundColor: "#151515",
+                    borderRadius: "12px",
+                    overflow: "hidden",
+                    cursor: "pointer",
+                    transition: "transform 0.2s ease",
+                  }}
+                  onClick={() => {
+                    setSelectedImage(image);
+                    setIsGalleryOpen(true);
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "scale(1.02)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                >
                   <img
                     src={image.url + "?auto=format&fit=crop&w=600&q=80"}
                     alt={image.title}
@@ -384,6 +428,129 @@ export default function PropertyDetail() {
           </div>
         </div>
       </div>
+
+      {/* Gallery Modal */}
+      {isGalleryOpen && selectedImage && (
+        <div style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "rgba(0,0,0,0.95)",
+          zIndex: 1000,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+          {/* Close button */}
+          <button
+            onClick={() => setIsGalleryOpen(false)}
+            style={{
+              position: "absolute",
+              top: "20px",
+              right: "20px",
+              background: "none",
+              border: "none",
+              color: "#fff",
+              fontSize: "24px",
+              cursor: "pointer",
+              zIndex: 1001,
+              padding: "10px",
+            }}
+          >
+            ✕
+          </button>
+
+          {/* Navigation buttons */}
+          <div style={{
+            position: "absolute",
+            top: "50%",
+            left: "20px",
+            transform: "translateY(-50%)",
+            zIndex: 1001,
+          }}>
+            <button
+              onClick={() => {
+                const currentIndex = property.gallery.findIndex(img => img.url === selectedImage.url);
+                if (currentIndex > 0) {
+                  setSelectedImage(property.gallery[currentIndex - 1]);
+                }
+              }}
+              disabled={property.gallery.indexOf(selectedImage) === 0}
+              style={{
+                background: "none",
+                border: "none",
+                color: "#fff",
+                fontSize: "24px",
+                cursor: "pointer",
+                padding: "10px",
+                opacity: property.gallery.indexOf(selectedImage) === 0 ? 0.5 : 1,
+              }}
+            >
+              ←
+            </button>
+          </div>
+
+          <div style={{
+            position: "absolute",
+            top: "50%",
+            right: "20px",
+            transform: "translateY(-50%)",
+            zIndex: 1001,
+          }}>
+            <button
+              onClick={() => {
+                const currentIndex = property.gallery.findIndex(img => img.url === selectedImage.url);
+                if (currentIndex < property.gallery.length - 1) {
+                  setSelectedImage(property.gallery[currentIndex + 1]);
+                }
+              }}
+              disabled={property.gallery.indexOf(selectedImage) === property.gallery.length - 1}
+              style={{
+                background: "none",
+                border: "none",
+                color: "#fff",
+                fontSize: "24px",
+                cursor: "pointer",
+                padding: "10px",
+                opacity: property.gallery.indexOf(selectedImage) === property.gallery.length - 1 ? 0.5 : 1,
+              }}
+            >
+              →
+            </button>
+          </div>
+
+          {/* Main image */}
+          <div style={{
+            maxWidth: "90vw",
+            maxHeight: "90vh",
+            position: "relative",
+          }}>
+            <img
+              src={selectedImage.url + "?auto=format&fit=crop&w=1920&q=100"}
+              alt={selectedImage.title}
+              style={{
+                maxWidth: "100%",
+                maxHeight: "85vh",
+                objectFit: "contain",
+              }}
+            />
+            <div style={{
+              position: "absolute",
+              bottom: "-40px",
+              left: 0,
+              right: 0,
+              textAlign: "center",
+              color: "#fff",
+            }}>
+              <h3 style={{ marginBottom: "0.5rem" }}>{selectedImage.title}</h3>
+              <p style={{ color: "#ccc" }}>{selectedImage.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </Layout>
   );
 }
