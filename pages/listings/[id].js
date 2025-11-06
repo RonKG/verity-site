@@ -1,0 +1,397 @@
+import { useRouter } from 'next/router';
+import Layout from "../../components/Layout";
+
+// Detailed property data
+const propertyDetails = {
+  1: {
+    title: "The Ridge Residence – Kitisuru",
+    location: "Kitisuru, Nairobi",
+    price: "KSh 420M",
+    specs: {
+      bedrooms: 5,
+      bathrooms: 6,
+      plotSize: "0.6 Acre",
+      builtArea: "12,000 sq ft",
+      yearBuilt: 2024,
+      parking: "4 cars",
+      style: "Contemporary Modern",
+    },
+    description: `
+      Perched elegantly on Kitisuru Ridge, this architectural masterpiece represents the pinnacle of modern luxury living in Nairobi. The Ridge Residence seamlessly blends contemporary design with environmental consciousness, creating an unparalleled living experience that celebrates both sophistication and sustainability.
+
+      This exclusive property spans 12,000 square feet of meticulously crafted living space, set within 0.6 acres of sculpted gardens. The residence features clean architectural lines, floor-to-ceiling windows, and thoughtfully designed spaces that maximize natural light while maintaining privacy.
+    `,
+    features: [
+      {
+        category: "Interior Features",
+        items: [
+          "Double-height living room with panoramic valley views",
+          "Gourmet kitchen with premium European appliances",
+          "Temperature-controlled wine cellar (200+ bottle capacity)",
+          "Home theater with professional acoustics",
+          "Primary suite with private terrace and spa-like bathroom",
+          "Custom Italian wardrobes in all bedrooms",
+          "Home office with built-in shelving and city views",
+          "Staff quarters with separate entrance"
+        ]
+      },
+      {
+        category: "Exterior & Grounds",
+        items: [
+          "Infinity edge pool with heating system",
+          "Outdoor kitchen and entertainment area",
+          "Manicured gardens with mature indigenous trees",
+          "Solar-powered landscape lighting",
+          "Automated irrigation system",
+          "Electric gate with security booth",
+          "CCTV surveillance system",
+          "Generator house with auto-switch capability"
+        ]
+      },
+      {
+        category: "Smart Home Features",
+        items: [
+          "Integrated home automation system",
+          "Climate-controlled zones with smart thermostats",
+          "Automated lighting scenes",
+          "Smart security system with mobile integration",
+          "Electric vehicle charging station",
+          "Solar power system with battery storage",
+          "Water harvesting and recycling system",
+          "High-speed fiber internet infrastructure"
+        ]
+      }
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+        title: "Exterior View",
+        description: "Modern facade with expansive glass windows"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea",
+        title: "Living Room",
+        description: "Double-height living space with valley views"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
+        title: "Kitchen",
+        description: "Gourmet kitchen with premium appliances"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600566752547-e92b5e3ca627",
+        title: "Master Suite",
+        description: "Primary bedroom with private terrace access"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600566752421-3ec9c3ec7c8c",
+        title: "Master Bath",
+        description: "Spa-inspired master bathroom"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600566752734-2a0cd53c8d76",
+        title: "Pool Area",
+        description: "Infinity pool with entertainment deck"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600566752878-2f5bb0fe7e9d",
+        title: "Garden",
+        description: "Landscaped gardens with mature trees"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600566753151-384129cf4e3e",
+        title: "Home Office",
+        description: "Executive office with built-in shelving"
+      }
+    ],
+    neighborhood: {
+      description: `
+        Kitisuru remains one of Nairobi's most prestigious addresses, known for its diplomatic residences and luxury homes. The Ridge Residence enjoys an elevated position that provides both privacy and stunning views while being conveniently located near premium amenities.
+        
+        The property is within easy reach of international schools, high-end shopping centers, and diplomatic missions. The serene environment is complemented by excellent security and well-maintained infrastructure.
+      \`,
+      nearbyAmenities: [
+        {
+          category: "Education",
+          items: [
+            "International School of Kenya (7 minutes)",
+            "Peponi School (10 minutes)",
+            "Braeburn School (12 minutes)"
+          ]
+        },
+        {
+          category: "Shopping & Dining",
+          items: [
+            "Village Market (8 minutes)",
+            "Westgate Mall (15 minutes)",
+            "Two Rivers Mall (12 minutes)"
+          ]
+        },
+        {
+          category: "Healthcare",
+          items: [
+            "Aga Khan University Hospital (15 minutes)",
+            "MP Shah Hospital (20 minutes)"
+          ]
+        },
+        {
+          category: "Recreation",
+          items: [
+            "Windsor Golf Club (15 minutes)",
+            "Karura Forest (10 minutes)",
+            "Muthaiga Country Club (12 minutes)"
+          ]
+        }
+      ]
+    }
+  }
+};
+
+export default function PropertyDetail() {
+  const router = useRouter();
+  const { id } = router.query;
+  const property = propertyDetails[id];
+
+  if (!property) {
+    return (
+      <Layout>
+        <div style={{ 
+          minHeight: "100vh",
+          backgroundColor: "#0e0e0e",
+          color: "#f0f0f0",
+          padding: "120px 20px",
+          textAlign: "center"
+        }}>
+          Property not found
+        </div>
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout>
+      <div style={{
+        backgroundColor: "#0e0e0e",
+        color: "#f0f0f0",
+        minHeight: "100vh",
+      }}>
+        {/* Hero Section */}
+        <section style={{
+          position: "relative",
+          height: "70vh",
+          minHeight: "600px",
+          backgroundImage: \`url(\${property.gallery[0].url}?auto=format&fit=crop&w=1920&q=80)\`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}>
+          <div style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            background: "linear-gradient(to top, rgba(14,14,14,1) 0%, rgba(14,14,14,0) 100%)",
+            padding: "120px 20px 40px",
+          }}>
+            <div style={{
+              maxWidth: "1200px",
+              margin: "0 auto",
+            }}>
+              <h1 style={{
+                fontSize: "2.8rem",
+                fontWeight: "500",
+                marginBottom: "1rem"
+              }}>{property.title}</h1>
+              <p style={{
+                fontSize: "1.2rem",
+                color: "#ccc",
+                marginBottom: "1rem"
+              }}>{property.location}</p>
+              <p style={{
+                fontSize: "1.4rem",
+                color: "#f5b942"
+              }}>{property.price}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Main Content */}
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "60px 20px",
+        }}>
+          {/* Quick Specs */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "2rem",
+            marginBottom: "4rem",
+            backgroundColor: "#151515",
+            padding: "2rem",
+            borderRadius: "12px",
+          }}>
+            {Object.entries(property.specs).map(([key, value]) => (
+              <div key={key} style={{ textAlign: "center" }}>
+                <div style={{ color: "#888", marginBottom: "0.5rem" }}>
+                  {key.replace(/([A-Z])/g, ' $1').trim()}
+                </div>
+                <div style={{ color: "#f5b942", fontSize: "1.1rem" }}>{value}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Description */}
+          <div style={{ marginBottom: "4rem" }}>
+            <h2 style={{ 
+              fontSize: "1.8rem", 
+              marginBottom: "1.5rem",
+              color: "#fff" 
+            }}>Property Overview</h2>
+            <p style={{ 
+              color: "#ccc",
+              lineHeight: "1.8",
+              whiteSpace: "pre-line" 
+            }}>{property.description}</p>
+          </div>
+
+          {/* Features */}
+          <div style={{ marginBottom: "4rem" }}>
+            <h2 style={{ 
+              fontSize: "1.8rem", 
+              marginBottom: "2rem",
+              color: "#fff" 
+            }}>Premium Features</h2>
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gap: "2rem",
+            }}>
+              {property.features.map((category, index) => (
+                <div key={index} style={{
+                  backgroundColor: "#151515",
+                  padding: "2rem",
+                  borderRadius: "12px",
+                }}>
+                  <h3 style={{ 
+                    color: "#f5b942",
+                    marginBottom: "1.5rem" 
+                  }}>{category.category}</h3>
+                  <ul style={{
+                    listStyle: "none",
+                    padding: 0,
+                    margin: 0,
+                  }}>
+                    {category.items.map((item, idx) => (
+                      <li key={idx} style={{
+                        color: "#ccc",
+                        marginBottom: "0.8rem",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                      }}>
+                        <span style={{ color: "#f5b942" }}>•</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Gallery */}
+          <div style={{ marginBottom: "4rem" }}>
+            <h2 style={{ 
+              fontSize: "1.8rem", 
+              marginBottom: "2rem",
+              color: "#fff" 
+            }}>Property Gallery</h2>
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+              gap: "1.5rem",
+            }}>
+              {property.gallery.map((image, index) => (
+                <div key={index} style={{
+                  backgroundColor: "#151515",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                }}>
+                  <img
+                    src={\`\${image.url}?auto=format&fit=crop&w=600&q=80\`}
+                    alt={image.title}
+                    style={{
+                      width: "100%",
+                      height: "240px",
+                      objectFit: "cover",
+                    }}
+                  />
+                  <div style={{ padding: "1rem" }}>
+                    <h4 style={{ 
+                      color: "#fff",
+                      marginBottom: "0.5rem" 
+                    }}>{image.title}</h4>
+                    <p style={{ 
+                      color: "#888",
+                      fontSize: "0.9rem" 
+                    }}>{image.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Neighborhood */}
+          <div>
+            <h2 style={{ 
+              fontSize: "1.8rem", 
+              marginBottom: "2rem",
+              color: "#fff" 
+            }}>Neighborhood</h2>
+            <div style={{
+              backgroundColor: "#151515",
+              padding: "2rem",
+              borderRadius: "12px",
+              marginBottom: "2rem",
+            }}>
+              <p style={{
+                color: "#ccc",
+                lineHeight: "1.8",
+                whiteSpace: "pre-line",
+                marginBottom: "2rem",
+              }}>{property.neighborhood.description}</p>
+
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+                gap: "2rem",
+              }}>
+                {property.neighborhood.nearbyAmenities.map((category, index) => (
+                  <div key={index}>
+                    <h3 style={{
+                      color: "#f5b942",
+                      marginBottom: "1rem",
+                      fontSize: "1.1rem",
+                    }}>{category.category}</h3>
+                    <ul style={{
+                      listStyle: "none",
+                      padding: 0,
+                      margin: 0,
+                    }}>
+                      {category.items.map((item, idx) => (
+                        <li key={idx} style={{
+                          color: "#ccc",
+                          marginBottom: "0.5rem",
+                        }}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+}

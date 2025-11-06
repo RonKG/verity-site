@@ -1,7 +1,9 @@
+import { useRouter } from 'next/router';
 import Layout from "../components/Layout";
 import FeatureTeaser from "../components/FeatureTeaser";
 
 export default function Listings() {
+  const router = useRouter();
   const listings = [
     {
       id: 1,
@@ -176,6 +178,7 @@ export default function Listings() {
           {listings.map((home) => (
             <div
               key={home.id}
+              onClick={() => router.push(`/listings/${home.id}`)}
               style={{
                 backgroundColor: "#151515",
                 borderRadius: "12px",
@@ -183,6 +186,7 @@ export default function Listings() {
                 boxShadow: "0 6px 16px rgba(0,0,0,0.4)",
                 textAlign: "left",
                 transition: "transform 0.3s ease",
+                cursor: "pointer",
               }}
             >
               <img
