@@ -1,9 +1,51 @@
 import { useRouter } from 'next/router';
 import Layout from "../components/Layout";
 import FeatureTeaser from "../components/FeatureTeaser";
+import { useState, useEffect } from 'react';
 
 export default function Listings() {
   const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState('all');
+  const [priceRange, setPriceRange] = useState('all');
+  const [propertyType, setPropertyType] = useState('all');
+  const [sortBy, setSortBy] = useState('default');
+  const [viewMode, setViewMode] = useState('grid');
+  const [filteredListings, setFilteredListings] = useState([]);
+
+  const locations = [
+    { value: 'all', label: 'All Locations' },
+    { value: 'karen', label: 'Karen' },
+    { value: 'kitisuru', label: 'Kitisuru' },
+    { value: 'lavington', label: 'Lavington' },
+    { value: 'muthaiga', label: 'Muthaiga' },
+    { value: 'runda', label: 'Runda' },
+    { value: 'coastal', label: 'Coastal Region' },
+  ];
+
+  const priceRanges = [
+    { value: 'all', label: 'All Prices' },
+    { value: '200-300', label: 'KSh 200M - 300M' },
+    { value: '300-400', label: 'KSh 300M - 400M' },
+    { value: '400-500', label: 'KSh 400M - 500M' },
+    { value: '500+', label: 'KSh 500M+' },
+  ];
+
+  const propertyTypes = [
+    { value: 'all', label: 'All Types' },
+    { value: 'villa', label: 'Villa' },
+    { value: 'penthouse', label: 'Penthouse' },
+    { value: 'estate', label: 'Estate' },
+    { value: 'beachfront', label: 'Beachfront' },
+  ];
+
+  const sortOptions = [
+    { value: 'default', label: 'Featured' },
+    { value: 'price-asc', label: 'Price: Low to High' },
+    { value: 'price-desc', label: 'Price: High to Low' },
+    { value: 'newest', label: 'Newest First' },
+  ];
+
   const listings = [
     {
       id: 1,
@@ -155,24 +197,233 @@ export default function Listings() {
           padding: "80px 20px",
           backgroundColor: "#0e0e0e",
           color: "#f0f0f0",
-          textAlign: "center",
         }}
       >
-        <h1 style={{ fontSize: "2.2rem", fontWeight: "400", marginBottom: "1rem" }}>
-          Featured Listings
-        </h1>
-        <p style={{ color: "#cfcfcf", marginBottom: "3rem" }}>
-          Curated homes verified for design integrity, authenticity, and context.
-        </p>
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <h1 style={{ 
+            fontSize: "2.4rem", 
+            fontWeight: "400", 
+            marginBottom: "1rem",
+            background: "linear-gradient(45deg, #f5b942, #c2a675)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}>
+            Premium Listings
+          </h1>
+          <p style={{ color: "#cfcfcf", fontSize: "1.1rem" }}>
+            Curated homes verified for design integrity, authenticity, and context.
+          </p>
+        </div>
 
+        {/* Search and Filters */}
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto 3rem",
+          padding: "2rem",
+          background: "#151515",
+          borderRadius: "12px",
+          border: "1px solid rgba(255,255,255,0.05)"
+        }}>
+          {/* Search Bar */}
+          <div style={{ marginBottom: "2rem" }}>
+            <input
+              type="text"
+              placeholder="Search by location, features, or keywords..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "1rem",
+                background: "#0e0e0e",
+                border: "1px solid #333",
+                borderRadius: "8px",
+                color: "#f0f0f0",
+                fontSize: "1rem"
+              }}
+            />
+          </div>
+
+          {/* Filter Controls */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "1rem",
+            alignItems: "end"
+          }}>
+            {/* Location Filter */}
+            <div>
+              <label style={{ 
+                display: "block", 
+                marginBottom: "0.5rem", 
+                color: "#888",
+                fontSize: "0.9rem"
+              }}>
+                Location
+              </label>
+              <select
+                value={selectedLocation}
+                onChange={(e) => setSelectedLocation(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "0.75rem",
+                  background: "#0e0e0e",
+                  border: "1px solid #333",
+                  borderRadius: "6px",
+                  color: "#f0f0f0",
+                  cursor: "pointer"
+                }}
+              >
+                {locations.map(loc => (
+                  <option key={loc.value} value={loc.value}>{loc.label}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Price Range Filter */}
+            <div>
+              <label style={{ 
+                display: "block", 
+                marginBottom: "0.5rem", 
+                color: "#888",
+                fontSize: "0.9rem"
+              }}>
+                Price Range
+              </label>
+              <select
+                value={priceRange}
+                onChange={(e) => setPriceRange(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "0.75rem",
+                  background: "#0e0e0e",
+                  border: "1px solid #333",
+                  borderRadius: "6px",
+                  color: "#f0f0f0",
+                  cursor: "pointer"
+                }}
+              >
+                {priceRanges.map(range => (
+                  <option key={range.value} value={range.value}>{range.label}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Property Type Filter */}
+            <div>
+              <label style={{ 
+                display: "block", 
+                marginBottom: "0.5rem", 
+                color: "#888",
+                fontSize: "0.9rem"
+              }}>
+                Property Type
+              </label>
+              <select
+                value={propertyType}
+                onChange={(e) => setPropertyType(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "0.75rem",
+                  background: "#0e0e0e",
+                  border: "1px solid #333",
+                  borderRadius: "6px",
+                  color: "#f0f0f0",
+                  cursor: "pointer"
+                }}
+              >
+                {propertyTypes.map(type => (
+                  <option key={type.value} value={type.value}>{type.label}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Sort Options */}
+            <div>
+              <label style={{ 
+                display: "block", 
+                marginBottom: "0.5rem", 
+                color: "#888",
+                fontSize: "0.9rem"
+              }}>
+                Sort By
+              </label>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "0.75rem",
+                  background: "#0e0e0e",
+                  border: "1px solid #333",
+                  borderRadius: "6px",
+                  color: "#f0f0f0",
+                  cursor: "pointer"
+                }}
+              >
+                {sortOptions.map(option => (
+                  <option key={option.value} value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* View Toggle */}
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto 2rem",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center"
+        }}>
+          <div style={{ color: "#888" }}>
+            <span style={{ color: "#f5b942" }}>{listings.length}</span> properties found
+          </div>
+          <div style={{
+            display: "flex",
+            gap: "0.5rem"
+          }}>
+            <button
+              onClick={() => setViewMode('grid')}
+              style={{
+                background: viewMode === 'grid' ? '#f5b942' : '#151515',
+                color: viewMode === 'grid' ? '#0e0e0e' : '#888',
+                border: "none",
+                padding: "0.5rem 1rem",
+                borderRadius: "6px",
+                cursor: "pointer",
+                transition: "all 0.3s ease"
+              }}
+            >
+              Grid
+            </button>
+            <button
+              onClick={() => setViewMode('list')}
+              style={{
+                background: viewMode === 'list' ? '#f5b942' : '#151515',
+                color: viewMode === 'list' ? '#0e0e0e' : '#888',
+                border: "none",
+                padding: "0.5rem 1rem",
+                borderRadius: "6px",
+                cursor: "pointer",
+                transition: "all 0.3s ease"
+              }}
+            >
+              List
+            </button>
+          </div>
+        </div>
+
+        {/* Listings Grid */}
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "2.5rem",
+            display: viewMode === 'grid' ? 'grid' : 'flex',
+            gridTemplateColumns: viewMode === 'grid' ? 'repeat(auto-fit, minmax(320px, 1fr))' : 'none',
+            flexDirection: viewMode === 'list' ? 'column' : 'row',
+            gap: viewMode === 'grid' ? '2.5rem' : '1.5rem',
             maxWidth: "1200px",
             margin: "0 auto",
-            padding: "0 1rem",
           }}
         >
           {listings.map((home) => (
@@ -185,24 +436,169 @@ export default function Listings() {
                 overflow: "hidden",
                 boxShadow: "0 6px 16px rgba(0,0,0,0.4)",
                 textAlign: "left",
-                transition: "transform 0.3s ease",
+                transition: "all 0.3s ease",
                 cursor: "pointer",
+                display: viewMode === 'list' ? 'flex' : 'block',
+                border: "1px solid rgba(255,255,255,0.05)",
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = "translateY(-5px)";
+                e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.6)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 6px 16px rgba(0,0,0,0.4)";
               }}
             >
-              <img
-                src={home.image}
-                alt={home.title}
-                style={{ width: "100%", height: "240px", objectFit: "cover" }}
-              />
-              <div style={{ padding: "1.5rem" }}>
-                <h3 style={{ marginBottom: "0.5rem", color: "#fff" }}>{home.title}</h3>
-                <p style={{ color: "#bcbcbc", fontSize: "0.95rem" }}>{home.location}</p>
-                <p style={{ color: "#f5f5f5", fontWeight: "500", marginTop: "0.5rem" }}>
-                  {home.price} • {home.specs}
+              <div style={{
+                flex: viewMode === 'list' ? '0 0 300px' : 'auto',
+              }}>
+                <img
+                  src={home.image}
+                  alt={home.title}
+                  style={{ 
+                    width: "100%", 
+                    height: viewMode === 'list' ? "200px" : "240px", 
+                    objectFit: "cover" 
+                  }}
+                />
+              </div>
+              <div style={{ 
+                padding: "1.5rem",
+                flex: viewMode === 'list' ? 1 : 'auto',
+              }}>
+                <div style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "flex-start",
+                  marginBottom: "0.5rem",
+                }}>
+                  <h3 style={{ 
+                    color: "#fff",
+                    fontSize: "1.2rem",
+                    fontWeight: "400",
+                  }}>{home.title}</h3>
+                  <span style={{
+                    background: "linear-gradient(45deg, #f5b942, #c2a675)",
+                    padding: "0.3rem 0.8rem",
+                    borderRadius: "6px",
+                    fontSize: "0.9rem",
+                    fontWeight: "500",
+                  }}>{home.price}</span>
+                </div>
+                <p style={{ 
+                  color: "#bcbcbc", 
+                  fontSize: "0.95rem",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                }}>
+                  <span style={{ color: "#666" }}>📍</span> {home.location}
                 </p>
-                <p style={{ color: "#a0a0a0", marginTop: "1rem", fontSize: "0.9rem" }}>
-                  {home.description}
+                <p style={{ 
+                  color: "#888", 
+                  marginTop: "0.5rem",
+                  fontSize: "0.9rem",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                }}>
+                  <span style={{ color: "#666" }}>🏠</span> {home.specs}
                 </p>
+                <p style={{ 
+                  color: "#a0a0a0", 
+                  marginTop: "1rem", 
+                  fontSize: "0.9rem",
+                  lineHeight: "1.6",
+                }}>{home.description}</p>
+                
+                <div style={{
+                  marginTop: "1.5rem",
+                  padding: "1rem 0 0",
+                  borderTop: "1px solid rgba(255,255,255,0.05)",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}>
+                  <div style={{
+                    display: "flex",
+                    gap: "1rem",
+                  }}>
+                    <span style={{ color: "#888", fontSize: "0.9rem" }}>
+                      Added: Nov 2025
+                    </span>
+                    <span style={{ color: "#888", fontSize: "0.9rem" }}>
+                      Views: 245
+                    </span>
+                  </div>
+                  <button style={{
+                    background: "transparent",
+                    border: "1px solid #f5b942",
+                    color: "#f5b942",
+                    padding: "0.5rem 1rem",
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    fontSize: "0.9rem",
+                    transition: "all 0.3s ease",
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.background = "#f5b942";
+                    e.currentTarget.style.color = "#0e0e0e";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.color = "#f5b942";
+                  }}>
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Quick Stats Section */}
+      <section style={{
+        backgroundColor: "#151515",
+        padding: "60px 20px",
+        marginTop: "4rem",
+      }}>
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+          gap: "2rem",
+          textAlign: "center",
+        }}>
+          {[
+            { number: "150+", label: "Premium Properties", icon: "🏠" },
+            { number: "98%", label: "Verification Rate", icon: "✓" },
+            { number: "24/7", label: "Expert Support", icon: "💬" },
+            { number: "15+", label: "Prime Locations", icon: "📍" },
+          ].map((stat, index) => (
+            <div key={index} style={{
+              padding: "1.5rem",
+              background: "#0e0e0e",
+              borderRadius: "12px",
+              border: "1px solid rgba(255,255,255,0.05)",
+            }}>
+              <span style={{ fontSize: "2rem", marginBottom: "1rem", display: "block" }}>
+                {stat.icon}
+              </span>
+              <div style={{
+                fontSize: "1.8rem",
+                fontWeight: "500",
+                marginBottom: "0.5rem",
+                background: "linear-gradient(45deg, #f5b942, #c2a675)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}>
+                {stat.number}
+              </div>
+              <div style={{ color: "#888", fontSize: "0.9rem" }}>
+                {stat.label}
               </div>
             </div>
           ))}
@@ -213,4 +609,68 @@ export default function Listings() {
       <FeatureTeaser />
     </Layout>
   );
+
+  useEffect(() => {
+    // Filter and sort listings based on selected options
+    let filtered = [...listings];
+
+    // Apply search filter
+    if (searchTerm) {
+      const search = searchTerm.toLowerCase();
+      filtered = filtered.filter(home => 
+        home.title.toLowerCase().includes(search) ||
+        home.location.toLowerCase().includes(search) ||
+        home.description.toLowerCase().includes(search)
+      );
+    }
+
+    // Apply location filter
+    if (selectedLocation !== 'all') {
+      filtered = filtered.filter(home => 
+        home.location.toLowerCase().includes(selectedLocation)
+      );
+    }
+
+    // Apply price range filter
+    if (priceRange !== 'all') {
+      const [min, max] = priceRange.split('-').map(p => parseInt(p));
+      filtered = filtered.filter(home => {
+        const price = parseInt(home.price.replace(/[^0-9]/g, ''));
+        if (max) {
+          return price >= min && price <= max;
+        }
+        return price >= min;
+      });
+    }
+
+    // Apply property type filter
+    if (propertyType !== 'all') {
+      filtered = filtered.filter(home =>
+        home.description.toLowerCase().includes(propertyType) ||
+        home.title.toLowerCase().includes(propertyType)
+      );
+    }
+
+    // Apply sorting
+    switch (sortBy) {
+      case 'price-asc':
+        filtered.sort((a, b) => 
+          parseInt(a.price.replace(/[^0-9]/g, '')) - parseInt(b.price.replace(/[^0-9]/g, ''))
+        );
+        break;
+      case 'price-desc':
+        filtered.sort((a, b) => 
+          parseInt(b.price.replace(/[^0-9]/g, '')) - parseInt(a.price.replace(/[^0-9]/g, ''))
+        );
+        break;
+      case 'newest':
+        filtered.sort((a, b) => b.id - a.id);
+        break;
+      default:
+        // Keep default order
+        break;
+    }
+
+    setFilteredListings(filtered);
+  }, [searchTerm, selectedLocation, priceRange, propertyType, sortBy]);
 }
