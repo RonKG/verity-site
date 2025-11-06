@@ -1,6 +1,12 @@
 import Layout from "../components/Layout";
 
 export default function Home() {
+  const stats = [
+    { number: "98%", label: "Accuracy Rate" },
+    { number: "2.4K", label: "Properties Analyzed" },
+    { number: "72hrs", label: "Avg. Verification Time" }
+  ];
+
   return (
     <Layout>
       <section
@@ -76,34 +82,253 @@ export default function Home() {
           >
             Because finding a home should feel inspiring — and certain.
           </p>
+
+          {/* Stats display */}
+          <div style={{
+            display: "flex",
+            gap: "2rem",
+            marginTop: "3rem",
+            flexWrap: "wrap",
+            justifyContent: "center"
+          }}>
+            {stats.map((stat, index) => (
+              <div key={index} style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                background: "rgba(0,0,0,0.3)",
+                backdropFilter: "blur(10px)",
+                padding: "1rem 2rem",
+                borderRadius: "8px",
+                border: "1px solid rgba(255,255,255,0.1)"
+              }}>
+                <span style={{
+                  fontSize: "1.8rem",
+                  fontWeight: "500",
+                  background: "linear-gradient(45deg, #f5b942, #c2a675)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent"
+                }}>{stat.number}</span>
+                <span style={{
+                  fontSize: "0.9rem",
+                  color: "#bcbcbc",
+                  marginTop: "0.3rem"
+                }}>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Scroll indicator */}
+          <div style={{
+            position: "absolute",
+            bottom: "2rem",
+            left: "50%",
+            transform: "translateX(-50%)",
+            animation: "bounce 2s infinite",
+            cursor: "pointer",
+            opacity: 0.7,
+            transition: "opacity 0.3s",
+            fontSize: "1.5rem"
+          }}
+            onMouseOver={(e) => e.target.style.opacity = "1"}
+            onMouseOut={(e) => e.target.style.opacity = "0.7"}
+            onClick={() => window.scrollTo({
+              top: window.innerHeight,
+              behavior: "smooth"
+            })}
+          >
+            ↓
+          </div>
         </div>
+
+        <style jsx>{`
+          @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+              transform: translateX(-50%) translateY(0);
+            }
+            40% {
+              transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+              transform: translateX(-50%) translateY(-5px);
+            }
+          }
+        `}</style>
       </section>
 
-      {/* Optional highlight image section */}
-      <section
-        style={{
-          backgroundColor: "#0e0e0e",
-          padding: "60px 20px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-      >
-        <img
-          src="https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4?fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHx8&ixlib=rb-4.1.0&q=60&w=3000"
-          alt="Architectural interior"
+      {/* Featured Properties Preview */}
+      <section style={{
+        backgroundColor: "#0e0e0e",
+        padding: "80px 20px",
+        textAlign: "center",
+      }}>
+        <h2 style={{
+          fontSize: "2rem",
+          fontWeight: "400",
+          marginBottom: "2rem",
+          color: "#f0f0f0"
+        }}>Latest Verified Properties</h2>
+        
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gap: "2rem",
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 20px"
+        }}>
+          {[
+            {
+              image: "https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4",
+              title: "Modern Villa",
+              location: "Karen",
+              price: "$1.2M",
+            },
+            {
+              image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+              title: "Luxury Penthouse",
+              location: "Westlands",
+              price: "$850K",
+            },
+            {
+              image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+              title: "Garden Estate",
+              location: "Kitisuru",
+              price: "$2.1M",
+            }
+          ].map((property, index) => (
+            <div key={index} style={{
+              background: "#151515",
+              borderRadius: "12px",
+              overflow: "hidden",
+              transition: "transform 0.3s",
+              cursor: "pointer",
+            }}
+            onMouseOver={(e) => e.target.style.transform = "translateY(-5px)"}
+            onMouseOut={(e) => e.target.style.transform = "translateY(0)"}
+            >
+              <img 
+                src={property.image}
+                alt={property.title}
+                style={{
+                  width: "100%",
+                  height: "200px",
+                  objectFit: "cover"
+                }}
+              />
+              <div style={{ padding: "1.5rem" }}>
+                <h3 style={{
+                  fontSize: "1.3rem",
+                  color: "#f0f0f0",
+                  marginBottom: "0.5rem"
+                }}>{property.title}</h3>
+                <p style={{
+                  color: "#bcbcbc",
+                  fontSize: "0.9rem",
+                  marginBottom: "1rem"
+                }}>{property.location}</p>
+                <p style={{
+                  color: "#f5b942",
+                  fontWeight: "500"
+                }}>{property.price}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <a 
+          href="/listings"
           style={{
-            width: "90%",
-            maxWidth: "1000px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
-            marginBottom: "1rem",
+            display: "inline-block",
+            marginTop: "3rem",
+            padding: "12px 24px",
+            background: "linear-gradient(45deg, #f5b942, #c2a675)",
+            color: "#0e0e0e",
+            textDecoration: "none",
+            borderRadius: "6px",
+            fontWeight: "500",
+            transition: "transform 0.2s"
           }}
-        />
-        <p style={{ color: "#9a9a9a", fontSize: "0.9rem" }}>
-          A glimpse into the detail, story, and truth behind every home.
-        </p>
+          onMouseOver={(e) => e.target.style.transform = "translateY(-2px)"}
+          onMouseOut={(e) => e.target.style.transform = "translateY(0)"}
+        >
+          View All Properties
+        </a>
+      </section>
+
+      {/* Trust Indicators Section */}
+      <section style={{
+        backgroundColor: "#0e0e0e",
+        padding: "80px 20px",
+        textAlign: "center",
+        position: "relative",
+        overflow: "hidden"
+      }}>
+        <div style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: "radial-gradient(circle at 90% 10%, rgba(245,185,66,0.03) 0%, transparent 40%)",
+          zIndex: 1
+        }} />
+        
+        <div style={{ position: "relative", zIndex: 2 }}>
+          <h2 style={{
+            fontSize: "2rem",
+            fontWeight: "400",
+            marginBottom: "3rem",
+            color: "#f0f0f0"
+          }}>Why The Registry</h2>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "2rem",
+            maxWidth: "1200px",
+            margin: "0 auto"
+          }}>
+            {[
+              {
+                icon: "🔍",
+                title: "Verified Data",
+                description: "Every listing undergoes our proprietary 72-hour verification process"
+              },
+              {
+                icon: "📊",
+                title: "Market Analytics",
+                description: "Access real-time market insights and property valuations"
+              },
+              {
+                icon: "✨",
+                title: "Premium Presentation",
+                description: "Cinematic photography and immersive virtual tours"
+              }
+            ].map((feature, index) => (
+              <div key={index} style={{
+                background: "#151515",
+                padding: "2rem",
+                borderRadius: "12px",
+                border: "1px solid rgba(255,255,255,0.05)",
+              }}>
+                <span style={{ fontSize: "2rem", marginBottom: "1rem", display: "block" }}>
+                  {feature.icon}
+                </span>
+                <h3 style={{
+                  color: "#f5b942",
+                  fontSize: "1.3rem",
+                  marginBottom: "1rem",
+                  fontWeight: "400"
+                }}>{feature.title}</h3>
+                <p style={{
+                  color: "#bcbcbc",
+                  lineHeight: "1.6"
+                }}>{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
     </Layout>
   );
