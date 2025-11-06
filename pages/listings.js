@@ -105,7 +105,7 @@ export default function Listings() {
       location: "Loresho, Nairobi",
       price: "KSh 355M",
       specs: "5 Bed • 0.4 Acre • City View",
-      image: "https://images.unsplash.com/photo-1600566753851-f0069c0b96b6?auto=format&fit=crop&w=1600&q=80",
+      image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80",
       description: "Elevated living with panoramic city views. Features include vertical gardens, glass elevator, and infinity edge pool overlooking the Nairobi skyline.",
     },
     {
