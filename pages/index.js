@@ -89,7 +89,8 @@ export default function Home() {
             gap: "2rem",
             marginTop: "3rem",
             flexWrap: "wrap",
-            justifyContent: "center"
+            justifyContent: "center",
+            marginBottom: "6rem" // Added margin to create space for scroll indicator
           }}>
             {stats.map((stat, index) => (
               <div key={index} style={{
@@ -117,40 +118,73 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
 
-          {/* Scroll indicator */}
-          <div style={{
+        {/* Modern Scroll Indicator - Moved outside main content div */}
+        <div 
+          onClick={() => window.scrollTo({
+            top: window.innerHeight,
+            behavior: "smooth"
+          })}
+          style={{
             position: "absolute",
             bottom: "2rem",
             left: "50%",
             transform: "translateX(-50%)",
-            animation: "bounce 2s infinite",
             cursor: "pointer",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.5rem",
             opacity: 0.7,
-            transition: "opacity 0.3s",
-            fontSize: "1.5rem"
+            transition: "all 0.3s ease",
+            zIndex: 2 // Ensure it's above other elements
           }}
-            onMouseOver={(e) => e.target.style.opacity = "1"}
-            onMouseOut={(e) => e.target.style.opacity = "0.7"}
-            onClick={() => window.scrollTo({
-              top: window.innerHeight,
-              behavior: "smooth"
-            })}
-          >
-            ↓
-          </div>
+          onMouseOver={(e) => {
+            e.currentTarget.style.opacity = "1";
+            e.currentTarget.style.transform = "translateX(-50%) translateY(-5px)";
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.opacity = "0.7";
+            e.currentTarget.style.transform = "translateX(-50%) translateY(0)";
+          }}
+        >
+          <span style={{
+            color: "#f5b942",
+            fontSize: "0.85rem",
+            fontWeight: "500",
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+          }}>
+            Explore
+          </span>
+          <div style={{
+            width: "2px",
+            height: "40px",
+            background: "linear-gradient(to bottom, #f5b942 50%, transparent)",
+            animation: "fadeInOut 2s infinite",
+          }} />
         </div>
 
         <style jsx>{`
-          @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-              transform: translateX(-50%) translateY(0);
+          @keyframes fadeInOut {
+            0% {
+              opacity: 0;
+              transform: scaleY(0);
+              transform-origin: top;
             }
-            40% {
-              transform: translateX(-50%) translateY(-10px);
+            50% {
+              opacity: 1;
+              transform: scaleY(1);
+              transform-origin: top;
             }
-            60% {
-              transform: translateX(-50%) translateY(-5px);
+            51% {
+              transform-origin: bottom;
+            }
+            100% {
+              opacity: 0;
+              transform: scaleY(0);
+              transform-origin: bottom;
             }
           }
         `}</style>
