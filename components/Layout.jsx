@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 export default function Layout({ children }) {
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 36);
@@ -12,6 +13,22 @@ export default function Layout({ children }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    // Initialize theme from localStorage or OS preference
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = stored || (prefersDark ? 'dark' : 'light');
+    setTheme(initialTheme);
+    document.documentElement.setAttribute('data-theme', initialTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
 
   const linkStyle = {
     color: "#cfcfcf",
@@ -55,11 +72,12 @@ export default function Layout({ children }) {
     <div
       style={{
         fontFamily: "Inter, sans-serif",
-        color: "#f0f0f0",
-        backgroundColor: "#0e0e0e",
+        color: "var(--theme-text)",
+        backgroundColor: "var(--theme-bg)",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
+        transition: "background-color 0.3s ease, color 0.3s ease",
       }}
     >
       {/* Header */}
@@ -176,6 +194,39 @@ export default function Layout({ children }) {
             </div>
           ))}
         </nav>
+
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          aria-pressed={theme === 'light'}
+          style={{
+            background: 'transparent',
+            border: '1.5px solid rgba(194, 166, 117, 0.4)',
+            borderRadius: '50%',
+            width: scrolled ? '36px' : '40px',
+            height: scrolled ? '36px' : '40px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            color: '#c2a675',
+            fontSize: scrolled ? '1rem' : '1.1rem',
+            marginLeft: '1rem',
+            padding: 0
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = '#c2a675';
+            e.currentTarget.style.background = 'rgba(194, 166, 117, 0.1)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = 'rgba(194, 166, 117, 0.4)';
+            e.currentTarget.style.background = 'transparent';
+          }}
+        >
+          {theme === 'dark' ? '☀️' : '🌙'}
+        </button>
       </header>
 
       {/* spacer to prevent content sitting under fixed header */}
