@@ -48,12 +48,14 @@ export default function CredibilitySection() {
             }}
           >
             <p style={{
-              fontSize: "1.75rem",
+              fontSize: "1.25rem",
               marginBottom: "1.75rem",
-              color: "#ffffff",
+              color: "#e0e0e0",
               flex: "1 1 auto",
+              fontWeight: "400",
+              lineHeight: "1.6",
               className: "quote-text",
-              textShadow: "0 1px 2px rgba(0,0,0,0.1)"
+              fontStyle: "italic"
             }}>
               "{testimonial.quote}"
             </p>
@@ -74,16 +76,18 @@ export default function CredibilitySection() {
               />
               <div>
                 <p style={{
-                  fontSize: "1rem",
-                  color: "#ffffff",
+                  fontSize: "0.95rem",
+                  color: "#f0f0f0",
                   margin: 0,
+                  fontWeight: "500",
                   className: "author-name"
                 }}>
                   {testimonial.authorName}
                 </p>
                 <p style={{
-                  fontSize: "0.9rem",
+                  fontSize: "0.85rem",
                   margin: 0,
+                  color: "#888",
                   className: "author-handle"
                 }}>
                   {testimonial.handle}
