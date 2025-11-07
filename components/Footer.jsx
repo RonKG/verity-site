@@ -3,10 +3,11 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer style={{
-      backgroundColor: '#0a0a0a',
-      color: '#888',
+      backgroundColor: 'var(--theme-surface)',
+      color: 'var(--theme-text-muted)',
       padding: '40px 0',
-      borderTop: '1px solid rgba(255,255,255,0.05)'
+      borderTop: `1px solid var(--theme-border)`,
+      transition: 'background-color 0.3s ease, color 0.3s ease'
     }}>
       <div style={{
         maxWidth: '1200px',
@@ -28,7 +29,7 @@ export default function Footer() {
           <div style={{ maxWidth: '300px' }}>
             <h3 style={{
               fontSize: '1.5rem',
-              color: '#f0f0f0',
+              color: 'var(--theme-text)',
               marginBottom: '1rem',
               fontWeight: '400'
             }}>
@@ -37,7 +38,7 @@ export default function Footer() {
             <p style={{
               fontSize: '0.95rem',
               lineHeight: '1.6',
-              color: '#888'
+              color: 'var(--theme-text-muted)'
             }}>
               Setting new standards in property verification and luxury real estate presentation.
             </p>
@@ -47,7 +48,7 @@ export default function Footer() {
           <div>
             <h4 style={{
               fontSize: '0.9rem',
-              color: '#aaa',
+              color: 'var(--theme-text-muted)',
               marginBottom: '1rem',
               fontWeight: '500',
               textTransform: 'uppercase',
@@ -61,7 +62,7 @@ export default function Footer() {
               gap: '0.75rem'
             }}>
               <Link href="/about" style={{
-                color: '#888',
+                color: 'var(--theme-text-muted)',
                 textDecoration: 'none',
                 fontSize: '0.95rem',
                 transition: 'color 0.2s'
@@ -69,7 +70,7 @@ export default function Footer() {
                 About Us
               </Link>
               <Link href="/team" style={{
-                color: '#888',
+                color: 'var(--theme-text-muted)',
                 textDecoration: 'none',
                 fontSize: '0.95rem',
                 transition: 'color 0.2s'
@@ -77,7 +78,7 @@ export default function Footer() {
                 Team
               </Link>
               <Link href="/listings" style={{
-                color: '#888',
+                color: 'var(--theme-text-muted)',
                 textDecoration: 'none',
                 fontSize: '0.95rem',
                 transition: 'color 0.2s'
@@ -85,7 +86,7 @@ export default function Footer() {
                 Listings
               </Link>
               <Link href="/insights" style={{
-                color: '#888',
+                color: 'var(--theme-text-muted)',
                 textDecoration: 'none',
                 fontSize: '0.95rem',
                 transition: 'color 0.2s'
@@ -99,7 +100,7 @@ export default function Footer() {
           <div>
             <h4 style={{
               fontSize: '0.9rem',
-              color: '#aaa',
+              color: 'var(--theme-text-muted)',
               marginBottom: '1rem',
               fontWeight: '500',
               textTransform: 'uppercase',
@@ -113,7 +114,7 @@ export default function Footer() {
               gap: '0.75rem'
             }}>
               <Link href="/terms" style={{
-                color: '#888',
+                color: 'var(--theme-text-muted)',
                 textDecoration: 'none',
                 fontSize: '0.95rem',
                 transition: 'color 0.2s'
@@ -121,7 +122,7 @@ export default function Footer() {
                 Terms of Service
               </Link>
               <Link href="/privacy" style={{
-                color: '#888',
+                color: 'var(--theme-text-muted)',
                 textDecoration: 'none',
                 fontSize: '0.95rem',
                 transition: 'color 0.2s'
@@ -129,7 +130,7 @@ export default function Footer() {
                 Privacy Policy
               </Link>
               <Link href="/contact" style={{
-                color: '#888',
+                color: 'var(--theme-text-muted)',
                 textDecoration: 'none',
                 fontSize: '0.95rem',
                 transition: 'color 0.2s'
@@ -143,7 +144,7 @@ export default function Footer() {
           <div>
             <h4 style={{
               fontSize: '0.9rem',
-              color: '#aaa',
+              color: 'var(--theme-text-muted)',
               marginBottom: '1rem',
               fontWeight: '500',
               textTransform: 'uppercase',
@@ -166,10 +167,10 @@ export default function Footer() {
 
         {/* Copyright bar */}
         <div style={{
-          borderTop: '1px solid rgba(255,255,255,0.05)',
+          borderTop: `1px solid var(--theme-border)`,
           paddingTop: '1.5rem',
           fontSize: '0.9rem',
-          color: '#666',
+          color: 'var(--theme-text-muted)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -184,21 +185,21 @@ export default function Footer() {
             gap: '2rem'
           }}>
             <a href="#" style={{
-              color: '#666',
+              color: 'var(--theme-text-muted)',
               textDecoration: 'none',
               transition: 'color 0.2s'
             }}>
               Twitter
             </a>
             <a href="#" style={{
-              color: '#666',
+              color: 'var(--theme-text-muted)',
               textDecoration: 'none',
               transition: 'color 0.2s'
             }}>
               LinkedIn
             </a>
             <a href="#" style={{
-              color: '#666',
+              color: 'var(--theme-text-muted)',
               textDecoration: 'none',
               transition: 'color 0.2s'
             }}>
@@ -211,7 +212,7 @@ export default function Footer() {
       {/* Hover styles */}
       <style jsx>{`
         a:hover {
-          color: #f0f0f0 !important;
+          color: var(--theme-text) !important;
         }
       `}</style>
     </footer>

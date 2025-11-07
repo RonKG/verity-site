@@ -31,7 +31,7 @@ export default function Layout({ children }) {
   };
 
   const linkStyle = {
-    color: "#cfcfcf",
+    color: "var(--theme-text-muted)",
     textDecoration: "none",
     fontSize: "0.95rem",
     marginLeft: "1.8rem",
@@ -40,7 +40,7 @@ export default function Layout({ children }) {
 
   const headerStyle = {
     padding: scrolled ? "10px 20px" : "16px 20px",
-    borderBottom: "1px solid rgba(255,255,255,0.08)",
+    borderBottom: `1px solid var(--theme-border)`,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -52,8 +52,12 @@ export default function Layout({ children }) {
     zIndex: 1000,
     backdropFilter: "blur(12px)",
     WebkitBackdropFilter: "blur(12px)",
-    background: scrolled ? "rgba(14,14,14,0.95)" : "rgba(14,14,14,0.7)",
-    boxShadow: scrolled ? "0 6px 30px rgba(0,0,0,0.55)" : "0 2px 12px rgba(0,0,0,0.3)",
+    background: theme === 'dark' 
+      ? (scrolled ? "rgba(14,14,14,0.95)" : "rgba(14,14,14,0.7)")
+      : (scrolled ? "rgba(248,247,245,0.95)" : "rgba(248,247,245,0.7)"),
+    boxShadow: theme === 'dark'
+      ? (scrolled ? "0 6px 30px rgba(0,0,0,0.55)" : "0 2px 12px rgba(0,0,0,0.3)")
+      : (scrolled ? "0 6px 30px rgba(0,0,0,0.08)" : "0 2px 12px rgba(0,0,0,0.05)"),
     transition: "all 220ms ease",
   };
   const headerHeight = scrolled ? 56 : 72;
@@ -91,28 +95,36 @@ export default function Layout({ children }) {
             style={{
               ...logoStyle,
               borderRadius: "50%",
-              border: scrolled ? "2.5px solid #f5b942" : "2px solid #c2a675",
-              background: scrolled ? "linear-gradient(135deg, rgba(245,185,66,0.08), rgba(194,166,117,0.03))" : "transparent",
+              border: scrolled ? `2.5px solid var(--theme-accent)` : `2px solid var(--theme-accent-strong)`,
+              background: scrolled 
+                ? (theme === 'dark' ? "linear-gradient(135deg, rgba(245,185,66,0.08), rgba(194,166,117,0.03))" : "linear-gradient(135deg, rgba(183,121,31,0.08), rgba(143,106,64,0.03))")
+                : "transparent",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: scrolled ? "#f5b942" : "#c2a675",
+              color: scrolled ? "var(--theme-accent)" : "var(--theme-accent-strong)",
               fontWeight: "700",
-              boxShadow: scrolled ? "0 8px 30px rgba(197,153,90,0.12)" : "0 4px 12px rgba(0,0,0,0.25)",
+              boxShadow: scrolled 
+                ? (theme === 'dark' ? "0 8px 30px rgba(197,153,90,0.12)" : "0 8px 30px rgba(143,106,64,0.08)")
+                : (theme === 'dark' ? "0 4px 12px rgba(0,0,0,0.25)" : "0 4px 12px rgba(0,0,0,0.08)"),
               transform: "scale(1)",
               transition: "all 200ms ease",
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget;
               el.style.transform = "scale(1.06)";
-              el.style.background = "linear-gradient(135deg, rgba(245,185,66,0.12), rgba(194,166,117,0.06))";
-              el.style.color = "#0e0e0e";
+              el.style.background = theme === 'dark' 
+                ? "linear-gradient(135deg, rgba(245,185,66,0.12), rgba(194,166,117,0.06))"
+                : "linear-gradient(135deg, rgba(183,121,31,0.15), rgba(143,106,64,0.08))";
+              el.style.color = theme === 'dark' ? "#0e0e0e" : "#ffffff";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget;
               el.style.transform = "scale(1)";
-              el.style.background = scrolled ? "linear-gradient(135deg, rgba(245,185,66,0.08), rgba(194,166,117,0.03))" : "transparent";
-              el.style.color = scrolled ? "#f5b942" : "#c2a675";
+              el.style.background = scrolled 
+                ? (theme === 'dark' ? "linear-gradient(135deg, rgba(245,185,66,0.08), rgba(194,166,117,0.03))" : "linear-gradient(135deg, rgba(183,121,31,0.08), rgba(143,106,64,0.03))")
+                : "transparent";
+              el.style.color = scrolled ? "var(--theme-accent)" : "var(--theme-accent-strong)";
             }}
           >
             <span style={{ fontSize: scrolled ? '1.05rem' : '1.35rem', lineHeight: 1 }}>
@@ -125,13 +137,13 @@ export default function Layout({ children }) {
             style={{
               margin: 0,
               fontWeight: "500",
-              color: "#f5f5f5",
+              color: "var(--theme-text)",
               fontSize: scrolled ? '1.15rem' : '1.35rem',
               letterSpacing: "0.3px",
               transition: "color 0.3s ease, font-size 180ms ease",
             }}
-            onMouseEnter={(e) => (e.target.style.color = "#c2a675")}
-            onMouseLeave={(e) => (e.target.style.color = "#f5f5f5")}
+            onMouseEnter={(e) => (e.target.style.color = "var(--theme-accent-strong)")}
+            onMouseLeave={(e) => (e.target.style.color = "var(--theme-text)")}
           >
             The Registry
           </h2>
@@ -171,15 +183,15 @@ export default function Layout({ children }) {
             }}>
               {group.map((link, linkIndex) => (
                 <Link key={link.href} href={link.href} style={{
-                  color: "#cfcfcf",
+                  color: "var(--theme-text-muted)",
                   textDecoration: "none",
                   transition: "color 0.3s ease",
                   display: "flex",
                   alignItems: "center",
                 }}>
                   <span
-                    onMouseEnter={(e) => (e.target.style.color = "#c2a675")}
-                    onMouseLeave={(e) => (e.target.style.color = "#cfcfcf")}
+                    onMouseEnter={(e) => (e.target.style.color = "var(--theme-accent-strong)")}
+                    onMouseLeave={(e) => (e.target.style.color = "var(--theme-text-muted)")}
                   >
                     {link.label}
                   </span>
@@ -187,7 +199,7 @@ export default function Layout({ children }) {
               ))}
               {groupIndex < 2 && (
                 <span style={{ 
-                  color: "#333",
+                  color: "var(--theme-border)",
                   margin: "0 0.5rem",
                 }}>|</span>
               )}
@@ -202,7 +214,7 @@ export default function Layout({ children }) {
           aria-pressed={theme === 'light'}
           style={{
             background: 'transparent',
-            border: '1.5px solid rgba(194, 166, 117, 0.4)',
+            border: `1.5px solid var(--theme-accent-strong)`,
             borderRadius: '50%',
             width: scrolled ? '36px' : '40px',
             height: scrolled ? '36px' : '40px',
@@ -211,17 +223,17 @@ export default function Layout({ children }) {
             justifyContent: 'center',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
-            color: '#c2a675',
+            color: 'var(--theme-accent-strong)',
             fontSize: scrolled ? '1rem' : '1.1rem',
             marginLeft: '1rem',
             padding: 0
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = '#c2a675';
-            e.currentTarget.style.background = 'rgba(194, 166, 117, 0.1)';
+            e.currentTarget.style.borderColor = 'var(--theme-accent)';
+            e.currentTarget.style.background = theme === 'dark' ? 'rgba(194, 166, 117, 0.1)' : 'rgba(143, 106, 64, 0.1)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = 'rgba(194, 166, 117, 0.4)';
+            e.currentTarget.style.borderColor = 'var(--theme-accent-strong)';
             e.currentTarget.style.background = 'transparent';
           }}
         >
