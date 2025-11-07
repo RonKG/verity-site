@@ -77,9 +77,10 @@ export default function Insights() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          backgroundColor: "#0e0e0e",
-          color: "#f0f0f0",
+          backgroundColor: "var(--theme-bg)",
+          color: "var(--theme-text)",
           padding: "80px 20px 60px",
+          transition: 'background-color 0.3s ease, color 0.3s ease'
         }}
       >
         {/* Intro */}
@@ -93,13 +94,13 @@ export default function Insights() {
             fontSize: "2.2rem",
             fontWeight: "400",
             marginBottom: "0.5rem",
-            background: "linear-gradient(45deg, rgba(245,185,66,0.95), rgba(194,166,117,0.9))",
+            background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}>
             Market Insights
           </h1>
-          <p style={{ color: "#d6d6d6", fontSize: "1.05rem", lineHeight: "1.6" }}>
+          <p style={{ color: "var(--theme-text-muted)", fontSize: "1.05rem", lineHeight: "1.6", transition: 'color 0.3s ease' }}>
             Our data blends verified listings, valuation trends, and neighborhood velocity to
             highlight Kenya&apos;s most dynamic property zones.  
             This page presents a snapshot of current conditions and the price movement shaping
@@ -112,9 +113,10 @@ export default function Insights() {
             justifyContent: "center",
             gap: "1rem",
             marginTop: "2rem",
-            borderBottom: "1px solid rgba(255,255,255,0.03)",
+            borderBottom: `1px solid var(--theme-border)`,
             paddingBottom: "1rem",
-            alignItems: 'center'
+            alignItems: 'center',
+            transition: 'border-color 0.3s ease'
           }}>
             {[
               { id: "market", label: "Market Overview" },
@@ -128,7 +130,7 @@ export default function Insights() {
                 style={{
                   background: "transparent",
                   border: "none",
-                  color: activeTab === tab.id ? "#f5b942" : "#9a9a9a",
+                  color: activeTab === tab.id ? "var(--theme-accent)" : "var(--theme-text-muted)",
                   padding: "10px 18px",
                   cursor: "pointer",
                   fontSize: "1rem",
@@ -145,7 +147,7 @@ export default function Insights() {
                     left: '25%',
                     right: '25%',
                     height: "2px",
-                    background: "#f5b942",
+                    background: "var(--theme-accent)",
                     borderRadius: '2px'
                   }} />
                 )}
@@ -166,8 +168,8 @@ export default function Insights() {
                 key={time}
                 onClick={() => setSelectedTimeframe(time)}
                 style={{
-                  background: selectedTimeframe === time ? "#f5b942" : "#222",
-                  color: selectedTimeframe === time ? "#0e0e0e" : "#888",
+                  background: selectedTimeframe === time ? "var(--theme-accent)" : "var(--theme-surface)",
+                  color: selectedTimeframe === time ? "var(--theme-bg)" : "var(--theme-text-muted)",
                   border: "none",
                   borderRadius: "4px",
                   padding: "4px 8px",
@@ -189,8 +191,9 @@ export default function Insights() {
               style={{
                 textAlign: "center",
                 marginBottom: "1rem",
-                color: "#f5f5f5",
+                color: "var(--theme-text)",
                 fontWeight: "400",
+                transition: 'color 0.3s ease'
               }}
             >
               Average Price per Sq.Ft — Nairobi Prime (2025)
@@ -233,8 +236,9 @@ export default function Insights() {
               style={{
                 textAlign: "center",
                 marginBottom: "1rem",
-                color: "#f5f5f5",
+                color: "var(--theme-text)",
                 fontWeight: "400",
+                transition: 'color 0.3s ease'
               }}
             >
               Price Trends & Market Volume
@@ -311,13 +315,14 @@ export default function Insights() {
             }}>
               {trendData.slice(-3).map((data, index) => (
                 <div key={index} style={{
-                  background: "linear-gradient(180deg,#151515,#111)",
+                  background: "var(--theme-surface)",
                   padding: "0.9rem 1rem",
                   borderRadius: "8px",
                   minWidth: "170px",
-                  borderLeft: '3px solid rgba(194,166,117,0.14)'
+                  border: `1px solid var(--theme-border)`,
+                  transition: 'background 0.3s ease, border-color 0.3s ease'
                 }}>
-                  <div style={{ fontSize: "0.85rem", color: "#9a9a9a", marginBottom: "0.4rem" }}>
+                  <div style={{ fontSize: "0.85rem", color: "var(--theme-text-muted)", marginBottom: "0.4rem", transition: 'color 0.3s ease' }}>
                     {data.month}
                   </div>
                   <div style={{ 
@@ -345,28 +350,30 @@ export default function Insights() {
               alignItems: "center",
               marginBottom: "2rem"
             }}>
-              <h3 style={{ color: "#f5f5f5", fontWeight: "400", margin: 0 }}>
+              <h3 style={{ color: "var(--theme-text)", fontWeight: "400", margin: 0, transition: 'color 0.3s ease' }}>
                 Regional Price Analysis
               </h3>
               <div style={{
-                background: "#222",
-                border: "1px solid #333",
+                background: "var(--theme-surface)",
+                border: `1px solid var(--theme-border)`,
                 borderRadius: "8px",
                 display: "flex",
-                overflow: "hidden"
+                overflow: "hidden",
+                transition: 'background 0.3s ease, border-color 0.3s ease'
               }}>
                 {["KSH", "USD"].map((cur) => (
                   <button
                     key={cur}
                     onClick={() => setCurrency(cur)}
                     style={{
-                      background: currency === cur ? "#f5b942" : "transparent",
-                      color: currency === cur ? "#000" : "#ccc",
+                      background: currency === cur ? "var(--theme-accent)" : "transparent",
+                      color: currency === cur ? "var(--theme-bg)" : "var(--theme-text-muted)",
                       border: "none",
                       padding: "6px 14px",
                       cursor: "pointer",
                       fontSize: "0.85rem",
-                      fontWeight: "500"
+                      fontWeight: "500",
+                      transition: 'all 0.3s ease'
                     }}
                   >
                     {cur}
@@ -387,16 +394,18 @@ export default function Insights() {
                 { title: "Diplomatic Zones", regions: ["Karen", "Gigiri", "Lavington"] }
               ].map((area, idx) => (
                 <div key={idx} style={{
-                  background: "linear-gradient(to bottom right, rgba(194,166,117,0.1), transparent)",
+                  background: "var(--theme-card-bg)",
                   padding: "1.5rem",
                   borderRadius: "12px",
-                  border: "1px solid rgba(194,166,117,0.2)"
+                  border: `1px solid var(--theme-border)`,
+                  transition: 'background 0.3s ease, border-color 0.3s ease'
                 }}>
                   <h4 style={{
-                    color: "#c2a675",
+                    color: "var(--theme-accent-strong)",
                     marginBottom: "1rem",
                     fontSize: "1.1rem",
-                    fontWeight: "500"
+                    fontWeight: "500",
+                    transition: 'color 0.3s ease'
                   }}>{area.title}</h4>
                   {area.regions.map(region => {
                     const price = snapshotData.find(d => d.region === region)?.price || 0;
@@ -408,10 +417,11 @@ export default function Insights() {
                         marginBottom: "0.75rem",
                         padding: "0.5rem",
                         borderRadius: "6px",
-                        background: "rgba(255,255,255,0.03)"
+                        background: "var(--theme-surface)",
+                        transition: 'background 0.3s ease'
                       }}>
-                        <span style={{ color: "#fff" }}>{region}</span>
-                        <span style={{ color: "#c2a675" }}>
+                        <span style={{ color: "var(--theme-text)", transition: 'color 0.3s ease' }}>{region}</span>
+                        <span style={{ color: "var(--theme-accent-strong)", transition: 'color 0.3s ease' }}>
                           {currency === "USD" 
                             ? `$${(price/130).toFixed(0)}K`
                             : `${price}K`}
@@ -424,17 +434,19 @@ export default function Insights() {
             </div>
 
             <div style={{
-              background: "#1a1a1a",
+              background: "var(--theme-bg)",
               padding: "2rem",
               borderRadius: "12px",
-              marginBottom: "1rem"
+              marginBottom: "1rem",
+              transition: 'background 0.3s ease'
             }}>
               <h4 style={{
-                color: "#f5f5f5",
+                color: "var(--theme-text)",
                 marginBottom: "1.5rem",
                 fontSize: "1.1rem",
                 fontWeight: "400",
-                textAlign: "center"
+                textAlign: "center",
+                transition: 'color 0.3s ease'
               }}>Price Range Distribution</h4>
               <SafeResponsiveContainer height={300}>
                 <ResponsiveContainer width="100%" height="100%">
@@ -484,10 +496,11 @@ export default function Insights() {
 
             <div style={{
               textAlign: "center",
-              color: "#888",
+              color: "var(--theme-text-muted)",
               fontSize: "0.9rem",
               maxWidth: "600px",
-              margin: "0 auto"
+              margin: "0 auto",
+              transition: 'color 0.3s ease'
             }}>
               Regional analysis based on verified listings and recent transactions.
               Prices shown are average per square meter for luxury residential properties.
@@ -498,7 +511,7 @@ export default function Insights() {
         {/* Analyst Notes Tab */}
         {activeTab === "analysis" && (
           <div className="card" style={{ width: "95%", maxWidth: "1150px", marginBottom: "2rem" }}>
-            <h3 style={{ textAlign: "center", marginBottom: "1rem", color: "#f5f5f5", fontWeight: "400" }}>Analyst Notes & Actionables</h3>
+            <h3 style={{ textAlign: "center", marginBottom: "1rem", color: "var(--theme-text)", fontWeight: "400", transition: 'color 0.3s ease' }}>Analyst Notes & Actionables</h3>
 
             {/* Small synthesized dataset for analyst summaries */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
@@ -508,33 +521,33 @@ export default function Insights() {
                 { title: 'Liquidity', value: 'Selective', note: 'Liquidity strongest for 1-3 bedroom condos in Westlands & Kilimani' },
                 { title: 'Top Movers', value: 'Runda, Kitisuru', note: 'Consistent demand; buyers preferring larger plots' }
               ].map((c, i) => (
-                <div key={i} style={{ background: '#171717', padding: '1rem', borderRadius: '8px', border: '1px solid #222' }}>
-                  <div style={{ color: '#c2a675', fontWeight: 600, marginBottom: '0.5rem' }}>{c.title}</div>
-                  <div style={{ fontSize: '1.2rem', color: '#fff', marginBottom: '0.5rem' }}>{c.value}</div>
-                  <div style={{ color: '#aaa', fontSize: '0.9rem' }}>{c.note}</div>
+                <div key={i} style={{ background: 'var(--theme-bg)', padding: '1rem', borderRadius: '8px', border: `1px solid var(--theme-border)`, transition: 'background 0.3s ease, border-color 0.3s ease' }}>
+                  <div style={{ color: 'var(--theme-accent-strong)', fontWeight: 600, marginBottom: '0.5rem', transition: 'color 0.3s ease' }}>{c.title}</div>
+                  <div style={{ fontSize: '1.2rem', color: 'var(--theme-text)', marginBottom: '0.5rem', transition: 'color 0.3s ease' }}>{c.value}</div>
+                  <div style={{ color: 'var(--theme-text-muted)', fontSize: '0.9rem', transition: 'color 0.3s ease' }}>{c.note}</div>
                 </div>
               ))}
             </div>
 
             <div style={{ display: 'grid', gap: '1rem', marginBottom: '1rem' }}>
-              <div style={{ background: '#121212', padding: '1rem', borderRadius: '8px', border: '1px solid #222' }}>
-                <h4 style={{ margin: 0, color: '#f5f5f5' }}>Top 3 Investment Signals</h4>
-                <ol style={{ color: '#cfcfcf', marginTop: '0.5rem' }}>
+              <div style={{ background: 'var(--theme-bg)', padding: '1rem', borderRadius: '8px', border: `1px solid var(--theme-border)`, transition: 'background 0.3s ease, border-color 0.3s ease' }}>
+                <h4 style={{ margin: 0, color: 'var(--theme-text)', transition: 'color 0.3s ease' }}>Top 3 Investment Signals</h4>
+                <ol style={{ color: 'var(--theme-text-muted)', marginTop: '0.5rem', transition: 'color 0.3s ease' }}>
                   <li>Priority neighborhoods with sustained price growth and low inventory — consider focused sourcing and verified listings only.</li>
                   <li>Properties with clear title and verification timestamps close faster; surface verification badges on listings.</li>
                   <li>Use price-per-sqm bands in marketing to set expectations — show historical trend sparklines where possible.</li>
                 </ol>
               </div>
 
-              <div style={{ background: '#121212', padding: '1rem', borderRadius: '8px', border: '1px solid #222' }}>
-                <h4 style={{ margin: 0, color: '#f5f5f5' }}>Methodology</h4>
-                <p style={{ color: '#cfcfcf', marginTop: '0.5rem' }}>
+              <div style={{ background: 'var(--theme-bg)', padding: '1rem', borderRadius: '8px', border: `1px solid var(--theme-border)`, transition: 'background 0.3s ease, border-color 0.3s ease' }}>
+                <h4 style={{ margin: 0, color: 'var(--theme-text)', transition: 'color 0.3s ease' }}>Methodology</h4>
+                <p style={{ color: 'var(--theme-text-muted)', marginTop: '0.5rem', transition: 'color 0.3s ease' }}>
                   Insights combine verified listing metadata, recent transaction samples, and market velocity indicators. All presented averages exclude outliers and only use listings that pass our verification checks.
                 </p>
               </div>
             </div>
 
-            <div style={{ color: '#888', fontSize: '0.95rem', textAlign: 'center' }}>
+            <div style={{ color: 'var(--theme-text-muted)', fontSize: '0.95rem', textAlign: 'center', transition: 'color 0.3s ease' }}>
               These analyst notes are intended as directional guidance. Contact the research team for bespoke data extracts or API access.
             </div>
           </div>
@@ -544,12 +557,13 @@ export default function Insights() {
         <style>
           {`
             .card {
-              background: #151515;
-              border: 1px solid #222;
+              background: var(--theme-surface);
+              border: 1px solid var(--theme-border);
               border-radius: 12px;
               padding: 2rem;
               box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-              color: #ddd;
+              color: var(--theme-text-muted);
+              transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
             }
             @media (max-width: 900px) {
               div[style*="grid-template-columns"] {
@@ -562,59 +576,60 @@ export default function Insights() {
         {/* Data sources — credibility footer */}
         <div style={{ width: "95%", maxWidth: "1150px", marginTop: "1.5rem", marginBottom: "4rem" }}>
           <div style={{
-            background: '#0f0f0f',
-            border: '1px solid #222',
+            background: 'var(--theme-surface)',
+            border: `1px solid var(--theme-border)`,
             borderRadius: '12px',
             padding: '1.25rem 1.5rem',
-            color: '#cfcfcf'
+            color: 'var(--theme-text-muted)',
+            transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-              <h4 style={{ margin: 0, color: '#f5f5f5', fontSize: '1.05rem' }}>Data sources & notes</h4>
-              <div style={{ color: '#c2a675', fontWeight: 600, fontSize: '0.95rem' }}>Primary source: The Registry</div>
+              <h4 style={{ margin: 0, color: 'var(--theme-text)', fontSize: '1.05rem', transition: 'color 0.3s ease' }}>Data sources & notes</h4>
+              <div style={{ color: 'var(--theme-accent-strong)', fontWeight: 600, fontSize: '0.95rem', transition: 'color 0.3s ease' }}>Primary source: The Registry</div>
             </div>
 
-            <p style={{ margin: '0.65rem 0 0.25rem 0', color: '#bfbfbf', lineHeight: 1.6 }}>
+            <p style={{ margin: '0.65rem 0 0.25rem 0', color: 'var(--theme-text-muted)', lineHeight: 1.6, transition: 'color 0.3s ease' }}>
               The insights above are synthesised from a combination of internal and external datasets to ensure transparency and traceability.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem', marginTop: '0.75rem' }}>
-              <div style={{ background: '#0b0b0b', border: '1px solid rgba(255,255,255,0.03)', padding: '0.85rem', borderRadius: '8px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: '#fff', fontSize: '0.95rem' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#f5b942"/><path d="M7 12l3 3 7-7" stroke="#0e0e0e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  <div>The Registry <span style={{ color: '#9a9a9a', fontWeight: 500, fontSize: '0.82rem' }}>— internal</span></div>
+              <div style={{ background: 'var(--theme-bg)', border: `1px solid var(--theme-border)`, padding: '0.85rem', borderRadius: '8px', transition: 'background 0.3s ease, border-color 0.3s ease' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: 'var(--theme-text)', fontSize: '0.95rem', transition: 'color 0.3s ease' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="var(--theme-accent)"/><path d="M7 12l3 3 7-7" stroke="var(--theme-bg)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  <div>The Registry <span style={{ color: 'var(--theme-text-muted)', fontWeight: 500, fontSize: '0.82rem' }}>— internal</span></div>
                 </div>
-                <div style={{ color: '#bfbfbf', marginTop: '0.45rem', fontSize: '0.9rem', lineHeight: 1.45 }}>Verified listing metadata and transaction samples captured and validated by our in‑house verification process. (Primary source)</div>
+                <div style={{ color: 'var(--theme-text-muted)', marginTop: '0.45rem', fontSize: '0.9rem', lineHeight: 1.45, transition: 'color 0.3s ease' }}>Verified listing metadata and transaction samples captured and validated by our in‑house verification process. (Primary source)</div>
               </div>
 
-              <div style={{ background: '#0b0b0b', border: '1px solid rgba(255,255,255,0.03)', padding: '0.85rem', borderRadius: '8px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: '#fff', fontSize: '0.95rem' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="#cfcfcf"/><path d="M7 9h10" stroke="#0b0b0b" strokeWidth="1.2" strokeLinecap="round"/></svg>
+              <div style={{ background: 'var(--theme-bg)', border: `1px solid var(--theme-border)`, padding: '0.85rem', borderRadius: '8px', transition: 'background 0.3s ease, border-color 0.3s ease' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: 'var(--theme-text)', fontSize: '0.95rem', transition: 'color 0.3s ease' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="var(--theme-text-muted)"/><path d="M7 9h10" stroke="var(--theme-bg)" strokeWidth="1.2" strokeLinecap="round"/></svg>
                   <div>Public records</div>
                 </div>
-                <div style={{ color: '#bfbfbf', marginTop: '0.45rem', fontSize: '0.9rem', lineHeight: 1.45 }}>Land registries and publicly available transaction notices used to corroborate titles and sale dates.</div>
+                <div style={{ color: 'var(--theme-text-muted)', marginTop: '0.45rem', fontSize: '0.9rem', lineHeight: 1.45, transition: 'color 0.3s ease' }}>Land registries and publicly available transaction notices used to corroborate titles and sale dates.</div>
               </div>
 
-              <div style={{ background: '#0b0b0b', border: '1px solid rgba(255,255,255,0.03)', padding: '0.85rem', borderRadius: '8px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: '#fff', fontSize: '0.95rem' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16v10H4z" fill="#c2a675"/><path d="M8 11h8" stroke="#0b0b0b" strokeWidth="1.2" strokeLinecap="round"/></svg>
+              <div style={{ background: 'var(--theme-bg)', border: `1px solid var(--theme-border)`, padding: '0.85rem', borderRadius: '8px', transition: 'background 0.3s ease, border-color 0.3s ease' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: 'var(--theme-text)', fontSize: '0.95rem', transition: 'color 0.3s ease' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16v10H4z" fill="var(--theme-accent-strong)"/><path d="M8 11h8" stroke="var(--theme-bg)" strokeWidth="1.2" strokeLinecap="round"/></svg>
                   <div>Broker & partner feeds</div>
                 </div>
-                <div style={{ color: '#bfbfbf', marginTop: '0.45rem', fontSize: '0.9rem', lineHeight: 1.45 }}>Curated feeds from vetted partners and agents used to supplement liquidity and asking‑price signals.</div>
+                <div style={{ color: 'var(--theme-text-muted)', marginTop: '0.45rem', fontSize: '0.9rem', lineHeight: 1.45, transition: 'color 0.3s ease' }}>Curated feeds from vetted partners and agents used to supplement liquidity and asking‑price signals.</div>
               </div>
 
-              <div style={{ background: '#0b0b0b', border: '1px solid rgba(255,255,255,0.03)', padding: '0.85rem', borderRadius: '8px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: '#fff', fontSize: '0.95rem' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v12H4z" fill="#9aa0a6"/><path d="M7 9h10" stroke="#0b0b0b" strokeWidth="1.2" strokeLinecap="round"/></svg>
+              <div style={{ background: 'var(--theme-bg)', border: `1px solid var(--theme-border)`, padding: '0.85rem', borderRadius: '8px', transition: 'background 0.3s ease, border-color 0.3s ease' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: 'var(--theme-text)', fontSize: '0.95rem', transition: 'color 0.3s ease' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v12H4z" fill="var(--theme-text-muted)"/><path d="M7 9h10" stroke="var(--theme-bg)" strokeWidth="1.2" strokeLinecap="round"/></svg>
                   <div>Market reports</div>
                 </div>
-                <div style={{ color: '#bfbfbf', marginTop: '0.45rem', fontSize: '0.9rem', lineHeight: 1.45 }}>Third‑party research and market briefs used for context and cross‑validation.</div>
+                <div style={{ color: 'var(--theme-text-muted)', marginTop: '0.45rem', fontSize: '0.9rem', lineHeight: 1.45, transition: 'color 0.3s ease' }}>Third‑party research and market briefs used for context and cross‑validation.</div>
               </div>
             </div>
 
-            <div style={{ marginTop: '0.9rem', paddingTop: '0.8rem', borderTop: '1px solid rgba(255,255,255,0.03)' }}>
-              <div style={{ color: '#9f9f9f', fontSize: '0.95rem', lineHeight: 1.6 }}>
-                <strong style={{ color: '#d0d0d0' }}>Note:</strong> averages exclude outliers and only include records that pass our verification checks.
-                For bespoke extracts or raw data access, contact <a href="mailto:research@theregistry.co.ke" style={{ color: '#f5b942', textDecoration: 'none' }}>research@theregistry.co.ke</a>.
+            <div style={{ marginTop: '0.9rem', paddingTop: '0.8rem', borderTop: `1px solid var(--theme-border)`, transition: 'border-color 0.3s ease' }}>
+              <div style={{ color: 'var(--theme-text-muted)', fontSize: '0.95rem', lineHeight: 1.6, transition: 'color 0.3s ease' }}>
+                <strong style={{ color: 'var(--theme-text)', transition: 'color 0.3s ease' }}>Note:</strong> averages exclude outliers and only include records that pass our verification checks.
+                For bespoke extracts or raw data access, contact <a href="mailto:research@theregistry.co.ke" style={{ color: 'var(--theme-accent)', textDecoration: 'none' }}>research@theregistry.co.ke</a>.
               </div>
             </div>
           </div>
