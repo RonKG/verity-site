@@ -496,7 +496,7 @@ export default function HeatmapPage() {
                 fontSize: "0.95rem",
               }}>
                 Heat signatures are generated from verified property listings, market transactions, 
-                and development permits across Nairobi&apos;s prime neighborhoods.
+                and development permits across Nairobi's prime neighborhoods.
               </p>
             </div>
             <div>

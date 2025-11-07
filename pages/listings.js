@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-/* eslint-disable react-hooks/rules-of-hooks */
 import Layout from "../components/Layout";
 import FeatureTeaser from "../components/FeatureTeaser";
 import { useState, useEffect } from 'react';

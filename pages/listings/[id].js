@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState, useCallback, useEffect } from 'react';
 import Layout from "../../components/Layout";
-import OptimizedImage from "../../components/OptimizedImage";
 
 // Detailed property data
 const propertyDetails = {
@@ -167,7 +166,7 @@ export default function PropertyDetail() {
     } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
       setSelectedImage(property.gallery[currentIndex - 1]);
     }
-  }, [isGalleryOpen, selectedImage, property]);
+  }, [isGalleryOpen, selectedImage, property?.gallery]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
@@ -354,13 +353,14 @@ export default function PropertyDetail() {
                     e.currentTarget.style.transform = "scale(1)";
                   }}
                 >
-                  <OptimizedImage
+                  <img
                     src={image.url + "?auto=format&fit=crop&w=600&q=80"}
                     alt={image.title}
-                    height={"240px"}
-                    objectFit={"cover"}
-                    quality={80}
-                    style={{ width: '100%' }}
+                    style={{
+                      width: "100%",
+                      height: "240px",
+                      objectFit: "cover",
+                    }}
                   />
                   <div style={{ padding: "1rem" }}>
                     <h4 style={{ 
@@ -528,14 +528,14 @@ export default function PropertyDetail() {
             maxHeight: "90vh",
             position: "relative",
           }}>
-            <OptimizedImage
+            <img
               src={selectedImage.url + "?auto=format&fit=crop&w=1920&q=100"}
               alt={selectedImage.title}
-              height={"85vh"}
-              objectFit={"contain"}
-              quality={100}
-              priority={true}
-              style={{ maxWidth: '100%' }}
+              style={{
+                maxWidth: "100%",
+                maxHeight: "85vh",
+                objectFit: "contain",
+              }}
             />
             <div style={{
               position: "absolute",
