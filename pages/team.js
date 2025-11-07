@@ -8,18 +8,18 @@ export default function Team() {
       role: "Founder & CEO",
       img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=1200&q=80&auto=format&fit=crop",
       bio: "James started The Registry after losing hours to paperwork and guesswork while helping family buy a home. He builds product to make property decisions faster and less faith-based — a practical idealist who believes clear records beat negotiation theater."
+    },
     {
-      name: "Ronald Wahome",
-      role: "Tech Lead — the tech brains",
-      img: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=1200&q=80&auto=format&fit=crop",
-      bio: "Ronald turns messy public records into meaningful signals. He designs the methods and experiments that make our analytics reliable — and enjoys proving when conventional wisdom about a neighborhood needs updating."
-    }
+      name: "Amy Kamau",
+      role: "Head of Operations",
+      img: "https://images.unsplash.com/photo-1545996124-1a9f79a3b1a3?w=1200&q=80&auto=format&fit=crop",
+      bio: "If there’s a chain of custody, Amy has mapped it, simplified it, and taught five people how to use it. She runs verification, partnerships and the engine room that keeps our data honest — with a soft spot for problem tickets that are actually puzzles."
     },
     {
       name: "Ronald Wahome",
-      role: "Head of Research",
+      role: "Head of Technology & Analytics",
       img: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=1200&q=80&auto=format&fit=crop",
-      bio: "Ronald turns messy public records into meaningful signals. He designs the methods and experiments that make our analytics reliable — and enjoys proving when conventional wisdom about a neighborhood needs updating."
+      bio: "Ronald is our tech and analytics brain: he builds the pipelines that tame noisy records and crafts the models that turn them into decision-ready signals. He loves architecture that scales and insights that surprise — and he pushes us to test the assumptions others take for granted."
     }
   ];
 
