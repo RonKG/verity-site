@@ -41,10 +41,10 @@ export default function Home() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: "92vh",
+          minHeight: "85vh",
           color: "#f0f0f0",
           textAlign: "center",
-          padding: "60px 24px",
+          padding: "40px 20px",
           overflow: "hidden",
         }}
       >
@@ -75,12 +75,21 @@ export default function Home() {
         />
 
         {/* Main text content */}
-        <div style={{ position: "relative", zIndex: 2 }}>
+        <div style={{ 
+          position: "relative", 
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          maxWidth: "1000px",
+          margin: "0 auto",
+          padding: "0 20px"
+        }}>
           <h1
             style={{
-              fontSize: "clamp(3.5rem, 6vw, 5rem)",
+              fontSize: "clamp(2.8rem, 5vw, 4.2rem)",
               fontWeight: "400",
-              marginBottom: "1.5rem",
+              marginBottom: "1.25rem",
               letterSpacing: "-0.02em",
               lineHeight: "1.1",
             }}
@@ -90,11 +99,12 @@ export default function Home() {
 
           <p
             style={{
-              fontSize: "clamp(1.25rem, 2vw, 1.5rem)",
+              fontSize: "clamp(1.2rem, 1.8vw, 1.4rem)",
               color: "#e0e0e0",
               maxWidth: "600px",
               lineHeight: "1.6",
-              marginBottom: "1.5rem",
+              marginBottom: "1.25rem",
+              fontWeight: "300"
             }}
           >
             Curated. Verified. Data-driven.
@@ -102,23 +112,13 @@ export default function Home() {
 
           <p
             style={{
-              fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+              fontSize: "clamp(0.95rem, 1.2vw, 1.1rem)",
               color: "#cccccc",
-              maxWidth: "700px",
+              maxWidth: "540px",
               lineHeight: "1.7",
-              margin: "0 auto",
+              marginBottom: "3rem",
               letterSpacing: "0.01em",
-            }}
-          >
-            Because finding a home should feel inspiring — and certain.
-          </p>
-
-          <p
-            style={{
-              marginTop: "1.5rem",
-              fontSize: "1.05rem",
-              color: "#bcbcbc",
-              marginBottom: "3rem"
+              fontWeight: "300"
             }}
           >
             Because finding a home should feel inspiring — and certain.
