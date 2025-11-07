@@ -142,7 +142,7 @@ export default function HeatmapPage() {
           Property Density Map
         </h1>
         <p style={{ color: "#999", fontSize: "1.1rem", marginBottom: "2rem" }}>
-          Explore real estate concentrations across Nairobi's premium neighborhoods
+          Explore real estate concentrations across Nairobi&apos;s premium neighborhoods
         </p>
 
         {/* Filter Controls */}

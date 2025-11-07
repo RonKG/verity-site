@@ -106,7 +106,7 @@ export default function Terms() {
           <section style={{ marginBottom: "1.25rem" }}>
             <h2 style={{ fontSize: "1rem", marginBottom: "0.45rem", color: "#f5f5f5" }}>11. Disclaimers & Limitation of Liability</h2>
             <p>
-              The Service is provided "as-is" and The Registry disclaims all warranties to the fullest extent permitted by law. We do not guarantee completeness, accuracy, suitability or availability of Data. To the maximum extent permitted by law, The Registry and its affiliates will not be liable for indirect, incidental, consequential or punitive damages arising out of your use of the Service.
+              The Service is provided &quot;as-is&quot; and The Registry disclaims all warranties to the fullest extent permitted by law. We do not guarantee completeness, accuracy, suitability or availability of Data. To the maximum extent permitted by law, The Registry and its affiliates will not be liable for indirect, incidental, consequential or punitive damages arising out of your use of the Service.
             </p>
           </section>
 
@@ -127,7 +127,7 @@ export default function Terms() {
           <section style={{ marginBottom: "1.25rem" }}>
             <h2 style={{ fontSize: "1rem", marginBottom: "0.45rem", color: "#f5f5f5" }}>14. Changes to Terms</h2>
             <p>
-              We may revise these Terms from time to time. Material changes will be posted with an updated "Last updated" date and, where required by law, communicated to affected users.
+              We may revise these Terms from time to time. Material changes will be posted with an updated &quot;Last updated&quot; date and, where required by law, communicated to affected users.
             </p>
           </section>
 
