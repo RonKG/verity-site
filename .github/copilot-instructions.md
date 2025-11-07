@@ -42,3 +42,7 @@
 - Maps & charts: `pages/heatmap.js`, `components/RegionalInsights.jsx`
 
 If any section is unclear or you want a longer checklist for a specific task (adding TypeScript, adding new external images, or adding a new API route), tell me which topic and I'll expand the instructions with step-by-step examples.
+
+## Agent SOP & machine manifest
+
+The canonical business SOP for agentic AIs lives in `.github/AGENT_BUSINESS_SOP.md`. For programmatic consumption, a compact JSON manifest is available at `.github/AGENT_BUSINESS_SOP.json`. When you update product pillars, voice, or behavior rules, update both the markdown SOP and the JSON manifest so both humans and machines stay in sync.
