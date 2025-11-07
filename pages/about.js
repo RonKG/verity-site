@@ -7,11 +7,12 @@ export default function About() {
       {/* Hero Section - personal */}
       <section
         style={{
-          backgroundColor: "#0e0e0e",
-          color: "#f0f0f0",
+          backgroundColor: "var(--theme-bg)",
+          color: "var(--theme-text)",
           padding: "80px 20px 40px 20px",
           position: "relative",
           overflow: "hidden",
+          transition: 'background-color 0.3s ease, color 0.3s ease'
         }}
       >
         <div style={{ maxWidth: "1200px", margin: "0 auto", display: 'grid', gridTemplateColumns: '1fr 380px', gap: '2rem', alignItems: 'center' }}>
@@ -21,7 +22,7 @@ export default function About() {
                 fontSize: "2.2rem",
                 fontWeight: "400",
                 marginBottom: "1rem",
-                background: "linear-gradient(45deg, #f5b942, #c2a675)",
+                background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -29,7 +30,7 @@ export default function About() {
               About The Registry
             </h1>
 
-            <p style={{ color: '#d6d6d6', maxWidth: '720px', fontSize: '1.05rem', lineHeight: '1.7' }}>
+            <p style={{ color: 'var(--theme-text-muted)', maxWidth: '720px', fontSize: '1.05rem', lineHeight: '1.7', transition: 'color 0.3s ease' }}>
               We started as a small, persistent annoyance — frustrated by missing titles,
               contradictory listings and too many late-night phone calls trying to confirm
               whether a property really existed. The Registry grew out of that irritation: a
@@ -37,14 +38,14 @@ export default function About() {
               people can make decisions they actually trust.
             </p>
 
-            <p style={{ color: '#bfbfbf', maxWidth: '720px', marginTop: '0.8rem', lineHeight: '1.6' }}>
+            <p style={{ color: 'var(--theme-text-muted)', maxWidth: '720px', marginTop: '0.8rem', lineHeight: '1.6', transition: 'color 0.3s ease' }}>
               Today we&apos;re a Nairobi-based team building tools for locals, returning expats and
               the diaspora — anyone who wants to move, invest or simply understand Kenyan
               property markets without the guesswork.
             </p>
           </div>
 
-          <div style={{ width: '100%', height: 380, borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.04)' }}>
+          <div style={{ width: '100%', height: 380, borderRadius: 12, overflow: 'hidden', border: `1px solid var(--theme-border)`, transition: 'border-color 0.3s ease' }}>
             <OptimizedImage
               src="https://images.unsplash.com/photo-1756920681451-3103b5ca092d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
               alt="Founder portrait"
@@ -57,8 +58,9 @@ export default function About() {
 
       {/* Vision Grid */}
       <section style={{
-        backgroundColor: "#0e0e0e",
+        backgroundColor: "var(--theme-bg)",
         padding: "60px 20px",
+        transition: 'background-color 0.3s ease'
       }}>
         <div style={{
           maxWidth: "1200px",
@@ -85,23 +87,26 @@ export default function About() {
             }
           ].map((item, index) => (
             <div key={index} style={{
-              backgroundColor: "#151515",
+              backgroundColor: "var(--theme-surface)",
               padding: "2rem",
               borderRadius: "12px",
               textAlign: "left",
-              border: "1px solid rgba(255,255,255,0.05)",
+              border: `1px solid var(--theme-border)`,
+              transition: 'background-color 0.3s ease, border-color 0.3s ease'
             }}>
               <span style={{ fontSize: "2rem", marginBottom: "1rem", display: "block" }}>{item.icon}</span>
               <h3 style={{ 
-                color: "#f5b942",
+                color: "var(--theme-accent)",
                 fontSize: "1.4rem",
                 marginBottom: "1rem",
-                fontWeight: "400"
+                fontWeight: "400",
+                transition: 'color 0.3s ease'
               }}>{item.title}</h3>
               <p style={{
-                color: "#bcbcbc",
+                color: "var(--theme-text-muted)",
                 lineHeight: "1.6",
-                fontSize: "1rem"
+                fontSize: "1rem",
+                transition: 'color 0.3s ease'
               }}>{item.description}</p>
             </div>
           ))}
@@ -110,9 +115,10 @@ export default function About() {
 
       {/* Analytics Image Section */}
       <section style={{
-        backgroundColor: "#0e0e0e",
+        backgroundColor: "var(--theme-bg)",
         padding: "60px 20px",
         textAlign: "center",
+        transition: 'background-color 0.3s ease'
       }}>
         <div style={{
           maxWidth: "1200px",
@@ -132,7 +138,7 @@ export default function About() {
             bottom: 0,
             left: 0,
             right: 0,
-            background: "linear-gradient(to bottom, transparent, rgba(14,14,14,0.9) 50%, #0e0e0e)",
+            background: "linear-gradient(to bottom, transparent, var(--theme-bg) 50%, var(--theme-bg))",
             padding: "80px 20px 20px",
             borderRadius: "0 0 12px 12px",
           }}>
@@ -140,13 +146,15 @@ export default function About() {
               fontSize: "1.8rem",
               fontWeight: "400",
               marginBottom: "1rem",
-              color: "#fff",
+              color: "var(--theme-text)",
+              transition: 'color 0.3s ease'
             }}>Our Approach</h2>
             <p style={{
-              color: "#bcbcbc",
+              color: "var(--theme-text-muted)",
               maxWidth: "800px",
               margin: "0 auto",
               lineHeight: "1.8",
+              transition: 'color 0.3s ease'
             }}>
               By combining advanced market analytics with architectural expertise, 
               we provide an unmatched platform for Kenya&apos;s most distinguished properties. 
@@ -159,24 +167,27 @@ export default function About() {
 
       {/* Contact Section */}
       <section style={{
-        backgroundColor: "#151515",
+        backgroundColor: "var(--theme-surface)",
         padding: "80px 20px",
         textAlign: "center",
-        color: "#f0f0f0",
+        color: "var(--theme-text)",
+        transition: 'background-color 0.3s ease, color 0.3s ease'
       }}>
         <h2 style={{
           fontSize: "1.8rem",
           fontWeight: "400",
           marginBottom: "1rem",
+          transition: 'color 0.3s ease'
         }}>
           Join The Registry
         </h2>
         <p style={{
-          color: "#bcbcbc",
+          color: "var(--theme-text-muted)",
           maxWidth: "700px",
           margin: "0 auto 2rem auto",
           fontSize: "1.05rem",
           lineHeight: "1.7",
+          transition: 'color 0.3s ease'
         }}>
           For property submissions that meet our criteria, we offer a comprehensive 
           analysis and presentation package. Connect with us to explore featuring 
@@ -187,8 +198,8 @@ export default function About() {
           href="mailto:submissions@theregistry.co"
           style={{
             display: "inline-block",
-            background: "linear-gradient(45deg, #f5b942, #c2a675)",
-            color: "#0e0e0e",
+            background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
+            color: "var(--theme-bg)",
             padding: "12px 24px",
             borderRadius: "6px",
             fontWeight: "500",
@@ -202,9 +213,10 @@ export default function About() {
         </a>
 
         <p style={{ 
-          color: "#888", 
+          color: "var(--theme-text-muted)", 
           fontSize: "0.9rem", 
-          marginTop: "1.5rem" 
+          marginTop: "1.5rem",
+          transition: 'color 0.3s ease'
         }}>
           Contact us: <b>submissions@theregistry.co</b>
         </p>
