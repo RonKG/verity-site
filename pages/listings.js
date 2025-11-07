@@ -196,8 +196,9 @@ export default function Listings() {
       <section
         style={{
           padding: "80px 20px",
-          backgroundColor: "#0e0e0e",
-          color: "#f0f0f0",
+          backgroundColor: "var(--theme-bg)",
+          color: "var(--theme-text)",
+          transition: 'background-color 0.3s ease, color 0.3s ease'
         }}
       >
         {/* Header */}
@@ -206,13 +207,13 @@ export default function Listings() {
             fontSize: "2.4rem", 
             fontWeight: "400", 
             marginBottom: "1rem",
-            background: "linear-gradient(45deg, #f5b942, #c2a675)",
+            background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}>
             Premium Listings
           </h1>
-          <p style={{ color: "#cfcfcf", fontSize: "1.1rem" }}>
+          <p style={{ color: "var(--theme-text-muted)", fontSize: "1.1rem" }}>
             Curated homes verified for design integrity, authenticity, and context.
           </p>
         </div>
@@ -222,9 +223,10 @@ export default function Listings() {
           maxWidth: "1200px",
           margin: "0 auto 3rem",
           padding: "2rem",
-          background: "#151515",
+          background: "var(--theme-surface)",
           borderRadius: "12px",
-          border: "1px solid rgba(255,255,255,0.05)"
+          border: `1px solid var(--theme-border)`,
+          transition: 'background 0.3s ease, border-color 0.3s ease'
         }}>
           {/* Search Bar */}
           <div style={{ marginBottom: "2rem" }}>
@@ -236,11 +238,12 @@ export default function Listings() {
               style={{
                 width: "100%",
                 padding: "1rem",
-                background: "#0e0e0e",
-                border: "1px solid #333",
+                background: "var(--theme-bg)",
+                border: `1px solid var(--theme-border)`,
                 borderRadius: "8px",
-                color: "#f0f0f0",
-                fontSize: "1rem"
+                color: "var(--theme-text)",
+                fontSize: "1rem",
+                transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
               }}
             />
           </div>
@@ -257,8 +260,9 @@ export default function Listings() {
               <label style={{ 
                 display: "block", 
                 marginBottom: "0.5rem", 
-                color: "#888",
-                fontSize: "0.9rem"
+                color: "var(--theme-text-muted)",
+                fontSize: "0.9rem",
+                transition: 'color 0.3s ease'
               }}>
                 Location
               </label>
@@ -268,11 +272,12 @@ export default function Listings() {
                 style={{
                   width: "100%",
                   padding: "0.75rem",
-                  background: "#0e0e0e",
-                  border: "1px solid #333",
+                  background: "var(--theme-bg)",
+                  border: `1px solid var(--theme-border)`,
                   borderRadius: "6px",
-                  color: "#f0f0f0",
-                  cursor: "pointer"
+                  color: "var(--theme-text)",
+                  cursor: "pointer",
+                  transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
                 }}
               >
                 {locations.map(loc => (
@@ -286,8 +291,9 @@ export default function Listings() {
               <label style={{ 
                 display: "block", 
                 marginBottom: "0.5rem", 
-                color: "#888",
-                fontSize: "0.9rem"
+                color: "var(--theme-text-muted)",
+                fontSize: "0.9rem",
+                transition: 'color 0.3s ease'
               }}>
                 Price Range
               </label>
@@ -297,11 +303,12 @@ export default function Listings() {
                 style={{
                   width: "100%",
                   padding: "0.75rem",
-                  background: "#0e0e0e",
-                  border: "1px solid #333",
+                  background: "var(--theme-bg)",
+                  border: `1px solid var(--theme-border)`,
                   borderRadius: "6px",
-                  color: "#f0f0f0",
-                  cursor: "pointer"
+                  color: "var(--theme-text)",
+                  cursor: "pointer",
+                  transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
                 }}
               >
                 {priceRanges.map(range => (
@@ -315,8 +322,9 @@ export default function Listings() {
               <label style={{ 
                 display: "block", 
                 marginBottom: "0.5rem", 
-                color: "#888",
-                fontSize: "0.9rem"
+                color: "var(--theme-text-muted)",
+                fontSize: "0.9rem",
+                transition: 'color 0.3s ease'
               }}>
                 Property Type
               </label>
@@ -326,11 +334,12 @@ export default function Listings() {
                 style={{
                   width: "100%",
                   padding: "0.75rem",
-                  background: "#0e0e0e",
-                  border: "1px solid #333",
+                  background: "var(--theme-bg)",
+                  border: `1px solid var(--theme-border)`,
                   borderRadius: "6px",
-                  color: "#f0f0f0",
-                  cursor: "pointer"
+                  color: "var(--theme-text)",
+                  cursor: "pointer",
+                  transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
                 }}
               >
                 {propertyTypes.map(type => (
@@ -344,8 +353,9 @@ export default function Listings() {
               <label style={{ 
                 display: "block", 
                 marginBottom: "0.5rem", 
-                color: "#888",
-                fontSize: "0.9rem"
+                color: "var(--theme-text-muted)",
+                fontSize: "0.9rem",
+                transition: 'color 0.3s ease'
               }}>
                 Sort By
               </label>
@@ -355,11 +365,12 @@ export default function Listings() {
                 style={{
                   width: "100%",
                   padding: "0.75rem",
-                  background: "#0e0e0e",
-                  border: "1px solid #333",
+                  background: "var(--theme-bg)",
+                  border: `1px solid var(--theme-border)`,
                   borderRadius: "6px",
-                  color: "#f0f0f0",
-                  cursor: "pointer"
+                  color: "var(--theme-text)",
+                  cursor: "pointer",
+                  transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
                 }}
               >
                 {sortOptions.map(option => (
@@ -378,8 +389,8 @@ export default function Listings() {
           justifyContent: "space-between",
           alignItems: "center"
         }}>
-          <div style={{ color: "#888" }}>
-            <span style={{ color: "#f5b942" }}>{listings.length}</span> properties found
+          <div style={{ color: "var(--theme-text-muted)", transition: 'color 0.3s ease' }}>
+            <span style={{ color: "var(--theme-accent)" }}>{listings.length}</span> properties found
           </div>
           <div style={{
             display: "flex",
@@ -388,8 +399,8 @@ export default function Listings() {
             <button
               onClick={() => setViewMode('grid')}
               style={{
-                background: viewMode === 'grid' ? '#f5b942' : '#151515',
-                color: viewMode === 'grid' ? '#0e0e0e' : '#888',
+                background: viewMode === 'grid' ? 'var(--theme-accent)' : 'var(--theme-surface)',
+                color: viewMode === 'grid' ? 'var(--theme-bg)' : 'var(--theme-text-muted)',
                 border: "none",
                 padding: "0.5rem 1rem",
                 borderRadius: "6px",
@@ -402,8 +413,8 @@ export default function Listings() {
             <button
               onClick={() => setViewMode('list')}
               style={{
-                background: viewMode === 'list' ? '#f5b942' : '#151515',
-                color: viewMode === 'list' ? '#0e0e0e' : '#888',
+                background: viewMode === 'list' ? 'var(--theme-accent)' : 'var(--theme-surface)',
+                color: viewMode === 'list' ? 'var(--theme-bg)' : 'var(--theme-text-muted)',
                 border: "none",
                 padding: "0.5rem 1rem",
                 borderRadius: "6px",
@@ -432,7 +443,7 @@ export default function Listings() {
               key={home.id}
               onClick={() => router.push(`/listings/${home.id}`)}
               style={{
-                backgroundColor: "#151515",
+                backgroundColor: "var(--theme-surface)",
                 borderRadius: "12px",
                 overflow: "hidden",
                 boxShadow: "0 6px 16px rgba(0,0,0,0.4)",
@@ -440,7 +451,7 @@ export default function Listings() {
                 transition: "all 0.3s ease",
                 cursor: "pointer",
                 display: viewMode === 'list' ? 'flex' : 'block',
-                border: "1px solid rgba(255,255,255,0.05)",
+                border: `1px solid var(--theme-border)`,
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.transform = "translateY(-5px)";
@@ -475,12 +486,13 @@ export default function Listings() {
                   marginBottom: "0.5rem",
                 }}>
                   <h3 style={{ 
-                    color: "#fff",
+                    color: "var(--theme-text)",
                     fontSize: "1.2rem",
                     fontWeight: "400",
+                    transition: 'color 0.3s ease'
                   }}>{home.title}</h3>
                   <span style={{
-                    background: "linear-gradient(45deg, #f5b942, #c2a675)",
+                    background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
                     padding: "0.3rem 0.8rem",
                     borderRadius: "6px",
                     fontSize: "0.9rem",
@@ -488,54 +500,58 @@ export default function Listings() {
                   }}>{home.price}</span>
                 </div>
                 <p style={{ 
-                  color: "#bcbcbc", 
+                  color: "var(--theme-text-muted)", 
                   fontSize: "0.95rem",
                   display: "flex",
                   alignItems: "center",
                   gap: "0.5rem",
+                  transition: 'color 0.3s ease'
                 }}>
-                  <span style={{ color: "#666" }}>📍</span> {home.location}
+                  <span style={{ color: "var(--theme-text-muted)" }}>📍</span> {home.location}
                 </p>
                 <p style={{ 
-                  color: "#888", 
+                  color: "var(--theme-text-muted)", 
                   marginTop: "0.5rem",
                   fontSize: "0.9rem",
                   display: "flex",
                   alignItems: "center",
                   gap: "0.5rem",
+                  transition: 'color 0.3s ease'
                 }}>
-                  <span style={{ color: "#666" }}>🏠</span> {home.specs}
+                  <span style={{ color: "var(--theme-text-muted)" }}>🏠</span> {home.specs}
                 </p>
                 <p style={{ 
-                  color: "#a0a0a0", 
+                  color: "var(--theme-text-muted)", 
                   marginTop: "1rem", 
                   fontSize: "0.9rem",
                   lineHeight: "1.6",
+                  transition: 'color 0.3s ease'
                 }}>{home.description}</p>
                 
                 <div style={{
                   marginTop: "1.5rem",
                   padding: "1rem 0 0",
-                  borderTop: "1px solid rgba(255,255,255,0.05)",
+                  borderTop: `1px solid var(--theme-border)`,
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
+                  transition: 'border-color 0.3s ease'
                 }}>
                   <div style={{
                     display: "flex",
                     gap: "1rem",
                   }}>
-                    <span style={{ color: "#888", fontSize: "0.9rem" }}>
+                    <span style={{ color: "var(--theme-text-muted)", fontSize: "0.9rem", transition: 'color 0.3s ease' }}>
                       Added: Nov 2025
                     </span>
-                    <span style={{ color: "#888", fontSize: "0.9rem" }}>
+                    <span style={{ color: "var(--theme-text-muted)", fontSize: "0.9rem", transition: 'color 0.3s ease' }}>
                       Views: 245
                     </span>
                   </div>
                   <button style={{
                     background: "transparent",
-                    border: "1px solid #f5b942",
-                    color: "#f5b942",
+                    border: `1px solid var(--theme-accent)`,
+                    color: "var(--theme-accent)",
                     padding: "0.5rem 1rem",
                     borderRadius: "6px",
                     cursor: "pointer",
@@ -543,12 +559,12 @@ export default function Listings() {
                     transition: "all 0.3s ease",
                   }}
                   onMouseOver={(e) => {
-                    e.currentTarget.style.background = "#f5b942";
-                    e.currentTarget.style.color = "#0e0e0e";
+                    e.currentTarget.style.background = "var(--theme-accent)";
+                    e.currentTarget.style.color = "var(--theme-bg)";
                   }}
                   onMouseOut={(e) => {
                     e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.color = "#f5b942";
+                    e.currentTarget.style.color = "var(--theme-accent)";
                   }}>
                     View Details
                   </button>
@@ -561,9 +577,10 @@ export default function Listings() {
 
       {/* Quick Stats Section */}
       <section style={{
-        backgroundColor: "#151515",
+        backgroundColor: "var(--theme-surface)",
         padding: "60px 20px",
         marginTop: "4rem",
+        transition: 'background-color 0.3s ease'
       }}>
         <div style={{
           maxWidth: "1200px",
@@ -581,9 +598,10 @@ export default function Listings() {
           ].map((stat, index) => (
             <div key={index} style={{
               padding: "1.5rem",
-              background: "#0e0e0e",
+              background: "var(--theme-bg)",
               borderRadius: "12px",
-              border: "1px solid rgba(255,255,255,0.05)",
+              border: `1px solid var(--theme-border)`,
+              transition: 'background 0.3s ease, border-color 0.3s ease'
             }}>
               <span style={{ fontSize: "2rem", marginBottom: "1rem", display: "block" }}>
                 {stat.icon}
@@ -592,13 +610,13 @@ export default function Listings() {
                 fontSize: "1.8rem",
                 fontWeight: "500",
                 marginBottom: "0.5rem",
-                background: "linear-gradient(45deg, #f5b942, #c2a675)",
+                background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}>
                 {stat.number}
               </div>
-              <div style={{ color: "#888", fontSize: "0.9rem" }}>
+              <div style={{ color: "var(--theme-text-muted)", fontSize: "0.9rem", transition: 'color 0.3s ease' }}>
                 {stat.label}
               </div>
             </div>
