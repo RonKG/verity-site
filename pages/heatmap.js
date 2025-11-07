@@ -125,23 +125,24 @@ export default function HeatmapPage() {
       <section
         style={{
           textAlign: "center",
-          color: "#ccc",
+          color: "var(--theme-text-muted)",
           padding: "2rem 1rem 0.5rem",
           maxWidth: "1200px",
           margin: "0 auto",
+          transition: 'color 0.3s ease'
         }}
       >
         <h1 style={{ 
           fontWeight: 400, 
           fontSize: "2.4rem", 
           marginBottom: "0.5rem",
-          background: "linear-gradient(45deg, #f5b942, #c2a675)",
+          background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}>
           Property Density Map
         </h1>
-        <p style={{ color: "#999", fontSize: "1.1rem", marginBottom: "2rem" }}>
+        <p style={{ color: "var(--theme-text-muted)", fontSize: "1.1rem", marginBottom: "2rem", transition: 'color 0.3s ease' }}>
           Explore real estate concentrations across Nairobi&apos;s premium neighborhoods
         </p>
 
@@ -158,8 +159,9 @@ export default function HeatmapPage() {
             <label style={{
               display: "block",
               marginBottom: "0.5rem",
-              color: "#888",
-              fontSize: "0.9rem"
+              color: "var(--theme-text-muted)",
+              fontSize: "0.9rem",
+              transition: 'color 0.3s ease'
             }}>
               Property Type
             </label>
@@ -173,11 +175,12 @@ export default function HeatmapPage() {
               style={{
                 width: "100%",
                 padding: "8px 12px",
-                background: "#151515",
-                border: "1px solid #333",
+                background: "var(--theme-surface)",
+                border: `1px solid var(--theme-border)`,
                 borderRadius: "6px",
-                color: "#f0f0f0",
-                cursor: "pointer"
+                color: "var(--theme-text)",
+                cursor: "pointer",
+                transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
               }}
             >
               {Object.entries(propertyTypes).map(([value, label]) => (
@@ -191,8 +194,9 @@ export default function HeatmapPage() {
             <label style={{
               display: "block",
               marginBottom: "0.5rem",
-              color: "#888",
-              fontSize: "0.9rem"
+              color: "var(--theme-text-muted)",
+              fontSize: "0.9rem",
+              transition: 'color 0.3s ease'
             }}>
               Market Segment
             </label>
@@ -206,11 +210,12 @@ export default function HeatmapPage() {
               style={{
                 width: "100%",
                 padding: "8px 12px",
-                background: "#151515",
-                border: "1px solid #333",
+                background: "var(--theme-surface)",
+                border: `1px solid var(--theme-border)`,
                 borderRadius: "6px",
-                color: "#f0f0f0",
-                cursor: "pointer"
+                color: "var(--theme-text)",
+                cursor: "pointer",
+                transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
               }}
             >
               {Object.entries(filters).map(([value, label]) => (
@@ -224,8 +229,9 @@ export default function HeatmapPage() {
             <label style={{
               display: "block",
               marginBottom: "0.5rem",
-              color: "#888",
-              fontSize: "0.9rem"
+              color: "var(--theme-text-muted)",
+              fontSize: "0.9rem",
+              transition: 'color 0.3s ease'
             }}>
               Time Range
             </label>
@@ -239,11 +245,12 @@ export default function HeatmapPage() {
               style={{
                 width: "100%",
                 padding: "8px 12px",
-                background: "#151515",
-                border: "1px solid #333",
+                background: "var(--theme-surface)",
+                border: `1px solid var(--theme-border)`,
                 borderRadius: "6px",
-                color: "#f0f0f0",
-                cursor: "pointer"
+                color: "var(--theme-text)",
+                cursor: "pointer",
+                transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
               }}
             >
               {Object.entries(timeRanges).map(([value, label]) => (
@@ -270,7 +277,7 @@ export default function HeatmapPage() {
           </div>
         )}
 
-        <p style={{ color: "#888", fontSize: "0.9rem", lineHeight: "1.6" }}>
+        <p style={{ color: "var(--theme-text-muted)", fontSize: "0.9rem", lineHeight: "1.6", transition: 'color 0.3s ease' }}>
           🖱️ <strong>Use your mouse or fingers</strong> to zoom and pan the map. <br />
           Areas in <span style={{ color: "#fb8500" }}>orange</span> indicate 
           stronger listing concentrations, while 
@@ -415,7 +422,8 @@ export default function HeatmapPage() {
         maxWidth: "1200px",
         margin: "3rem auto",
         padding: "0 20px",
-        color: "#f0f0f0",
+        color: "var(--theme-text)",
+        transition: 'color 0.3s ease'
       }}>
         <div style={{
           display: "grid",
@@ -442,10 +450,11 @@ export default function HeatmapPage() {
             }
           ].map((card, index) => (
             <div key={index} style={{
-              background: "#151515",
+              background: "var(--theme-surface)",
               borderRadius: "12px",
               padding: "1.5rem",
-              border: "1px solid rgba(255,255,255,0.05)",
+              border: `1px solid var(--theme-border)`,
+              transition: 'background 0.3s ease, border-color 0.3s ease'
             }}>
               <div style={{
                 fontSize: "1.5rem",
@@ -454,13 +463,15 @@ export default function HeatmapPage() {
               <h3 style={{
                 fontSize: "1.2rem",
                 marginBottom: "1rem",
-                color: "#f5b942",
+                color: "var(--theme-accent)",
                 fontWeight: "400",
+                transition: 'color 0.3s ease'
               }}>{card.title}</h3>
               <p style={{
-                color: "#bcbcbc",
+                color: "var(--theme-text-muted)",
                 lineHeight: "1.6",
                 fontSize: "0.95rem",
+                transition: 'color 0.3s ease'
               }}>{card.description}</p>
             </div>
           ))}
@@ -468,16 +479,19 @@ export default function HeatmapPage() {
 
         {/* Methodology Section */}
         <div style={{
-          background: "linear-gradient(to right, rgba(245,185,66,0.1), transparent)",
+          background: "var(--theme-card-bg)",
           borderRadius: "12px",
           padding: "2rem",
           marginBottom: "2rem",
+          border: `1px solid var(--theme-border)`,
+          transition: 'background 0.3s ease, border-color 0.3s ease'
         }}>
           <h2 style={{
             fontSize: "1.5rem",
             marginBottom: "1.5rem",
             fontWeight: "400",
-            color: "#f5b942",
+            color: "var(--theme-accent)",
+            transition: 'color 0.3s ease'
           }}>Our Methodology</h2>
           <div style={{
             display: "grid",
@@ -488,12 +502,14 @@ export default function HeatmapPage() {
               <h3 style={{
                 fontSize: "1.1rem",
                 marginBottom: "0.5rem",
-                color: "#e0e0e0",
+                color: "var(--theme-text)",
+                transition: 'color 0.3s ease'
               }}>Data Collection</h3>
               <p style={{
-                color: "#bcbcbc",
+                color: "var(--theme-text-muted)",
                 lineHeight: "1.6",
                 fontSize: "0.95rem",
+                transition: 'color 0.3s ease'
               }}>
                 Heat signatures are generated from verified property listings, market transactions, 
                 and development permits across Nairobi&apos;s prime neighborhoods.
@@ -503,12 +519,14 @@ export default function HeatmapPage() {
               <h3 style={{
                 fontSize: "1.1rem",
                 marginBottom: "0.5rem",
-                color: "#e0e0e0",
+                color: "var(--theme-text)",
+                transition: 'color 0.3s ease'
               }}>Analysis</h3>
               <p style={{
-                color: "#bcbcbc",
+                color: "var(--theme-text-muted)",
                 lineHeight: "1.6",
                 fontSize: "0.95rem",
+                transition: 'color 0.3s ease'
               }}>
                 Our algorithm weighs multiple factors including listing density, price points, 
                 transaction velocity, and development activity to generate intensity levels.
@@ -518,12 +536,14 @@ export default function HeatmapPage() {
               <h3 style={{
                 fontSize: "1.1rem",
                 marginBottom: "0.5rem",
-                color: "#e0e0e0",
+                color: "var(--theme-text)",
+                transition: 'color 0.3s ease'
               }}>Updates</h3>
               <p style={{
-                color: "#bcbcbc",
+                color: "var(--theme-text-muted)",
                 lineHeight: "1.6",
                 fontSize: "0.95rem",
+                transition: 'color 0.3s ease'
               }}>
                 Heat maps are refreshed weekly, incorporating new listings, closed transactions, 
                 and verified market activity to maintain accuracy.
@@ -536,9 +556,10 @@ export default function HeatmapPage() {
         <div style={{
           textAlign: "center",
           padding: "1rem",
-          color: "#888",
+          color: "var(--theme-text-muted)",
           fontSize: "0.85rem",
-          borderTop: "1px solid #222",
+          borderTop: `1px solid var(--theme-border)`,
+          transition: 'color 0.3s ease, border-color 0.3s ease'
         }}>
           <p>Last updated: November 6, 2025 • Data reflects verified property activity</p>
         </div>
