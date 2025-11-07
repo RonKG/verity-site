@@ -22,11 +22,12 @@ export default function CredibilitySection() {
 
   return (
     <section style={{
-      backgroundColor: "#161616",
+      backgroundColor: "var(--theme-surface)",
       padding: "60px 0",
-      color: "#f0f0f0",
-      borderTop: "1px solid rgba(255,255,255,0.08)",
-      background: "linear-gradient(to bottom, #161616, #1a1a1a)"
+      color: "var(--theme-text)",
+      borderTop: `1px solid var(--theme-border)`,
+      background: `linear-gradient(to bottom, var(--theme-surface), var(--theme-bg))`,
+      transition: 'background-color 0.3s ease, color 0.3s ease'
     }}>
       <div style={{
         maxWidth: "1200px",
@@ -50,12 +51,13 @@ export default function CredibilitySection() {
             <p style={{
               fontSize: "1rem",
               marginBottom: "1.5rem",
-              color: "#d0d0d0",
+              color: "var(--theme-text-muted)",
               flex: "1 1 auto",
               fontWeight: "400",
               lineHeight: "1.7",
               fontStyle: "italic",
-              letterSpacing: "0.01em"
+              letterSpacing: "0.01em",
+              transition: 'color 0.3s ease'
             }}>
               {testimonial.quote}
             </p>
@@ -71,22 +73,24 @@ export default function CredibilitySection() {
                   width: "44px",
                   height: "44px",
                   borderRadius: "50%",
-                  border: "2px solid rgba(255,255,255,0.1)"
+                  border: `2px solid var(--theme-border)`
                 }}
               />
               <div>
                 <p style={{
                   fontSize: "0.95rem",
-                  color: "#f0f0f0",
+                  color: "var(--theme-text)",
                   margin: 0,
                   fontWeight: "500",
+                  transition: 'color 0.3s ease'
                 }}>
                   {testimonial.authorName}
                 </p>
                 <p style={{
                   fontSize: "0.85rem",
                   margin: 0,
-                  color: "#888",
+                  color: "var(--theme-text-muted)",
+                  transition: 'color 0.3s ease'
                 }}>
                   {testimonial.handle}
                 </p>
