@@ -1,14 +1,46 @@
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import Footer from "./Footer";
+import { useState, useEffect } from "react";
 
 export default function Layout({ children }) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 36);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const linkStyle = {
     color: "#cfcfcf",
     textDecoration: "none",
     fontSize: "0.95rem",
     marginLeft: "1.8rem",
     transition: "color 0.3s ease",
+  };
+
+  const headerStyle = {
+    padding: scrolled ? "10px 20px" : "16px 20px",
+    borderBottom: "1px solid rgba(255,255,255,0.08)",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    position: "sticky",
+    top: 0,
+    zIndex: 1000,
+    backdropFilter: "blur(12px)",
+    WebkitBackdropFilter: "blur(12px)",
+    background: scrolled ? "rgba(14,14,14,0.95)" : "rgba(14,14,14,0.7)",
+    boxShadow: scrolled ? "0 6px 30px rgba(0,0,0,0.55)" : "0 2px 12px rgba(0,0,0,0.3)",
+    transition: "all 220ms ease",
+  };
+
+  const logoStyle = {
+    width: scrolled ? 32 : 36,
+    height: scrolled ? 32 : 36,
+    fontSize: scrolled ? '1rem' : '1.1rem'
   };
 
   return (
@@ -23,29 +55,13 @@ export default function Layout({ children }) {
       }}
     >
       {/* Header */}
-      <header 
-        className="main-header"
-        style={{
-          padding: "16px 20px",
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          position: "sticky",
-          top: 0,
-          zIndex: 1000,
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
-          background: "rgba(14,14,14,0.7)",
-          boxShadow: "0 2px 12px rgba(0,0,0,0.3)",
-        }}>
+      <header className="main-header" style={headerStyle}>
         {/* Logo Section */}
         <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
           {/* Gold circular icon */}
           <div
             style={{
-              width: "36px",
-              height: "36px",
+              ...logoStyle,
               borderRadius: "50%",
               border: "1.5px solid #c2a675",
               display: "flex",
@@ -53,8 +69,7 @@ export default function Layout({ children }) {
               justifyContent: "center",
               color: "#c2a675",
               fontWeight: "500",
-              fontSize: "1.1rem",
-              transition: "all 0.3s ease",
+              transition: "all 180ms ease",
             }}
             onMouseEnter={(e) => {
               e.target.style.backgroundColor = "#c2a675";
@@ -74,9 +89,9 @@ export default function Layout({ children }) {
               margin: 0,
               fontWeight: "500",
               color: "#f5f5f5",
-              fontSize: "1.35rem",
+              fontSize: scrolled ? '1.15rem' : '1.35rem',
               letterSpacing: "0.3px",
-              transition: "color 0.3s ease",
+              transition: "color 0.3s ease, font-size 180ms ease",
             }}
             onMouseEnter={(e) => (e.target.style.color = "#c2a675")}
             onMouseLeave={(e) => (e.target.style.color = "#f5f5f5")}
