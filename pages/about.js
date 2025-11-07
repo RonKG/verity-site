@@ -46,7 +46,7 @@ export default function About() {
 
           <div style={{ width: '100%', height: 380, borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.04)' }}>
             <OptimizedImage
-              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1200&q=80&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1756920681451-3103b5ca092d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
               alt="Founder portrait"
               priority
               style={{ height: '380px' }}
@@ -121,7 +121,7 @@ export default function About() {
         }}>
           <div style={{ width: '100%', height: 420, borderRadius: 12, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
             <OptimizedImage
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=80"
+              src="https://images.unsplash.com/photo-1611077544170-be90a2f68add?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
               alt="Real estate analytics dashboard"
               style={{ height: '420px' }}
               priority={false}
