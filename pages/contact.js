@@ -1,175 +1,187 @@
+import { useState } from "react";
 import Layout from "../components/Layout";
 
 export default function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState(null); // null | 'sending' | 'sent' | 'error'
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setStatus('error');
+      return;
+    }
+
+    setStatus('sending');
+    // Lightweight local UX: pretend to send and show success.
+    setTimeout(() => {
+      setStatus('sent');
+      setName("");
+      setEmail("");
+      setMessage("");
+    }, 700);
+  };
+
   return (
     <Layout>
       <div style={{
-        maxWidth: "800px",
+        maxWidth: "920px",
         margin: "0 auto",
-        padding: "60px 20px",
+        padding: "72px 20px",
         color: "#f0f0f0"
       }}>
-        <h1 style={{
-          fontSize: "2.5rem",
-          marginBottom: "2rem",
-          fontWeight: "400"
-        }}>
-          Contact Us
-        </h1>
-        
-        <div style={{
-          fontSize: "1rem",
-          lineHeight: "1.7",
-          color: "#d0d0d0"
-        }}>
-          <p style={{ marginBottom: "2rem" }}>
-            We'd love to hear from you. Please fill out the form below or use our direct contact information.
+        <header style={{ marginBottom: "2.5rem" }}>
+          <h1 style={{
+            fontSize: "2.25rem",
+            margin: 0,
+            fontWeight: 400,
+            letterSpacing: "-0.01em"
+          }}>Contact</h1>
+          <p style={{
+            marginTop: "0.75rem",
+            color: "#cfcfcf",
+            maxWidth: "680px",
+            lineHeight: 1.6
+          }}>
+            For enquiries, partnerships, or to feature a property — send us a concise note. We’ll reply within 72 hours.
           </p>
+        </header>
 
-          <form style={{ marginBottom: "3rem" }}>
-            <div style={{ marginBottom: "1.5rem" }}>
-              <label style={{
-                display: "block",
-                marginBottom: "0.5rem",
-                color: "#f0f0f0"
-              }}>
-                Name
-              </label>
-              <input
-                type="text"
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  backgroundColor: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: "4px",
-                  color: "#f0f0f0",
-                  fontSize: "1rem"
-                }}
-              />
-            </div>
-
-            <div style={{ marginBottom: "1.5rem" }}>
-              <label style={{
-                display: "block",
-                marginBottom: "0.5rem",
-                color: "#f0f0f0"
-              }}>
-                Email
-              </label>
-              <input
-                type="email"
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  backgroundColor: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: "4px",
-                  color: "#f0f0f0",
-                  fontSize: "1rem"
-                }}
-              />
-            </div>
-
-            <div style={{ marginBottom: "1.5rem" }}>
-              <label style={{
-                display: "block",
-                marginBottom: "0.5rem",
-                color: "#f0f0f0"
-              }}>
-                Message
-              </label>
-              <textarea
-                rows={5}
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  backgroundColor: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: "4px",
-                  color: "#f0f0f0",
-                  fontSize: "1rem",
-                  resize: "vertical"
-                }}
-              />
-            </div>
-
-            <button
-              type="submit"
-              style={{
-                backgroundColor: "#f5b942",
-                color: "#000",
-                padding: "0.75rem 2rem",
-                border: "none",
-                borderRadius: "4px",
-                fontSize: "1rem",
-                cursor: "pointer",
-                fontWeight: "500",
-                transition: "background-color 0.2s ease"
-              }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = "#c2a675"}
-              onMouseLeave={(e) => e.target.style.backgroundColor = "#f5b942"}
-            >
-              Send Message
-            </button>
-          </form>
-
-          <div style={{ marginTop: "4rem" }}>
-            <h2 style={{
-              fontSize: "1.5rem",
-              marginBottom: "1.5rem",
-              color: "#f0f0f0",
-              fontWeight: "400"
+        <main style={{ display: "grid", gridTemplateColumns: "1fr 360px", gap: "2rem" }}>
+          {/* Form column */}
+          <section>
+            <form onSubmit={handleSubmit} aria-label="Contact form" style={{
+              background: "linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))",
+              padding: "1.25rem",
+              borderRadius: "12px",
+              border: "1px solid rgba(255,255,255,0.04)"
             }}>
-              Direct Contact
-            </h2>
-            <div style={{
-              display: "grid",
-              gap: "2rem",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))"
-            }}>
-              <div>
-                <h3 style={{
-                  fontSize: "1.1rem",
-                  marginBottom: "0.75rem",
-                  color: "#f0f0f0",
-                  fontWeight: "400"
-                }}>
-                  Location
-                </h3>
-                <p style={{ color: "#d0d0d0" }}>
-                  Nairobi, Kenya
-                </p>
+              <div style={{ display: "grid", gap: "1rem" }}>
+                <label style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                  <span style={{ color: "#e8e8e8", fontSize: "0.95rem" }}>Name</span>
+                  <input
+                    aria-label="Name"
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    style={{
+                      width: "100%",
+                      padding: "0.6rem",
+                      backgroundColor: "rgba(255,255,255,0.03)",
+                      border: "1px solid rgba(255,255,255,0.06)",
+                      borderRadius: "6px",
+                      color: "#f0f0f0",
+                      fontSize: "1rem"
+                    }}
+                  />
+                </label>
+
+                <label style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                  <span style={{ color: "#e8e8e8", fontSize: "0.95rem" }}>Email</span>
+                  <input
+                    aria-label="Email"
+                    name="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    style={{
+                      width: "100%",
+                      padding: "0.6rem",
+                      backgroundColor: "rgba(255,255,255,0.03)",
+                      border: "1px solid rgba(255,255,255,0.06)",
+                      borderRadius: "6px",
+                      color: "#f0f0f0",
+                      fontSize: "1rem"
+                    }}
+                  />
+                </label>
+
+                <label style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                  <span style={{ color: "#e8e8e8", fontSize: "0.95rem" }}>Message</span>
+                  <textarea
+                    aria-label="Message"
+                    name="message"
+                    rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    required
+                    style={{
+                      width: "100%",
+                      padding: "0.6rem",
+                      backgroundColor: "rgba(255,255,255,0.03)",
+                      border: "1px solid rgba(255,255,255,0.06)",
+                      borderRadius: "6px",
+                      color: "#f0f0f0",
+                      fontSize: "1rem",
+                      resize: "vertical"
+                    }}
+                  />
+                </label>
+
+                <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+                  <button
+                    type="submit"
+                    disabled={status === 'sending'}
+                    style={{
+                      background: "linear-gradient(90deg,#f5b942,#c2a675)",
+                      color: "#0e0e0e",
+                      padding: "0.6rem 1.4rem",
+                      border: "none",
+                      borderRadius: "6px",
+                      fontSize: "1rem",
+                      cursor: status === 'sending' ? 'wait' : 'pointer',
+                      fontWeight: 600
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.filter = 'brightness(0.95)'}
+                    onMouseLeave={(e) => e.currentTarget.style.filter = 'none'}
+                  >
+                    {status === 'sending' ? 'Sending…' : 'Send Message'}
+                  </button>
+
+                  {status === 'sent' && (
+                    <div style={{ color: '#bde7b0' }}>Thanks — we’ll reply within 72 hours.</div>
+                  )}
+                  {status === 'error' && (
+                    <div style={{ color: '#ffbcbc' }}>Please complete all fields.</div>
+                  )}
+                </div>
               </div>
+            </form>
+          </section>
+
+          {/* Contact card */}
+          <aside style={{
+            background: '#0b0b0b',
+            padding: '1.5rem',
+            borderRadius: '12px',
+            border: '1px solid rgba(255,255,255,0.03)',
+            height: 'fit-content'
+          }}>
+            <h3 style={{ marginTop: 0, marginBottom: '0.75rem', color: '#f0f0f0' }}>Direct contact</h3>
+            <p style={{ color: '#cfcfcf', marginBottom: '1rem' }}>Prefer direct mail or phone? We’re available during business hours in Nairobi.</p>
+
+            <div style={{ display: 'grid', gap: '0.75rem' }}>
               <div>
-                <h3 style={{
-                  fontSize: "1.1rem",
-                  marginBottom: "0.75rem",
-                  color: "#f0f0f0",
-                  fontWeight: "400"
-                }}>
-                  Email
-                </h3>
-                <p style={{ color: "#d0d0d0" }}>
-                  info@theregistry.co.ke
-                </p>
+                <strong style={{ color: '#f0f0f0', display: 'block' }}>Email</strong>
+                <a href="mailto:info@theregistry.co.ke" style={{ color: '#c2a675', textDecoration: 'none' }}>info@theregistry.co.ke</a>
               </div>
+
               <div>
-                <h3 style={{
-                  fontSize: "1.1rem",
-                  marginBottom: "0.75rem",
-                  color: "#f0f0f0",
-                  fontWeight: "400"
-                }}>
-                  Phone
-                </h3>
-                <p style={{ color: "#d0d0d0" }}>
-                  +254 (0) 700 000 000
-                </p>
+                <strong style={{ color: '#f0f0f0', display: 'block' }}>Phone</strong>
+                <a href="tel:+254700000000" style={{ color: '#cfcfcf', textDecoration: 'none' }}>+254 (0) 700 000 000</a>
+              </div>
+
+              <div>
+                <strong style={{ color: '#f0f0f0', display: 'block' }}>Location</strong>
+                <span style={{ color: '#cfcfcf' }}>Nairobi, Kenya</span>
               </div>
             </div>
-          </div>
-        </div>
+          </aside>
+        </main>
       </div>
     </Layout>
   );
