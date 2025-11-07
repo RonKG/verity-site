@@ -237,6 +237,14 @@ export default function Home() {
         padding: "80px 20px",
         textAlign: "center",
       }}>
+        <p style={{
+          color: '#bcbcbc',
+          maxWidth: '760px',
+          margin: '0 auto 1.25rem',
+          lineHeight: '1.6'
+        }}>
+          A concise selection of recently verified properties — each inspected, documented and presented with data you can trust.
+        </p>
         <h2 style={{
           fontSize: "2rem",
           fontWeight: "400",
