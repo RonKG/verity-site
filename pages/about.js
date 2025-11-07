@@ -1,61 +1,57 @@
 import Layout from "../components/Layout";
+import OptimizedImage from "../components/OptimizedImage";
 
 export default function About() {
   return (
     <Layout>
-      {/* Hero Section */}
+      {/* Hero Section - personal */}
       <section
         style={{
           backgroundColor: "#0e0e0e",
           color: "#f0f0f0",
-          padding: "100px 20px 60px 20px",
+          padding: "80px 20px 40px 20px",
           position: "relative",
           overflow: "hidden",
         }}
       >
-        {/* Background pattern */}
-        <div style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundImage: "radial-gradient(circle at 10% 20%, rgba(245,185,66,0.03) 0%, transparent 40%)",
-          zIndex: 1,
-        }} />
+        <div style={{ maxWidth: "1200px", margin: "0 auto", display: 'grid', gridTemplateColumns: '1fr 380px', gap: '2rem', alignItems: 'center' }}>
+          <div>
+            <h1
+              style={{
+                fontSize: "2.2rem",
+                fontWeight: "400",
+                marginBottom: "1rem",
+                background: "linear-gradient(45deg, #f5b942, #c2a675)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              About The Registry
+            </h1>
 
-        <div style={{
-          position: "relative",
-          zIndex: 2,
-          maxWidth: "1200px",
-          margin: "0 auto",
-          textAlign: "center",
-        }}>
-          <h1
-            style={{
-              fontSize: "2.4rem",
-              fontWeight: "400",
-              marginBottom: "1.5rem",
-              background: "linear-gradient(45deg, #f5b942, #c2a675)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            About The Registry
-          </h1>
-          <p
-            style={{
-              color: "#d6d6d6",
-              maxWidth: "700px",
-              margin: "0 auto",
-              fontSize: "1.1rem",
-              lineHeight: "1.7",
-            }}
-          >
-            Where data meets design in real estate. The Registry combines market analytics 
-            with curated presentation to redefine how premium properties are discovered 
-            and showcased in Kenya's luxury market.
-          </p>
+            <p style={{ color: '#d6d6d6', maxWidth: '720px', fontSize: '1.05rem', lineHeight: '1.7' }}>
+              We started as a small, persistent annoyance — frustrated by missing titles,
+              contradictory listings and too many late-night phone calls trying to confirm
+              whether a property really existed. The Registry grew out of that irritation: a
+              pragmatic effort to combine careful verification with beautiful presentation so
+              people can make decisions they actually trust.
+            </p>
+
+            <p style={{ color: '#bfbfbf', maxWidth: '720px', marginTop: '0.8rem', lineHeight: '1.6' }}>
+              Today we're a Nairobi-based team building tools for locals, returning expats and
+              the diaspora — anyone who wants to move, invest or simply understand Kenyan
+              property markets without the guesswork.
+            </p>
+          </div>
+
+          <div style={{ width: '100%', height: 380, borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.04)' }}>
+            <OptimizedImage
+              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1200&q=80&auto=format&fit=crop"
+              alt="Founder portrait"
+              priority
+              style={{ height: '380px' }}
+            />
+          </div>
         </div>
       </section>
 
@@ -123,15 +119,14 @@ export default function About() {
           margin: "0 auto",
           position: "relative",
         }}>
-          <img
-            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=80"
-            alt="Real estate analytics dashboard"
-            style={{
-              width: "100%",
-              borderRadius: "12px",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
-            }}
-          />
+          <div style={{ width: '100%', height: 420, borderRadius: 12, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
+            <OptimizedImage
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=80"
+              alt="Real estate analytics dashboard"
+              style={{ height: '420px' }}
+              priority={false}
+            />
+          </div>
           <div style={{
             position: "absolute",
             bottom: 0,
