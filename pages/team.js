@@ -7,19 +7,19 @@ export default function Team() {
       name: "James Kamau",
       role: "Founder & CEO",
       img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=1200&q=80&auto=format&fit=crop",
-      bio: "James founded The Registry to bring verified property data and a premium, local-first experience to Kenya's evolving market. He leads product and research."
+      bio: "James started The Registry after losing hours to paperwork and guesswork while helping family buy a home. He builds product to make property decisions faster and less faith-based — a practical idealist who believes clear records beat negotiation theater."
     },
     {
       name: "Amy Kamau",
       role: "Head of Operations",
       img: "https://images.unsplash.com/photo-1545996124-1a9f79a3b1a3?w=1200&q=80&auto=format&fit=crop",
-      bio: "Amy manages listings verification, partner integrations and the operational processes that keep our data rigorous and traceable."
+      bio: "If there’s a chain of custody, Amy has mapped it, simplified it, and taught five people how to use it. She runs verification, partnerships and the engine room that keeps our data honest — with a soft spot for problem tickets that are actually puzzles."
     },
     {
       name: "Ronald Wahome",
       role: "Head of Research",
       img: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=1200&q=80&auto=format&fit=crop",
-      bio: "Ronald leads our analytics and methodology — turning verified records into decision-grade insights for investors and advisors."
+      bio: "Ronald turns messy public records into meaningful signals. He designs the methods and experiments that make our analytics reliable — and enjoys proving when conventional wisdom about a neighborhood needs updating."
     }
   ];
 
@@ -60,7 +60,7 @@ export default function Team() {
         <div style={{ marginTop: '1.75rem', background: '#0f0f0f', border: '1px solid #222', padding: '1rem', borderRadius: 10 }}>
           <h3 style={{ margin: 0, color: '#f5f5f5' }}>Our mission</h3>
           <p style={{ color: '#cfcfcf', marginTop: '0.5rem' }}>
-            Kenya deserves property data that is trustworthy and easy to use. We build for both locals and the international community — helping families moving home, expats returning, and diaspora or international investors evaluate opportunities with confidence.
+            We believe access to clear, verified property information is a small design change with outsized impact: it helps families move without fear, lets returning expats reconnect with confidence, and gives diaspora or global investors a sturdy basis for decisions. We build tools that shrink uncertainty and reward careful verification — not better salesmanship.
           </p>
         </div>
       </section>

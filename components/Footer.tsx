@@ -84,6 +84,14 @@ export default function Footer() {
               }}>
                 Market Insights
               </Link>
+              <Link href="/team" style={{
+                color: '#888',
+                textDecoration: 'none',
+                fontSize: '0.95rem',
+                transition: 'color 0.2s'
+              }}>
+                Team
+              </Link>
             </nav>
           </div>
 
