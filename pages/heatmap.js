@@ -267,11 +267,13 @@ export default function HeatmapPage() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            background: "rgba(0,0,0,0.8)",
+            background: "var(--theme-surface)",
             padding: "20px 40px",
             borderRadius: "12px",
             zIndex: 9999,
-            color: "#f5b942"
+            color: "var(--theme-accent)",
+            border: `1px solid var(--theme-border)`,
+            transition: 'background 0.3s ease, color 0.3s ease, border-color 0.3s ease'
           }}>
             Updating map...
           </div>
@@ -307,8 +309,8 @@ export default function HeatmapPage() {
             bottom: "60px",
             left: "6%",
             zIndex: 9999,
-            background: "rgba(20, 20, 20, 0.95)",
-            color: "#f5f5f5",
+            background: "var(--theme-surface)",
+            color: "var(--theme-text)",
             padding: "20px",
             borderRadius: "12px",
             boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
@@ -318,7 +320,8 @@ export default function HeatmapPage() {
             flexDirection: "column",
             alignItems: "center",
             gap: "15px",
-            border: "1px solid rgba(255,255,255,0.1)"
+            border: `1px solid var(--theme-border)`,
+            transition: 'background 0.3s ease, color 0.3s ease, border-color 0.3s ease'
           }}
         >
           {/* Quick Stats */}
@@ -331,20 +334,20 @@ export default function HeatmapPage() {
             marginBottom: "5px"
           }}>
             <div>
-              <div style={{ color: "#888" }}>Active Listings</div>
-              <div style={{ color: "#f5b942", fontWeight: "500" }}>2,150</div>
+              <div style={{ color: "var(--theme-text-muted)", transition: 'color 0.3s ease' }}>Active Listings</div>
+              <div style={{ color: "var(--theme-accent)", fontWeight: "500", transition: 'color 0.3s ease' }}>2,150</div>
             </div>
             <div>
-              <div style={{ color: "#888" }}>Avg. Price/Sq.ft</div>
-              <div style={{ color: "#f5b942", fontWeight: "500" }}>KES 385K</div>
+              <div style={{ color: "var(--theme-text-muted)", transition: 'color 0.3s ease' }}>Avg. Price/Sq.ft</div>
+              <div style={{ color: "var(--theme-accent)", fontWeight: "500", transition: 'color 0.3s ease' }}>KES 385K</div>
             </div>
             <div>
-              <div style={{ color: "#888" }}>Market Activity</div>
+              <div style={{ color: "var(--theme-text-muted)", transition: 'color 0.3s ease' }}>Market Activity</div>
               <div style={{ color: "#4caf50", fontWeight: "500" }}>↑ 6.3%</div>
             </div>
             <div>
-              <div style={{ color: "#888" }}>Density Score</div>
-              <div style={{ color: "#f5b942", fontWeight: "500" }}>8.4/10</div>
+              <div style={{ color: "var(--theme-text-muted)", transition: 'color 0.3s ease' }}>Density Score</div>
+              <div style={{ color: "var(--theme-accent)", fontWeight: "500", transition: 'color 0.3s ease' }}>8.4/10</div>
             </div>
           </div>
 
@@ -354,7 +357,8 @@ export default function HeatmapPage() {
               marginBottom: "8px", 
               fontWeight: 500, 
               fontSize: "0.9rem",
-              color: "#ccc"
+              color: "var(--theme-text-muted)",
+              transition: 'color 0.3s ease'
             }}>
               Property Density
             </div>
@@ -364,14 +368,16 @@ export default function HeatmapPage() {
               background: "linear-gradient(to right, #8ecae6, #219ebc, #ffb703, #fb8500)",
               borderRadius: "6px",
               margin: "0 auto",
-              border: "1px solid rgba(255,255,255,0.1)"
+              border: `1px solid var(--theme-border)`,
+              transition: 'border-color 0.3s ease'
             }}></div>
             <div style={{
               display: "flex",
               justifyContent: "space-between",
               marginTop: "6px",
               fontSize: "0.75rem",
-              color: "#888"
+              color: "var(--theme-text-muted)",
+              transition: 'color 0.3s ease'
             }}>
               <span>Low Activity</span>
               <span>High Activity</span>
@@ -388,8 +394,8 @@ export default function HeatmapPage() {
               onClick={handleResetView}
               style={{
                 flex: 1,
-                background: "#f5b942",
-                color: "#000",
+                background: "var(--theme-accent)",
+                color: "var(--theme-bg)",
                 border: "none",
                 borderRadius: "8px",
                 padding: "8px 16px",
@@ -403,11 +409,11 @@ export default function HeatmapPage() {
                 gap: "6px"
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.background = "#ffd56a";
+                e.currentTarget.style.background = "var(--theme-accent-strong)";
                 e.currentTarget.style.transform = "translateY(-1px)";
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = "#f5b942";
+                e.currentTarget.style.background = "var(--theme-accent)";
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
