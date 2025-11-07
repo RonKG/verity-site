@@ -23,18 +23,18 @@ export default function CredibilitySection() {
   return (
     <section style={{
       backgroundColor: "#161616",
-      padding: "40px 0",
+      padding: "60px 0",
       color: "#f0f0f0",
       borderTop: "1px solid rgba(255,255,255,0.08)",
       background: "linear-gradient(to bottom, #161616, #1a1a1a)"
     }}>
       <div style={{
-        maxWidth: "1400px",
+        maxWidth: "1200px",
         margin: "0 auto",
         padding: "0 40px",
         display: "flex",
         alignItems: "stretch",
-        gap: "4rem",
+        gap: "3rem",
         justifyContent: "center"
       }}>
         {testimonials.map((testimonial, index) => (
@@ -44,18 +44,19 @@ export default function CredibilitySection() {
               display: "flex",
               flexDirection: "column",
               flex: "1 1 0",
-              maxWidth: "400px"
+              maxWidth: "360px"
             }}
           >
             <p style={{
-              fontSize: "1.25rem",
-              marginBottom: "1.75rem",
-              color: "#e0e0e0",
+              fontSize: "1rem",
+              marginBottom: "1.5rem",
+              color: "#d0d0d0",
               flex: "1 1 auto",
               fontWeight: "400",
-              lineHeight: "1.6",
+              lineHeight: "1.7",
               className: "quote-text",
-              fontStyle: "italic"
+              fontStyle: "italic",
+              letterSpacing: "0.01em"
             }}>
               "{testimonial.quote}"
             </p>
