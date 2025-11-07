@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
+import Footer from "./Footer";
 
 export default function Layout({ children }) {
   const linkStyle = {
@@ -143,26 +144,12 @@ export default function Layout({ children }) {
       </header>
 
       {/* Page Content */}
-      <main style={{ flexGrow: 1 }}>{children}</main>
-
+      <main style={{ flex: 1 }}>
+        {children}
+      </main>
+      
       {/* Footer */}
-      <footer
-        style={{
-          textAlign: "center",
-          borderTop: "1px solid #1e1e1e",
-          padding: "25px 20px",
-          color: "#9a9a9a",
-          fontSize: "0.9rem",
-          backgroundColor: "#0e0e0e",
-        }}
-      >
-        <p style={{ margin: 0 }}>
-          © {new Date().getFullYear()} The Registry — Curated. Verified. Data-driven.
-        </p>
-        <p style={{ marginTop: "4px", fontSize: "0.85rem", color: "#7a7a7a" }}>
-          Built on insight, powered by design.
-        </p>
-      </footer>
+      <Footer />
 
       <style jsx global>{`
         /* Navigation visibility */
