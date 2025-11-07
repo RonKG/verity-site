@@ -27,8 +27,11 @@ export default function Layout({ children }) {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    position: "sticky",
+    position: "fixed",
+    left: 0,
+    right: 0,
     top: 0,
+    width: '100%',
     zIndex: 1000,
     backdropFilter: "blur(12px)",
     WebkitBackdropFilter: "blur(12px)",
@@ -36,6 +39,8 @@ export default function Layout({ children }) {
     boxShadow: scrolled ? "0 6px 30px rgba(0,0,0,0.55)" : "0 2px 12px rgba(0,0,0,0.3)",
     transition: "all 220ms ease",
   };
+  const headerHeight = scrolled ? 56 : 72;
+ 
 
   const logoStyle = {
     width: scrolled ? 32 : 36,
@@ -55,7 +60,7 @@ export default function Layout({ children }) {
       }}
     >
       {/* Header */}
-      <header className="main-header" style={headerStyle}>
+        <header className="main-header" style={headerStyle}>
         {/* Logo Section */}
         <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
           {/* Gold circular icon */}
@@ -156,6 +161,9 @@ export default function Layout({ children }) {
           ))}
         </nav>
       </header>
+
+      {/* spacer to prevent content sitting under fixed header */}
+      <div style={{ height: headerHeight }} aria-hidden="true" />
 
       {/* Page Content */}
       <main style={{ flex: 1 }}>
