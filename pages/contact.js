@@ -31,7 +31,7 @@ export default function Contact() {
         maxWidth: "920px",
         margin: "0 auto",
         padding: "72px 20px",
-        color: "#f0f0f0",
+        color: "var(--theme-text)",
         backgroundImage: "radial-gradient(circle at 10% 10%, rgba(245,185,66,0.02), transparent 10%), radial-gradient(circle at 90% 80%, rgba(194,166,117,0.02), transparent 8%)"
       }}>
         <header style={{ marginBottom: "2.5rem" }}>
@@ -43,7 +43,7 @@ export default function Contact() {
           }}>Start a conversation</h1>
           <p style={{
             marginTop: "0.75rem",
-            color: "#cfcfcf",
+            color: "var(--theme-text-muted)",
             maxWidth: "680px",
             lineHeight: 1.6
           }}>
@@ -56,15 +56,16 @@ export default function Contact() {
           {/* Form column */}
           <section>
             <form onSubmit={handleSubmit} aria-label="Contact form" style={{
-              background: "linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))",
+              background: "var(--theme-card-bg)",
               padding: "1.25rem",
               borderRadius: "12px",
-              border: "1px solid rgba(255,255,255,0.04)",
-              boxShadow: '0 8px 30px rgba(0,0,0,0.6)'
+              border: `1px solid var(--theme-border)`,
+              boxShadow: '0 8px 30px rgba(0,0,0,0.15)',
+              transition: 'background 0.3s ease, border-color 0.3s ease'
             }}>
               <div style={{ display: "grid", gap: "1rem" }}>
                 <label style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                  <span style={{ color: "#e8e8e8", fontSize: "0.95rem" }}>Name</span>
+                  <span style={{ color: "var(--theme-text)", fontSize: "0.95rem" }}>Name</span>
                   <input
                     aria-label="Name"
                     name="name"
@@ -74,21 +75,22 @@ export default function Contact() {
                     style={{
                       width: "100%",
                       padding: "0.6rem",
-                      backgroundColor: "rgba(255,255,255,0.03)",
-                      border: "1px solid rgba(255,255,255,0.06)",
+                      backgroundColor: "var(--theme-surface)",
+                      border: `1px solid var(--theme-border)`,
                       borderRadius: "6px",
-                      color: "#f0f0f0",
-                      fontSize: "1rem"
+                      color: "var(--theme-text)",
+                      fontSize: "1rem",
+                      transition: 'background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease'
                     }}
                   />
                 </label>
 
-                <div style={{ fontSize: '0.9rem', color: '#bfbfbf', background: 'rgba(255,255,255,0.01)', padding: '0.6rem', borderRadius: 8 }}>
+                <div style={{ fontSize: '0.9rem', color: 'var(--theme-text-muted)', background: 'var(--theme-card-bg)', padding: '0.6rem', borderRadius: 8, transition: 'background 0.3s ease, color 0.3s ease' }}>
                   Tip: include a link to the listing or a short note about budget/timeline — it helps us respond precisely.
                 </div>
 
                 <label style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                  <span style={{ color: "#e8e8e8", fontSize: "0.95rem" }}>Email</span>
+                  <span style={{ color: "var(--theme-text)", fontSize: "0.95rem" }}>Email</span>
                   <input
                     aria-label="Email"
                     name="email"
@@ -99,17 +101,18 @@ export default function Contact() {
                     style={{
                       width: "100%",
                       padding: "0.6rem",
-                      backgroundColor: "rgba(255,255,255,0.03)",
-                      border: "1px solid rgba(255,255,255,0.06)",
+                      backgroundColor: "var(--theme-surface)",
+                      border: `1px solid var(--theme-border)`,
                       borderRadius: "6px",
-                      color: "#f0f0f0",
-                      fontSize: "1rem"
+                      color: "var(--theme-text)",
+                      fontSize: "1rem",
+                      transition: 'background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease'
                     }}
                   />
                 </label>
 
                 <label style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                  <span style={{ color: "#e8e8e8", fontSize: "0.95rem" }}>Message</span>
+                  <span style={{ color: "var(--theme-text)", fontSize: "0.95rem" }}>Message</span>
                   <textarea
                     aria-label="Message"
                     name="message"
@@ -120,12 +123,13 @@ export default function Contact() {
                     style={{
                       width: "100%",
                       padding: "0.6rem",
-                      backgroundColor: "rgba(255,255,255,0.03)",
-                      border: "1px solid rgba(255,255,255,0.06)",
+                      backgroundColor: "var(--theme-surface)",
+                      border: `1px solid var(--theme-border)`,
                       borderRadius: "6px",
-                      color: "#f0f0f0",
+                      color: "var(--theme-text)",
                       fontSize: "1rem",
-                      resize: "vertical"
+                      resize: "vertical",
+                      transition: 'background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease'
                     }}
                   />
                 </label>
@@ -135,14 +139,15 @@ export default function Contact() {
                     type="submit"
                     disabled={status === 'sending'}
                     style={{
-                      background: "linear-gradient(90deg,#f5b942,#c2a675)",
-                      color: "#0e0e0e",
+                      background: "linear-gradient(90deg, var(--theme-accent), var(--theme-accent-strong))",
+                      color: "var(--theme-bg)",
                       padding: "0.6rem 1.4rem",
                       border: "none",
                       borderRadius: "6px",
                       fontSize: "1rem",
                       cursor: status === 'sending' ? 'wait' : 'pointer',
-                      fontWeight: 600
+                      fontWeight: 600,
+                      transition: 'filter 0.2s ease'
                     }}
                     onMouseEnter={(e) => e.currentTarget.style.filter = 'brightness(0.95)'}
                     onMouseLeave={(e) => e.currentTarget.style.filter = 'none'}
@@ -163,40 +168,41 @@ export default function Contact() {
 
           {/* Contact card */}
           <aside style={{
-            background: '#0b0b0b',
+            background: 'var(--theme-surface)',
             padding: '1.5rem',
             borderRadius: '12px',
-            border: '1px solid rgba(255,255,255,0.03)',
+            border: `1px solid var(--theme-border)`,
             height: 'fit-content',
             display: 'grid',
-            gap: '1rem'
+            gap: '1rem',
+            transition: 'background 0.3s ease, border-color 0.3s ease'
           }}>
             <div style={{ width: '100%', height: 140, borderRadius: 8, overflow: 'hidden' }}>
               <OptimizedImage src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=1200&q=80&auto=format&fit=crop" alt="Nairobi skyline" style={{ height: '140px' }} />
             </div>
 
-            <h3 style={{ marginTop: 0, marginBottom: '0.25rem', color: '#f0f0f0' }}>Direct contact</h3>
-            <p style={{ color: '#cfcfcf', marginBottom: '0.5rem' }}>Prefer direct mail or phone? We’re available during business hours in Nairobi.</p>
+            <h3 style={{ marginTop: 0, marginBottom: '0.25rem', color: 'var(--theme-text)' }}>Direct contact</h3>
+            <p style={{ color: 'var(--theme-text-muted)', marginBottom: '0.5rem' }}>Prefer direct mail or phone? We're available during business hours in Nairobi.</p>
 
             <div style={{ display: 'grid', gap: '0.75rem' }}>
               <div>
-                <strong style={{ color: '#f0f0f0', display: 'block' }}>Email</strong>
-                <a href="mailto:info@theregistry.co.ke" style={{ color: '#c2a675', textDecoration: 'none' }}>info@theregistry.co.ke</a>
+                <strong style={{ color: 'var(--theme-text)', display: 'block' }}>Email</strong>
+                <a href="mailto:info@theregistry.co.ke" style={{ color: 'var(--theme-accent-strong)', textDecoration: 'none' }}>info@theregistry.co.ke</a>
               </div>
 
               <div>
-                <strong style={{ color: '#f0f0f0', display: 'block' }}>Phone</strong>
-                <a href="tel:+254700000000" style={{ color: '#cfcfcf', textDecoration: 'none' }}>+254 (0) 700 000 000</a>
+                <strong style={{ color: 'var(--theme-text)', display: 'block' }}>Phone</strong>
+                <a href="tel:+254700000000" style={{ color: 'var(--theme-text-muted)', textDecoration: 'none' }}>+254 (0) 700 000 000</a>
               </div>
 
               <div>
-                <strong style={{ color: '#f0f0f0', display: 'block' }}>Location</strong>
-                <span style={{ color: '#cfcfcf' }}>Nairobi, Kenya</span>
+                <strong style={{ color: 'var(--theme-text)', display: 'block' }}>Location</strong>
+                <span style={{ color: 'var(--theme-text-muted)' }}>Nairobi, Kenya</span>
               </div>
             </div>
 
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.03)', paddingTop: '0.75rem', color: '#bfbfbf', fontSize: '0.9rem' }}>
-              <strong style={{ color: '#f0f0f0', display: 'block', marginBottom: 6 }}>Why contact us?</strong>
+            <div style={{ borderTop: `1px solid var(--theme-border)`, paddingTop: '0.75rem', color: 'var(--theme-text-muted)', fontSize: '0.9rem', transition: 'border-color 0.3s ease, color 0.3s ease' }}>
+              <strong style={{ color: 'var(--theme-text)', display: 'block', marginBottom: 6 }}>Why contact us?</strong>
               We verify listings, create premium presentations, and help with property research — tell us which you need and we will advise the best next step.
             </div>
           </aside>
