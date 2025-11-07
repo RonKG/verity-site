@@ -38,7 +38,7 @@ export default function About() {
             </p>
 
             <p style={{ color: '#bfbfbf', maxWidth: '720px', marginTop: '0.8rem', lineHeight: '1.6' }}>
-              Today we're a Nairobi-based team building tools for locals, returning expats and
+              Today we&apos;re a Nairobi-based team building tools for locals, returning expats and
               the diaspora — anyone who wants to move, invest or simply understand Kenyan
               property markets without the guesswork.
             </p>
@@ -149,7 +149,7 @@ export default function About() {
               lineHeight: "1.8",
             }}>
               By combining advanced market analytics with architectural expertise, 
-              we provide an unmatched platform for Kenya's most distinguished properties. 
+              we provide an unmatched platform for Kenya&apos;s most distinguished properties. 
               Our methodology ensures that each listing represents the pinnacle of both 
               value and design excellence.
             </p>

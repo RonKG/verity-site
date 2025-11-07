@@ -106,7 +106,7 @@ export default function Privacy() {
           <section style={{ marginBottom: "1rem" }}>
             <h2 style={{ fontSize: "1rem", marginBottom: "0.45rem", color: "#f5f5f5" }}>12. Changes to this Policy</h2>
             <p>
-              We may update this Privacy Policy periodically. We will post the updated policy with a revised "Last updated" date and, where appropriate, notify users of material changes.
+              We may update this Privacy Policy periodically. We will post the updated policy with a revised &quot;Last updated&quot; date and, where appropriate, notify users of material changes.
             </p>
           </section>
 

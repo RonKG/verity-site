@@ -1,4 +1,5 @@
 import Layout from "../components/Layout";
+import Link from 'next/link';
 
 export default function Terms() {
   return (
@@ -98,7 +99,7 @@ export default function Terms() {
           <section style={{ marginBottom: "1.25rem" }}>
             <h2 style={{ fontSize: "1rem", marginBottom: "0.45rem", color: "#f5f5f5" }}>10. Privacy</h2>
             <p>
-              Our Privacy Policy explains how we collect and process personal data. By using the Service you consent to our collection and use of personal data as described in the <a href="/privacy" style={{ color: '#f5b942', textDecoration: 'none' }}>Privacy Policy</a>.
+              Our Privacy Policy explains how we collect and process personal data. By using the Service you consent to our collection and use of personal data as described in the <Link href="/privacy" style={{ color: '#f5b942', textDecoration: 'none' }}>Privacy Policy</Link>.
             </p>
           </section>
 
