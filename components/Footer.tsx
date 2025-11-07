@@ -68,6 +68,14 @@ export default function Footer() {
               }}>
                 About Us
               </Link>
+              <Link href="/team" style={{
+                color: '#888',
+                textDecoration: 'none',
+                fontSize: '0.95rem',
+                transition: 'color 0.2s'
+              }}>
+                Team
+              </Link>
               <Link href="/listings" style={{
                 color: '#888',
                 textDecoration: 'none',
@@ -83,14 +91,6 @@ export default function Footer() {
                 transition: 'color 0.2s'
               }}>
                 Market Insights
-              </Link>
-              <Link href="/team" style={{
-                color: '#888',
-                textDecoration: 'none',
-                fontSize: '0.95rem',
-                transition: 'color 0.2s'
-              }}>
-                Team
               </Link>
             </nav>
           </div>
