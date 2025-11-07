@@ -1,4 +1,5 @@
 import Layout from "../components/Layout";
+import Link from 'next/link';
 import CredibilitySection from "../components/CredibilitySection";
 
 export default function Home() {
@@ -319,7 +320,7 @@ export default function Home() {
           ))}
         </div>
 
-        <a 
+        <Link 
           href="/listings"
           style={{
             display: "inline-block",
@@ -332,11 +333,11 @@ export default function Home() {
             fontWeight: "500",
             transition: "transform 0.2s"
           }}
-          onMouseOver={(e) => e.target.style.transform = "translateY(-2px)"}
-          onMouseOut={(e) => e.target.style.transform = "translateY(0)"}
+          onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
+          onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
         >
           View All Properties
-        </a>
+        </Link>
       </section>
 
       {/* Trust Indicators Section */}

@@ -101,9 +101,9 @@ export default function Insights() {
           </h1>
           <p style={{ color: "#d6d6d6", fontSize: "1.05rem", lineHeight: "1.6" }}>
             Our data blends verified listings, valuation trends, and neighborhood velocity to
-            highlight Kenya's most dynamic property zones.  
+            highlight Kenya&apos;s most dynamic property zones.  
             This page presents a snapshot of current conditions and the price movement shaping
-            Nairobi's prime markets.
+            Nairobi&apos;s prime markets.
           </p>
 
           {/* Tab Navigation */}

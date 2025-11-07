@@ -54,11 +54,10 @@ export default function CredibilitySection() {
               flex: "1 1 auto",
               fontWeight: "400",
               lineHeight: "1.7",
-              className: "quote-text",
               fontStyle: "italic",
               letterSpacing: "0.01em"
             }}>
-              "{testimonial.quote}"
+              {testimonial.quote}
             </p>
             <div style={{
               display: "flex",
@@ -81,7 +80,6 @@ export default function CredibilitySection() {
                   color: "#f0f0f0",
                   margin: 0,
                   fontWeight: "500",
-                  className: "author-name"
                 }}>
                   {testimonial.authorName}
                 </p>
@@ -89,7 +87,6 @@ export default function CredibilitySection() {
                   fontSize: "0.85rem",
                   margin: 0,
                   color: "#888",
-                  className: "author-handle"
                 }}>
                   {testimonial.handle}
                 </p>

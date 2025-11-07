@@ -29,15 +29,15 @@ export default function Terms() {
           <section style={{ marginBottom: "1.25rem" }}>
             <h2 style={{ fontSize: "1rem", marginBottom: "0.45rem", color: "#f5f5f5" }}>1. Scope and Acceptance</h2>
             <p>
-              These Terms of Service ("Terms") govern your access to and use of The Registry platform (the "Service"). By using the Service you agree to these Terms and any policies referenced herein. If you do not agree, do not use the Service.
+              These Terms of Service (&quot;Terms&quot;) govern your access to and use of The Registry platform (the &quot;Service&quot;). By using the Service you agree to these Terms and any policies referenced herein. If you do not agree, do not use the Service.
             </p>
           </section>
 
           <section style={{ marginBottom: "1.25rem" }}>
             <h2 style={{ fontSize: "1rem", marginBottom: "0.45rem", color: "#f5f5f5" }}>2. Definitions</h2>
-            <p style={{ marginBottom: '0.35rem' }}><strong>"The Registry"</strong> — The company and platform providing verified property listings, market analytics and related services.</p>
-            <p style={{ marginBottom: '0.35rem' }}><strong>"User"</strong> — Any person or entity accessing the Service.</p>
-            <p><strong>"Data"</strong> — Listings, transaction samples, analytics, and any content made available through the Service (including API or bespoke extracts).</p>
+            <p style={{ marginBottom: '0.35rem' }}><strong>&quot;The Registry&quot;</strong> — The company and platform providing verified property listings, market analytics and related services.</p>
+            <p style={{ marginBottom: '0.35rem' }}><strong>&quot;User&quot;</strong> — Any person or entity accessing the Service.</p>
+            <p><strong>&quot;Data&quot;</strong> — Listings, transaction samples, analytics, and any content made available through the Service (including API or bespoke extracts).</p>
           </section>
 
           <section style={{ marginBottom: "1.25rem" }}>
@@ -57,7 +57,7 @@ export default function Terms() {
           <section style={{ marginBottom: "1.25rem" }}>
             <h2 style={{ fontSize: "1rem", marginBottom: "0.45rem", color: "#f5f5f5" }}>5. Data Quality, Verification & Use</h2>
             <p style={{ marginBottom: 0 }}>
-              The Registry combines internal verification processes with third-party records to produce Data that is accurate to the best of our capabilities. We label primary sources and apply internal verification badges where applicable. However, all Data is provided "as-is" for informational purposes and should not be the sole basis for material decisions without independent due diligence.
+              The Registry combines internal verification processes with third-party records to produce Data that is accurate to the best of our capabilities. We label primary sources and apply internal verification badges where applicable. However, all Data is provided &quot;as-is&quot; for informational purposes and should not be the sole basis for material decisions without independent due diligence.
             </p>
             <p style={{ marginTop: '0.5rem' }}>
               Averages, indices and trend summaries exclude outliers according to our internal methodology. For bespoke extracts, raw data access, or commercial licensing please contact <a href="mailto:research@theregistry.co.ke" style={{ color: '#f5b942', textDecoration: 'none' }}>research@theregistry.co.ke</a>.

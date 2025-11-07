@@ -197,7 +197,7 @@ export default function Contact() {
 
             <div style={{ borderTop: '1px solid rgba(255,255,255,0.03)', paddingTop: '0.75rem', color: '#bfbfbf', fontSize: '0.9rem' }}>
               <strong style={{ color: '#f0f0f0', display: 'block', marginBottom: 6 }}>Why contact us?</strong>
-              We verify listings, create premium presentations, and help with property research — tell us which you need and we'll advise the best next step.
+              We verify listings, create premium presentations, and help with property research — tell us which you need and we will advise the best next step.
             </div>
           </aside>
         </main>
