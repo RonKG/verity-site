@@ -43,7 +43,7 @@ export default function Home() {
           alignItems: "center",
           justifyContent: "center",
           minHeight: "85vh",
-          color: "#f0f0f0",
+          color: "var(--theme-text)",
           textAlign: "center",
           padding: "40px 20px",
           overflow: "hidden",
@@ -101,7 +101,7 @@ export default function Home() {
           <p
             style={{
               fontSize: "clamp(1.2rem, 1.8vw, 1.4rem)",
-              color: "#e0e0e0",
+              color: "var(--theme-text)",
               maxWidth: "600px",
               lineHeight: "1.6",
               marginBottom: "1.25rem",
@@ -114,7 +114,7 @@ export default function Home() {
           <p
             style={{
               fontSize: "clamp(0.95rem, 1.2vw, 1.1rem)",
-              color: "#cccccc",
+              color: "var(--theme-text-muted)",
               maxWidth: "540px",
               lineHeight: "1.7",
               marginBottom: "3rem",
@@ -139,22 +139,23 @@ export default function Home() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                background: "rgba(0,0,0,0.3)",
+                background: "var(--theme-card-bg)",
                 backdropFilter: "blur(10px)",
                 padding: "1rem 2rem",
                 borderRadius: "8px",
-                border: "1px solid rgba(255,255,255,0.1)"
+                border: `1px solid var(--theme-border)`,
+                transition: 'background 0.3s ease, border-color 0.3s ease'
               }}>
                 <span style={{
                   fontSize: "1.8rem",
                   fontWeight: "500",
-                  background: "linear-gradient(45deg, #f5b942, #c2a675)",
+                  background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent"
                 }}>{stat.number}</span>
                 <span style={{
                   fontSize: "0.9rem",
-                  color: "#bcbcbc",
+                  color: "var(--theme-text-muted)",
                   marginTop: "0.3rem"
                 }}>{stat.label}</span>
               </div>
@@ -192,7 +193,7 @@ export default function Home() {
           }}
         >
           <span style={{
-            color: "#f5b942",
+            color: "var(--theme-accent)",
             fontSize: "0.85rem",
             fontWeight: "500",
             textTransform: "uppercase",
@@ -203,7 +204,7 @@ export default function Home() {
           <div style={{
             width: "2px",
             height: "40px",
-            background: "linear-gradient(to bottom, #f5b942 50%, transparent)",
+            background: `linear-gradient(to bottom, var(--theme-accent) 50%, transparent)`,
             animation: "fadeInOut 2s infinite",
           }} />
         </div>
@@ -234,12 +235,13 @@ export default function Home() {
 
       {/* Featured Properties Preview */}
       <section style={{
-        backgroundColor: "#0e0e0e",
+        backgroundColor: "var(--theme-bg)",
         padding: "80px 20px",
         textAlign: "center",
+        transition: 'background-color 0.3s ease'
       }}>
         <p style={{
-          color: '#bcbcbc',
+          color: 'var(--theme-text-muted)',
           maxWidth: '760px',
           margin: '0 auto 1.25rem',
           lineHeight: '1.6'
@@ -250,7 +252,7 @@ export default function Home() {
           fontSize: "2rem",
           fontWeight: "400",
           marginBottom: "2rem",
-          color: "#f0f0f0"
+          color: "var(--theme-text)"
         }}>Latest Verified Properties</h2>
         
         <div style={{
@@ -282,14 +284,15 @@ export default function Home() {
             }
           ].map((property, index) => (
             <div key={index} style={{
-              background: "#151515",
+              background: "var(--theme-surface)",
               borderRadius: "12px",
               overflow: "hidden",
-              transition: "transform 0.3s",
+              transition: "transform 0.3s, background 0.3s ease",
               cursor: "pointer",
+              border: `1px solid var(--theme-border)`
             }}
-            onMouseOver={(e) => e.target.style.transform = "translateY(-5px)"}
-            onMouseOut={(e) => e.target.style.transform = "translateY(0)"}
+            onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-5px)"}
+            onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
             >
               <img 
                 src={property.image}
@@ -303,16 +306,16 @@ export default function Home() {
               <div style={{ padding: "1.5rem" }}>
                 <h3 style={{
                   fontSize: "1.3rem",
-                  color: "#f0f0f0",
+                  color: "var(--theme-text)",
                   marginBottom: "0.5rem"
                 }}>{property.title}</h3>
                 <p style={{
-                  color: "#bcbcbc",
+                  color: "var(--theme-text-muted)",
                   fontSize: "0.9rem",
                   marginBottom: "1rem"
                 }}>{property.location}</p>
                 <p style={{
-                  color: "#f5b942",
+                  color: "var(--theme-accent)",
                   fontWeight: "500"
                 }}>{property.price}</p>
               </div>
@@ -326,8 +329,8 @@ export default function Home() {
             display: "inline-block",
             marginTop: "3rem",
             padding: "12px 24px",
-            background: "linear-gradient(45deg, #f5b942, #c2a675)",
-            color: "#0e0e0e",
+            background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
+            color: "var(--theme-bg)",
             textDecoration: "none",
             borderRadius: "6px",
             fontWeight: "500",
@@ -342,11 +345,12 @@ export default function Home() {
 
       {/* Trust Indicators Section */}
       <section style={{
-        backgroundColor: "#0e0e0e",
+        backgroundColor: "var(--theme-bg)",
         padding: "80px 20px",
         textAlign: "center",
         position: "relative",
-        overflow: "hidden"
+        overflow: "hidden",
+        transition: 'background-color 0.3s ease'
       }}>
         <div style={{
           position: "absolute",
@@ -363,7 +367,7 @@ export default function Home() {
             fontSize: "2rem",
             fontWeight: "400",
             marginBottom: "3rem",
-            color: "#f0f0f0"
+            color: "var(--theme-text)"
           }}>Why The Registry</h2>
 
           <div style={{
@@ -391,22 +395,23 @@ export default function Home() {
               }
             ].map((feature, index) => (
               <div key={index} style={{
-                background: "#151515",
+                background: "var(--theme-surface)",
                 padding: "2rem",
                 borderRadius: "12px",
-                border: "1px solid rgba(255,255,255,0.05)",
+                border: `1px solid var(--theme-border)`,
+                transition: 'background 0.3s ease, border-color 0.3s ease'
               }}>
                 <span style={{ fontSize: "2rem", marginBottom: "1rem", display: "block" }}>
                   {feature.icon}
                 </span>
                 <h3 style={{
-                  color: "#f5b942",
+                  color: "var(--theme-accent)",
                   fontSize: "1.3rem",
                   marginBottom: "1rem",
                   fontWeight: "400"
                 }}>{feature.title}</h3>
                 <p style={{
-                  color: "#bcbcbc",
+                  color: "var(--theme-text-muted)",
                   lineHeight: "1.6"
                 }}>{feature.description}</p>
               </div>
