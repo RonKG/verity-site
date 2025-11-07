@@ -41,10 +41,10 @@ export default function Home() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: "90vh",
+          minHeight: "92vh",
           color: "#f0f0f0",
           textAlign: "center",
-          padding: "40px 20px",
+          padding: "60px 24px",
           overflow: "hidden",
         }}
       >
@@ -78,10 +78,11 @@ export default function Home() {
         <div style={{ position: "relative", zIndex: 2 }}>
           <h1
             style={{
-              fontSize: "clamp(2rem, 5vw, 3.5rem)",
+              fontSize: "clamp(3.5rem, 6vw, 5rem)",
               fontWeight: "400",
-              marginBottom: "1rem",
-              letterSpacing: "0.5px",
+              marginBottom: "1.5rem",
+              letterSpacing: "-0.02em",
+              lineHeight: "1.1",
             }}
           >
             The Registry
@@ -89,13 +90,27 @@ export default function Home() {
 
           <p
             style={{
-              fontSize: "1.25rem",
+              fontSize: "clamp(1.25rem, 2vw, 1.5rem)",
               color: "#e0e0e0",
               maxWidth: "600px",
               lineHeight: "1.6",
+              marginBottom: "1.5rem",
             }}
           >
             Curated. Verified. Data-driven.
+          </p>
+
+          <p
+            style={{
+              fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+              color: "#cccccc",
+              maxWidth: "700px",
+              lineHeight: "1.7",
+              margin: "0 auto",
+              letterSpacing: "0.01em",
+            }}
+          >
+            Because finding a home should feel inspiring — and certain.
           </p>
 
           <p
