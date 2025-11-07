@@ -107,7 +107,6 @@ export default function Layout({ children }) {
               { href: "/heatmap", label: "Heatmap" },
             ],
             [
-              { href: "/about", label: "About" },
               { href: "/contact", label: "Contact" },
             ]
           ].map((group, groupIndex) => (
