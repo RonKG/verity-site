@@ -25,7 +25,8 @@
     "Modular reusable components",
     "Semantic HTML & accessibility",
     "Responsive-first",
-    "SEO and analytics integrated early"
+    "SEO and analytics integrated early",
+    "Start the dev server locally and verify visual changes after edits"
   ],
   "agent_rules": [
     "Infer intent; don’t blindly execute",

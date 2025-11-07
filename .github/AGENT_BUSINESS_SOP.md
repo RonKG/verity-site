@@ -76,6 +76,8 @@ Integrate analytics and SEO early (structured data, OpenGraph, meta).
 
 Treat AI-driven data (scrapers, summarizers, trend analysis) as core features, not experiments.
 
+After edits: start the dev server locally (`npm run dev`) and visually verify the pages you changed before committing. Include a short verification note in the commit message (e.g., "preview: /insights — verified"). Agents should automatically start the dev server after substantive UI or page edits unless the user tells them not to.
+
 7. Business Flexibility
 
 This SOP supports pivots — whether toward:
@@ -105,6 +107,8 @@ Keep reasoning transparent — log assumptions and trade-offs.
 Suggest optimizations, not just solutions.
 
 Never compromise the tone of refinement for speed.
+
+Start the dev server locally and confirm visual verification of edits after making changes; report the verification step in the commit or task notes.
 
 9. Quality Review Checklist
 

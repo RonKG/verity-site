@@ -564,22 +564,58 @@ export default function Insights() {
           <div style={{
             background: '#0f0f0f',
             border: '1px solid #222',
-            borderRadius: '10px',
-            padding: '1rem 1.25rem',
+            borderRadius: '12px',
+            padding: '1.25rem 1.5rem',
             color: '#cfcfcf'
           }}>
-            <h4 style={{ margin: '0 0 0.5rem 0', color: '#f5f5f5' }}>Data sources & notes</h4>
-            <p style={{ margin: 0, color: '#bfbfbf', lineHeight: 1.6 }}>
-              The insights above are synthesised from a combination of internal and external datasets to ensure transparency and traceability:
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+              <h4 style={{ margin: 0, color: '#f5f5f5', fontSize: '1.05rem' }}>Data sources & notes</h4>
+              <div style={{ color: '#c2a675', fontWeight: 600, fontSize: '0.95rem' }}>Primary source: The Registry</div>
+            </div>
+
+            <p style={{ margin: '0.65rem 0 0.25rem 0', color: '#bfbfbf', lineHeight: 1.6 }}>
+              The insights above are synthesised from a combination of internal and external datasets to ensure transparency and traceability.
             </p>
-            <ul style={{ marginTop: '0.75rem', marginBottom: 0, color: '#cfcfcf', lineHeight: 1.6 }}>
-              <li><strong>The Registry (internal)</strong> — verified listing metadata and transaction samples captured and validated by our in‑house verification process (primary source).</li>
-              <li><strong>Public records</strong> — land registries and publicly available transaction notices used to corroborate titles and sale dates.</li>
-              <li><strong>Broker & partner feeds</strong> — curated feeds from vetted partners and agents used to supplement liquidity and asking‑price signals.</li>
-              <li><strong>Market reports</strong> — third‑party research and market briefs used for context and cross‑validation.</li>
-            </ul>
-            <div style={{ marginTop: '0.75rem', color: '#9f9f9f', fontSize: '0.9rem' }}>
-              Note: averages exclude outliers and only include records that pass our verification checks. For bespoke extracts or raw data access, contact research@theregistry.co.ke.
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem', marginTop: '0.75rem' }}>
+              <div style={{ background: '#0b0b0b', border: '1px solid rgba(255,255,255,0.03)', padding: '0.85rem', borderRadius: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: '#fff', fontSize: '0.95rem' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#f5b942"/><path d="M7 12l3 3 7-7" stroke="#0e0e0e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  <div>The Registry <span style={{ color: '#9a9a9a', fontWeight: 500, fontSize: '0.82rem' }}>— internal</span></div>
+                </div>
+                <div style={{ color: '#bfbfbf', marginTop: '0.45rem', fontSize: '0.9rem', lineHeight: 1.45 }}>Verified listing metadata and transaction samples captured and validated by our in‑house verification process. (Primary source)</div>
+              </div>
+
+              <div style={{ background: '#0b0b0b', border: '1px solid rgba(255,255,255,0.03)', padding: '0.85rem', borderRadius: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: '#fff', fontSize: '0.95rem' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="#cfcfcf"/><path d="M7 9h10" stroke="#0b0b0b" strokeWidth="1.2" strokeLinecap="round"/></svg>
+                  <div>Public records</div>
+                </div>
+                <div style={{ color: '#bfbfbf', marginTop: '0.45rem', fontSize: '0.9rem', lineHeight: 1.45 }}>Land registries and publicly available transaction notices used to corroborate titles and sale dates.</div>
+              </div>
+
+              <div style={{ background: '#0b0b0b', border: '1px solid rgba(255,255,255,0.03)', padding: '0.85rem', borderRadius: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: '#fff', fontSize: '0.95rem' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16v10H4z" fill="#c2a675"/><path d="M8 11h8" stroke="#0b0b0b" strokeWidth="1.2" strokeLinecap="round"/></svg>
+                  <div>Broker & partner feeds</div>
+                </div>
+                <div style={{ color: '#bfbfbf', marginTop: '0.45rem', fontSize: '0.9rem', lineHeight: 1.45 }}>Curated feeds from vetted partners and agents used to supplement liquidity and asking‑price signals.</div>
+              </div>
+
+              <div style={{ background: '#0b0b0b', border: '1px solid rgba(255,255,255,0.03)', padding: '0.85rem', borderRadius: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: '#fff', fontSize: '0.95rem' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v12H4z" fill="#9aa0a6"/><path d="M7 9h10" stroke="#0b0b0b" strokeWidth="1.2" strokeLinecap="round"/></svg>
+                  <div>Market reports</div>
+                </div>
+                <div style={{ color: '#bfbfbf', marginTop: '0.45rem', fontSize: '0.9rem', lineHeight: 1.45 }}>Third‑party research and market briefs used for context and cross‑validation.</div>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '0.9rem', paddingTop: '0.8rem', borderTop: '1px solid rgba(255,255,255,0.03)' }}>
+              <div style={{ color: '#9f9f9f', fontSize: '0.95rem', lineHeight: 1.6 }}>
+                <strong style={{ color: '#d0d0d0' }}>Note:</strong> averages exclude outliers and only include records that pass our verification checks.
+                For bespoke extracts or raw data access, contact <a href="mailto:research@theregistry.co.ke" style={{ color: '#f5b942', textDecoration: 'none' }}>research@theregistry.co.ke</a>.
+              </div>
             </div>
           </div>
         </div>

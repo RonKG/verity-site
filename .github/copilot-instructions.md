@@ -13,6 +13,8 @@
 - Build for production: `npm run build` then `npm run start` to preview the production build.
 - Linting: `npm run lint` runs `eslint` (config is at `eslint.config.mjs`). Prefer fixing lint issues in small, focused commits.
 
+- After making edits to code or UI, start the dev server locally with `npm run dev` and verify the changed pages visually before committing and pushing. Agents should start the dev server automatically after substantive edits unless the user asks otherwise.
+
 ## Project-specific conventions and patterns
 
 - Inline styles dominate. When modifying component layout or colors, mirror the style shape used nearby (see `components/Layout.jsx` for header/nav examples and `components/Footer.tsx` for footer patterns).
