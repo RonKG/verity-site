@@ -43,9 +43,12 @@ export default function Layout({ children }) {
  
 
   const logoStyle = {
-    width: scrolled ? 32 : 36,
-    height: scrolled ? 32 : 36,
-    fontSize: scrolled ? '1rem' : '1.1rem'
+    width: scrolled ? 44 : 56,
+    height: scrolled ? 44 : 56,
+    fontSize: scrolled ? '1.05rem' : '1.25rem',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   };
 
   return (
@@ -65,27 +68,38 @@ export default function Layout({ children }) {
         <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
           {/* Gold circular icon */}
           <div
+            role="img"
+            aria-label="The Registry logo"
             style={{
               ...logoStyle,
               borderRadius: "50%",
-              border: "1.5px solid #c2a675",
+              border: scrolled ? "2.5px solid #f5b942" : "2px solid #c2a675",
+              background: scrolled ? "linear-gradient(135deg, rgba(245,185,66,0.08), rgba(194,166,117,0.03))" : "transparent",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#c2a675",
-              fontWeight: "500",
-              transition: "all 180ms ease",
+              color: scrolled ? "#f5b942" : "#c2a675",
+              fontWeight: "700",
+              boxShadow: scrolled ? "0 8px 30px rgba(197,153,90,0.12)" : "0 4px 12px rgba(0,0,0,0.25)",
+              transform: "scale(1)",
+              transition: "all 200ms ease",
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = "#c2a675";
-              e.target.style.color = "#0e0e0e";
+              const el = e.currentTarget;
+              el.style.transform = "scale(1.06)";
+              el.style.background = "linear-gradient(135deg, rgba(245,185,66,0.12), rgba(194,166,117,0.06))";
+              el.style.color = "#0e0e0e";
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = "transparent";
-              e.target.style.color = "#c2a675";
+              const el = e.currentTarget;
+              el.style.transform = "scale(1)";
+              el.style.background = scrolled ? "linear-gradient(135deg, rgba(245,185,66,0.08), rgba(194,166,117,0.03))" : "transparent";
+              el.style.color = scrolled ? "#f5b942" : "#c2a675";
             }}
           >
-            R
+            <span style={{ fontSize: scrolled ? '1.05rem' : '1.35rem', lineHeight: 1 }}>
+              R
+            </span>
           </div>
 
           {/* Title text */}
