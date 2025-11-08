@@ -142,178 +142,31 @@ export default function Services() {
         <section style={{
           padding: "100px 20px 60px",
           textAlign: "center",
-          maxWidth: "1000px",
+          maxWidth: "900px",
           margin: "0 auto"
         }}>
-          <div style={{
-            display: "inline-block",
-            padding: "0.5rem 1rem",
-            background: "var(--theme-surface)",
-            borderRadius: "20px",
-            marginBottom: "1.5rem",
-            border: `1px solid var(--theme-border)`,
-            transition: 'background 0.3s ease, border-color 0.3s ease'
-          }}>
-            <span style={{
-              fontSize: "0.85rem",
-              color: "var(--theme-accent)",
-              fontWeight: "500",
-              letterSpacing: "0.5px",
-              textTransform: "uppercase"
-            }}>
-              Verified Property Intelligence
-            </span>
-          </div>
-          
           <h1 style={{
-            fontSize: "3rem",
+            fontSize: "2.5rem",
             fontWeight: "400",
-            marginBottom: "1.5rem",
+            marginBottom: "1rem",
             letterSpacing: "-0.02em",
             lineHeight: "1.2",
-            background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent"
+            color: "var(--theme-text)",
+            transition: 'color 0.3s ease'
           }}>
-            Property Services Built<br/>on Verification
+            Our Services
           </h1>
           
           <p style={{
-            fontSize: "1.15rem",
-            color: "var(--theme-text)",
-            lineHeight: "1.7",
-            maxWidth: "750px",
-            margin: "0 auto 2rem",
-            fontWeight: "400",
-            transition: 'color 0.3s ease'
-          }}>
-            We provide comprehensive property verification services for buyers, sellers, and investors who need reliable information before making decisions.
-          </p>
-          
-          <p style={{
-            fontSize: "0.95rem",
+            fontSize: "1.1rem",
             color: "var(--theme-text-muted)",
             lineHeight: "1.7",
             maxWidth: "650px",
-            margin: "0 auto 3rem",
+            margin: "0 auto",
             transition: 'color 0.3s ease'
           }}>
-            Our team verifies property titles, validates ownership claims, and documents every listing with thorough due diligence.
+            Comprehensive property verification, market intelligence, and advisory services for Kenya's premium real estate market.
           </p>
-          
-          {/* Value Props */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "2rem",
-            margin: "3rem auto",
-            maxWidth: "900px"
-          }}>
-            <div>
-              <div style={{
-                fontSize: "1.75rem",
-                fontWeight: "600",
-                color: "var(--theme-accent)",
-                marginBottom: "0.5rem"
-              }}>72hrs</div>
-              <div style={{
-                fontSize: "0.9rem",
-                color: "var(--theme-text-muted)",
-                transition: 'color 0.3s ease'
-              }}>Typical verification time</div>
-            </div>
-            <div>
-              <div style={{
-                fontSize: "1.75rem",
-                fontWeight: "600",
-                color: "var(--theme-accent)",
-                marginBottom: "0.5rem"
-              }}>100%</div>
-              <div style={{
-                fontSize: "0.9rem",
-                color: "var(--theme-text-muted)",
-                transition: 'color 0.3s ease'
-              }}>Title checks on listings</div>
-            </div>
-            <div>
-              <div style={{
-                fontSize: "1.75rem",
-                fontWeight: "600",
-                color: "var(--theme-accent)",
-                marginBottom: "0.5rem"
-              }}>2.4K+</div>
-              <div style={{
-                fontSize: "0.9rem",
-                color: "var(--theme-text-muted)",
-                transition: 'color 0.3s ease'
-              }}>Properties verified</div>
-            </div>
-          </div>
-          
-          {/* CTA */}
-          <div style={{
-            marginTop: "3rem",
-            display: "flex",
-            gap: "1rem",
-            justifyContent: "center",
-            flexWrap: "wrap"
-          }}>
-            <a
-              href="#services-form"
-              style={{
-                display: "inline-block",
-                padding: "0.9rem 1.75rem",
-                background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
-                color: "#000000",
-                textDecoration: "none",
-                borderRadius: "6px",
-                fontWeight: "600",
-                fontSize: "1rem",
-                transition: "all 0.3s ease",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                border: "none"
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = "translateY(-1px)";
-                e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.15)";
-              }}
-            >
-              Submit Property for Verification
-            </a>
-            
-            <a
-              href="/listings"
-              style={{
-                display: "inline-block",
-                padding: "0.9rem 1.75rem",
-                background: "var(--theme-surface)",
-                color: "var(--theme-text)",
-                textDecoration: "none",
-                borderRadius: "6px",
-                fontWeight: "500",
-                fontSize: "1rem",
-                border: `1px solid var(--theme-border)`,
-                transition: "all 0.3s ease",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.08)"
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
-                e.currentTarget.style.transform = "translateY(-1px)";
-                e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.12)";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.borderColor = "var(--theme-border)";
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
-              }}
-            >
-              Browse Verified Listings
-            </a>
-          </div>
         </section>
 
         {/* Services Grid */}
