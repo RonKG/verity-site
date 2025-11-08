@@ -111,46 +111,56 @@ export default function Insights() {
           <div style={{
             display: "flex",
             justifyContent: "center",
-            gap: "1rem",
+            gap: "0.5rem",
             marginTop: "2rem",
-            borderBottom: `1px solid var(--theme-border)`,
-            paddingBottom: "1rem",
-            alignItems: 'center',
-            transition: 'border-color 0.3s ease'
+            padding: "0.5rem",
+            background: "var(--theme-surface)",
+            borderRadius: "12px",
+            border: `1px solid var(--theme-border)`,
+            transition: 'background 0.3s ease, border-color 0.3s ease',
+            flexWrap: 'wrap'
           }}>
             {[
               { id: "market", label: "Market Overview" },
               { id: "trends", label: "Price Trends" },
-                { id: "regions", label: "Regional Analysis" },
-                { id: "analysis", label: "Analyst Notes" }
+              { id: "regions", label: "Regional Analysis" },
+              { id: "analysis", label: "Analyst Notes" }
             ].map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 style={{
-                  background: "transparent",
-                  border: "none",
-                  color: activeTab === tab.id ? "var(--theme-accent)" : "var(--theme-text-muted)",
-                  padding: "10px 18px",
+                  background: activeTab === tab.id 
+                    ? "linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))" 
+                    : "transparent",
+                  border: activeTab === tab.id ? "none" : `1px solid transparent`,
+                  color: activeTab === tab.id ? "var(--theme-bg)" : "var(--theme-text-muted)",
+                  padding: "12px 20px",
                   cursor: "pointer",
-                  fontSize: "1rem",
-                  position: "relative",
-                  transition: "color 0.2s, transform 0.15s",
-                  letterSpacing: '0.2px'
+                  fontSize: "0.95rem",
+                  fontWeight: activeTab === tab.id ? "600" : "500",
+                  borderRadius: "8px",
+                  transition: "all 0.3s ease",
+                  letterSpacing: '0.3px',
+                  position: 'relative',
+                  boxShadow: activeTab === tab.id 
+                    ? "0 4px 12px rgba(245, 185, 66, 0.25)" 
+                    : "none"
+                }}
+                onMouseEnter={(e) => {
+                  if (activeTab !== tab.id) {
+                    e.currentTarget.style.background = "var(--theme-card-bg)";
+                    e.currentTarget.style.borderColor = "var(--theme-border)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeTab !== tab.id) {
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderColor = "transparent";
+                  }
                 }}
               >
                 {tab.label}
-                {activeTab === tab.id && (
-                  <div style={{
-                    position: "absolute",
-                    bottom: "-0.9rem",
-                    left: '25%',
-                    right: '25%',
-                    height: "2px",
-                    background: "var(--theme-accent)",
-                    borderRadius: '2px'
-                  }} />
-                )}
               </button>
             ))}
           </div>
