@@ -82,6 +82,7 @@ export default function MobileMenu() {
             [{ href: '/', label: 'Home' }],
             [
               { href: '/listings', label: 'Listings' },
+              { href: '/services', label: 'Services' },
               { href: '/insights', label: 'Insights' },
               { href: '/heatmap', label: 'Heatmap' },
             ],

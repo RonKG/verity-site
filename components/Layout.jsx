@@ -167,6 +167,7 @@ export default function Layout({ children }) {
             [{ href: "/", label: "Home" }],
             [
               { href: "/listings", label: "Listings" },
+              { href: "/services", label: "Services" },
               { href: "/insights", label: "Insights" },
               { href: "/heatmap", label: "Heatmap" },
             ],
