@@ -15,7 +15,7 @@ export default function About() {
           transition: 'background-color 0.3s ease, color 0.3s ease'
         }}
       >
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: 'grid', gridTemplateColumns: '1fr 380px', gap: '2rem', alignItems: 'center' }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", display: 'grid', gridTemplateColumns: '1fr 320px', gap: '2rem', alignItems: 'center' }}>
           <div>
             <h1
               style={{
@@ -45,12 +45,12 @@ export default function About() {
             </p>
           </div>
 
-          <div style={{ width: '100%', height: 380, borderRadius: 12, overflow: 'hidden', border: `1px solid var(--theme-border)`, transition: 'border-color 0.3s ease' }}>
+          <div style={{ width: '100%', height: 220, borderRadius: 12, overflow: 'hidden', border: `1px solid var(--theme-border)`, transition: 'border-color 0.3s ease' }}>
             <OptimizedImage
-              src="https://plus.unsplash.com/premium_photo-1733317483746-661d5384329c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1169"
+              src="https://plus.unsplash.com/premium_vector-1739160157656-afa3520fa375?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1025"
               alt="Founder portrait"
               priority
-              style={{ height: '380px' }}
+              style={{ height: '220px' }}
             />
           </div>
         </div>
