@@ -2233,6 +2233,13 @@ export default function PropertyDetail() {
             </div>
           </div>
 
+          {/* Property Inquiry Section - Moved up for better visibility */}
+          <div style={{
+            marginBottom: "4rem"
+          }}>
+            <PropertyInquiryForm propertyTitle={property.title} />
+          </div>
+
           {/* Neighborhood */}
           <div>
             <h2 style={{ 
@@ -2286,11 +2293,105 @@ export default function PropertyDetail() {
               </div>
             </div>
           </div>
+
+          {/* Similar Properties Section */}
+          <div style={{
+            marginTop: "4rem",
+            paddingTop: "4rem",
+            borderTop: `1px solid var(--theme-border)`,
+            transition: 'border-color 0.3s ease'
+          }}>
+            <h2 style={{ 
+              fontSize: "1.8rem", 
+              marginBottom: "2rem",
+              color: "var(--theme-text)",
+              transition: 'color 0.3s ease'
+            }}>Similar Properties</h2>
+            
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gap: "2rem"
+            }}>
+              {Object.entries(propertyDetails)
+                .filter(([key]) => key !== id)
+                .slice(0, 3)
+                .map(([key, prop]) => (
+                  <div
+                    key={key}
+                    onClick={() => router.push(`/listings/${key}`)}
+                    style={{
+                      backgroundColor: "var(--theme-surface)",
+                      borderRadius: "12px",
+                      overflow: "hidden",
+                      cursor: "pointer",
+                      transition: "all 0.3s ease",
+                      border: `1px solid var(--theme-border)`
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-4px)";
+                      e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.15)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
+                  >
+                    <div style={{ position: "relative", height: "240px", overflow: "hidden" }}>
+                      <OptimizedImage
+                        src={prop.gallery[0].url + "?auto=format&fit=crop&w=600&q=80"}
+                        alt={prop.title}
+                        height={"240px"}
+                        objectFit={"cover"}
+                        quality={80}
+                        style={{ width: '100%' }}
+                      />
+                      {prop.badge && (
+                        <div style={{ position: "absolute", top: "1rem", left: "1rem" }}>
+                          <VerificationBadge level={prop.badge} />
+                        </div>
+                      )}
+                    </div>
+                    <div style={{ padding: "1.5rem" }}>
+                      <h3 style={{
+                        color: "var(--theme-text)",
+                        fontSize: "1.2rem",
+                        marginBottom: "0.5rem",
+                        fontWeight: "500",
+                        transition: 'color 0.3s ease'
+                      }}>{prop.title}</h3>
+                      <p style={{
+                        color: "var(--theme-text-muted)",
+                        fontSize: "0.9rem",
+                        marginBottom: "0.75rem",
+                        transition: 'color 0.3s ease'
+                      }}>{prop.location}</p>
+                      <div style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        paddingTop: "0.75rem",
+                        borderTop: `1px solid var(--theme-border)`,
+                        transition: 'border-color 0.3s ease'
+                      }}>
+                        <span style={{
+                          color: "var(--theme-accent)",
+                          fontSize: "1.25rem",
+                          fontWeight: "600"
+                        }}>{prop.price}</span>
+                        <span style={{
+                          color: "var(--theme-text-muted)",
+                          fontSize: "0.85rem",
+                          transition: 'color 0.3s ease'
+                        }}>{prop.specs.bedrooms} Bed • {prop.specs.plotSize}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Property Inquiry Section */}
-      <PropertyInquiryForm propertyTitle={property.title} />
 
       {/* Gallery Lightbox Modal */}
       {isGalleryOpen && selectedImage && (
