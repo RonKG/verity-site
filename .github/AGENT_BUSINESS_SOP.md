@@ -122,9 +122,61 @@ Start the dev server locally and confirm visual verification of edits after maki
 
 10. Long-Term Vision
 
-“Build a living registry of value — where Kenya’s properties, data, and design converge in one trusted source.”
+"Build a living registry of value — where Kenya's properties, data, and design converge in one trusted source."
 
 Everything — from code to content — should move this vision forward.
+
+---
+
+## 11. Recent Session Context (Updated: Nov 2025)
+
+This section captures recent decisions, active work streams, and stylistic choices to maintain continuity across sessions without carrying full conversation history.
+
+### Active Product Direction
+- **Data-as-a-Service** is now a core offering — prominently featured on insights page with 3 strategic callouts:
+  - Hero section banner with link to services
+  - Enhanced data sources footer with "Data as a Service" box
+  - Analyst notes section with clear CTA
+- All data service messaging points users to `/services` page (not email addresses)
+- Positioning: "Flexible delivery methods — from bespoke one-time queries to real-time programmatic access"
+
+### Recent Design Decisions
+- **About page image**: Replaced with elegant residential architecture (boutique feel, not corporate towers)
+- **Spacing fixes**: Removed excessive margins between insights sections and newsletter (`marginBottom: "0"`, `marginTop: "0"`)
+- **Visual language**: Gold-bordered callouts for important CTAs, database/layers icons for data services
+- **Tone refinement**: "Looking for more?" style — conversational but sophisticated
+
+### Key Pages & Their Purpose
+- **`/insights`**: Market data showcase + data service funnel (3 callout points)
+- **`/services`**: Service catalog + lead capture form (includes data/API services card)
+- **`/about`**: Origin story + boutique positioning (not corporate)
+- **`/listings` & `/listings/[id]`**: Property showcase with verification badges
+
+### Technical Notes
+- Dev environment: Conda (not npm standalone) — use `conda install nodejs` if setting up fresh
+- Dev server: Auto-start after UI changes per SOP rule #6
+- Image hosting: Unsplash configured in `next.config.mjs` under `images.remotePatterns`
+- Styling: Inline styles dominate, CSS variables for theming (`--theme-accent`, `--theme-bg`, etc.)
+
+### What NOT to Change (Unless Explicitly Requested)
+- Core brand palette (matte black, gold accents)
+- Inline styling approach (don't introduce large CSS files)
+- Verification badge system on property listings
+- Data sources footer structure on insights page
+
+### Common Patterns to Replicate
+1. **CTA buttons**: Gold gradient background (`linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`), subtle hover lift
+2. **Callout boxes**: Light gold background, gold border, icon + heading + description pattern
+3. **Links within copy**: Gold color, underline on hover, `font-weight: 500`
+4. **Spacing**: Generous but not excessive — section padding typically `80px 20px` or `60px 20px`
+
+### Next Likely Priorities (If User Continues This Direction)
+- Expand services page with more detail on data/API offerings
+- Add actual API documentation or sample endpoint showcase
+- Build out property listing pages with real data hooks
+- Create data request/quote flow on services page
+
+---
 
 (See attachments above for file contents. You may not need to search or read the file again.)
 

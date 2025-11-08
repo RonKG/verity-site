@@ -56,5 +56,24 @@
     "copy_tone_check",
     "components_reusable"
   ],
+  "recent_context": {
+    "last_updated": "2025-11",
+    "active_direction": "Data-as-a-Service is core offering with prominent callouts on insights page",
+    "recent_changes": [
+      "insights: 3 data service callouts (hero, footer, analyst notes)",
+      "about: elegant residential image (boutique not corporate)",
+      "spacing: fixed insights-to-newsletter gap"
+    ],
+    "key_patterns": {
+      "cta_buttons": "Gold gradient, subtle hover lift",
+      "callout_boxes": "Light gold bg, gold border, icon + heading",
+      "spacing": "80px/60px vertical padding"
+    },
+    "technical_notes": [
+      "Conda-based dev environment",
+      "Inline styles dominate",
+      "CSS variables for theming"
+    ]
+  },
   "manifest_version": "1.0"
 }
