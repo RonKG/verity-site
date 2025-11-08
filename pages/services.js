@@ -761,35 +761,28 @@ export default function Services() {
 
               {/* Response Time */}
               <div style={{
-                background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
+                background: "var(--theme-surface)",
+                border: `2px solid var(--theme-accent)`,
                 borderRadius: "12px",
                 padding: "1.5rem",
-                position: "relative",
-                overflow: "hidden"
+                transition: 'background 0.3s ease, border-color 0.3s ease'
               }}>
                 <div style={{
-                  position: "absolute",
-                  inset: 0,
-                  opacity: 0.1,
-                  backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(255,255,255,0.4) 0%, transparent 50%)'
-                }} />
-                
-                <div style={{ position: "relative", zIndex: 1 }}>
-                  <div style={{
-                    fontSize: "2rem",
-                    fontWeight: "600",
-                    color: "rgba(0,0,0,0.9)",
-                    marginBottom: "0.5rem"
-                  }}>
-                    48hrs
-                  </div>
-                  <div style={{
-                    fontSize: "0.9rem",
-                    color: "rgba(0,0,0,0.75)",
-                    lineHeight: "1.5"
-                  }}>
-                    Average response time for all inquiries
-                  </div>
+                  fontSize: "2rem",
+                  fontWeight: "600",
+                  color: "var(--theme-accent)",
+                  marginBottom: "0.5rem",
+                  transition: 'color 0.3s ease'
+                }}>
+                  48hrs
+                </div>
+                <div style={{
+                  fontSize: "0.9rem",
+                  color: "var(--theme-text-muted)",
+                  lineHeight: "1.5",
+                  transition: 'color 0.3s ease'
+                }}>
+                  Average response time for all inquiries
                 </div>
               </div>
 
