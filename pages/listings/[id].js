@@ -179,10 +179,11 @@ export default function PropertyDetail() {
       <Layout>
         <div style={{ 
           minHeight: "100vh",
-          backgroundColor: "#0e0e0e",
-          color: "#f0f0f0",
+          backgroundColor: "var(--theme-bg)",
+          color: "var(--theme-text)",
           padding: "120px 20px",
-          textAlign: "center"
+          textAlign: "center",
+          transition: 'background-color 0.3s ease, color 0.3s ease'
         }}>
           Property not found
         </div>
@@ -193,9 +194,10 @@ export default function PropertyDetail() {
   return (
     <Layout>
       <div style={{
-        backgroundColor: "#0e0e0e",
-        color: "#f0f0f0",
+        backgroundColor: "var(--theme-bg)",
+        color: "var(--theme-text)",
         minHeight: "100vh",
+        transition: 'background-color 0.3s ease, color 0.3s ease'
       }}>
         {/* Hero Section */}
         <section style={{
@@ -211,7 +213,7 @@ export default function PropertyDetail() {
             bottom: 0,
             left: 0,
             right: 0,
-            background: "linear-gradient(to top, rgba(14,14,14,1) 0%, rgba(14,14,14,0) 100%)",
+            background: "linear-gradient(to top, var(--theme-bg) 0%, rgba(14,14,14,0) 100%)",
             padding: "120px 20px 40px",
           }}>
             <div style={{
@@ -221,16 +223,19 @@ export default function PropertyDetail() {
               <h1 style={{
                 fontSize: "2.8rem",
                 fontWeight: "500",
-                marginBottom: "1rem"
+                marginBottom: "1rem",
+                color: "var(--theme-text)",
+                transition: 'color 0.3s ease'
               }}>{property.title}</h1>
               <p style={{
                 fontSize: "1.2rem",
-                color: "#ccc",
-                marginBottom: "1rem"
+                color: "var(--theme-text-muted)",
+                marginBottom: "1rem",
+                transition: 'color 0.3s ease'
               }}>{property.location}</p>
               <p style={{
                 fontSize: "1.4rem",
-                color: "#f5b942"
+                color: "var(--theme-accent)"
               }}>{property.price}</p>
             </div>
           </div>
@@ -248,16 +253,21 @@ export default function PropertyDetail() {
             gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
             gap: "2rem",
             marginBottom: "4rem",
-            backgroundColor: "#151515",
+            backgroundColor: "var(--theme-surface)",
             padding: "2rem",
             borderRadius: "12px",
+            transition: 'background-color 0.3s ease'
           }}>
             {Object.entries(property.specs).map(([key, value]) => (
               <div key={key} style={{ textAlign: "center" }}>
-                <div style={{ color: "#888", marginBottom: "0.5rem" }}>
+                <div style={{ 
+                  color: "var(--theme-text-muted)", 
+                  marginBottom: "0.5rem",
+                  transition: 'color 0.3s ease'
+                }}>
                   {key.replace(/([A-Z])/g, ' $1').trim()}
                 </div>
-                <div style={{ color: "#f5b942", fontSize: "1.1rem" }}>{value}</div>
+                <div style={{ color: "var(--theme-accent)", fontSize: "1.1rem" }}>{value}</div>
               </div>
             ))}
           </div>
@@ -267,12 +277,14 @@ export default function PropertyDetail() {
             <h2 style={{ 
               fontSize: "1.8rem", 
               marginBottom: "1.5rem",
-              color: "#fff" 
+              color: "var(--theme-text)",
+              transition: 'color 0.3s ease'
             }}>Property Overview</h2>
             <p style={{ 
-              color: "#ccc",
+              color: "var(--theme-text-muted)",
               lineHeight: "1.8",
-              whiteSpace: "pre-line" 
+              whiteSpace: "pre-line",
+              transition: 'color 0.3s ease'
             }}>{property.description}</p>
           </div>
 
@@ -281,7 +293,8 @@ export default function PropertyDetail() {
             <h2 style={{ 
               fontSize: "1.8rem", 
               marginBottom: "2rem",
-              color: "#fff" 
+              color: "var(--theme-text)",
+              transition: 'color 0.3s ease'
             }}>Premium Features</h2>
             <div style={{
               display: "grid",
@@ -290,12 +303,13 @@ export default function PropertyDetail() {
             }}>
               {property.features.map((category, index) => (
                 <div key={index} style={{
-                  backgroundColor: "#151515",
+                  backgroundColor: "var(--theme-surface)",
                   padding: "2rem",
                   borderRadius: "12px",
+                  transition: 'background-color 0.3s ease'
                 }}>
                   <h3 style={{ 
-                    color: "#f5b942",
+                    color: "var(--theme-accent)",
                     marginBottom: "1.5rem" 
                   }}>{category.category}</h3>
                   <ul style={{
@@ -305,13 +319,14 @@ export default function PropertyDetail() {
                   }}>
                     {category.items.map((item, idx) => (
                       <li key={idx} style={{
-                        color: "#ccc",
+                        color: "var(--theme-text-muted)",
                         marginBottom: "0.8rem",
                         display: "flex",
                         alignItems: "center",
                         gap: "0.5rem",
+                        transition: 'color 0.3s ease'
                       }}>
-                        <span style={{ color: "#f5b942" }}>•</span>
+                        <span style={{ color: "var(--theme-accent)" }}>•</span>
                         {item}
                       </li>
                     ))}
@@ -326,7 +341,8 @@ export default function PropertyDetail() {
             <h2 style={{ 
               fontSize: "1.8rem", 
               marginBottom: "2rem",
-              color: "#fff" 
+              color: "var(--theme-text)",
+              transition: 'color 0.3s ease'
             }}>Property Gallery</h2>
             <div style={{
               display: "grid",
@@ -337,11 +353,11 @@ export default function PropertyDetail() {
                 <div 
                   key={index} 
                   style={{
-                    backgroundColor: "#151515",
+                    backgroundColor: "var(--theme-surface)",
                     borderRadius: "12px",
                     overflow: "hidden",
                     cursor: "pointer",
-                    transition: "transform 0.2s ease",
+                    transition: "transform 0.2s ease, background-color 0.3s ease",
                   }}
                   onClick={() => {
                     setSelectedImage(image);
@@ -364,12 +380,14 @@ export default function PropertyDetail() {
                   />
                   <div style={{ padding: "1rem" }}>
                     <h4 style={{ 
-                      color: "#fff",
-                      marginBottom: "0.5rem" 
+                      color: "var(--theme-text)",
+                      marginBottom: "0.5rem",
+                      transition: 'color 0.3s ease'
                     }}>{image.title}</h4>
                     <p style={{ 
-                      color: "#888",
-                      fontSize: "0.9rem" 
+                      color: "var(--theme-text-muted)",
+                      fontSize: "0.9rem",
+                      transition: 'color 0.3s ease'
                     }}>{image.description}</p>
                   </div>
                 </div>
@@ -382,19 +400,22 @@ export default function PropertyDetail() {
             <h2 style={{ 
               fontSize: "1.8rem", 
               marginBottom: "2rem",
-              color: "#fff" 
+              color: "var(--theme-text)",
+              transition: 'color 0.3s ease'
             }}>Neighborhood</h2>
             <div style={{
-              backgroundColor: "#151515",
+              backgroundColor: "var(--theme-surface)",
               padding: "2rem",
               borderRadius: "12px",
               marginBottom: "2rem",
+              transition: 'background-color 0.3s ease'
             }}>
               <p style={{
-                color: "#ccc",
+                color: "var(--theme-text-muted)",
                 lineHeight: "1.8",
                 whiteSpace: "pre-line",
                 marginBottom: "2rem",
+                transition: 'color 0.3s ease'
               }}>{property.neighborhood.description}</p>
 
               <div style={{
@@ -405,7 +426,7 @@ export default function PropertyDetail() {
                 {property.neighborhood.nearbyAmenities.map((category, index) => (
                   <div key={index}>
                     <h3 style={{
-                      color: "#f5b942",
+                      color: "var(--theme-accent)",
                       marginBottom: "1rem",
                       fontSize: "1.1rem",
                     }}>{category.category}</h3>
@@ -416,8 +437,9 @@ export default function PropertyDetail() {
                     }}>
                       {category.items.map((item, idx) => (
                         <li key={idx} style={{
-                          color: "#ccc",
+                          color: "var(--theme-text-muted)",
                           marginBottom: "0.5rem",
+                          transition: 'color 0.3s ease'
                         }}>{item}</li>
                       ))}
                     </ul>
@@ -543,10 +565,14 @@ export default function PropertyDetail() {
               left: 0,
               right: 0,
               textAlign: "center",
-              color: "#fff",
+              color: "var(--theme-text)",
+              transition: 'color 0.3s ease'
             }}>
               <h3 style={{ marginBottom: "0.5rem" }}>{selectedImage.title}</h3>
-              <p style={{ color: "#ccc" }}>{selectedImage.description}</p>
+              <p style={{ 
+                color: "var(--theme-text-muted)",
+                transition: 'color 0.3s ease'
+              }}>{selectedImage.description}</p>
             </div>
           </div>
         </div>
