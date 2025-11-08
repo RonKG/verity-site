@@ -69,11 +69,14 @@ export default function Contact() {
           <section>
             <form onSubmit={handleSubmit} aria-label="Contact form" style={{
               background: "var(--theme-card-bg)",
-              padding: "1.25rem",
+              padding: "1.5rem",
               borderRadius: "12px",
               border: `1px solid var(--theme-border)`,
               boxShadow: '0 8px 30px rgba(0,0,0,0.15)',
-              transition: 'background 0.3s ease, border-color 0.3s ease'
+              transition: 'background 0.3s ease, border-color 0.3s ease',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column'
             }}>
               <div style={{ display: "grid", gap: "1rem" }}>
                 <label style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
