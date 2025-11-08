@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Layout from "../components/Layout";
-import OptimizedImage from "../components/OptimizedImage";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -177,8 +176,34 @@ export default function Contact() {
             gap: '1rem',
             transition: 'background 0.3s ease, border-color 0.3s ease'
           }}>
-            <div style={{ width: '100%', height: 140, borderRadius: 8, overflow: 'hidden' }}>
-              <OptimizedImage src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=1200&q=80&auto=format&fit=crop" alt="Nairobi skyline" style={{ height: '140px' }} />
+            <div style={{ 
+              width: '100%', 
+              height: 140, 
+              borderRadius: 8, 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              background: 'linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-strong) 100%)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              {/* Background pattern */}
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                opacity: 0.1,
+                backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.2) 0%, transparent 50%)'
+              }} />
+              
+              {/* Contact icon */}
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'relative', zIndex: 1 }}>
+                <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" 
+                  stroke="rgba(0,0,0,0.75)" 
+                  strokeWidth="1.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                />
+              </svg>
             </div>
 
             <h3 style={{ marginTop: 0, marginBottom: '0.25rem', color: 'var(--theme-text)' }}>Direct contact</h3>
@@ -199,11 +224,6 @@ export default function Contact() {
                 <strong style={{ color: 'var(--theme-text)', display: 'block' }}>Location</strong>
                 <span style={{ color: 'var(--theme-text-muted)' }}>Nairobi, Kenya</span>
               </div>
-            </div>
-
-            <div style={{ borderTop: `1px solid var(--theme-border)`, paddingTop: '0.75rem', color: 'var(--theme-text-muted)', fontSize: '0.9rem', transition: 'border-color 0.3s ease, color 0.3s ease' }}>
-              <strong style={{ color: 'var(--theme-text)', display: 'block', marginBottom: 6 }}>Why contact us?</strong>
-              We verify listings, create premium presentations, and help with property research — tell us which you need and we will advise the best next step.
             </div>
           </aside>
         </main>
