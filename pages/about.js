@@ -243,12 +243,12 @@ export default function About() {
           transition: 'color 0.3s ease'
         }}>
           For property submissions that meet our criteria, we offer a comprehensive 
-          analysis and presentation package. Connect with us to explore featuring 
-          your property on The Registry.
+          analysis and presentation package. Explore our services and submit an inquiry 
+          to feature your property on The Registry.
         </p>
 
         <a
-          href="mailto:submissions@theregistry.co"
+          href="/services"
           style={{
             display: "inline-block",
             background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
@@ -262,17 +262,8 @@ export default function About() {
           onMouseOver={(e) => e.target.style.transform = "translateY(-2px)"}
           onMouseOut={(e) => e.target.style.transform = "translateY(0)"}
         >
-          Submit a Property
+          View Our Services
         </a>
-
-        <p style={{ 
-          color: "var(--theme-text-muted)", 
-          fontSize: "0.9rem", 
-          marginTop: "1.5rem",
-          transition: 'color 0.3s ease'
-        }}>
-          Contact us: <b>submissions@theregistry.co</b>
-        </p>
       </section>
     </Layout>
   );
