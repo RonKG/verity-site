@@ -4,6 +4,52 @@ import Layout from "../components/Layout";
 import FeatureTeaser from "../components/FeatureTeaser";
 import { useState, useEffect } from 'react';
 
+// Verification Badge Component
+const VerificationBadge = ({ level }) => {
+  const badges = {
+    verified: {
+      label: "Verified",
+      icon: "✓",
+      bg: "linear-gradient(135deg, #219ebc 0%, #023047 100%)",
+      description: "Title verified • Documentation complete"
+    },
+    premium: {
+      label: "Premium",
+      icon: "★",
+      bg: "linear-gradient(135deg, #f5b942 0%, #c2a675 100%)",
+      description: "Full verification • Professional media • Enhanced listing"
+    },
+    elite: {
+      label: "Elite",
+      icon: "◆",
+      bg: "linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)",
+      description: "White-glove service • 3D tours • Priority placement"
+    }
+  };
+
+  const badge = badges[level] || badges.verified;
+
+  return (
+    <div style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "0.4rem",
+      padding: "0.35rem 0.75rem",
+      background: badge.bg,
+      borderRadius: "6px",
+      fontSize: "0.75rem",
+      fontWeight: "600",
+      color: "white",
+      boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+      letterSpacing: "0.3px",
+      textTransform: "uppercase"
+    }}>
+      <span style={{ fontSize: "0.9rem" }}>{badge.icon}</span>
+      {badge.label}
+    </div>
+  );
+};
+
 export default function Listings() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
@@ -54,6 +100,7 @@ export default function Listings() {
       location: "Kitisuru, Nairobi",
       price: "KSh 420M",
       specs: "5 Bed • 0.6 Acre",
+      badge: "premium",
       image:
         "https://www.elitehomeskenya.com/wp-content/uploads/2025/08/Luxury-Villas-in-Kenya.webp",
       description:
@@ -65,6 +112,7 @@ export default function Listings() {
       location: "Diani Beach, Kwale County",
       price: "KSh 310M",
       specs: "4 Bed • 1.2 Acre • Beachfront",
+      badge: "elite",
       image:
         "https://img.jamesedition.com/listing_images/2025/10/15/15/48/34/3cce02f3-4b65-433c-b0b8-8c18be9aaf1a/je/1900xxs.jpg",
       description:
@@ -76,6 +124,7 @@ export default function Listings() {
       location: "Karen, Nairobi",
       price: "KSh 385M",
       specs: "4 Bed • 0.8 Acre",
+      badge: "verified",
       image:
         "https://www.flamaproperties.com/wp-content/uploads/2023/08/5-BEDROOMS-HOUSE-in-karen-flama-properties-8.jpg",
       description:
@@ -87,6 +136,7 @@ export default function Listings() {
       location: "Nyali, Mombasa",
       price: "KSh 295M",
       specs: "6 Bed • 0.5 Acre • Sea View",
+      badge: "premium",
       image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80",
       description: "Mediterranean-inspired beachfront villa with private access to Nyali Beach. Features include infinity pool, smart home automation, and a dedicated yacht berth at the nearby marina.",
     },
@@ -96,6 +146,7 @@ export default function Listings() {
       location: "Muthaiga, Nairobi",
       price: "KSh 480M",
       specs: "7 Bed • 1.5 Acre • Embassy Row",
+      badge: "elite",
       image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
       description: "Historic estate reimagined with modern luxury. Diplomatic-grade security, helipaid-ready grounds, and state-of-the-art entertainment pavilion. A legacy property in Nairobi's most prestigious address.",
     },
@@ -528,6 +579,7 @@ export default function Listings() {
             >
               <div style={{
                 flex: viewMode === 'list' ? '0 0 300px' : 'auto',
+                position: 'relative'
               }}>
                 <img
                   src={home.image}
@@ -538,6 +590,15 @@ export default function Listings() {
                     objectFit: "cover" 
                   }}
                 />
+                {/* Verification Badge on Image */}
+                <div style={{
+                  position: 'absolute',
+                  top: '12px',
+                  left: '12px',
+                  zIndex: 10
+                }}>
+                  <VerificationBadge level={home.badge} />
+                </div>
               </div>
               <div style={{ 
                 padding: "1.5rem",

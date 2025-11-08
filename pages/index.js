@@ -2,6 +2,49 @@ import Layout from "../components/Layout";
 import Link from 'next/link';
 import CredibilitySection from "../components/CredibilitySection";
 
+// Verification Badge Component
+const VerificationBadge = ({ level }) => {
+  const badges = {
+    verified: {
+      label: "Verified",
+      icon: "✓",
+      bg: "linear-gradient(135deg, #219ebc 0%, #023047 100%)"
+    },
+    premium: {
+      label: "Premium",
+      icon: "★",
+      bg: "linear-gradient(135deg, #f5b942 0%, #c2a675 100%)"
+    },
+    elite: {
+      label: "Elite",
+      icon: "◆",
+      bg: "linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)"
+    }
+  };
+
+  const badge = badges[level] || badges.verified;
+
+  return (
+    <div style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "0.4rem",
+      padding: "0.35rem 0.75rem",
+      background: badge.bg,
+      borderRadius: "6px",
+      fontSize: "0.75rem",
+      fontWeight: "600",
+      color: "white",
+      boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+      letterSpacing: "0.3px",
+      textTransform: "uppercase"
+    }}>
+      <span style={{ fontSize: "0.9rem" }}>{badge.icon}</span>
+      {badge.label}
+    </div>
+  );
+};
+
 export default function Home() {
 
   const accolades = [
@@ -482,6 +525,7 @@ export default function Home() {
               title: "Modern Villa",
               location: "Karen",
               price: "$1.2M",
+              badge: "premium"
             },
             {
               id: "2",
@@ -489,6 +533,7 @@ export default function Home() {
               title: "Luxury Penthouse",
               location: "Westlands",
               price: "$850K",
+              badge: "elite"
             },
             {
               id: "3",
@@ -496,6 +541,7 @@ export default function Home() {
               title: "Garden Estate",
               location: "Kitisuru",
               price: "$2.1M",
+              badge: "verified"
             }
           ].map((property, index) => (
             <Link href={`/listings/${property.id}`} key={index} style={{ textDecoration: "none" }}>
@@ -505,20 +551,32 @@ export default function Home() {
                 overflow: "hidden",
                 transition: "transform 0.3s, background 0.3s ease",
                 cursor: "pointer",
-                border: `1px solid var(--theme-border)`
+                border: `1px solid var(--theme-border)`,
+                position: "relative"
               }}
               onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-5px)"}
               onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
               >
-              <img 
-                src={property.image}
-                alt={property.title}
-                style={{
-                  width: "100%",
-                  height: "200px",
-                  objectFit: "cover"
-                }}
-              />
+              <div style={{ position: "relative" }}>
+                <img 
+                  src={property.image}
+                  alt={property.title}
+                  style={{
+                    width: "100%",
+                    height: "200px",
+                    objectFit: "cover"
+                  }}
+                />
+                {/* Verification Badge */}
+                <div style={{
+                  position: "absolute",
+                  top: "12px",
+                  left: "12px",
+                  zIndex: 10
+                }}>
+                  <VerificationBadge level={property.badge} />
+                </div>
+              </div>
               <div style={{ padding: "1.5rem" }}>
                 <h3 style={{
                   fontSize: "1.3rem",

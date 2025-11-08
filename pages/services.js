@@ -142,31 +142,174 @@ export default function Services() {
         <section style={{
           padding: "100px 20px 60px",
           textAlign: "center",
-          maxWidth: "900px",
+          maxWidth: "1000px",
           margin: "0 auto"
         }}>
+          <div style={{
+            display: "inline-block",
+            padding: "0.5rem 1rem",
+            background: "var(--theme-surface)",
+            borderRadius: "20px",
+            marginBottom: "1.5rem",
+            border: `1px solid var(--theme-border)`,
+            transition: 'background 0.3s ease, border-color 0.3s ease'
+          }}>
+            <span style={{
+              fontSize: "0.85rem",
+              color: "var(--theme-accent)",
+              fontWeight: "500",
+              letterSpacing: "0.5px",
+              textTransform: "uppercase"
+            }}>
+              For Serious Buyers & Sellers
+            </span>
+          </div>
+          
           <h1 style={{
-            fontSize: "2.75rem",
+            fontSize: "3rem",
             fontWeight: "400",
-            marginBottom: "1rem",
-            letterSpacing: "-0.01em",
+            marginBottom: "1.5rem",
+            letterSpacing: "-0.02em",
+            lineHeight: "1.2",
             background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent"
           }}>
-            Our Services
+            Stop Guessing.<br/>Start Knowing.
           </h1>
+          
           <p style={{
-            fontSize: "1.15rem",
-            color: "var(--theme-text-muted)",
-            lineHeight: "1.7",
-            maxWidth: "750px",
-            margin: "0 auto",
+            fontSize: "1.25rem",
+            color: "var(--theme-text)",
+            lineHeight: "1.6",
+            maxWidth: "800px",
+            margin: "0 auto 2rem",
+            fontWeight: "400",
             transition: 'color 0.3s ease'
           }}>
-            Comprehensive real estate solutions tailored to Kenya's premium property market. 
-            From verification to consultancy, we deliver clarity and confidence at every step.
+            For expats returning home, diaspora investors, and locals who refuse to gamble with property decisions—we verify what others only promise.
           </p>
+          
+          <p style={{
+            fontSize: "1rem",
+            color: "var(--theme-text-muted)",
+            lineHeight: "1.8",
+            maxWidth: "700px",
+            margin: "0 auto 3rem",
+            transition: 'color 0.3s ease'
+          }}>
+            Every title checked. Every claim verified. Every property documented with the rigor you'd expect from a forensic audit—not a rushed listing. Because in a market built on handshakes and rumors, data is your unfair advantage.
+          </p>
+          
+          {/* Value Props */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "2rem",
+            margin: "3rem auto",
+            maxWidth: "900px"
+          }}>
+            <div>
+              <div style={{
+                fontSize: "2rem",
+                fontWeight: "600",
+                color: "var(--theme-accent)",
+                marginBottom: "0.5rem"
+              }}>72hrs</div>
+              <div style={{
+                fontSize: "0.9rem",
+                color: "var(--theme-text-muted)",
+                transition: 'color 0.3s ease'
+              }}>Average verification turnaround</div>
+            </div>
+            <div>
+              <div style={{
+                fontSize: "2rem",
+                fontWeight: "600",
+                color: "var(--theme-accent)",
+                marginBottom: "0.5rem"
+              }}>100%</div>
+              <div style={{
+                fontSize: "0.9rem",
+                color: "var(--theme-text-muted)",
+                transition: 'color 0.3s ease'
+              }}>Title validation on every listing</div>
+            </div>
+            <div>
+              <div style={{
+                fontSize: "2rem",
+                fontWeight: "600",
+                color: "var(--theme-accent)",
+                marginBottom: "0.5rem"
+              }}>2.4K+</div>
+              <div style={{
+                fontSize: "0.9rem",
+                color: "var(--theme-text-muted)",
+                transition: 'color 0.3s ease'
+              }}>Properties verified & documented</div>
+            </div>
+          </div>
+          
+          {/* CTA */}
+          <div style={{
+            marginTop: "3rem",
+            display: "flex",
+            gap: "1rem",
+            justifyContent: "center",
+            flexWrap: "wrap"
+          }}>
+            <a
+              href="#services-form"
+              style={{
+                display: "inline-block",
+                padding: "1rem 2rem",
+                background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
+                color: "var(--theme-bg)",
+                textDecoration: "none",
+                borderRadius: "8px",
+                fontWeight: "600",
+                fontSize: "1rem",
+                transition: "all 0.3s ease",
+                boxShadow: "0 4px 12px rgba(245, 185, 66, 0.3)"
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.boxShadow = "0 6px 20px rgba(245, 185, 66, 0.4)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 4px 12px rgba(245, 185, 66, 0.3)";
+              }}
+            >
+              Get Started — Submit Your Property
+            </a>
+            
+            <a
+              href="/listings"
+              style={{
+                display: "inline-block",
+                padding: "1rem 2rem",
+                background: "transparent",
+                color: "var(--theme-text)",
+                textDecoration: "none",
+                borderRadius: "8px",
+                fontWeight: "500",
+                fontSize: "1rem",
+                border: `2px solid var(--theme-border)`,
+                transition: "all 0.3s ease"
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.borderColor = "var(--theme-accent)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.borderColor = "var(--theme-border)";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              Browse Verified Listings
+            </a>
+          </div>
         </section>
 
         {/* Services Grid */}
@@ -376,7 +519,7 @@ export default function Services() {
         </section>
 
         {/* Contact Form Section */}
-        <section style={{
+        <section id="services-form" style={{
           padding: "60px 20px 80px",
           maxWidth: "900px",
           margin: "0 auto"

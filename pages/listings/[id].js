@@ -3,12 +3,75 @@ import { useState, useCallback, useEffect } from 'react';
 import Layout from "../../components/Layout";
 import OptimizedImage from "../../components/OptimizedImage";
 
+// Verification Badge Component
+const VerificationBadge = ({ level, size = "normal" }) => {
+  const badges = {
+    verified: {
+      label: "Verified",
+      icon: "✓",
+      bg: "linear-gradient(135deg, #219ebc 0%, #023047 100%)",
+      description: "Title verified • Documentation complete"
+    },
+    premium: {
+      label: "Premium",
+      icon: "★",
+      bg: "linear-gradient(135deg, #f5b942 0%, #c2a675 100%)",
+      description: "Full verification • Professional media • Enhanced listing"
+    },
+    elite: {
+      label: "Elite",
+      icon: "◆",
+      bg: "linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)",
+      description: "White-glove service • 3D tours • Priority placement"
+    }
+  };
+
+  const badge = badges[level] || badges.verified;
+  const isLarge = size === "large";
+
+  return (
+    <div style={{
+      display: "inline-flex",
+      flexDirection: isLarge ? "column" : "row",
+      alignItems: isLarge ? "flex-start" : "center",
+      gap: isLarge ? "0.5rem" : "0.4rem",
+      padding: isLarge ? "1rem 1.25rem" : "0.35rem 0.75rem",
+      background: badge.bg,
+      borderRadius: isLarge ? "10px" : "6px",
+      fontSize: isLarge ? "0.9rem" : "0.75rem",
+      fontWeight: "600",
+      color: "white",
+      boxShadow: isLarge ? "0 4px 12px rgba(0,0,0,0.2)" : "0 2px 8px rgba(0,0,0,0.15)",
+      letterSpacing: "0.3px",
+      textTransform: "uppercase"
+    }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+        <span style={{ fontSize: isLarge ? "1.2rem" : "0.9rem" }}>{badge.icon}</span>
+        <span>{badge.label}</span>
+      </div>
+      {isLarge && (
+        <div style={{
+          fontSize: "0.7rem",
+          opacity: 0.95,
+          fontWeight: "400",
+          textTransform: "none",
+          letterSpacing: "normal",
+          lineHeight: "1.4"
+        }}>
+          {badge.description}
+        </div>
+      )}
+    </div>
+  );
+};
+
 // Detailed property data
 const propertyDetails = {
   1: {
     title: "The Ridge Residence – Kitisuru",
     location: "Kitisuru, Nairobi",
     price: "KSh 420M",
+    badge: "premium",
     specs: {
       bedrooms: 5,
       bathrooms: 6,
@@ -143,6 +206,7 @@ const propertyDetails = {
     title: "Coastal Haven – Diani Beach",
     location: "Diani Beach, Kwale County",
     price: "KSh 310M",
+    badge: "elite",
     specs: {
       bedrooms: 4,
       bathrooms: 5,
@@ -267,6 +331,7 @@ const propertyDetails = {
     title: "Forest Edge Glasshouse – Karen",
     location: "Karen, Nairobi",
     price: "KSh 385M",
+    badge: "verified",
     specs: {
       bedrooms: 4,
       bathrooms: 5,
@@ -391,6 +456,7 @@ const propertyDetails = {
     title: "Nyali Coral Estate",
     location: "Nyali, Mombasa",
     price: "KSh 295M",
+    badge: "premium",
     specs: {
       bedrooms: 6,
       bathrooms: 7,
@@ -514,6 +580,7 @@ const propertyDetails = {
     title: "Muthaiga Ambassador's Villa",
     location: "Muthaiga, Nairobi",
     price: "KSh 480M",
+    badge: "elite",
     specs: {
       bedrooms: 7,
       bathrooms: 8,
@@ -638,6 +705,7 @@ const propertyDetails = {
     title: "Diani Coral Penthouse",
     location: "Diani Beach, Kwale County",
     price: "KSh 225M",
+    badge: "verified",
     specs: {
       bedrooms: 4,
       bathrooms: 4,
@@ -761,6 +829,7 @@ const propertyDetails = {
     title: "Spring Valley Modern Manor",
     location: "Spring Valley, Nairobi",
     price: "KSh 395M",
+    badge: "premium",
     specs: {
       bedrooms: 5,
       bathrooms: 6,
@@ -886,6 +955,7 @@ const propertyDetails = {
     title: "Watamu Beach Villa",
     location: "Watamu, Kilifi County",
     price: "KSh 280M",
+    badge: "elite",
     specs: {
       bedrooms: 5,
       bathrooms: 6,
@@ -1010,6 +1080,7 @@ const propertyDetails = {
     title: "Runda Water Gardens",
     location: "Runda, Nairobi",
     price: "KSh 320M",
+    badge: "verified",
     specs: {
       bedrooms: 6,
       bathrooms: 7,
@@ -1134,6 +1205,7 @@ const propertyDetails = {
     title: "English Point Marina Penthouse",
     location: "Tudor, Mombasa",
     price: "KSh 265M",
+    badge: "premium",
     specs: {
       bedrooms: 4,
       bathrooms: 5,
@@ -1258,6 +1330,7 @@ const propertyDetails = {
     title: "Loresho Heights Estate",
     location: "Loresho, Nairobi",
     price: "KSh 355M",
+    badge: "verified",
     specs: {
       bedrooms: 5,
       bathrooms: 6,
@@ -1382,6 +1455,7 @@ const propertyDetails = {
     title: "Karen Horse Estate",
     location: "Karen, Nairobi",
     price: "KSh 445M",
+    badge: "elite",
     specs: {
       bedrooms: 6,
       bathrooms: 7,
@@ -1507,6 +1581,7 @@ const propertyDetails = {
     title: "Kilifi Bay Villa",
     location: "Kilifi, Kilifi County",
     price: "KSh 255M",
+    badge: "premium",
     specs: {
       bedrooms: 4,
       bathrooms: 5,
@@ -1631,6 +1706,7 @@ const propertyDetails = {
     title: "Lavington Green Estate",
     location: "Lavington, Nairobi",
     price: "KSh 375M",
+    badge: "elite",
     specs: {
       bedrooms: 5,
       bathrooms: 6,
@@ -1755,6 +1831,7 @@ const propertyDetails = {
     title: "Vipingo Ridge Golf Villa",
     location: "Vipingo, Kilifi County",
     price: "KSh 290M",
+    badge: "verified",
     specs: {
       bedrooms: 4,
       bathrooms: 5,
@@ -1970,6 +2047,11 @@ export default function PropertyDetail() {
                 color: "#ffffff",
                 textShadow: "0 2px 8px rgba(0,0,0,0.5)"
               }}>{property.title}</h1>
+              {property.badge && (
+                <div style={{ marginBottom: "1rem" }}>
+                  <VerificationBadge level={property.badge} size="large" />
+                </div>
+              )}
               <p style={{
                 fontSize: "1.2rem",
                 color: "#f0f0f0",
