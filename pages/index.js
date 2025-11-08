@@ -609,16 +609,25 @@ export default function Home() {
             href="/listings"
             style={{
               display: "inline-block",
-              padding: "12px 24px",
-              background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
-              color: "var(--theme-bg)",
+              padding: "0.9rem 1.75rem",
+              background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
+              color: "#000000",
               textDecoration: "none",
               borderRadius: "6px",
-              fontWeight: "500",
-              transition: "transform 0.2s"
+              fontWeight: "600",
+              fontSize: "1rem",
+              transition: "all 0.3s ease",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+              border: "none"
             }}
-            onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
-            onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = "translateY(-1px)";
+              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.15)";
+            }}
           >
             View All Properties
           </Link>
@@ -627,24 +636,26 @@ export default function Home() {
             href="/services"
             style={{
               display: "inline-block",
-              padding: "12px 24px",
+              padding: "0.9rem 1.75rem",
               background: "var(--theme-surface)",
               color: "var(--theme-text)",
               textDecoration: "none",
               borderRadius: "6px",
               fontWeight: "500",
-              border: `2px solid var(--theme-accent)`,
-              transition: "all 0.2s"
+              fontSize: "1rem",
+              border: `1px solid var(--theme-border)`,
+              transition: "all 0.3s ease",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.08)"
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.background = "var(--theme-accent)";
-              e.currentTarget.style.color = "var(--theme-bg)";
+              e.currentTarget.style.borderColor = "var(--theme-accent)";
+              e.currentTarget.style.transform = "translateY(-1px)";
+              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.12)";
             }}
             onMouseOut={(e) => {
+              e.currentTarget.style.borderColor = "var(--theme-border)";
               e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.background = "var(--theme-surface)";
-              e.currentTarget.style.color = "var(--theme-text)";
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
             }}
           >
             Our Services

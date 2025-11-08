@@ -2012,56 +2012,68 @@ export default function PropertyDetail() {
         minHeight: "100vh",
         transition: 'background-color 0.3s ease, color 0.3s ease'
       }}>
-        {/* Hero Section */}
+        {/* Hero Section - Photo Front and Center */}
         <section style={{
           position: "relative",
-          height: "70vh",
-          minHeight: "600px",
-          backgroundImage: "url(" + property.gallery[0].url + "?auto=format&fit=crop&w=1920&q=80)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          height: "85vh",
+          minHeight: "500px",
+          maxHeight: "800px",
+          overflow: "hidden"
         }}>
-          {/* Dark overlay for better text readability */}
+          {/* Full-size hero image */}
           <div style={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)",
+            backgroundImage: "url(" + property.gallery[0].url + "?auto=format&fit=crop&w=2400&q=85)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }} />
           
+          {/* Subtle gradient overlay - only at bottom for text readability */}
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.4) 30%, transparent 60%)",
+          }} />
+          
+          {/* Info overlay at bottom */}
           <div style={{
             position: "absolute",
             bottom: 0,
             left: 0,
             right: 0,
-            background: "linear-gradient(to top, var(--theme-bg) 0%, transparent 100%)",
-            padding: "120px 20px 40px",
+            padding: "2rem 1.5rem",
+            background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 60%, transparent 100%)",
           }}>
             <div style={{
               maxWidth: "1200px",
               margin: "0 auto",
             }}>
-              <h1 style={{
-                fontSize: "2.8rem",
-                fontWeight: "500",
-                marginBottom: "1rem",
-                color: "#ffffff",
-                textShadow: "0 2px 8px rgba(0,0,0,0.5)"
-              }}>{property.title}</h1>
               {property.badge && (
-                <div style={{ marginBottom: "1rem" }}>
+                <div style={{ marginBottom: "0.875rem" }}>
                   <VerificationBadge level={property.badge} size="large" />
                 </div>
               )}
+              <h1 style={{
+                fontSize: "clamp(1.75rem, 5vw, 3rem)",
+                fontWeight: "500",
+                marginBottom: "0.625rem",
+                color: "#ffffff",
+                textShadow: "0 3px 12px rgba(0,0,0,0.8)",
+                lineHeight: "1.2"
+              }}>{property.title}</h1>
               <p style={{
-                fontSize: "1.2rem",
-                color: "#f0f0f0",
-                marginBottom: "1rem",
-                textShadow: "0 1px 4px rgba(0,0,0,0.5)"
+                fontSize: "clamp(1rem, 2.5vw, 1.3rem)",
+                color: "#ffffff",
+                marginBottom: "0.75rem",
+                textShadow: "0 2px 8px rgba(0,0,0,0.8)",
+                opacity: "0.95"
               }}>{property.location}</p>
               <p style={{
-                fontSize: "1.4rem",
-                color: "var(--theme-accent)",
-                textShadow: "0 1px 4px rgba(0,0,0,0.5)"
+                fontSize: "clamp(1.25rem, 3vw, 1.6rem)",
+                color: "#f5b942",
+                fontWeight: "600",
+                textShadow: "0 2px 8px rgba(0,0,0,0.8)"
               }}>{property.price}</p>
             </div>
           </div>
@@ -2280,127 +2292,174 @@ export default function PropertyDetail() {
       {/* Property Inquiry Section */}
       <PropertyInquiryForm propertyTitle={property.title} />
 
-      {/* Gallery Modal */}
+      {/* Gallery Lightbox Modal */}
       {isGalleryOpen && selectedImage && (
-        <div style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "rgba(0,0,0,0.95)",
-          zIndex: 1000,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}>
+        <div 
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0,0,0,0.95)",
+            zIndex: 9999,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "20px",
+          }}
+          onClick={() => setIsGalleryOpen(false)}
+        >
           {/* Close button */}
           <button
-            onClick={() => setIsGalleryOpen(false)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsGalleryOpen(false);
+            }}
             style={{
               position: "absolute",
               top: "20px",
               right: "20px",
-              background: "none",
-              border: "none",
+              background: "rgba(255,255,255,0.1)",
+              border: "2px solid rgba(255,255,255,0.3)",
+              borderRadius: "50%",
               color: "#fff",
               fontSize: "24px",
               cursor: "pointer",
-              zIndex: 1001,
-              padding: "10px",
+              zIndex: 10001,
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "all 0.2s ease"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(255,255,255,0.2)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(255,255,255,0.1)";
             }}
           >
             ✕
           </button>
 
           {/* Navigation buttons */}
-          <div style={{
-            position: "absolute",
-            top: "50%",
-            left: "20px",
-            transform: "translateY(-50%)",
-            zIndex: 1001,
-          }}>
+          {property.gallery.findIndex(img => img.url === selectedImage.url) > 0 && (
             <button
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 const currentIndex = property.gallery.findIndex(img => img.url === selectedImage.url);
                 if (currentIndex > 0) {
                   setSelectedImage(property.gallery[currentIndex - 1]);
                 }
               }}
-              disabled={property.gallery.indexOf(selectedImage) === 0}
               style={{
-                background: "none",
-                border: "none",
+                position: "absolute",
+                top: "50%",
+                left: "20px",
+                transform: "translateY(-50%)",
+                background: "rgba(255,255,255,0.1)",
+                border: "2px solid rgba(255,255,255,0.3)",
+                borderRadius: "50%",
                 color: "#fff",
-                fontSize: "24px",
+                fontSize: "28px",
                 cursor: "pointer",
-                padding: "10px",
-                opacity: property.gallery.indexOf(selectedImage) === 0 ? 0.5 : 1,
+                zIndex: 10001,
+                width: "60px",
+                height: "60px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.2s ease"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.2)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.1)";
               }}
             >
               ←
             </button>
-          </div>
+          )}
 
-          <div style={{
-            position: "absolute",
-            top: "50%",
-            right: "20px",
-            transform: "translateY(-50%)",
-            zIndex: 1001,
-          }}>
+          {property.gallery.findIndex(img => img.url === selectedImage.url) < property.gallery.length - 1 && (
             <button
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 const currentIndex = property.gallery.findIndex(img => img.url === selectedImage.url);
                 if (currentIndex < property.gallery.length - 1) {
                   setSelectedImage(property.gallery[currentIndex + 1]);
                 }
               }}
-              disabled={property.gallery.indexOf(selectedImage) === property.gallery.length - 1}
               style={{
-                background: "none",
-                border: "none",
+                position: "absolute",
+                top: "50%",
+                right: "20px",
+                transform: "translateY(-50%)",
+                background: "rgba(255,255,255,0.1)",
+                border: "2px solid rgba(255,255,255,0.3)",
+                borderRadius: "50%",
                 color: "#fff",
-                fontSize: "24px",
+                fontSize: "28px",
                 cursor: "pointer",
-                padding: "10px",
-                opacity: property.gallery.indexOf(selectedImage) === property.gallery.length - 1 ? 0.5 : 1,
+                zIndex: 10001,
+                width: "60px",
+                height: "60px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.2s ease"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.2)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.1)";
               }}
             >
               →
             </button>
-          </div>
+          )}
 
-          {/* Main image */}
-          <div style={{
-            maxWidth: "90vw",
-            maxHeight: "90vh",
-            position: "relative",
-          }}>
-            <OptimizedImage
-              src={selectedImage.url + "?auto=format&fit=crop&w=1920&q=100"}
+          {/* Main image container */}
+          <div 
+            style={{
+              maxWidth: "90vw",
+              maxHeight: "85vh",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage.url + "?auto=format&fit=crop&w=1920&q=90"}
               alt={selectedImage.title}
-              height={"85vh"}
-              objectFit={"contain"}
-              quality={100}
-              priority={true}
-              style={{ maxWidth: '100%' }}
+              style={{
+                maxWidth: "100%",
+                maxHeight: "75vh",
+                objectFit: "contain",
+                borderRadius: "8px"
+              }}
             />
             <div style={{
-              position: "absolute",
-              bottom: "-40px",
-              left: 0,
-              right: 0,
+              marginTop: "1.5rem",
               textAlign: "center",
-              color: "var(--theme-text)",
-              transition: 'color 0.3s ease'
+              color: "#ffffff",
+              maxWidth: "600px"
             }}>
-              <h3 style={{ marginBottom: "0.5rem" }}>{selectedImage.title}</h3>
+              <h3 style={{ 
+                marginBottom: "0.5rem",
+                fontSize: "1.25rem",
+                fontWeight: "500"
+              }}>{selectedImage.title}</h3>
               <p style={{ 
-                color: "var(--theme-text-muted)",
-                transition: 'color 0.3s ease'
+                color: "rgba(255,255,255,0.8)",
+                fontSize: "0.95rem"
               }}>{selectedImage.description}</p>
             </div>
           </div>

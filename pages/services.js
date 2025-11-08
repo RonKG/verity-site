@@ -161,7 +161,7 @@ export default function Services() {
               letterSpacing: "0.5px",
               textTransform: "uppercase"
             }}>
-              For Serious Buyers & Sellers
+              Verified Property Intelligence
             </span>
           </div>
           
@@ -175,30 +175,30 @@ export default function Services() {
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent"
           }}>
-            Stop Guessing.<br/>Start Knowing.
+            Property Services Built<br/>on Verification
           </h1>
           
           <p style={{
-            fontSize: "1.25rem",
+            fontSize: "1.15rem",
             color: "var(--theme-text)",
-            lineHeight: "1.6",
-            maxWidth: "800px",
+            lineHeight: "1.7",
+            maxWidth: "750px",
             margin: "0 auto 2rem",
             fontWeight: "400",
             transition: 'color 0.3s ease'
           }}>
-            For expats returning home, diaspora investors, and locals who refuse to gamble with property decisions—we verify what others only promise.
+            We provide comprehensive property verification services for buyers, sellers, and investors who need reliable information before making decisions.
           </p>
           
           <p style={{
-            fontSize: "1rem",
+            fontSize: "0.95rem",
             color: "var(--theme-text-muted)",
-            lineHeight: "1.8",
-            maxWidth: "700px",
+            lineHeight: "1.7",
+            maxWidth: "650px",
             margin: "0 auto 3rem",
             transition: 'color 0.3s ease'
           }}>
-            Every title checked. Every claim verified. Every property documented with the rigor you'd expect from a forensic audit—not a rushed listing. Because in a market built on handshakes and rumors, data is your unfair advantage.
+            Our team verifies property titles, validates ownership claims, and documents every listing with thorough due diligence.
           </p>
           
           {/* Value Props */}
@@ -211,7 +211,7 @@ export default function Services() {
           }}>
             <div>
               <div style={{
-                fontSize: "2rem",
+                fontSize: "1.75rem",
                 fontWeight: "600",
                 color: "var(--theme-accent)",
                 marginBottom: "0.5rem"
@@ -220,11 +220,11 @@ export default function Services() {
                 fontSize: "0.9rem",
                 color: "var(--theme-text-muted)",
                 transition: 'color 0.3s ease'
-              }}>Average verification turnaround</div>
+              }}>Typical verification time</div>
             </div>
             <div>
               <div style={{
-                fontSize: "2rem",
+                fontSize: "1.75rem",
                 fontWeight: "600",
                 color: "var(--theme-accent)",
                 marginBottom: "0.5rem"
@@ -233,11 +233,11 @@ export default function Services() {
                 fontSize: "0.9rem",
                 color: "var(--theme-text-muted)",
                 transition: 'color 0.3s ease'
-              }}>Title validation on every listing</div>
+              }}>Title checks on listings</div>
             </div>
             <div>
               <div style={{
-                fontSize: "2rem",
+                fontSize: "1.75rem",
                 fontWeight: "600",
                 color: "var(--theme-accent)",
                 marginBottom: "0.5rem"
@@ -246,7 +246,7 @@ export default function Services() {
                 fontSize: "0.9rem",
                 color: "var(--theme-text-muted)",
                 transition: 'color 0.3s ease'
-              }}>Properties verified & documented</div>
+              }}>Properties verified</div>
             </div>
           </div>
           
@@ -262,49 +262,53 @@ export default function Services() {
               href="#services-form"
               style={{
                 display: "inline-block",
-                padding: "1rem 2rem",
+                padding: "0.9rem 1.75rem",
                 background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
-                color: "var(--theme-bg)",
+                color: "#000000",
                 textDecoration: "none",
-                borderRadius: "8px",
+                borderRadius: "6px",
                 fontWeight: "600",
                 fontSize: "1rem",
                 transition: "all 0.3s ease",
-                boxShadow: "0 4px 12px rgba(245, 185, 66, 0.3)"
+                boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                border: "none"
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 6px 20px rgba(245, 185, 66, 0.4)";
+                e.currentTarget.style.transform = "translateY(-1px)";
+                e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
               }}
               onMouseOut={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 4px 12px rgba(245, 185, 66, 0.3)";
+                e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.15)";
               }}
             >
-              Get Started — Submit Your Property
+              Submit Property for Verification
             </a>
             
             <a
               href="/listings"
               style={{
                 display: "inline-block",
-                padding: "1rem 2rem",
-                background: "transparent",
+                padding: "0.9rem 1.75rem",
+                background: "var(--theme-surface)",
                 color: "var(--theme-text)",
                 textDecoration: "none",
-                borderRadius: "8px",
+                borderRadius: "6px",
                 fontWeight: "500",
                 fontSize: "1rem",
-                border: `2px solid var(--theme-border)`,
-                transition: "all 0.3s ease"
+                border: `1px solid var(--theme-border)`,
+                transition: "all 0.3s ease",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.08)"
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.borderColor = "var(--theme-accent)";
-                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.transform = "translateY(-1px)";
+                e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.12)";
               }}
               onMouseOut={(e) => {
                 e.currentTarget.style.borderColor = "var(--theme-border)";
                 e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
               }}
             >
               Browse Verified Listings
