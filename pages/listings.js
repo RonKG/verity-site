@@ -354,11 +354,20 @@ export default function Listings() {
                 width: "100%",
                 padding: "1rem",
                 background: "var(--theme-bg)",
-                border: `1px solid var(--theme-border)`,
+                border: "2px solid rgba(128, 128, 128, 0.3)",
                 borderRadius: "8px",
                 color: "var(--theme-text)",
                 fontSize: "1rem",
-                transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                outline: "none",
+                transition: 'all 0.3s ease'
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                e.currentTarget.style.boxShadow = "none";
               }}
             />
           </div>
@@ -388,11 +397,20 @@ export default function Listings() {
                   width: "100%",
                   padding: "0.75rem",
                   background: "var(--theme-bg)",
-                  border: `1px solid var(--theme-border)`,
+                  border: "2px solid rgba(128, 128, 128, 0.3)",
                   borderRadius: "6px",
                   color: "var(--theme-text)",
                   cursor: "pointer",
-                  transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                  outline: "none",
+                  transition: 'all 0.3s ease'
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                  e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
                 {locations.map(loc => (
@@ -419,11 +437,20 @@ export default function Listings() {
                   width: "100%",
                   padding: "0.75rem",
                   background: "var(--theme-bg)",
-                  border: `1px solid var(--theme-border)`,
+                  border: "2px solid rgba(128, 128, 128, 0.3)",
                   borderRadius: "6px",
                   color: "var(--theme-text)",
                   cursor: "pointer",
-                  transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                  outline: "none",
+                  transition: 'all 0.3s ease'
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                  e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
                 {priceRanges.map(range => (
@@ -450,11 +477,20 @@ export default function Listings() {
                   width: "100%",
                   padding: "0.75rem",
                   background: "var(--theme-bg)",
-                  border: `1px solid var(--theme-border)`,
+                  border: "2px solid rgba(128, 128, 128, 0.3)",
                   borderRadius: "6px",
                   color: "var(--theme-text)",
                   cursor: "pointer",
-                  transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                  outline: "none",
+                  transition: 'all 0.3s ease'
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                  e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
                 {propertyTypes.map(type => (
@@ -481,11 +517,20 @@ export default function Listings() {
                   width: "100%",
                   padding: "0.75rem",
                   background: "var(--theme-bg)",
-                  border: `1px solid var(--theme-border)`,
+                  border: "2px solid rgba(128, 128, 128, 0.3)",
                   borderRadius: "6px",
                   color: "var(--theme-text)",
                   cursor: "pointer",
-                  transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                  outline: "none",
+                  transition: 'all 0.3s ease'
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                  e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
                 {sortOptions.map(option => (

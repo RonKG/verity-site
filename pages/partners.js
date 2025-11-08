@@ -410,11 +410,20 @@ export default function Partners() {
                     width: "100%",
                     padding: "0.85rem",
                     background: "var(--theme-surface)",
-                    border: `1px solid var(--theme-border)`,
+                    border: "2px solid rgba(128, 128, 128, 0.3)",
                     borderRadius: "6px",
                     color: "var(--theme-text)",
                     fontSize: "1rem",
+                    outline: "none",
                     transition: 'all 0.3s ease'
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 />
               </div>
@@ -440,12 +449,21 @@ export default function Partners() {
                     width: "100%",
                     padding: "0.85rem",
                     background: "var(--theme-surface)",
-                    border: `1px solid var(--theme-border)`,
+                    border: "2px solid rgba(128, 128, 128, 0.3)",
                     borderRadius: "6px",
                     color: "var(--theme-text)",
                     fontSize: "1rem",
                     cursor: "pointer",
+                    outline: "none",
                     transition: 'all 0.3s ease'
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 >
                   <option value="">Select category...</option>
@@ -481,11 +499,20 @@ export default function Partners() {
                       width: "100%",
                       padding: "0.85rem",
                       background: "var(--theme-surface)",
-                      border: `1px solid var(--theme-border)`,
+                      border: "2px solid rgba(128, 128, 128, 0.3)",
                       borderRadius: "6px",
                       color: "var(--theme-text)",
                       fontSize: "1rem",
+                      outline: "none",
                       transition: 'all 0.3s ease'
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   />
                 </div>
@@ -510,11 +537,20 @@ export default function Partners() {
                       width: "100%",
                       padding: "0.85rem",
                       background: "var(--theme-surface)",
-                      border: `1px solid var(--theme-border)`,
+                      border: "2px solid rgba(128, 128, 128, 0.3)",
                       borderRadius: "6px",
                       color: "var(--theme-text)",
                       fontSize: "1rem",
+                      outline: "none",
                       transition: 'all 0.3s ease'
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   />
                 </div>
@@ -548,11 +584,20 @@ export default function Partners() {
                       width: "100%",
                       padding: "0.85rem",
                       background: "var(--theme-surface)",
-                      border: `1px solid var(--theme-border)`,
+                      border: "2px solid rgba(128, 128, 128, 0.3)",
                       borderRadius: "6px",
                       color: "var(--theme-text)",
                       fontSize: "1rem",
+                      outline: "none",
                       transition: 'all 0.3s ease'
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   />
                 </div>
@@ -578,11 +623,20 @@ export default function Partners() {
                       width: "100%",
                       padding: "0.85rem",
                       background: "var(--theme-surface)",
-                      border: `1px solid var(--theme-border)`,
+                      border: "2px solid rgba(128, 128, 128, 0.3)",
                       borderRadius: "6px",
                       color: "var(--theme-text)",
                       fontSize: "1rem",
+                      outline: "none",
                       transition: 'all 0.3s ease'
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   />
                 </div>
@@ -609,12 +663,21 @@ export default function Partners() {
                     width: "100%",
                     padding: "0.85rem",
                     background: "var(--theme-surface)",
-                    border: `1px solid var(--theme-border)`,
+                    border: "2px solid rgba(128, 128, 128, 0.3)",
                     borderRadius: "6px",
                     color: "var(--theme-text)",
                     fontSize: "1rem",
                     cursor: "pointer",
+                    outline: "none",
                     transition: 'all 0.3s ease'
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 >
                   <option value="">Select experience...</option>
@@ -647,13 +710,22 @@ export default function Partners() {
                     width: "100%",
                     padding: "0.85rem",
                     background: "var(--theme-surface)",
-                    border: `1px solid var(--theme-border)`,
+                    border: "2px solid rgba(128, 128, 128, 0.3)",
                     borderRadius: "6px",
                     color: "var(--theme-text)",
                     fontSize: "1rem",
                     resize: "vertical",
                     lineHeight: "1.6",
+                    outline: "none",
                     transition: 'all 0.3s ease'
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 />
                 <div style={{

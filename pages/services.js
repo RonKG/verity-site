@@ -301,7 +301,7 @@ export default function Services() {
                 boxShadow: "0 2px 8px rgba(0,0,0,0.08)"
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.borderColor = "var(--theme-accent)";
+                e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
                 e.currentTarget.style.transform = "translateY(-1px)";
                 e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.12)";
               }}
@@ -586,11 +586,20 @@ export default function Services() {
                       width: "100%",
                       padding: "0.7rem",
                       backgroundColor: "var(--theme-bg)",
-                      border: `1px solid var(--theme-border)`,
+                      border: "2px solid rgba(128, 128, 128, 0.3)",
                       borderRadius: "6px",
                       color: "var(--theme-text)",
                       fontSize: "0.95rem",
+                      outline: "none",
                       transition: 'all 0.3s ease'
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   />
                 </div>
@@ -616,11 +625,20 @@ export default function Services() {
                         width: "100%",
                         padding: "0.7rem",
                         backgroundColor: "var(--theme-bg)",
-                        border: `1px solid var(--theme-border)`,
+                        border: "2px solid rgba(128, 128, 128, 0.3)",
                         borderRadius: "6px",
                         color: "var(--theme-text)",
                         fontSize: "0.95rem",
+                        outline: "none",
                         transition: 'all 0.3s ease'
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                        e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                        e.currentTarget.style.boxShadow = "none";
                       }}
                     />
                   </div>
@@ -644,11 +662,20 @@ export default function Services() {
                         width: "100%",
                         padding: "0.7rem",
                         backgroundColor: "var(--theme-bg)",
-                        border: `1px solid var(--theme-border)`,
+                        border: "2px solid rgba(128, 128, 128, 0.3)",
                         borderRadius: "6px",
                         color: "var(--theme-text)",
                         fontSize: "0.95rem",
+                        outline: "none",
                         transition: 'all 0.3s ease'
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                        e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                        e.currentTarget.style.boxShadow = "none";
                       }}
                     />
                   </div>
@@ -673,12 +700,21 @@ export default function Services() {
                       width: "100%",
                       padding: "0.7rem",
                       backgroundColor: "var(--theme-bg)",
-                      border: `1px solid var(--theme-border)`,
+                      border: "2px solid rgba(128, 128, 128, 0.3)",
                       borderRadius: "6px",
                       color: "var(--theme-text)",
                       fontSize: "0.95rem",
+                      outline: "none",
                       transition: 'all 0.3s ease',
                       cursor: "pointer"
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   >
                     <option value="">Select a service...</option>
@@ -713,12 +749,21 @@ export default function Services() {
                       width: "100%",
                       padding: "0.7rem",
                       backgroundColor: "var(--theme-bg)",
-                      border: `1px solid var(--theme-border)`,
+                      border: "2px solid rgba(128, 128, 128, 0.3)",
                       borderRadius: "6px",
                       color: "var(--theme-text)",
                       fontSize: "0.95rem",
                       resize: "vertical",
+                      outline: "none",
                       transition: 'all 0.3s ease'
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   />
                 </div>

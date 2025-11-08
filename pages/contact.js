@@ -114,11 +114,20 @@ export default function Contact() {
                       width: "100%",
                       padding: "0.6rem",
                       backgroundColor: "var(--theme-surface)",
-                      border: `1px solid var(--theme-border)`,
+                      border: "2px solid rgba(128, 128, 128, 0.3)",
                       borderRadius: "6px",
                       color: "var(--theme-text)",
                       fontSize: "1rem",
-                      transition: 'background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                      outline: "none",
+                      transition: 'all 0.3s ease'
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   />
                 </label>
@@ -140,11 +149,20 @@ export default function Contact() {
                       width: "100%",
                       padding: "0.6rem",
                       backgroundColor: "var(--theme-surface)",
-                      border: `1px solid var(--theme-border)`,
+                      border: "2px solid rgba(128, 128, 128, 0.3)",
                       borderRadius: "6px",
                       color: "var(--theme-text)",
                       fontSize: "1rem",
-                      transition: 'background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                      outline: "none",
+                      transition: 'all 0.3s ease'
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   />
                 </label>
@@ -162,12 +180,21 @@ export default function Contact() {
                       width: "100%",
                       padding: "0.6rem",
                       backgroundColor: "var(--theme-surface)",
-                      border: `1px solid var(--theme-border)`,
+                      border: "2px solid rgba(128, 128, 128, 0.3)",
                       borderRadius: "6px",
                       color: "var(--theme-text)",
                       fontSize: "1rem",
                       resize: "vertical",
-                      transition: 'background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                      outline: "none",
+                      transition: 'all 0.3s ease'
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   />
                 </label>
