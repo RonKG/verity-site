@@ -191,6 +191,70 @@ export default function Listings() {
     }
   ];
 
+  useEffect(() => {
+    // Filter and sort listings based on selected options
+    let filtered = [...listings];
+
+    // Apply search filter
+    if (searchTerm) {
+      const search = searchTerm.toLowerCase();
+      filtered = filtered.filter(home => 
+        home.title.toLowerCase().includes(search) ||
+        home.location.toLowerCase().includes(search) ||
+        home.description.toLowerCase().includes(search)
+      );
+    }
+
+    // Apply location filter
+    if (selectedLocation !== 'all') {
+      filtered = filtered.filter(home => 
+        home.location.toLowerCase().includes(selectedLocation)
+      );
+    }
+
+    // Apply price range filter
+    if (priceRange !== 'all') {
+      const [min, max] = priceRange.split('-').map(p => parseInt(p));
+      filtered = filtered.filter(home => {
+        const price = parseInt(home.price.replace(/[^0-9]/g, ''));
+        if (max) {
+          return price >= min && price <= max;
+        }
+        return price >= min;
+      });
+    }
+
+    // Apply property type filter
+    if (propertyType !== 'all') {
+      filtered = filtered.filter(home =>
+        home.description.toLowerCase().includes(propertyType) ||
+        home.title.toLowerCase().includes(propertyType)
+      );
+    }
+
+    // Apply sorting
+    switch (sortBy) {
+      case 'price-asc':
+        filtered.sort((a, b) => 
+          parseInt(a.price.replace(/[^0-9]/g, '')) - parseInt(b.price.replace(/[^0-9]/g, ''))
+        );
+        break;
+      case 'price-desc':
+        filtered.sort((a, b) => 
+          parseInt(b.price.replace(/[^0-9]/g, '')) - parseInt(a.price.replace(/[^0-9]/g, ''))
+        );
+        break;
+      case 'newest':
+        filtered.sort((a, b) => b.id - a.id);
+        break;
+      default:
+        // Keep default order
+        break;
+    }
+
+    setFilteredListings(filtered);
+  }, [searchTerm, selectedLocation, priceRange, propertyType, sortBy]);
+
   return (
     <Layout>
       <section
@@ -390,7 +454,7 @@ export default function Listings() {
           alignItems: "center"
         }}>
           <div style={{ color: "var(--theme-text-muted)", transition: 'color 0.3s ease' }}>
-            <span style={{ color: "var(--theme-accent)" }}>{listings.length}</span> properties found
+            <span style={{ color: "var(--theme-accent)" }}>{filteredListings.length}</span> properties found
           </div>
           <div style={{
             display: "flex",
@@ -438,7 +502,7 @@ export default function Listings() {
             margin: "0 auto",
           }}
         >
-          {listings.map((home) => (
+          {filteredListings.map((home) => (
             <div
               key={home.id}
               onClick={() => router.push(`/listings/${home.id}`)}
@@ -628,68 +692,4 @@ export default function Listings() {
       <FeatureTeaser />
     </Layout>
   );
-
-  useEffect(() => {
-    // Filter and sort listings based on selected options
-    let filtered = [...listings];
-
-    // Apply search filter
-    if (searchTerm) {
-      const search = searchTerm.toLowerCase();
-      filtered = filtered.filter(home => 
-        home.title.toLowerCase().includes(search) ||
-        home.location.toLowerCase().includes(search) ||
-        home.description.toLowerCase().includes(search)
-      );
-    }
-
-    // Apply location filter
-    if (selectedLocation !== 'all') {
-      filtered = filtered.filter(home => 
-        home.location.toLowerCase().includes(selectedLocation)
-      );
-    }
-
-    // Apply price range filter
-    if (priceRange !== 'all') {
-      const [min, max] = priceRange.split('-').map(p => parseInt(p));
-      filtered = filtered.filter(home => {
-        const price = parseInt(home.price.replace(/[^0-9]/g, ''));
-        if (max) {
-          return price >= min && price <= max;
-        }
-        return price >= min;
-      });
-    }
-
-    // Apply property type filter
-    if (propertyType !== 'all') {
-      filtered = filtered.filter(home =>
-        home.description.toLowerCase().includes(propertyType) ||
-        home.title.toLowerCase().includes(propertyType)
-      );
-    }
-
-    // Apply sorting
-    switch (sortBy) {
-      case 'price-asc':
-        filtered.sort((a, b) => 
-          parseInt(a.price.replace(/[^0-9]/g, '')) - parseInt(b.price.replace(/[^0-9]/g, ''))
-        );
-        break;
-      case 'price-desc':
-        filtered.sort((a, b) => 
-          parseInt(b.price.replace(/[^0-9]/g, '')) - parseInt(a.price.replace(/[^0-9]/g, ''))
-        );
-        break;
-      case 'newest':
-        filtered.sort((a, b) => b.id - a.id);
-        break;
-      default:
-        // Keep default order
-        break;
-    }
-
-    setFilteredListings(filtered);
-  }, [searchTerm, selectedLocation, priceRange, propertyType, sortBy]);
 }
