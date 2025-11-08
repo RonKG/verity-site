@@ -6,7 +6,7 @@ export default function Team() {
     {
       name: "James Kamau",
       role: "Founder & CEO",
-      img: "https://plus.unsplash.com/premium_photo-1723575750878-472d1f54766d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+      img: "https://plus.unsplash.com/premium_photo-1661511942092-a23c81ac5a31?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
       bio: "James started The Registry after losing hours to paperwork and guesswork while helping family buy a home. He builds product to make property decisions faster and less faith-based — a practical idealist who believes clear records beat negotiation theater."
     },
     {
@@ -18,7 +18,7 @@ export default function Team() {
     {
       name: "Ronald Wahome",
       role: "Head of Technology & Analytics",
-      img: "https://images.unsplash.com/photo-1656313815939-6373a497bbf2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687",
+      img: "https://plus.unsplash.com/premium_photo-1661299270240-1fccb9604606?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
       bio: "Ronald is our tech and analytics brain: he builds the pipelines that tame noisy records and crafts the models that turn them into decision-ready signals. He loves architecture that scales and insights that surprise — and he pushes us to test the assumptions others take for granted."
     }
   ];
