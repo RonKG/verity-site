@@ -39,14 +39,14 @@ export default function Contact() {
             margin: 0,
             fontWeight: 400,
             letterSpacing: "-0.01em"
-          }}>Start a conversation</h1>
+          }}>General and Media Enquiries</h1>
           <p style={{
             marginTop: "0.75rem",
             color: "var(--theme-text-muted)",
             maxWidth: "680px",
             lineHeight: 1.6
           }}>
-            This form is for <strong style={{ color: "var(--theme-text)" }}>general and media inquiries</strong>. 
+            This form is for general and media inquiries. 
             For service-related requests (property verification, market research, consultancy), please use our{" "}
             <a 
               href="/services" 
