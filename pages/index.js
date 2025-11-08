@@ -102,20 +102,20 @@ export default function Home() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.5,
+            opacity: 0.35,
             zIndex: 0,
           }}
         />
 
-        {/* Theme-aware overlay for contrast */}
+        {/* Subtle overlay for readability */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background: "var(--theme-overlay)",
-            backdropFilter: "blur(2px)",
+            background: "var(--theme-bg)",
+            opacity: 0.85,
             zIndex: 1,
-            transition: 'background 0.3s ease'
+            transition: 'background 0.3s ease, opacity 0.3s ease'
           }}
         />
 
@@ -137,7 +137,8 @@ export default function Home() {
               marginBottom: "1.25rem",
               letterSpacing: "-0.02em",
               lineHeight: "1.1",
-              textShadow: "0 2px 8px rgba(0,0,0,0.2)"
+              color: "var(--theme-text)",
+              transition: 'color 0.3s ease'
             }}
           >
             The Registry
@@ -151,7 +152,7 @@ export default function Home() {
               lineHeight: "1.6",
               marginBottom: "1.25rem",
               fontWeight: "300",
-              textShadow: "0 1px 4px rgba(0,0,0,0.15)"
+              transition: 'color 0.3s ease'
             }}
           >
             Curated. Verified. Data-driven.
@@ -166,7 +167,7 @@ export default function Home() {
               marginBottom: "3rem",
               letterSpacing: "0.01em",
               fontWeight: "300",
-              textShadow: "0 1px 4px rgba(0,0,0,0.12)"
+              transition: 'color 0.3s ease'
             }}
           >
             Because finding a home should begin with trust — and end with certainty.
@@ -682,23 +683,25 @@ export default function Home() {
             style={{
               display: "inline-block",
               padding: "0.9rem 1.75rem",
-              background: "var(--theme-surface)",
+              background: "var(--theme-bg)",
               color: "var(--theme-text)",
               textDecoration: "none",
               borderRadius: "6px",
-              fontWeight: "500",
+              fontWeight: "600",
               fontSize: "1rem",
-              border: `1px solid var(--theme-border)`,
+              border: `2px solid var(--theme-accent)`,
               transition: "all 0.3s ease",
               boxShadow: "0 2px 8px rgba(0,0,0,0.08)"
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
+              e.currentTarget.style.background = "var(--theme-accent)";
+              e.currentTarget.style.color = "#000000";
               e.currentTarget.style.transform = "translateY(-1px)";
-              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.12)";
+              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.borderColor = "var(--theme-border)";
+              e.currentTarget.style.background = "var(--theme-bg)";
+              e.currentTarget.style.color = "var(--theme-text)";
               e.currentTarget.style.transform = "translateY(0)";
               e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
             }}
