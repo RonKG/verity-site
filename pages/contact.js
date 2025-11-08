@@ -46,8 +46,27 @@ export default function Contact() {
             maxWidth: "680px",
             lineHeight: 1.6
           }}>
-            We love clear questions and concrete context. Tell us who you are, what you’re trying to do
-            (buy, sell, verify, research) and any timelines or links that help — we’ll get back to you within 48 hours.
+            This form is for <strong style={{ color: "var(--theme-text)" }}>general and media inquiries</strong>. 
+            For service-related requests (property verification, market research, consultancy), please use our{" "}
+            <a 
+              href="/services" 
+              style={{
+                color: "var(--theme-accent-strong)",
+                textDecoration: "none",
+                borderBottom: "1px dotted var(--theme-accent-strong)",
+                transition: "all 0.2s ease"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderBottomStyle = "solid";
+                e.currentTarget.style.opacity = "0.8";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderBottomStyle = "dotted";
+                e.currentTarget.style.opacity = "1";
+              }}
+            >
+              services form
+            </a>.
           </p>
         </header>
 
@@ -175,11 +194,21 @@ export default function Contact() {
                   </button>
 
                   {status === 'sent' && (
-                    <div style={{ color: '#bde7b0' }}>Message received — we’ll reply within 48 hours.</div>
+                    <div style={{ color: '#bde7b0' }}>Message received — we'll reply within 48 hours.</div>
                   )}
                   {status === 'error' && (
                     <div style={{ color: '#ffbcbc' }}>Please complete all fields.</div>
                   )}
+                </div>
+
+                <div style={{ 
+                  fontSize: '0.75rem', 
+                  color: 'var(--theme-text-muted)', 
+                  marginTop: '0.5rem',
+                  fontStyle: 'italic',
+                  transition: 'color 0.3s ease'
+                }}>
+                  We do not sell your data.
                 </div>
               </div>
             </form>
@@ -241,8 +270,18 @@ export default function Contact() {
               </div>
 
               <div>
-                <strong style={{ color: 'var(--theme-text)', display: 'block' }}>Location</strong>
-                <span style={{ color: 'var(--theme-text-muted)' }}>Nairobi, Kenya</span>
+                <strong style={{ color: 'var(--theme-text)', display: 'block', marginBottom: '0.25rem' }}>Physical Address</strong>
+                <address style={{ 
+                  color: 'var(--theme-text-muted)', 
+                  fontStyle: 'normal',
+                  lineHeight: '1.6',
+                  fontSize: '0.95rem'
+                }}>
+                  The Registry<br />
+                  Westlands Business District<br />
+                  Parklands Road<br />
+                  Nairobi, Kenya
+                </address>
               </div>
             </div>
           </aside>

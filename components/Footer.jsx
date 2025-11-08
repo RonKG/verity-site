@@ -182,28 +182,73 @@ export default function Footer() {
           </p>
           <div style={{
             display: 'flex',
-            gap: '2rem'
+            gap: '1.5rem',
+            alignItems: 'center'
           }}>
-            <a href="#" style={{
-              color: 'var(--theme-text-muted)',
-              textDecoration: 'none',
-              transition: 'color 0.2s'
-            }}>
-              Twitter
-            </a>
-            <a href="#" style={{
-              color: 'var(--theme-text-muted)',
-              textDecoration: 'none',
-              transition: 'color 0.2s'
-            }}>
+            <a 
+              href="https://linkedin.com/company/theregistry" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              style={{
+                color: 'var(--theme-text-muted)',
+                textDecoration: 'none',
+                transition: 'color 0.2s'
+              }}
+            >
               LinkedIn
             </a>
-            <a href="#" style={{
-              color: 'var(--theme-text-muted)',
-              textDecoration: 'none',
-              transition: 'color 0.2s'
-            }}>
+            <a 
+              href="https://wa.me/254700000000" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              style={{
+                color: 'var(--theme-text-muted)',
+                textDecoration: 'none',
+                transition: 'color 0.2s'
+              }}
+            >
+              WhatsApp
+            </a>
+            <a 
+              href="https://instagram.com/theregistry.ke" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              style={{
+                color: 'var(--theme-text-muted)',
+                textDecoration: 'none',
+                transition: 'color 0.2s'
+              }}
+            >
               Instagram
+            </a>
+            <a 
+              href="https://twitter.com/theregistry_ke" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Twitter"
+              style={{
+                color: 'var(--theme-text-muted)',
+                textDecoration: 'none',
+                transition: 'color 0.2s'
+              }}
+            >
+              Twitter
+            </a>
+            <a 
+              href="https://youtube.com/@theregistry" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+              style={{
+                color: 'var(--theme-text-muted)',
+                textDecoration: 'none',
+                transition: 'color 0.2s'
+              }}
+            >
+              YouTube
             </a>
           </div>
         </div>

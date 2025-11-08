@@ -605,6 +605,16 @@ export default function Services() {
                   {status === 'sending' ? 'Sending...' : 'Request Information'}
                 </button>
 
+                <div style={{ 
+                  fontSize: '0.75rem', 
+                  color: 'var(--theme-text-muted)', 
+                  marginTop: '0.75rem',
+                  fontStyle: 'italic',
+                  transition: 'color 0.3s ease'
+                }}>
+                  We do not sell your data.
+                </div>
+
                 {status === 'sent' && (
                   <div style={{
                     padding: "1rem",
