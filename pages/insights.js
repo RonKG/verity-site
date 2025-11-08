@@ -655,14 +655,13 @@ export default function Insights() {
 function NewsletterSignup() {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    phone: ''
+    email: ''
   });
   const [status, setStatus] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
+    if (!formData.name.trim() || !formData.email.trim()) {
       setStatus('error');
       return;
     }
@@ -670,7 +669,7 @@ function NewsletterSignup() {
     setStatus('sending');
     setTimeout(() => {
       setStatus('sent');
-      setFormData({ name: '', email: '', phone: '' });
+      setFormData({ name: '', email: '' });
     }, 700);
   };
 
@@ -759,24 +758,6 @@ function NewsletterSignup() {
             }}
           />
         </div>
-
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Phone Number *"
-          value={formData.phone}
-          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          required
-          style={{
-            padding: "0.85rem",
-            background: "var(--theme-bg)",
-            border: `1px solid var(--theme-border)`,
-            borderRadius: "6px",
-            color: "var(--theme-text)",
-            fontSize: "1rem",
-            transition: 'all 0.3s ease'
-          }}
-        />
 
         <button
           type="submit"

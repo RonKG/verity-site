@@ -88,6 +88,7 @@ export default function MobileMenu() {
             ],
             [
               { href: '/about', label: 'About Us' },
+              { href: '/partners', label: 'Partners' },
               { href: '/team', label: 'Team' },
               { href: '/contact', label: 'Contact' },
             ]

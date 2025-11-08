@@ -2195,6 +2195,9 @@ export default function PropertyDetail() {
         </div>
       </div>
 
+      {/* Property Inquiry Section */}
+      <PropertyInquiryForm propertyTitle={property.title} />
+
       {/* Gallery Modal */}
       {isGalleryOpen && selectedImage && (
         <div style={{
@@ -2322,5 +2325,246 @@ export default function PropertyDetail() {
         </div>
       )}
     </Layout>
+  );
+}
+
+// Property Inquiry Form Component
+function PropertyInquiryForm({ propertyTitle }) {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: ''
+  });
+  const [status, setStatus] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.phone.trim() || !formData.email.trim()) {
+      setStatus('error');
+      return;
+    }
+
+    setStatus('sending');
+    setTimeout(() => {
+      setStatus('sent');
+      setFormData({ name: '', phone: '', email: '' });
+    }, 700);
+  };
+
+  return (
+    <section style={{
+      maxWidth: "800px",
+      margin: "0 auto 4rem",
+      padding: "0 20px"
+    }}>
+      <div style={{
+        background: "var(--theme-surface)",
+        padding: "3rem 2.5rem",
+        borderRadius: "12px",
+        border: `1px solid var(--theme-border)`,
+        transition: 'background 0.3s ease, border-color 0.3s ease'
+      }}>
+        <div style={{
+          textAlign: "center",
+          marginBottom: "2rem"
+        }}>
+          <h2 style={{
+            fontSize: "1.8rem",
+            fontWeight: 400,
+            marginBottom: "0.75rem",
+            color: "var(--theme-text)",
+            transition: 'color 0.3s ease'
+          }}>
+            Inquire About This Property
+          </h2>
+          <p style={{
+            color: "var(--theme-text-muted)",
+            fontSize: "1rem",
+            lineHeight: "1.7",
+            maxWidth: "600px",
+            margin: "0 auto",
+            transition: 'color 0.3s ease'
+          }}>
+            Experience our personalized, vetted service. Share your details and our team will reach out 
+            within <strong style={{ color: "var(--theme-accent-strong)" }}>24 hours</strong> to begin a curated engagement 
+            tailored to your needs.
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1.25rem"
+        }}>
+          <div>
+            <label style={{
+              display: "block",
+              marginBottom: "0.5rem",
+              color: "var(--theme-text)",
+              fontSize: "0.95rem",
+              fontWeight: 500,
+              transition: 'color 0.3s ease'
+            }}>
+              Full Name *
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              required
+              style={{
+                width: "100%",
+                padding: "0.85rem",
+                background: "var(--theme-bg)",
+                border: `1px solid var(--theme-border)`,
+                borderRadius: "6px",
+                color: "var(--theme-text)",
+                fontSize: "1rem",
+                transition: 'all 0.3s ease'
+              }}
+            />
+          </div>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "1.25rem"
+          }}>
+            <div>
+              <label style={{
+                display: "block",
+                marginBottom: "0.5rem",
+                color: "var(--theme-text)",
+                fontSize: "0.95rem",
+                fontWeight: 500,
+                transition: 'color 0.3s ease'
+              }}>
+                Phone Number *
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                required
+                style={{
+                  width: "100%",
+                  padding: "0.85rem",
+                  background: "var(--theme-bg)",
+                  border: `1px solid var(--theme-border)`,
+                  borderRadius: "6px",
+                  color: "var(--theme-text)",
+                  fontSize: "1rem",
+                  transition: 'all 0.3s ease'
+                }}
+              />
+            </div>
+
+            <div>
+              <label style={{
+                display: "block",
+                marginBottom: "0.5rem",
+                color: "var(--theme-text)",
+                fontSize: "0.95rem",
+                fontWeight: 500,
+                transition: 'color 0.3s ease'
+              }}>
+                Email Address *
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
+                style={{
+                  width: "100%",
+                  padding: "0.85rem",
+                  background: "var(--theme-bg)",
+                  border: `1px solid var(--theme-border)`,
+                  borderRadius: "6px",
+                  color: "var(--theme-text)",
+                  fontSize: "1rem",
+                  transition: 'all 0.3s ease'
+                }}
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={status === 'sending'}
+            style={{
+              background: "linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))",
+              color: "var(--theme-bg)",
+              padding: "1rem 2.5rem",
+              border: "none",
+              borderRadius: "8px",
+              fontSize: "1rem",
+              fontWeight: "600",
+              cursor: status === 'sending' ? 'wait' : 'pointer',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 12px rgba(245, 185, 66, 0.25)',
+              marginTop: "0.5rem"
+            }}
+            onMouseEnter={(e) => {
+              if (status !== 'sending') {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 16px rgba(245, 185, 66, 0.35)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(245, 185, 66, 0.25)';
+            }}
+          >
+            {status === 'sending' ? 'Submitting...' : 'Submit Inquiry'}
+          </button>
+
+          <div style={{ 
+            fontSize: '0.75rem', 
+            color: 'var(--theme-text-muted)', 
+            marginTop: '0.25rem',
+            fontStyle: 'italic',
+            textAlign: 'center',
+            transition: 'color 0.3s ease'
+          }}>
+            We do not sell your data.
+          </div>
+
+          {status === 'sent' && (
+            <div style={{
+              padding: "1.25rem",
+              background: "rgba(76, 175, 80, 0.1)",
+              border: "1px solid rgba(76, 175, 80, 0.3)",
+              borderRadius: "8px",
+              color: "#4caf50",
+              fontSize: "1rem",
+              lineHeight: "1.6",
+              textAlign: "center"
+            }}>
+              <strong>Thank you for your inquiry about {propertyTitle}.</strong><br />
+              Our team will contact you within 24 hours to discuss this exclusive opportunity and 
+              arrange a personalized viewing experience.
+            </div>
+          )}
+
+          {status === 'error' && (
+            <div style={{
+              padding: "1rem",
+              background: "rgba(244, 67, 54, 0.1)",
+              border: "1px solid rgba(244, 67, 54, 0.3)",
+              borderRadius: "8px",
+              color: "#f44336",
+              textAlign: "center",
+              fontSize: "0.95rem"
+            }}>
+              Please complete all required fields.
+            </div>
+          )}
+        </form>
+      </div>
+    </section>
   );
 }

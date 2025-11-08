@@ -173,6 +173,7 @@ export default function Layout({ children }) {
             ],
             [
               { href: "/about", label: "About Us" },
+              { href: "/partners", label: "Partners" },
               { href: "/team", label: "Team" },
               { href: "/contact", label: "Contact" },
             ]
