@@ -91,8 +91,8 @@ export default function About() {
 
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
-            gap: "2rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
+            gap: "1.5rem",
             marginTop: "2rem"
           }}>
             {[
@@ -129,30 +129,30 @@ export default function About() {
             ].map((item, index) => (
               <div key={index} style={{
                 backgroundColor: "var(--theme-surface)",
-                padding: "2rem",
-                borderRadius: "12px",
+                padding: "1.5rem",
+                borderRadius: "10px",
                 border: `1px solid var(--theme-border)`,
                 transition: 'background-color 0.3s ease, border-color 0.3s ease'
               }}>
                 <div style={{
-                  fontSize: "2.5rem",
+                  fontSize: "2rem",
                   fontWeight: "300",
                   color: "var(--theme-accent)",
-                  marginBottom: "1rem",
+                  marginBottom: "0.75rem",
                   opacity: 0.7,
                   transition: 'color 0.3s ease'
                 }}>{item.number}</div>
                 <h3 style={{
                   color: "var(--theme-text)",
-                  fontSize: "1.3rem",
-                  marginBottom: "1rem",
+                  fontSize: "1.15rem",
+                  marginBottom: "0.75rem",
                   fontWeight: "500",
                   transition: 'color 0.3s ease'
                 }}>{item.title}</h3>
                 <p style={{
                   color: "var(--theme-text-muted)",
-                  lineHeight: "1.7",
-                  fontSize: "1rem",
+                  lineHeight: "1.6",
+                  fontSize: "0.95rem",
                   transition: 'color 0.3s ease'
                 }}>{item.description}</p>
               </div>
