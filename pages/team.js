@@ -24,20 +24,20 @@ export default function Team() {
     {
       name: "Sophie Muthoni",
       role: "Design & Photography Lead",
-      img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1170",
+      img: "https://plus.unsplash.com/premium_photo-1675419012023-44e6dbd55701?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1174",
       bio: "Sophie sees properties as narratives waiting to be told — preferably in perfect light at golden hour. She orchestrates shoots that make concrete look poetic and ensures every listing feels like an invitation, not a sales pitch. Rumor has it she once rescheduled a shoot four times for cloud coverage."
     },
     {
       name: "Michael Odhiambo",
       role: "Client Services • Partner",
-      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1170",
+      img: "https://images.unsplash.com/photo-1758519290811-b9df6340dc6a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1331",
       bio: "Michael is the voice you hear when things get complicated — which, in property, is often. As our client services partner, he translates jargon, untangles timelines, and turns anxious buyers into informed decision-makers. Equal parts diplomat and detective, he follows up until there's nothing left to follow.",
       isPartner: true
     },
     {
       name: "Wanjiru Githinji",
       role: "Legal Counsel • Partner",
-      img: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1170",
+      img: "https://images.unsplash.com/photo-1634397414045-88204efd8353?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=765",
       bio: "Wanjiru reads title deeds the way others read novels — slowly, carefully, with an eye for plot holes. Our legal partner keeps transactions airtight and clients protected from the fine print that isn't so fine. She believes that good law should be invisible until you need it, then indispensable.",
       isPartner: true
     }
