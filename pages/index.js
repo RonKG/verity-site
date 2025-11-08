@@ -42,7 +42,7 @@ export default function Home() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: "60vh",
+          minHeight: "85vh",
           color: "var(--theme-text)",
           textAlign: "center",
           padding: "40px 20px",
