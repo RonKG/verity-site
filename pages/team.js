@@ -139,23 +139,71 @@ export default function Team() {
               margin: '1.5rem 0'
             }}>
               <div style={{
-                width: '120px',
-                height: '120px',
+                width: '140px',
+                height: '140px',
                 borderRadius: '50%',
                 overflow: 'hidden',
-                border: `3px solid var(--theme-accent)`,
-                boxShadow: '0 4px 12px rgba(245, 185, 66, 0.3)',
-                transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
-              }}>
-                <img 
-                  src="https://images.unsplash.com/photo-1608889335941-32ac5f2041b9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=400"
-                  alt="Superhero with cape"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover'
-                  }}
-                />
+                border: `4px solid var(--theme-accent)`,
+                boxShadow: '0 6px 20px rgba(245, 185, 66, 0.4)',
+                transition: 'border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease',
+                background: 'linear-gradient(135deg, #f5b942 0%, #c2a675 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'scale(1.05) rotate(5deg)';
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(245, 185, 66, 0.5)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(245, 185, 66, 0.4)';
+              }}
+              >
+                {/* Wacky Superhero SVG Illustration */}
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Cape */}
+                  <path d="M30 35 L15 60 L25 80 L30 50 Z" fill="#e63946" opacity="0.9"/>
+                  <path d="M70 35 L85 60 L75 80 L70 50 Z" fill="#e63946" opacity="0.9"/>
+                  
+                  {/* Body */}
+                  <ellipse cx="50" cy="60" rx="18" ry="22" fill="#023047"/>
+                  
+                  {/* Head */}
+                  <circle cx="50" cy="35" r="16" fill="#ffb703"/>
+                  
+                  {/* Mask */}
+                  <ellipse cx="50" cy="35" rx="18" ry="8" fill="#023047"/>
+                  
+                  {/* Eyes */}
+                  <ellipse cx="44" cy="35" rx="3" ry="5" fill="white"/>
+                  <ellipse cx="56" cy="35" rx="3" ry="5" fill="white"/>
+                  <circle cx="44" cy="36" r="2" fill="#023047"/>
+                  <circle cx="56" cy="36" r="2" fill="#023047"/>
+                  
+                  {/* Smile */}
+                  <path d="M 42 42 Q 50 46 58 42" stroke="#023047" strokeWidth="2" fill="none" strokeLinecap="round"/>
+                  
+                  {/* Chest emblem - House */}
+                  <rect x="45" y="55" width="10" height="8" fill="#f5b942"/>
+                  <path d="M 40 60 L 50 52 L 60 60 Z" fill="#f5b942"/>
+                  
+                  {/* Arms - Power Pose */}
+                  <ellipse cx="35" cy="55" rx="8" ry="5" fill="#ffb703" transform="rotate(-30 35 55)"/>
+                  <ellipse cx="65" cy="55" rx="8" ry="5" fill="#ffb703" transform="rotate(30 65 55)"/>
+                  
+                  {/* Legs */}
+                  <rect x="42" y="78" width="6" height="15" rx="3" fill="#023047"/>
+                  <rect x="52" y="78" width="6" height="15" rx="3" fill="#023047"/>
+                  
+                  {/* Boots */}
+                  <ellipse cx="45" cy="93" rx="4" ry="3" fill="#e63946"/>
+                  <ellipse cx="55" cy="93" rx="4" ry="3" fill="#e63946"/>
+                  
+                  {/* Stars around head for extra whimsy */}
+                  <path d="M 25 25 L 26 27 L 28 27 L 26.5 28.5 L 27 30 L 25 29 L 23 30 L 23.5 28.5 L 22 27 L 24 27 Z" fill="#f5b942"/>
+                  <path d="M 75 25 L 76 27 L 78 27 L 76.5 28.5 L 77 30 L 75 29 L 73 30 L 73.5 28.5 L 72 27 L 74 27 Z" fill="#f5b942"/>
+                </svg>
               </div>
             </div>
 

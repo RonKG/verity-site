@@ -477,35 +477,39 @@ export default function Home() {
         }}>
           {[
             {
+              id: "1",
               image: "https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4",
               title: "Modern Villa",
               location: "Karen",
               price: "$1.2M",
             },
             {
+              id: "2",
               image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
               title: "Luxury Penthouse",
               location: "Westlands",
               price: "$850K",
             },
             {
+              id: "3",
               image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
               title: "Garden Estate",
               location: "Kitisuru",
               price: "$2.1M",
             }
           ].map((property, index) => (
-            <div key={index} style={{
-              background: "var(--theme-surface)",
-              borderRadius: "12px",
-              overflow: "hidden",
-              transition: "transform 0.3s, background 0.3s ease",
-              cursor: "pointer",
-              border: `1px solid var(--theme-border)`
-            }}
-            onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-5px)"}
-            onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
-            >
+            <Link href={`/listings/${property.id}`} key={index} style={{ textDecoration: "none" }}>
+              <div style={{
+                background: "var(--theme-surface)",
+                borderRadius: "12px",
+                overflow: "hidden",
+                transition: "transform 0.3s, background 0.3s ease",
+                cursor: "pointer",
+                border: `1px solid var(--theme-border)`
+              }}
+              onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-5px)"}
+              onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
+              >
               <img 
                 src={property.image}
                 alt={property.title}
@@ -532,27 +536,62 @@ export default function Home() {
                 }}>{property.price}</p>
               </div>
             </div>
+          </Link>
           ))}
         </div>
 
-        <Link 
-          href="/listings"
-          style={{
-            display: "inline-block",
-            marginTop: "3rem",
-            padding: "12px 24px",
-            background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
-            color: "var(--theme-bg)",
-            textDecoration: "none",
-            borderRadius: "6px",
-            fontWeight: "500",
-            transition: "transform 0.2s"
-          }}
-          onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
-          onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
-        >
-          View All Properties
-        </Link>
+        <div style={{ 
+          display: "flex", 
+          gap: "1rem", 
+          justifyContent: "center", 
+          flexWrap: "wrap",
+          marginTop: "3rem" 
+        }}>
+          <Link 
+            href="/listings"
+            style={{
+              display: "inline-block",
+              padding: "12px 24px",
+              background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
+              color: "var(--theme-bg)",
+              textDecoration: "none",
+              borderRadius: "6px",
+              fontWeight: "500",
+              transition: "transform 0.2s"
+            }}
+            onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
+            onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
+          >
+            View All Properties
+          </Link>
+          
+          <Link 
+            href="/services"
+            style={{
+              display: "inline-block",
+              padding: "12px 24px",
+              background: "var(--theme-surface)",
+              color: "var(--theme-text)",
+              textDecoration: "none",
+              borderRadius: "6px",
+              fontWeight: "500",
+              border: `2px solid var(--theme-accent)`,
+              transition: "all 0.2s"
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.background = "var(--theme-accent)";
+              e.currentTarget.style.color = "var(--theme-bg)";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.background = "var(--theme-surface)";
+              e.currentTarget.style.color = "var(--theme-text)";
+            }}
+          >
+            Our Services
+          </Link>
+        </div>
       </section>
 
       {/* Trust Indicators Section */}

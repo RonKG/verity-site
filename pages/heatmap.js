@@ -104,6 +104,135 @@ export default function HeatmapPage() {
           },
         }).addTo(map);
 
+        // Add property markers
+        const properties = [
+          // Nairobi Prime Properties
+          {
+            id: "1",
+            name: "Modern Villa Karen",
+            lat: -1.3190,
+            lng: 36.7062,
+            price: "KSh 180M",
+            location: "Karen"
+          },
+          {
+            id: "2",
+            name: "Luxury Penthouse",
+            lat: -1.2671,
+            lng: 36.8076,
+            price: "KSh 120M",
+            location: "Westlands"
+          },
+          {
+            id: "3",
+            name: "Garden Estate",
+            lat: -1.2800,
+            lng: 36.7780,
+            price: "KSh 250M",
+            location: "Kileleshwa"
+          },
+          {
+            id: "4",
+            name: "Runda Mansion",
+            lat: -1.2250,
+            lng: 36.8040,
+            price: "KSh 350M",
+            location: "Runda"
+          },
+          // Coastal Properties
+          {
+            id: "5",
+            name: "Beachfront Villa Diani",
+            lat: -4.2850,
+            lng: 39.5795,
+            price: "KSh 95M",
+            location: "Diani Beach"
+          },
+          {
+            id: "6",
+            name: "Nyali Oceanfront Estate",
+            lat: -3.9980,
+            lng: 39.7225,
+            price: "KSh 140M",
+            location: "Nyali, Mombasa"
+          }
+        ];
+
+        // Custom marker icon - golden accent
+        const customIcon = L.divIcon({
+          className: 'custom-marker',
+          html: `<div style="
+            background: linear-gradient(135deg, #f5b942, #c2a675);
+            width: 32px;
+            height: 32px;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          ">
+            <svg style="transform: rotate(45deg); width: 16px; height: 16px;" viewBox="0 0 24 24" fill="rgba(0,0,0,0.8)">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+          </div>`,
+          iconSize: [32, 32],
+          iconAnchor: [16, 32],
+          popupAnchor: [0, -32]
+        });
+
+        properties.forEach(property => {
+          const marker = L.marker([property.lat, property.lng], { icon: customIcon })
+            .addTo(map);
+          
+          // Create popup with property details
+          const popupContent = `
+            <div style="
+              padding: 0.5rem;
+              font-family: system-ui, -apple-system, sans-serif;
+            ">
+              <h3 style="
+                margin: 0 0 0.5rem 0;
+                font-size: 1rem;
+                font-weight: 600;
+                color: #1a1a1a;
+              ">${property.name}</h3>
+              <p style="
+                margin: 0 0 0.25rem 0;
+                font-size: 0.85rem;
+                color: #666;
+              ">${property.location}</p>
+              <p style="
+                margin: 0 0 0.75rem 0;
+                font-size: 0.95rem;
+                font-weight: 600;
+                color: #f5b942;
+              ">${property.price}</p>
+              <a href="/listings/${property.id}" style="
+                display: inline-block;
+                padding: 0.4rem 0.8rem;
+                background: linear-gradient(135deg, #f5b942, #c2a675);
+                color: white;
+                text-decoration: none;
+                border-radius: 4px;
+                font-size: 0.85rem;
+                font-weight: 500;
+              ">View Details</a>
+            </div>
+          `;
+          
+          marker.bindPopup(popupContent, {
+            maxWidth: 250,
+            className: 'custom-popup'
+          });
+          
+          // Open popup on hover for better UX
+          marker.on('mouseover', function() {
+            this.openPopup();
+          });
+        });
+
         L.control.zoom({ position: "bottomright" }).addTo(map);
         mapRef.current = map;
         setMapReady(true);
@@ -165,10 +294,10 @@ export default function HeatmapPage() {
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}>
-          Property Density Map
+          Property Map
         </h1>
         <p style={{ color: "var(--theme-text-muted)", fontSize: "1.1rem", marginBottom: "2rem", transition: 'color 0.3s ease' }}>
-          Explore real estate concentrations across Nairobi&apos;s premium neighborhoods
+          Explore real estate concentrations and featured properties across Nairobi & Coast
         </p>
 
         {/* Filter Controls */}
