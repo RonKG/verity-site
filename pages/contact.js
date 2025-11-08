@@ -51,7 +51,19 @@ export default function Contact() {
           </p>
         </header>
 
-        <main style={{ display: "grid", gridTemplateColumns: "1fr 360px", gap: "2rem" }}>
+        <main style={{ 
+          display: "grid", 
+          gridTemplateColumns: "1fr 360px", 
+          gap: "2rem",
+        }}>
+          <style jsx>{`
+            @media (max-width: 768px) {
+              main {
+                grid-template-columns: 1fr !important;
+              }
+            }
+          `}</style>
+          
           {/* Form column */}
           <section>
             <form onSubmit={handleSubmit} aria-label="Contact form" style={{
