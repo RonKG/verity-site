@@ -1944,12 +1944,19 @@ export default function PropertyDetail() {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}>
+          {/* Dark overlay for better text readability */}
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)",
+          }} />
+          
           <div style={{
             position: "absolute",
             bottom: 0,
             left: 0,
             right: 0,
-            background: "linear-gradient(to top, var(--theme-bg) 0%, rgba(14,14,14,0) 100%)",
+            background: "linear-gradient(to top, var(--theme-bg) 0%, transparent 100%)",
             padding: "120px 20px 40px",
           }}>
             <div style={{
@@ -1960,18 +1967,19 @@ export default function PropertyDetail() {
                 fontSize: "2.8rem",
                 fontWeight: "500",
                 marginBottom: "1rem",
-                color: "var(--theme-text)",
-                transition: 'color 0.3s ease'
+                color: "#ffffff",
+                textShadow: "0 2px 8px rgba(0,0,0,0.5)"
               }}>{property.title}</h1>
               <p style={{
                 fontSize: "1.2rem",
-                color: "var(--theme-text-muted)",
+                color: "#f0f0f0",
                 marginBottom: "1rem",
-                transition: 'color 0.3s ease'
+                textShadow: "0 1px 4px rgba(0,0,0,0.5)"
               }}>{property.location}</p>
               <p style={{
                 fontSize: "1.4rem",
-                color: "var(--theme-accent)"
+                color: "var(--theme-accent)",
+                textShadow: "0 1px 4px rgba(0,0,0,0.5)"
               }}>{property.price}</p>
             </div>
           </div>
