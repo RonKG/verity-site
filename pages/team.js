@@ -29,37 +29,86 @@ export default function Team() {
         maxWidth: 1100,
         margin: '0 auto',
         padding: '60px 20px',
-        color: '#f0f0f0'
+        color: 'var(--theme-text)',
+        transition: 'color 0.3s ease'
       }}>
         <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-          <h1 style={{ fontSize: '2rem', margin: 0, fontWeight: 400, background: 'linear-gradient(45deg, rgba(245,185,66,0.95), rgba(194,166,117,0.9))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Our Team</h1>
-          <p style={{ color: '#cfcfcf', maxWidth: 820, margin: '0.75rem auto 0' }}>
+          <h1 style={{ 
+            fontSize: '2rem', 
+            margin: 0, 
+            fontWeight: 400, 
+            background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`, 
+            WebkitBackgroundClip: 'text', 
+            WebkitTextFillColor: 'transparent' 
+          }}>Our Team</h1>
+          <p style={{ 
+            color: 'var(--theme-text-muted)', 
+            maxWidth: 820, 
+            margin: '0.75rem auto 0',
+            transition: 'color 0.3s ease'
+          }}>
             We are a small, Nairobi-based team building data and tools for locals, expats and the diaspora who want to move, buy or invest in Kenya. Our focus is verification, clarity and making property markets more accessible.
           </p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
           {members.map((m) => (
-            <div key={m.name} style={{ background: '#141414', border: '1px solid #222', borderRadius: 12, padding: '1rem', textAlign: 'left' }}>
+            <div key={m.name} style={{ 
+              background: 'var(--theme-surface)', 
+              border: `1px solid var(--theme-border)`, 
+              borderRadius: 12, 
+              padding: '1rem', 
+              textAlign: 'left',
+              transition: 'background 0.3s ease, border-color 0.3s ease'
+            }}>
               <div style={{ width: '100%', height: 220, borderRadius: 10, overflow: 'hidden' }}>
                 <OptimizedImage src={m.img} alt={m.name} priority style={{ height: '220px' }} />
               </div>
               <div style={{ marginTop: '0.75rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
-                    <div style={{ fontSize: '1.05rem', fontWeight: 600, color: '#fff' }}>{m.name}</div>
-                    <div style={{ fontSize: '0.9rem', color: '#c2a675' }}>{m.role}</div>
+                    <div style={{ 
+                      fontSize: '1.05rem', 
+                      fontWeight: 600, 
+                      color: 'var(--theme-text)',
+                      transition: 'color 0.3s ease'
+                    }}>{m.name}</div>
+                    <div style={{ 
+                      fontSize: '0.9rem', 
+                      color: 'var(--theme-accent-strong)',
+                      transition: 'color 0.3s ease'
+                    }}>{m.role}</div>
                   </div>
                 </div>
-                <p style={{ color: '#bfbfbf', marginTop: '0.6rem', fontSize: '0.95rem' }}>{m.bio}</p>
+                <p style={{ 
+                  color: 'var(--theme-text-muted)', 
+                  marginTop: '0.6rem', 
+                  fontSize: '0.95rem',
+                  transition: 'color 0.3s ease'
+                }}>{m.bio}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div style={{ marginTop: '1.75rem', background: '#0f0f0f', border: '1px solid #222', padding: '1rem', borderRadius: 10 }}>
-          <h3 style={{ margin: 0, color: '#f5f5f5' }}>Our mission</h3>
-          <p style={{ color: '#cfcfcf', marginTop: '0.5rem' }}>
+        <div style={{ 
+          marginTop: '1.75rem', 
+          background: 'var(--theme-bg)', 
+          border: `1px solid var(--theme-border)`, 
+          padding: '1rem', 
+          borderRadius: 10,
+          transition: 'background 0.3s ease, border-color 0.3s ease'
+        }}>
+          <h3 style={{ 
+            margin: 0, 
+            color: 'var(--theme-text)',
+            transition: 'color 0.3s ease'
+          }}>Our mission</h3>
+          <p style={{ 
+            color: 'var(--theme-text-muted)', 
+            marginTop: '0.5rem',
+            transition: 'color 0.3s ease'
+          }}>
             We believe access to clear, verified property information is a small design change with outsized impact: it helps families move without fear, lets returning expats reconnect with confidence, and gives diaspora or global investors a sturdy basis for decisions. We build tools that shrink uncertainty and reward careful verification — not better salesmanship.
           </p>
         </div>
