@@ -60,50 +60,103 @@ export default function About() {
       <section style={{
         backgroundColor: "var(--theme-bg)",
         padding: "60px 20px",
-        textAlign: "center",
         transition: 'background-color 0.3s ease'
       }}>
         <div style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          position: "relative",
         }}>
-          <div style={{ width: '100%', height: 420, borderRadius: 12, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
-            <OptimizedImage
-              src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1074"
-              alt="Real estate analytics dashboard"
-              style={{ height: '420px' }}
-              priority={false}
-            />
-          </div>
-          <div style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            background: "linear-gradient(to bottom, transparent, var(--theme-bg) 50%, var(--theme-bg))",
-            padding: "80px 20px 20px",
-            borderRadius: "0 0 12px 12px",
+          <h2 style={{
+            fontSize: "2rem",
+            fontWeight: "400",
+            marginBottom: "1rem",
+            color: "var(--theme-text)",
+            textAlign: "center",
+            transition: 'color 0.3s ease'
+          }}>Our Approach</h2>
+          <p style={{
+            color: "var(--theme-text-muted)",
+            maxWidth: "900px",
+            margin: "0 auto 3rem auto",
+            lineHeight: "1.8",
+            textAlign: "center",
+            fontSize: "1.05rem",
+            transition: 'color 0.3s ease'
           }}>
-            <h2 style={{
-              fontSize: "1.8rem",
-              fontWeight: "400",
-              marginBottom: "1rem",
-              color: "var(--theme-text)",
-              transition: 'color 0.3s ease'
-            }}>Our Approach</h2>
-            <p style={{
-              color: "var(--theme-text-muted)",
-              maxWidth: "800px",
-              margin: "0 auto",
-              lineHeight: "1.8",
-              transition: 'color 0.3s ease'
-            }}>
-              By combining advanced market analytics with architectural expertise, 
-              we provide an unmatched platform for Kenya&apos;s most distinguished properties. 
-              Our methodology ensures that each listing represents the pinnacle of both 
-              value and design excellence.
-            </p>
+            By combining advanced market analytics with architectural expertise, 
+            we provide an unmatched platform for Kenya&apos;s most distinguished properties. 
+            Our methodology ensures that each listing represents the pinnacle of both 
+            value and design excellence.
+          </p>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
+            gap: "2rem",
+            marginTop: "2rem"
+          }}>
+            {[
+              {
+                number: "01",
+                title: "Property Discovery & Initial Vetting",
+                description: "We identify exceptional properties through our network of architects, developers, and real estate professionals. Each potential listing undergoes preliminary verification to confirm legal documentation, title status, and ownership clarity before proceeding."
+              },
+              {
+                number: "02",
+                title: "Comprehensive Site Analysis",
+                description: "Our team conducts in-person property inspections, documenting architectural details, construction quality, and unique features. We assess location metrics including proximity to amenities, infrastructure development, and neighborhood trends to provide complete context."
+              },
+              {
+                number: "03",
+                title: "Market Valuation & Positioning",
+                description: "Using proprietary algorithms and historical transaction data, we analyze comparable properties to establish accurate market valuations. We consider architectural significance, land appreciation trends, and micro-market dynamics to position each property competitively."
+              },
+              {
+                number: "04",
+                title: "Professional Documentation",
+                description: "We produce high-quality photography, detailed floor plans, and compelling narratives that showcase each property's distinctive character. Every listing includes verified specifications, neighborhood insights, and transparent disclosure of property features and limitations."
+              },
+              {
+                number: "05",
+                title: "Continuous Monitoring & Updates",
+                description: "Post-listing, we track market feedback, price adjustments, and buyer inquiries to refine positioning strategies. Our platform provides sellers with real-time analytics on property views, engagement metrics, and competitive landscape changes."
+              },
+              {
+                number: "06",
+                title: "Transaction Support & Verification",
+                description: "Throughout the sales process, we facilitate communication between parties, coordinate property viewings, and provide guidance on negotiation strategies. We verify all documentation and ensure smooth transitions from offer acceptance through to final closing."
+              }
+            ].map((item, index) => (
+              <div key={index} style={{
+                backgroundColor: "var(--theme-surface)",
+                padding: "2rem",
+                borderRadius: "12px",
+                border: `1px solid var(--theme-border)`,
+                transition: 'background-color 0.3s ease, border-color 0.3s ease'
+              }}>
+                <div style={{
+                  fontSize: "2.5rem",
+                  fontWeight: "300",
+                  color: "var(--theme-accent)",
+                  marginBottom: "1rem",
+                  opacity: 0.7,
+                  transition: 'color 0.3s ease'
+                }}>{item.number}</div>
+                <h3 style={{
+                  color: "var(--theme-text)",
+                  fontSize: "1.3rem",
+                  marginBottom: "1rem",
+                  fontWeight: "500",
+                  transition: 'color 0.3s ease'
+                }}>{item.title}</h3>
+                <p style={{
+                  color: "var(--theme-text-muted)",
+                  lineHeight: "1.7",
+                  fontSize: "1rem",
+                  transition: 'color 0.3s ease'
+                }}>{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
