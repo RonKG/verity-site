@@ -8,8 +8,8 @@ export default function CredibilitySection() {
     },
     {
       quote: "I've said it many times, but I'll say it again. The Registry is the GOAT for luxury property verification. You just need to try it once to understand.",
-      authorName: "Sarah Martinez",
-      handle: "@smartinez",
+      authorName: "Wanjiku Mwangi",
+      handle: "@wmwangi",
       avatarUrl: "https://cdn.pixabay.com/photo/2024/09/02/18/02/woman-9017569_1280.jpg"
     },
     {
