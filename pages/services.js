@@ -390,46 +390,46 @@ export default function Services() {
             {/* Research Team CTA */}
             <div style={{
               background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
-              borderRadius: "16px",
-              padding: "2.5rem 2rem",
+              borderRadius: "12px",
+              padding: "2rem 1.75rem",
               position: "relative",
               overflow: "hidden",
-              height: "100%",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center"
+              justifyContent: "space-between"
             }}>
               {/* Background pattern */}
               <div style={{
                 position: "absolute",
                 inset: 0,
-                opacity: 0.1,
-                backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.2) 0%, transparent 50%)'
+                opacity: 0.08,
+                backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(255,255,255,0.4) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.3) 0%, transparent 50%)'
               }} />
 
               <div style={{ position: "relative", zIndex: 1 }}>
                 <h2 style={{
-                  fontSize: "1.75rem",
+                  fontSize: "1.5rem",
                   fontWeight: "500",
-                  marginBottom: "1rem",
+                  marginBottom: "0.75rem",
                   color: "rgba(0,0,0,0.9)"
                 }}>
                   Need Custom Solutions?
                 </h2>
                 <p style={{
-                  fontSize: "1rem",
+                  fontSize: "0.95rem",
                   color: "rgba(0,0,0,0.75)",
-                  marginBottom: "2rem",
+                  marginBottom: "1.75rem",
                   lineHeight: "1.6"
                 }}>
                   Contact our research team for bespoke data extracts, API access, or tailored consultancy services
                 </p>
+                
                 <div style={{
                   display: "flex",
                   flexDirection: "column",
                   gap: "1rem",
-                  fontSize: "0.95rem",
-                  color: "rgba(0,0,0,0.8)"
+                  fontSize: "0.9rem",
+                  color: "rgba(0,0,0,0.85)"
                 }}>
                   <a href="mailto:research@theregistry.co.ke" style={{
                     textDecoration: "none",
@@ -437,9 +437,19 @@ export default function Services() {
                     display: "flex",
                     alignItems: "center",
                     gap: "0.75rem",
-                    fontWeight: "500"
+                    fontWeight: "500",
+                    padding: "0.75rem",
+                    background: "rgba(0,0,0,0.08)",
+                    borderRadius: "8px",
+                    transition: "all 0.2s ease"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "rgba(0,0,0,0.12)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(0,0,0,0.08)";
                   }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                       <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     research@theregistry.co.ke
@@ -450,14 +460,38 @@ export default function Services() {
                     display: "flex",
                     alignItems: "center",
                     gap: "0.75rem",
-                    fontWeight: "500"
+                    fontWeight: "500",
+                    padding: "0.75rem",
+                    background: "rgba(0,0,0,0.08)",
+                    borderRadius: "8px",
+                    transition: "all 0.2s ease"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "rgba(0,0,0,0.12)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(0,0,0,0.08)";
                   }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                       <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     +254 (0) 700 000 000
                   </a>
                 </div>
+              </div>
+
+              {/* Decorative icon at bottom */}
+              <div style={{
+                position: "absolute",
+                bottom: "1rem",
+                right: "1rem",
+                opacity: 0.12,
+                zIndex: 0
+              }}>
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="rgba(0,0,0,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="12" cy="10" r="3" stroke="rgba(0,0,0,0.5)" strokeWidth="1.5"/>
+                </svg>
               </div>
             </div>
 
