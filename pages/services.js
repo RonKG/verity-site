@@ -177,15 +177,15 @@ export default function Services() {
         }}>
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "2rem"
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "1.5rem"
           }}>
             {services.map((service, index) => (
               <div key={index} style={{
                 background: "var(--theme-surface)",
                 border: `1px solid var(--theme-border)`,
                 borderRadius: "12px",
-                padding: "2rem",
+                padding: "1.75rem",
                 transition: 'all 0.3s ease',
                 cursor: 'default'
               }}
@@ -197,22 +197,23 @@ export default function Services() {
                 e.currentTarget.style.transform = 'translateY(0)';
                 e.currentTarget.style.boxShadow = 'none';
               }}>
-                <div style={{ marginBottom: "1.25rem" }}>
+                <div style={{ marginBottom: "1rem", display: "flex", alignItems: "center", gap: "1rem" }}>
                   {service.icon}
+                  <h3 style={{
+                    fontSize: "1.25rem",
+                    fontWeight: "500",
+                    margin: 0,
+                    color: "var(--theme-text)",
+                    transition: 'color 0.3s ease'
+                  }}>
+                    {service.title}
+                  </h3>
                 </div>
-                <h3 style={{
-                  fontSize: "1.35rem",
-                  fontWeight: "500",
-                  marginBottom: "0.75rem",
-                  color: "var(--theme-text)",
-                  transition: 'color 0.3s ease'
-                }}>
-                  {service.title}
-                </h3>
                 <p style={{
                   color: "var(--theme-text-muted)",
                   lineHeight: "1.6",
-                  marginBottom: "1.5rem",
+                  marginBottom: "1.25rem",
+                  fontSize: "0.95rem",
                   transition: 'color 0.3s ease'
                 }}>
                   {service.description}
@@ -222,20 +223,21 @@ export default function Services() {
                   padding: 0,
                   margin: 0,
                   display: "grid",
-                  gap: "0.6rem"
+                  gap: "0.5rem",
+                  gridTemplateColumns: "repeat(2, 1fr)"
                 }}>
                   {service.features.map((feature, idx) => (
                     <li key={idx} style={{
                       display: "flex",
                       alignItems: "flex-start",
                       gap: "0.5rem",
-                      fontSize: "0.9rem",
+                      fontSize: "0.85rem",
                       color: "var(--theme-text-muted)",
                       transition: 'color 0.3s ease'
                     }}>
                       <span style={{
                         color: "var(--theme-accent)",
-                        fontSize: "1.2rem",
+                        fontSize: "1rem",
                         lineHeight: "1",
                         transition: 'color 0.3s ease'
                       }}>•</span>
@@ -250,7 +252,7 @@ export default function Services() {
 
         {/* Case Studies */}
         <section style={{
-          padding: "60px 20px 80px",
+          padding: "60px 20px",
           background: "var(--theme-card-bg)",
           transition: 'background 0.3s ease'
         }}>
@@ -260,7 +262,7 @@ export default function Services() {
           }}>
             <div style={{
               textAlign: "center",
-              marginBottom: "3rem"
+              marginBottom: "2.5rem"
             }}>
               <h2 style={{
                 fontSize: "2.25rem",
@@ -284,15 +286,15 @@ export default function Services() {
 
             <div style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-              gap: "2rem"
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "1.5rem"
             }}>
               {caseStudies.map((study, index) => (
                 <div key={index} style={{
                   background: "var(--theme-surface)",
                   border: `1px solid var(--theme-border)`,
                   borderRadius: "12px",
-                  padding: "2rem",
+                  padding: "1.75rem",
                   position: "relative",
                   overflow: "hidden",
                   transition: 'all 0.3s ease'
@@ -311,25 +313,26 @@ export default function Services() {
 
                   <div style={{
                     display: "flex",
-                    alignItems: "center",
-                    gap: "1rem",
-                    marginBottom: "1.5rem"
+                    flexDirection: "column",
+                    gap: "0.75rem",
+                    marginBottom: "1.25rem"
                   }}>
                     <div style={{
                       background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
                       color: "var(--theme-bg)",
-                      padding: "1rem 1.25rem",
+                      padding: "0.75rem 1rem",
                       borderRadius: "8px",
                       fontWeight: "600",
                       fontSize: "1.5rem",
-                      minWidth: "90px",
                       textAlign: "center"
                     }}>
                       {study.metric}
                     </div>
-                    <div>
+                    <div style={{
+                      textAlign: "center"
+                    }}>
                       <div style={{
-                        fontSize: "0.85rem",
+                        fontSize: "0.8rem",
                         color: "var(--theme-text-muted)",
                         marginBottom: "0.25rem",
                         transition: 'color 0.3s ease'
@@ -339,7 +342,7 @@ export default function Services() {
                       <div style={{
                         fontWeight: "500",
                         color: "var(--theme-text)",
-                        fontSize: "1.1rem",
+                        fontSize: "1.05rem",
                         transition: 'color 0.3s ease'
                       }}>
                         {study.client}
@@ -348,7 +351,7 @@ export default function Services() {
                   </div>
 
                   <div style={{
-                    fontSize: "0.9rem",
+                    fontSize: "0.85rem",
                     color: "var(--theme-accent-strong)",
                     fontWeight: "500",
                     marginBottom: "0.75rem",
@@ -361,6 +364,7 @@ export default function Services() {
                     color: "var(--theme-text-muted)",
                     lineHeight: "1.6",
                     margin: 0,
+                    fontSize: "0.9rem",
                     transition: 'color 0.3s ease'
                   }}>
                     {study.result}
@@ -371,335 +375,342 @@ export default function Services() {
           </div>
         </section>
 
-        {/* Contact Research Team CTA */}
+        {/* Contact Research Team CTA + Contact Form - Side by Side */}
         <section style={{
-          padding: "60px 20px",
-          maxWidth: "1000px",
+          padding: "60px 20px 80px",
+          maxWidth: "1200px",
           margin: "0 auto"
         }}>
           <div style={{
-            background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
-            borderRadius: "16px",
-            padding: "3rem 2rem",
-            textAlign: "center",
-            position: "relative",
-            overflow: "hidden"
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "2rem",
+            alignItems: "start"
           }}>
-            {/* Background pattern */}
+            {/* Research Team CTA */}
             <div style={{
-              position: "absolute",
-              inset: 0,
-              opacity: 0.1,
-              backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.2) 0%, transparent 50%)'
-            }} />
-
-            <div style={{ position: "relative", zIndex: 1 }}>
-              <h2 style={{
-                fontSize: "2rem",
-                fontWeight: "500",
-                marginBottom: "1rem",
-                color: "rgba(0,0,0,0.9)"
-              }}>
-                Need Custom Solutions?
-              </h2>
-              <p style={{
-                fontSize: "1.1rem",
-                color: "rgba(0,0,0,0.75)",
-                marginBottom: "2rem",
-                maxWidth: "700px",
-                margin: "0 auto 2rem"
-              }}>
-                Contact our research team for bespoke data extracts, API access, or tailored consultancy services
-              </p>
+              background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
+              borderRadius: "16px",
+              padding: "2.5rem 2rem",
+              position: "relative",
+              overflow: "hidden",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center"
+            }}>
+              {/* Background pattern */}
               <div style={{
-                display: "flex",
-                gap: "1.5rem",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                fontSize: "1rem",
-                color: "rgba(0,0,0,0.8)"
+                position: "absolute",
+                inset: 0,
+                opacity: 0.1,
+                backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.2) 0%, transparent 50%)'
+              }} />
+
+              <div style={{ position: "relative", zIndex: 1 }}>
+                <h2 style={{
+                  fontSize: "1.75rem",
+                  fontWeight: "500",
+                  marginBottom: "1rem",
+                  color: "rgba(0,0,0,0.9)"
+                }}>
+                  Need Custom Solutions?
+                </h2>
+                <p style={{
+                  fontSize: "1rem",
+                  color: "rgba(0,0,0,0.75)",
+                  marginBottom: "2rem",
+                  lineHeight: "1.6"
+                }}>
+                  Contact our research team for bespoke data extracts, API access, or tailored consultancy services
+                </p>
+                <div style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                  fontSize: "0.95rem",
+                  color: "rgba(0,0,0,0.8)"
+                }}>
+                  <a href="mailto:research@theregistry.co.ke" style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.75rem",
+                    fontWeight: "500"
+                  }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    research@theregistry.co.ke
+                  </a>
+                  <a href="tel:+254700000000" style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.75rem",
+                    fontWeight: "500"
+                  }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    +254 (0) 700 000 000
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div>
+              <div style={{
+                textAlign: "center",
+                marginBottom: "2rem"
               }}>
-                <a href="mailto:research@theregistry.co.ke" style={{
-                  textDecoration: "none",
-                  color: "inherit",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  fontWeight: "500"
+                <h2 style={{
+                  fontSize: "1.75rem",
+                  fontWeight: "400",
+                  marginBottom: "0.5rem",
+                  color: "var(--theme-text)",
+                  transition: 'color 0.3s ease'
                 }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  research@theregistry.co.ke
-                </a>
-                <a href="tel:+254700000000" style={{
-                  textDecoration: "none",
-                  color: "inherit",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  fontWeight: "500"
+                  Get Started
+                </h2>
+                <p style={{
+                  color: "var(--theme-text-muted)",
+                  fontSize: "0.95rem",
+                  transition: 'color 0.3s ease'
                 }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  +254 (0) 700 000 000
-                </a>
+                  We'll get back to you within 48 hours
+                </p>
               </div>
+
+              <form onSubmit={handleSubmit} style={{
+                background: "var(--theme-surface)",
+                padding: "2rem",
+                borderRadius: "12px",
+                border: `1px solid var(--theme-border)`,
+                boxShadow: '0 8px 30px rgba(0,0,0,0.1)',
+                transition: 'background 0.3s ease, border-color 0.3s ease'
+              }}>
+                <div style={{ display: "grid", gap: "1.25rem" }}>
+                  <div>
+                    <label style={{
+                      display: "block",
+                      marginBottom: "0.5rem",
+                      color: "var(--theme-text)",
+                      fontSize: "0.9rem",
+                      fontWeight: "500",
+                      transition: 'color 0.3s ease'
+                    }}>
+                      Name *
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      required
+                      style={{
+                        width: "100%",
+                        padding: "0.7rem",
+                        backgroundColor: "var(--theme-bg)",
+                        border: `1px solid var(--theme-border)`,
+                        borderRadius: "6px",
+                        color: "var(--theme-text)",
+                        fontSize: "0.95rem",
+                        transition: 'all 0.3s ease'
+                      }}
+                    />
+                  </div>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+                    <div>
+                      <label style={{
+                        display: "block",
+                        marginBottom: "0.5rem",
+                        color: "var(--theme-text)",
+                        fontSize: "0.9rem",
+                        fontWeight: "500",
+                        transition: 'color 0.3s ease'
+                      }}>
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        required
+                        style={{
+                          width: "100%",
+                          padding: "0.7rem",
+                          backgroundColor: "var(--theme-bg)",
+                          border: `1px solid var(--theme-border)`,
+                          borderRadius: "6px",
+                          color: "var(--theme-text)",
+                          fontSize: "0.95rem",
+                          transition: 'all 0.3s ease'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{
+                        display: "block",
+                        marginBottom: "0.5rem",
+                        color: "var(--theme-text)",
+                        fontSize: "0.9rem",
+                        fontWeight: "500",
+                        transition: 'color 0.3s ease'
+                      }}>
+                        Phone
+                      </label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        style={{
+                          width: "100%",
+                          padding: "0.7rem",
+                          backgroundColor: "var(--theme-bg)",
+                          border: `1px solid var(--theme-border)`,
+                          borderRadius: "6px",
+                          color: "var(--theme-text)",
+                          fontSize: "0.95rem",
+                          transition: 'all 0.3s ease'
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label style={{
+                      display: "block",
+                      marginBottom: "0.5rem",
+                      color: "var(--theme-text)",
+                      fontSize: "0.9rem",
+                      fontWeight: "500",
+                      transition: 'color 0.3s ease'
+                    }}>
+                      Service Interest *
+                    </label>
+                    <select
+                      value={formData.serviceType}
+                      onChange={(e) => setFormData({...formData, serviceType: e.target.value})}
+                      required
+                      style={{
+                        width: "100%",
+                        padding: "0.7rem",
+                        backgroundColor: "var(--theme-bg)",
+                        border: `1px solid var(--theme-border)`,
+                        borderRadius: "6px",
+                        color: "var(--theme-text)",
+                        fontSize: "0.95rem",
+                        transition: 'all 0.3s ease',
+                        cursor: "pointer"
+                      }}
+                    >
+                      <option value="">Select a service...</option>
+                      <option value="standard-listing">Standard Property Listing</option>
+                      <option value="white-glove">White Glove Listing Service</option>
+                      <option value="market-research">Market Research & Insights</option>
+                      <option value="data-api">Bespoke Data Extracts / API Access</option>
+                      <option value="investment-advisory">Investment Advisory</option>
+                      <option value="developer-consulting">Developer Consulting</option>
+                      <option value="institutional">Institutional Services</option>
+                      <option value="title-legal">Title & Legal Services</option>
+                      <option value="other">Other / Multiple Services</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label style={{
+                      display: "block",
+                      marginBottom: "0.5rem",
+                      color: "var(--theme-text)",
+                      fontSize: "0.9rem",
+                      fontWeight: "500",
+                      transition: 'color 0.3s ease'
+                    }}>
+                      Tell us about your needs
+                    </label>
+                    <textarea
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      rows={4}
+                      style={{
+                        width: "100%",
+                        padding: "0.7rem",
+                        backgroundColor: "var(--theme-bg)",
+                        border: `1px solid var(--theme-border)`,
+                        borderRadius: "6px",
+                        color: "var(--theme-text)",
+                        fontSize: "0.95rem",
+                        resize: "vertical",
+                        transition: 'all 0.3s ease'
+                      }}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={status === 'sending'}
+                    style={{
+                      background: "linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))",
+                      color: "var(--theme-bg)",
+                      padding: "0.85rem 2rem",
+                      border: "none",
+                      borderRadius: "8px",
+                      fontSize: "1rem",
+                      fontWeight: "600",
+                      cursor: status === 'sending' ? 'wait' : 'pointer',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 4px 12px rgba(245, 185, 66, 0.25)'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (status !== 'sending') {
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.boxShadow = '0 6px 16px rgba(245, 185, 66, 0.35)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 4px 12px rgba(245, 185, 66, 0.25)';
+                    }}
+                  >
+                    {status === 'sending' ? 'Sending...' : 'Request Information'}
+                  </button>
+
+                  {status === 'sent' && (
+                    <div style={{
+                      padding: "1rem",
+                      background: "rgba(76, 175, 80, 0.1)",
+                      border: "1px solid rgba(76, 175, 80, 0.3)",
+                      borderRadius: "6px",
+                      color: "#4caf50",
+                      textAlign: "center",
+                      fontSize: "0.9rem"
+                    }}>
+                      Thank you! We'll get back to you within 48 hours.
+                    </div>
+                  )}
+
+                  {status === 'error' && (
+                    <div style={{
+                      padding: "1rem",
+                      background: "rgba(244, 67, 54, 0.1)",
+                      border: "1px solid rgba(244, 67, 54, 0.3)",
+                      borderRadius: "6px",
+                      color: "#f44336",
+                      textAlign: "center",
+                      fontSize: "0.9rem"
+                    }}>
+                      Please complete all required fields.
+                    </div>
+                  )}
+                </div>
+              </form>
             </div>
           </div>
-        </section>
-
-        {/* Contact Form */}
-        <section style={{
-          padding: "40px 20px 100px",
-          maxWidth: "700px",
-          margin: "0 auto"
-        }}>
-          <div style={{
-            textAlign: "center",
-            marginBottom: "2.5rem"
-          }}>
-            <h2 style={{
-              fontSize: "2rem",
-              fontWeight: "400",
-              marginBottom: "0.75rem",
-              color: "var(--theme-text)",
-              transition: 'color 0.3s ease'
-            }}>
-              Get Started
-            </h2>
-            <p style={{
-              color: "var(--theme-text-muted)",
-              fontSize: "1.05rem",
-              transition: 'color 0.3s ease'
-            }}>
-              Tell us about your needs and we'll get back to you within 48 hours
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} style={{
-            background: "var(--theme-surface)",
-            padding: "2.5rem",
-            borderRadius: "12px",
-            border: `1px solid var(--theme-border)`,
-            boxShadow: '0 8px 30px rgba(0,0,0,0.1)',
-            transition: 'background 0.3s ease, border-color 0.3s ease'
-          }}>
-            <div style={{ display: "grid", gap: "1.5rem" }}>
-              <div>
-                <label style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "var(--theme-text)",
-                  fontSize: "0.95rem",
-                  fontWeight: "500",
-                  transition: 'color 0.3s ease'
-                }}>
-                  Name *
-                </label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  required
-                  style={{
-                    width: "100%",
-                    padding: "0.75rem",
-                    backgroundColor: "var(--theme-bg)",
-                    border: `1px solid var(--theme-border)`,
-                    borderRadius: "6px",
-                    color: "var(--theme-text)",
-                    fontSize: "1rem",
-                    transition: 'all 0.3s ease'
-                  }}
-                />
-              </div>
-
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
-                <div>
-                  <label style={{
-                    display: "block",
-                    marginBottom: "0.5rem",
-                    color: "var(--theme-text)",
-                    fontSize: "0.95rem",
-                    fontWeight: "500",
-                    transition: 'color 0.3s ease'
-                  }}>
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    required
-                    style={{
-                      width: "100%",
-                      padding: "0.75rem",
-                      backgroundColor: "var(--theme-bg)",
-                      border: `1px solid var(--theme-border)`,
-                      borderRadius: "6px",
-                      color: "var(--theme-text)",
-                      fontSize: "1rem",
-                      transition: 'all 0.3s ease'
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{
-                    display: "block",
-                    marginBottom: "0.5rem",
-                    color: "var(--theme-text)",
-                    fontSize: "0.95rem",
-                    fontWeight: "500",
-                    transition: 'color 0.3s ease'
-                  }}>
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    style={{
-                      width: "100%",
-                      padding: "0.75rem",
-                      backgroundColor: "var(--theme-bg)",
-                      border: `1px solid var(--theme-border)`,
-                      borderRadius: "6px",
-                      color: "var(--theme-text)",
-                      fontSize: "1rem",
-                      transition: 'all 0.3s ease'
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "var(--theme-text)",
-                  fontSize: "0.95rem",
-                  fontWeight: "500",
-                  transition: 'color 0.3s ease'
-                }}>
-                  Service Interest *
-                </label>
-                <select
-                  value={formData.serviceType}
-                  onChange={(e) => setFormData({...formData, serviceType: e.target.value})}
-                  required
-                  style={{
-                    width: "100%",
-                    padding: "0.75rem",
-                    backgroundColor: "var(--theme-bg)",
-                    border: `1px solid var(--theme-border)`,
-                    borderRadius: "6px",
-                    color: "var(--theme-text)",
-                    fontSize: "1rem",
-                    transition: 'all 0.3s ease',
-                    cursor: "pointer"
-                  }}
-                >
-                  <option value="">Select a service...</option>
-                  <option value="standard-listing">Standard Property Listing</option>
-                  <option value="white-glove">White Glove Listing Service</option>
-                  <option value="market-research">Market Research & Insights</option>
-                  <option value="data-api">Bespoke Data Extracts / API Access</option>
-                  <option value="investment-advisory">Investment Advisory</option>
-                  <option value="developer-consulting">Developer Consulting</option>
-                  <option value="institutional">Institutional Services</option>
-                  <option value="title-legal">Title & Legal Services</option>
-                  <option value="other">Other / Multiple Services</option>
-                </select>
-              </div>
-
-              <div>
-                <label style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "var(--theme-text)",
-                  fontSize: "0.95rem",
-                  fontWeight: "500",
-                  transition: 'color 0.3s ease'
-                }}>
-                  Tell us about your needs
-                </label>
-                <textarea
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  rows={5}
-                  style={{
-                    width: "100%",
-                    padding: "0.75rem",
-                    backgroundColor: "var(--theme-bg)",
-                    border: `1px solid var(--theme-border)`,
-                    borderRadius: "6px",
-                    color: "var(--theme-text)",
-                    fontSize: "1rem",
-                    resize: "vertical",
-                    transition: 'all 0.3s ease'
-                  }}
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={status === 'sending'}
-                style={{
-                  background: "linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))",
-                  color: "var(--theme-bg)",
-                  padding: "0.9rem 2rem",
-                  border: "none",
-                  borderRadius: "8px",
-                  fontSize: "1.05rem",
-                  fontWeight: "600",
-                  cursor: status === 'sending' ? 'wait' : 'pointer',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 4px 12px rgba(245, 185, 66, 0.25)'
-                }}
-                onMouseEnter={(e) => {
-                  if (status !== 'sending') {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(245, 185, 66, 0.35)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(245, 185, 66, 0.25)';
-                }}
-              >
-                {status === 'sending' ? 'Sending...' : 'Request Information'}
-              </button>
-
-              {status === 'sent' && (
-                <div style={{
-                  padding: "1rem",
-                  background: "rgba(76, 175, 80, 0.1)",
-                  border: "1px solid rgba(76, 175, 80, 0.3)",
-                  borderRadius: "6px",
-                  color: "#4caf50",
-                  textAlign: "center"
-                }}>
-                  Thank you! We'll get back to you within 48 hours.
-                </div>
-              )}
-
-              {status === 'error' && (
-                <div style={{
-                  padding: "1rem",
-                  background: "rgba(244, 67, 54, 0.1)",
-                  border: "1px solid rgba(244, 67, 54, 0.3)",
-                  borderRadius: "6px",
-                  color: "#f44336",
-                  textAlign: "center"
-                }}>
-                  Please complete all required fields.
-                </div>
-              )}
-            </div>
-          </form>
         </section>
 
         {/* Mobile Responsive Styles */}
@@ -709,9 +720,20 @@ export default function Services() {
               font-size: 2rem !important;
             }
             section h2 {
-              font-size: 1.75rem !important;
+              font-size: 1.5rem !important;
             }
-            div[style*="grid-template-columns"] {
+            div[style*="gridTemplateColumns: \"repeat(2, 1fr)\""] {
+              grid-template-columns: 1fr !important;
+            }
+            div[style*="gridTemplateColumns: \"repeat(3, 1fr)\""] {
+              grid-template-columns: 1fr !important;
+            }
+            div[style*="gridTemplateColumns: \"1fr 1fr\""] {
+              grid-template-columns: 1fr !important;
+            }
+          }
+          @media (max-width: 600px) {
+            div[style*="gridTemplateColumns: \"repeat(2, 1fr)\""] ul {
               grid-template-columns: 1fr !important;
             }
           }
