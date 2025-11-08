@@ -18,8 +18,8 @@ export default function MobileMenu() {
           position: 'fixed',
           top: '12px',
           right: '12px',
-          zIndex: 1001,
-          background: 'none',
+          zIndex: 10001,
+          background: isOpen ? 'none' : 'rgba(14, 14, 14, 0.8)',
           border: 'none',
           padding: '12px',
           cursor: 'pointer',
@@ -29,6 +29,9 @@ export default function MobileMenu() {
           flexDirection: 'column',
           justifyContent: 'center',
           gap: '6px',
+          borderRadius: '8px',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
         }}
       >
         <span style={{
@@ -67,12 +70,13 @@ export default function MobileMenu() {
           background: 'rgba(14, 14, 14, 0.98)',
           backdropFilter: 'blur(8px)',
           WebkitBackdropFilter: 'blur(8px)',
-          zIndex: 1000,
+          zIndex: 10000,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '2rem'
+          gap: '2rem',
+          overflowY: 'auto'
         }}>
           {[
             [{ href: '/', label: 'Home' }],
@@ -130,10 +134,16 @@ export default function MobileMenu() {
       )}
 
       <style jsx global>{`
-        @media (min-width: 768px) {
+        @media (min-width: 769px) {
           button[aria-label="Open menu"],
           button[aria-label="Close menu"] {
             display: none !important;
+          }
+        }
+        @media (max-width: 768px) {
+          button[aria-label="Open menu"],
+          button[aria-label="Close menu"] {
+            display: flex !important;
           }
         }
       `}</style>
