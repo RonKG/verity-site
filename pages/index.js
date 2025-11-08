@@ -42,7 +42,7 @@ export default function Home() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: "85vh",
+          minHeight: "60vh",
           color: "var(--theme-text)",
           textAlign: "center",
           padding: "40px 20px",
@@ -235,6 +235,214 @@ export default function Home() {
             }
           }
         `}</style>
+      </section>
+
+      {/* Quick Search Section */}
+      <section style={{
+        backgroundColor: "var(--theme-surface)",
+        padding: "60px 20px",
+        transition: 'background-color 0.3s ease'
+      }}>
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}>
+          <h2 style={{
+            fontSize: "1.8rem",
+            fontWeight: "400",
+            marginBottom: "2rem",
+            textAlign: "center",
+            color: "var(--theme-text)",
+            transition: 'color 0.3s ease'
+          }}>
+            Find Your Perfect Property
+          </h2>
+          
+          <div style={{
+            background: "var(--theme-bg)",
+            padding: "2rem",
+            borderRadius: "12px",
+            border: `1px solid var(--theme-border)`,
+            transition: 'background 0.3s ease, border-color 0.3s ease'
+          }}>
+            {/* Search Bar */}
+            <div style={{ marginBottom: "2rem" }}>
+              <input
+                type="text"
+                placeholder="Search by location, features, or keywords..."
+                style={{
+                  width: "100%",
+                  padding: "1rem",
+                  background: "var(--theme-surface)",
+                  border: `1px solid var(--theme-border)`,
+                  borderRadius: "8px",
+                  color: "var(--theme-text)",
+                  fontSize: "1rem",
+                  transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                }}
+              />
+            </div>
+
+            {/* Filter Controls */}
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: "1rem",
+            }}>
+              {/* Location Filter */}
+              <div>
+                <label style={{ 
+                  display: "block", 
+                  marginBottom: "0.5rem", 
+                  color: "var(--theme-text-muted)",
+                  fontSize: "0.9rem",
+                  transition: 'color 0.3s ease'
+                }}>
+                  Location
+                </label>
+                <select
+                  style={{
+                    width: "100%",
+                    padding: "0.75rem",
+                    background: "var(--theme-surface)",
+                    border: `1px solid var(--theme-border)`,
+                    borderRadius: "6px",
+                    color: "var(--theme-text)",
+                    cursor: "pointer",
+                    transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                  }}
+                >
+                  <option>All Locations</option>
+                  <option>Karen</option>
+                  <option>Kitisuru</option>
+                  <option>Lavington</option>
+                  <option>Muthaiga</option>
+                  <option>Runda</option>
+                  <option>Coastal Region</option>
+                </select>
+              </div>
+
+              {/* Price Range Filter */}
+              <div>
+                <label style={{ 
+                  display: "block", 
+                  marginBottom: "0.5rem", 
+                  color: "var(--theme-text-muted)",
+                  fontSize: "0.9rem",
+                  transition: 'color 0.3s ease'
+                }}>
+                  Price Range
+                </label>
+                <select
+                  style={{
+                    width: "100%",
+                    padding: "0.75rem",
+                    background: "var(--theme-surface)",
+                    border: `1px solid var(--theme-border)`,
+                    borderRadius: "6px",
+                    color: "var(--theme-text)",
+                    cursor: "pointer",
+                    transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                  }}
+                >
+                  <option>All Prices</option>
+                  <option>KSh 200M - 300M</option>
+                  <option>KSh 300M - 400M</option>
+                  <option>KSh 400M - 500M</option>
+                  <option>KSh 500M+</option>
+                </select>
+              </div>
+
+              {/* Property Type Filter */}
+              <div>
+                <label style={{ 
+                  display: "block", 
+                  marginBottom: "0.5rem", 
+                  color: "var(--theme-text-muted)",
+                  fontSize: "0.9rem",
+                  transition: 'color 0.3s ease'
+                }}>
+                  Property Type
+                </label>
+                <select
+                  style={{
+                    width: "100%",
+                    padding: "0.75rem",
+                    background: "var(--theme-surface)",
+                    border: `1px solid var(--theme-border)`,
+                    borderRadius: "6px",
+                    color: "var(--theme-text)",
+                    cursor: "pointer",
+                    transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                  }}
+                >
+                  <option>All Types</option>
+                  <option>Villa</option>
+                  <option>Penthouse</option>
+                  <option>Estate</option>
+                  <option>Beachfront</option>
+                </select>
+              </div>
+
+              {/* Sort Options */}
+              <div>
+                <label style={{ 
+                  display: "block", 
+                  marginBottom: "0.5rem", 
+                  color: "var(--theme-text-muted)",
+                  fontSize: "0.9rem",
+                  transition: 'color 0.3s ease'
+                }}>
+                  Sort By
+                </label>
+                <select
+                  style={{
+                    width: "100%",
+                    padding: "0.75rem",
+                    background: "var(--theme-surface)",
+                    border: `1px solid var(--theme-border)`,
+                    borderRadius: "6px",
+                    color: "var(--theme-text)",
+                    cursor: "pointer",
+                    transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease'
+                  }}
+                >
+                  <option>Featured</option>
+                  <option>Price: Low to High</option>
+                  <option>Price: High to Low</option>
+                  <option>Newest First</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Search Button */}
+            <div style={{ marginTop: "2rem", textAlign: "center" }}>
+              <Link href="/listings" style={{ textDecoration: "none" }}>
+                <button style={{
+                  background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
+                  color: "var(--theme-bg)",
+                  padding: "1rem 3rem",
+                  border: "none",
+                  borderRadius: "8px",
+                  fontSize: "1rem",
+                  fontWeight: "500",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 8px 16px rgba(0,0,0,0.2)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}>
+                  Search Properties
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Featured Properties Preview */}
