@@ -122,6 +122,31 @@ export default function HeatmapPage() {
 
   return (
     <Layout>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .filter-container {
+            flex-direction: column !important;
+            gap: 1rem !important;
+          }
+          .filter-item {
+            width: 100% !important;
+            min-width: auto !important;
+          }
+          .floating-panel {
+            position: relative !important;
+            left: 0 !important;
+            bottom: 0 !important;
+            margin: 1rem auto !important;
+            width: 90% !important;
+            max-width: 400px !important;
+          }
+          #heatmapContainer {
+            height: 60vh !important;
+            width: 95% !important;
+          }
+        }
+      `}</style>
+      
       <section
         style={{
           textAlign: "center",
@@ -147,7 +172,7 @@ export default function HeatmapPage() {
         </p>
 
         {/* Filter Controls */}
-        <div style={{
+        <div className="filter-container" style={{
           display: "flex",
           justifyContent: "center",
           gap: "2rem",
@@ -155,7 +180,7 @@ export default function HeatmapPage() {
           flexWrap: "wrap"
         }}>
           {/* Property Type Filter */}
-          <div style={{ minWidth: "200px" }}>
+          <div className="filter-item" style={{ minWidth: "200px" }}>
             <label style={{
               display: "block",
               marginBottom: "0.5rem",
@@ -190,7 +215,7 @@ export default function HeatmapPage() {
           </div>
 
           {/* Market Segment Filter */}
-          <div style={{ minWidth: "200px" }}>
+          <div className="filter-item" style={{ minWidth: "200px" }}>
             <label style={{
               display: "block",
               marginBottom: "0.5rem",
@@ -225,7 +250,7 @@ export default function HeatmapPage() {
           </div>
 
           {/* Time Range Filter */}
-          <div style={{ minWidth: "200px" }}>
+          <div className="filter-item" style={{ minWidth: "200px" }}>
             <label style={{
               display: "block",
               marginBottom: "0.5rem",
@@ -304,6 +329,7 @@ export default function HeatmapPage() {
       {/* Unified Floating Controls */}
       {mapReady && (
         <div
+          className="floating-panel"
           style={{
             position: "absolute",
             bottom: "60px",
