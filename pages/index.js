@@ -49,7 +49,7 @@ export default function Home() {
           overflow: "hidden",
         }}
       >
-        {/* Background image - increased opacity and added filter */}
+        {/* Background image */}
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80"
           alt="Elegant modern home exterior"
@@ -59,23 +59,18 @@ export default function Home() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.75,
-            filter: "blur(4px) brightness(0.85)",
-            transform: "scale(1.05)",
+            opacity: 0.5,
             zIndex: 0,
           }}
         />
 
-        {/* Theme-aware overlay with subtle gradient */}
+        {/* Theme-aware overlay for contrast */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background: `linear-gradient(180deg, 
-              var(--theme-overlay) 0%, 
-              transparent 40%, 
-              transparent 60%, 
-              var(--theme-overlay) 100%)`,
+            background: "var(--theme-overlay)",
+            backdropFilter: "blur(2px)",
             zIndex: 1,
             transition: 'background 0.3s ease'
           }}
@@ -92,86 +87,47 @@ export default function Home() {
           margin: "0 auto",
           padding: "0 20px"
         }}>
-          {/* Title with pill background */}
-          <div style={{
-            background: "var(--theme-surface)",
-            backdropFilter: "blur(20px) saturate(180%)",
-            WebkitBackdropFilter: "blur(20px) saturate(180%)",
-            padding: "1.5rem 3rem",
-            borderRadius: "60px",
-            border: `1px solid var(--theme-border)`,
-            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
-            marginBottom: "1.5rem",
-            transition: 'background 0.3s ease, border-color 0.3s ease'
-          }}>
-            <h1
-              style={{
-                fontSize: "clamp(2.8rem, 5vw, 4.2rem)",
-                fontWeight: "400",
-                margin: 0,
-                letterSpacing: "-0.02em",
-                lineHeight: "1.1",
-                color: "var(--theme-text)",
-                transition: 'color 0.3s ease'
-              }}
-            >
-              The Registry
-            </h1>
-          </div>
+          <h1
+            style={{
+              fontSize: "clamp(2.8rem, 5vw, 4.2rem)",
+              fontWeight: "400",
+              marginBottom: "1.25rem",
+              letterSpacing: "-0.02em",
+              lineHeight: "1.1",
+              textShadow: "0 2px 8px rgba(0,0,0,0.2)"
+            }}
+          >
+            The Registry
+          </h1>
 
-          {/* Tagline with pill background */}
-          <div style={{
-            background: "var(--theme-card-bg)",
-            backdropFilter: "blur(16px) saturate(180%)",
-            WebkitBackdropFilter: "blur(16px) saturate(180%)",
-            padding: "1rem 2.5rem",
-            borderRadius: "50px",
-            border: `1px solid var(--theme-border)`,
-            boxShadow: "0 4px 24px rgba(0, 0, 0, 0.2)",
-            marginBottom: "1.5rem",
-            transition: 'background 0.3s ease, border-color 0.3s ease'
-          }}>
-            <p
-              style={{
-                fontSize: "clamp(1.2rem, 1.8vw, 1.4rem)",
-                color: "var(--theme-accent-strong)",
-                margin: 0,
-                lineHeight: "1.4",
-                fontWeight: "500",
-                transition: 'color 0.3s ease'
-              }}
-            >
-              Curated. Verified. Data-driven.
-            </p>
-          </div>
+          <p
+            style={{
+              fontSize: "clamp(1.2rem, 1.8vw, 1.4rem)",
+              color: "var(--theme-text)",
+              maxWidth: "600px",
+              lineHeight: "1.6",
+              marginBottom: "1.25rem",
+              fontWeight: "300",
+              textShadow: "0 1px 4px rgba(0,0,0,0.15)"
+            }}
+          >
+            Curated. Verified. Data-driven.
+          </p>
 
-          {/* Subtitle with pill background */}
-          <div style={{
-            background: "var(--theme-card-bg)",
-            backdropFilter: "blur(16px) saturate(180%)",
-            WebkitBackdropFilter: "blur(16px) saturate(180%)",
-            padding: "0.85rem 2rem",
-            borderRadius: "40px",
-            border: `1px solid var(--theme-border)`,
-            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
-            marginBottom: "3rem",
-            maxWidth: "600px",
-            transition: 'background 0.3s ease, border-color 0.3s ease'
-          }}>
-            <p
-              style={{
-                fontSize: "clamp(0.95rem, 1.2vw, 1.1rem)",
-                color: "var(--theme-text-muted)",
-                margin: 0,
-                lineHeight: "1.6",
-                letterSpacing: "0.01em",
-                fontWeight: "300",
-                transition: 'color 0.3s ease'
-              }}
-            >
-              Because finding a home should feel inspiring — and certain.
-            </p>
-          </div>
+          <p
+            style={{
+              fontSize: "clamp(0.95rem, 1.2vw, 1.1rem)",
+              color: "var(--theme-text-muted)",
+              maxWidth: "540px",
+              lineHeight: "1.7",
+              marginBottom: "3rem",
+              letterSpacing: "0.01em",
+              fontWeight: "300",
+              textShadow: "0 1px 4px rgba(0,0,0,0.12)"
+            }}
+          >
+            Because finding a home should begin with trust — and end with certainty.
+          </p>
 
           {/* Stats display */}
           <div style={{
@@ -188,23 +144,12 @@ export default function Home() {
                 flexDirection: "column",
                 alignItems: "center",
                 background: "var(--theme-card-bg)",
-                backdropFilter: "blur(20px) saturate(180%)",
-                WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                backdropFilter: "blur(10px)",
                 padding: "1rem 2rem",
-                borderRadius: "16px",
+                borderRadius: "8px",
                 border: `1px solid var(--theme-border)`,
-                boxShadow: "0 8px 24px rgba(0, 0, 0, 0.25)",
-                transition: 'all 0.3s ease'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = "translateY(-4px)";
-                e.currentTarget.style.boxShadow = "0 12px 32px rgba(0, 0, 0, 0.35)";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 8px 24px rgba(0, 0, 0, 0.25)";
-              }}
-              >
+                transition: 'background 0.3s ease, border-color 0.3s ease'
+              }}>
                 <span style={{
                   fontSize: "1.8rem",
                   fontWeight: "500",
@@ -215,8 +160,7 @@ export default function Home() {
                 <span style={{
                   fontSize: "0.9rem",
                   color: "var(--theme-text-muted)",
-                  marginTop: "0.3rem",
-                  transition: 'color 0.3s ease'
+                  marginTop: "0.3rem"
                 }}>{stat.label}</span>
               </div>
             ))}
