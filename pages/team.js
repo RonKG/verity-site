@@ -5,19 +5,19 @@ export default function Team() {
   const members = [
     {
       name: "James Kamau",
-      role: "Founder & CEO",
+      role: "Co-Founder & CEO",
       img: "https://plus.unsplash.com/premium_photo-1661511942092-a23c81ac5a31?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
       bio: "James started The Registry after losing hours to paperwork and guesswork while helping family buy a home. He builds product to make property decisions faster and less faith-based — a practical idealist who believes clear records beat negotiation theater."
     },
     {
       name: "Amy Kamau",
-      role: "Head of Operations",
+      role: "Co-Founder & Head of Operations",
       img: "https://images.unsplash.com/photo-1573496527892-904f897eb744?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1169",
-      bio: "If there’s a chain of custody, Amy has mapped it, simplified it, and taught five people how to use it. She runs verification, partnerships and the engine room that keeps our data honest — with a soft spot for problem tickets that are actually puzzles."
+      bio: "If there's a chain of custody, Amy has mapped it, simplified it, and taught five people how to use it. She runs verification, partnerships and the engine room that keeps our data honest — with a soft spot for problem tickets that are actually puzzles."
     },
     {
       name: "Ronald Wahome",
-      role: "Head of Technology & Analytics",
+      role: "Co-Founder & Head of Technology",
       img: "https://plus.unsplash.com/premium_photo-1661299270240-1fccb9604606?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
       bio: "Ronald is our tech and analytics brain: he builds the pipelines that tame noisy records and crafts the models that turn them into decision-ready signals. He loves architecture that scales and insights that surprise — and he pushes us to test the assumptions others take for granted."
     },
@@ -131,6 +131,34 @@ export default function Team() {
               color: 'var(--theme-text)',
               transition: 'color 0.3s ease'
             }}>Our Heroes</h2>
+            
+            {/* Playful Hero Image */}
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              margin: '1.5rem 0'
+            }}>
+              <div style={{
+                width: '120px',
+                height: '120px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                border: `3px solid var(--theme-accent)`,
+                boxShadow: '0 4px 12px rgba(245, 185, 66, 0.3)',
+                transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
+              }}>
+                <img 
+                  src="https://images.unsplash.com/photo-1608889335941-32ac5f2041b9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=400"
+                  alt="Superhero with cape"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
+                />
+              </div>
+            </div>
+
             <p style={{
               color: 'var(--theme-text-muted)',
               maxWidth: '700px',
