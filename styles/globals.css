@@ -28,8 +28,8 @@
   --theme-accent: #b7791f;
   --theme-accent-strong: #8f6a40;
   --theme-border: rgba(16, 24, 40, 0.08);
-  --theme-card-bg: rgba(255, 255, 255, 0.85);
-  --theme-overlay: rgba(255, 255, 255, 0.75);
+  --theme-card-bg: rgba(255, 255, 255, 0.9);
+  --theme-overlay: rgba(255, 255, 255, 0.85);
 }
 
 /* Typography */

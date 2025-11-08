@@ -59,19 +59,20 @@ export default function Home() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.6,
+            opacity: 0.5,
             zIndex: 0,
           }}
         />
 
-        {/* Dark overlay for contrast */}
+        {/* Theme-aware overlay for contrast */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background:
-              "linear-gradient(to bottom right, rgba(0,0,0,0.7), rgba(0,0,0,0.3))",
+            background: "var(--theme-overlay)",
+            backdropFilter: "blur(2px)",
             zIndex: 1,
+            transition: 'background 0.3s ease'
           }}
         />
 
@@ -93,6 +94,7 @@ export default function Home() {
               marginBottom: "1.25rem",
               letterSpacing: "-0.02em",
               lineHeight: "1.1",
+              textShadow: "0 2px 8px rgba(0,0,0,0.2)"
             }}
           >
             The Registry
@@ -105,7 +107,8 @@ export default function Home() {
               maxWidth: "600px",
               lineHeight: "1.6",
               marginBottom: "1.25rem",
-              fontWeight: "300"
+              fontWeight: "300",
+              textShadow: "0 1px 4px rgba(0,0,0,0.15)"
             }}
           >
             Curated. Verified. Data-driven.
@@ -119,7 +122,8 @@ export default function Home() {
               lineHeight: "1.7",
               marginBottom: "3rem",
               letterSpacing: "0.01em",
-              fontWeight: "300"
+              fontWeight: "300",
+              textShadow: "0 1px 4px rgba(0,0,0,0.12)"
             }}
           >
             Because finding a home should feel inspiring — and certain.
