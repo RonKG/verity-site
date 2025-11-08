@@ -107,6 +107,47 @@ export default function Insights() {
             Nairobi&apos;s prime markets.
           </p>
 
+          {/* Data Access Callout */}
+          <div style={{
+            marginTop: "1.5rem",
+            padding: "1rem 1.5rem",
+            background: "linear-gradient(135deg, rgba(245, 185, 66, 0.06), rgba(194, 166, 117, 0.04))",
+            border: "1px solid rgba(245, 185, 66, 0.3)",
+            borderRadius: "8px",
+            display: "inline-block",
+            textAlign: "left"
+          }}>
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem"
+            }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="3" width="20" height="14" rx="2" stroke="var(--theme-accent)" strokeWidth="2"/>
+                <path d="M8 21h8M12 17v4" stroke="var(--theme-accent)" strokeWidth="2" strokeLinecap="round"/>
+                <path d="M7 7h2m3 0h2m3 0h2" stroke="var(--theme-accent)" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+              <p style={{
+                margin: 0,
+                fontSize: "0.9rem",
+                color: "var(--theme-text)",
+                lineHeight: "1.5",
+                transition: 'color 0.3s ease'
+              }}>
+                <strong>Looking for more?</strong> This data — and deeper cuts — are available as a service.
+                <a href="/services" style={{ 
+                  color: "var(--theme-accent-strong)", 
+                  textDecoration: "none", 
+                  fontWeight: "500",
+                  marginLeft: "0.3rem",
+                  borderBottom: "1px solid var(--theme-accent-strong)"
+                }}>
+                  Explore options
+                </a>
+              </p>
+            </div>
+          </div>
+
           {/* Tab Navigation */}
           <div style={{
             display: "flex",
@@ -557,8 +598,23 @@ export default function Insights() {
               </div>
             </div>
 
-            <div style={{ color: 'var(--theme-text-muted)', fontSize: '0.95rem', textAlign: 'center', transition: 'color 0.3s ease' }}>
-              These analyst notes are intended as directional guidance. Contact the research team for bespoke data extracts or API access.
+            <div style={{ 
+              color: 'var(--theme-text-muted)', 
+              fontSize: '0.95rem', 
+              textAlign: 'center', 
+              transition: 'color 0.3s ease',
+              marginTop: '1rem'
+            }}>
+              These analyst notes are intended as directional guidance. 
+              <a href="/services" style={{ 
+                color: 'var(--theme-accent-strong)', 
+                textDecoration: 'none', 
+                fontWeight: '500',
+                marginLeft: '0.25rem',
+                borderBottom: '1px solid var(--theme-accent-strong)'
+              }}>
+                Explore our data services
+              </a> for custom research, bespoke extracts, or API access.
             </div>
           </div>
         )}
@@ -584,7 +640,7 @@ export default function Insights() {
         </style>
 
         {/* Data sources — credibility footer */}
-        <div style={{ width: "95%", maxWidth: "1150px", marginTop: "1.5rem", marginBottom: "4rem" }}>
+        <div style={{ width: "95%", maxWidth: "1150px", marginTop: "1.5rem", marginBottom: "0" }}>
           <div style={{
             background: 'var(--theme-surface)',
             border: `1px solid var(--theme-border)`,
@@ -637,9 +693,49 @@ export default function Insights() {
             </div>
 
             <div style={{ marginTop: '0.9rem', paddingTop: '0.8rem', borderTop: `1px solid var(--theme-border)`, transition: 'border-color 0.3s ease' }}>
-              <div style={{ color: 'var(--theme-text-muted)', fontSize: '0.95rem', lineHeight: 1.6, transition: 'color 0.3s ease' }}>
+              <div style={{ color: 'var(--theme-text-muted)', fontSize: '0.95rem', lineHeight: 1.6, transition: 'color 0.3s ease', marginBottom: '0.75rem' }}>
                 <strong style={{ color: 'var(--theme-text)', transition: 'color 0.3s ease' }}>Note:</strong> averages exclude outliers and only include records that pass our verification checks.
-                For bespoke extracts or raw data access, contact <a href="mailto:research@theregistry.co.ke" style={{ color: 'var(--theme-accent)', textDecoration: 'none' }}>research@theregistry.co.ke</a>.
+              </div>
+              <div style={{ 
+                padding: '1rem 1.25rem',
+                background: 'var(--theme-bg)',
+                border: `1px solid var(--theme-accent)`,
+                borderRadius: '8px',
+                transition: 'all 0.3s ease'
+              }}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '0.75rem'
+                }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: '0.1rem' }}>
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="var(--theme-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="var(--theme-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <div>
+                    <div style={{ 
+                      color: 'var(--theme-text)', 
+                      fontWeight: '600',
+                      marginBottom: '0.4rem',
+                      fontSize: '0.95rem',
+                      transition: 'color 0.3s ease'
+                    }}>
+                      Data as a Service
+                    </div>
+                    <div style={{ color: 'var(--theme-text-muted)', fontSize: '0.9rem', lineHeight: 1.5, transition: 'color 0.3s ease' }}>
+                      Need custom extracts, API access, or deeper analytics? We offer verified property data through flexible delivery methods — from bespoke one-time queries to real-time programmatic access.
+                      <a href="/services" style={{ 
+                        color: 'var(--theme-accent-strong)', 
+                        textDecoration: 'none', 
+                        fontWeight: '500',
+                        marginLeft: '0.3rem',
+                        borderBottom: '1px solid var(--theme-accent-strong)'
+                      }}>
+                        View data services
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -680,7 +776,7 @@ function NewsletterSignup() {
         padding: "80px 20px",
         textAlign: "center",
         color: "var(--theme-text)",
-        marginTop: "60px",
+        marginTop: "0",
         transition: 'background-color 0.3s ease, color 0.3s ease'
       }}
     >

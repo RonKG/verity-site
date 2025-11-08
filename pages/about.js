@@ -47,8 +47,8 @@ export default function About() {
 
           <div style={{ width: '100%', height: 220, borderRadius: 12, overflow: 'hidden', border: `1px solid var(--theme-border)`, transition: 'border-color 0.3s ease' }}>
             <OptimizedImage
-              src="https://plus.unsplash.com/premium_vector-1739160157656-afa3520fa375?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1025"
-              alt="Founder portrait"
+              src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80"
+              alt="Elegant residential architecture"
               priority
               style={{ height: '220px' }}
             />
