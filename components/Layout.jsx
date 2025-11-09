@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 export default function Layout({ children }) {
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 36);
@@ -15,10 +15,9 @@ export default function Layout({ children }) {
   }, []);
 
   useEffect(() => {
-    // Initialize theme from localStorage or OS preference
+    // Initialize theme from localStorage, default to light mode
     const stored = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = stored || (prefersDark ? 'dark' : 'light');
+    const initialTheme = stored || 'light';
     setTheme(initialTheme);
     document.documentElement.setAttribute('data-theme', initialTheme);
   }, []);
@@ -161,7 +160,7 @@ export default function Layout({ children }) {
           flexWrap: "wrap",
           justifyContent: "center",
           gap: "0.5rem",
-          fontSize: "0.9rem",
+          fontSize: "0.95rem",
         }}>
           {[
             [{ href: "/", label: "Home" }],
@@ -181,19 +180,35 @@ export default function Layout({ children }) {
             <div key={groupIndex} style={{
               display: "flex",
               alignItems: "center",
-              gap: "1rem",
+              gap: "1.2rem",
             }}>
               {group.map((link, linkIndex) => (
                 <Link key={link.href} href={link.href} style={{
-                  color: "var(--theme-text-muted)",
+                  color: "var(--theme-text)",
                   textDecoration: "none",
-                  transition: "color 0.3s ease",
+                  transition: "all 0.2s ease",
                   display: "flex",
                   alignItems: "center",
+                  padding: "8px 12px",
+                  borderRadius: "6px",
+                  fontWeight: "500",
+                  position: "relative",
                 }}>
                   <span
-                    onMouseEnter={(e) => (e.target.style.color = "var(--theme-accent-strong)")}
-                    onMouseLeave={(e) => (e.target.style.color = "var(--theme-text-muted)")}
+                    onMouseEnter={(e) => {
+                      e.target.style.color = "var(--theme-accent-strong)";
+                      e.target.parentElement.style.background = theme === 'dark' 
+                        ? 'rgba(194, 166, 117, 0.1)' 
+                        : 'rgba(183, 121, 31, 0.08)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.color = "var(--theme-text)";
+                      e.target.parentElement.style.background = 'transparent';
+                    }}
+                    style={{
+                      cursor: 'pointer',
+                      transition: 'color 0.2s ease'
+                    }}
                   >
                     {link.label}
                   </span>
@@ -203,6 +218,7 @@ export default function Layout({ children }) {
                 <span style={{ 
                   color: "var(--theme-border)",
                   margin: "0 0.5rem",
+                  opacity: 0.5
                 }}>|</span>
               )}
             </div>
@@ -211,6 +227,7 @@ export default function Layout({ children }) {
 
         {/* Theme Toggle Button */}
         <button
+          className="theme-toggle"
           onClick={toggleTheme}
           aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           aria-pressed={theme === 'light'}
@@ -263,11 +280,19 @@ export default function Layout({ children }) {
           display: none !important;
         }
         
+        /* Hide theme toggle on mobile to avoid overlap with hamburger menu */
+        .theme-toggle {
+          display: none !important;
+        }
+        
         @media (min-width: 1024px) {
           .mobile-nav {
             display: none;
           }
           .desktop-nav {
+            display: flex !important;
+          }
+          .theme-toggle {
             display: flex !important;
           }
         }

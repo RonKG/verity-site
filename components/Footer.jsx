@@ -1,6 +1,25 @@
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Footer() {
+  const [formData, setFormData] = useState({ email: '' });
+  const [status, setStatus] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.email.trim()) {
+      setStatus('error');
+      return;
+    }
+
+    setStatus('sending');
+    setTimeout(() => {
+      setStatus('sent');
+      setFormData({ email: '' });
+      setTimeout(() => setStatus(null), 3000);
+    }, 700);
+  };
+
   return (
     <footer style={{
       backgroundColor: 'var(--theme-surface)',
@@ -19,14 +38,13 @@ export default function Footer() {
       }}>
         {/* Main footer content */}
         <div className="footer-main" style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-start',
-          flexWrap: 'wrap',
-          gap: '2rem'
+          display: 'grid',
+          gridTemplateColumns: '1.5fr 1fr 1fr 1fr 1fr',
+          gap: '2.5rem',
+          alignItems: 'start'
         }}>
           {/* Brand section */}
-          <div style={{ maxWidth: '300px' }}>
+          <div>
             <h3 style={{
               fontSize: '1.5rem',
               color: 'var(--theme-text)',
@@ -36,16 +54,97 @@ export default function Footer() {
               The Registry
             </h3>
             <p style={{
-              fontSize: '0.95rem',
+              fontSize: '0.9rem',
               lineHeight: '1.6',
               color: 'var(--theme-text-muted)'
             }}>
-              Setting new standards in property verification and luxury real estate presentation.
+              Verified listings, market intelligence, and expert advisory for Kenya's premium property market.
             </p>
           </div>
 
+          {/* Newsletter Section */}
+          <div>
+            <h4 style={{
+              fontSize: '0.9rem',
+              color: 'var(--theme-text-muted)',
+              marginBottom: '1rem',
+              fontWeight: '500',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em'
+            }}>
+              Newsletter
+            </h4>
+            <p style={{
+              fontSize: '0.85rem',
+              color: 'var(--theme-text-muted)',
+              marginBottom: '1rem',
+              lineHeight: '1.5'
+            }}>
+              Get market insights & new listings
+            </p>
+            <form onSubmit={handleSubmit} style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.5rem'
+            }}>
+              <input
+                type="email"
+                placeholder="Your email"
+                value={formData.email}
+                onChange={(e) => setFormData({ email: e.target.value })}
+                required
+                style={{
+                  padding: '0.6rem 0.75rem',
+                  background: 'var(--theme-bg)',
+                  border: '1px solid var(--theme-border)',
+                  borderRadius: '4px',
+                  color: 'var(--theme-text)',
+                  fontSize: '0.85rem',
+                  outline: 'none',
+                  transition: 'all 0.2s ease',
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--theme-accent)';
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--theme-border)';
+                }}
+              />
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                style={{
+                  padding: '0.6rem',
+                  background: 'var(--theme-accent)',
+                  color: '#0e0e0e',
+                  border: 'none',
+                  borderRadius: '4px',
+                  fontSize: '0.85rem',
+                  fontWeight: '600',
+                  cursor: status === 'sending' ? 'wait' : 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  if (status !== 'sending') {
+                    e.currentTarget.style.background = 'var(--theme-accent-strong)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'var(--theme-accent)';
+                }}
+              >
+                {status === 'sending' ? 'Sending...' : status === 'sent' ? '✓ Subscribed!' : 'Subscribe'}
+              </button>
+            </form>
+            {status === 'error' && (
+              <p style={{ color: '#e74c3c', fontSize: '0.75rem', marginTop: '0.5rem' }}>
+                Invalid email
+              </p>
+            )}
+          </div>
+
           {/* Quick Links */}
-          <div className="footer-links-section" style={{ minWidth: '150px' }}>
+          <div className="footer-links-section">
             <h4 style={{
               fontSize: '0.9rem',
               color: 'var(--theme-text-muted)',
@@ -113,7 +212,7 @@ export default function Footer() {
           </div>
 
           {/* Legal Links */}
-          <div className="footer-links-section" style={{ minWidth: '150px' }}>
+          <div className="footer-links-section">
             <h4 style={{
               fontSize: '0.9rem',
               color: 'var(--theme-text-muted)',
@@ -392,22 +491,41 @@ export default function Footer() {
           .footer-main {
             flex-direction: column !important;
             align-items: flex-start !important;
+            grid-template-columns: 1fr !important;
+            gap: 3rem !important;
+          }
+          
+          .footer-main > div {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--theme-border);
+          }
+          
+          .footer-main > div:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
           }
           
           .footer-links-section {
             width: 100%;
             display: block !important;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0;
           }
           
           .copyright-bar {
             flex-direction: column !important;
             align-items: flex-start !important;
             text-align: left !important;
+            margin-top: 1rem !important;
           }
           
           .social-icons {
             justify-content: flex-start !important;
+          }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1200px) {
+          .footer-main {
+            grid-template-columns: 1fr 1fr 1fr !important;
           }
         }
       `}</style>
