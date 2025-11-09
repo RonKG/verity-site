@@ -260,15 +260,15 @@ export default function Layout({ children }) {
           display: block;
         }
         .desktop-nav {
-          display: none;
+          display: none !important;
         }
         
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
           .mobile-nav {
             display: none;
           }
           .desktop-nav {
-            display: flex;
+            display: flex !important;
           }
         }
 

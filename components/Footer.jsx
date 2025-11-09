@@ -45,7 +45,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="footer-links-section" style={{ minWidth: '150px' }}>
             <h4 style={{
               fontSize: '0.9rem',
               color: 'var(--theme-text-muted)',
@@ -56,64 +56,64 @@ export default function Footer() {
             }}>
               Quick Links
             </h4>
-            <nav style={{
+            <div style={{
               display: 'flex',
               flexDirection: 'column',
               gap: '0.75rem'
             }}>
-              <Link href="/about" style={{
-                color: 'var(--theme-text-muted)',
-                textDecoration: 'none',
-                fontSize: '0.95rem',
-                transition: 'color 0.2s'
-              }}>
-                About Us
+              <Link href="/about">
+                <span style={{
+                  color: '#6c757d',
+                  textDecoration: 'none',
+                  fontSize: '0.95rem',
+                  cursor: 'pointer'
+                }}>About Us</span>
               </Link>
-              <Link href="/team" style={{
-                color: 'var(--theme-text-muted)',
-                textDecoration: 'none',
-                fontSize: '0.95rem',
-                transition: 'color 0.2s'
-              }}>
-                Team
+              <Link href="/team">
+                <span style={{
+                  color: '#6c757d',
+                  textDecoration: 'none',
+                  fontSize: '0.95rem',
+                  cursor: 'pointer'
+                }}>Team</span>
               </Link>
-              <Link href="/listings" style={{
-                color: 'var(--theme-text-muted)',
-                textDecoration: 'none',
-                fontSize: '0.95rem',
-                transition: 'color 0.2s'
-              }}>
-                Listings
+              <Link href="/listings">
+                <span style={{
+                  color: '#6c757d',
+                  textDecoration: 'none',
+                  fontSize: '0.95rem',
+                  cursor: 'pointer'
+                }}>Listings</span>
               </Link>
-              <Link href="/services" style={{
-                color: 'var(--theme-text-muted)',
-                textDecoration: 'none',
-                fontSize: '0.95rem',
-                transition: 'color 0.2s'
-              }}>
-                Services
+              <Link href="/services">
+                <span style={{
+                  color: '#6c757d',
+                  textDecoration: 'none',
+                  fontSize: '0.95rem',
+                  cursor: 'pointer'
+                }}>Services</span>
               </Link>
-              <Link href="/insights" style={{
-                color: 'var(--theme-text-muted)',
-                textDecoration: 'none',
-                fontSize: '0.95rem',
-                transition: 'color 0.2s'
-              }}>
-                Market Insights
+              <Link href="/insights">
+                <span style={{
+                  color: '#6c757d',
+                  textDecoration: 'none',
+                  fontSize: '0.95rem',
+                  cursor: 'pointer'
+                }}>Market Insights</span>
               </Link>
-              <Link href="/partners" style={{
-                color: 'var(--theme-text-muted)',
-                textDecoration: 'none',
-                fontSize: '0.95rem',
-                transition: 'color 0.2s'
-              }}>
-                Partners
+              <Link href="/partners">
+                <span style={{
+                  color: '#6c757d',
+                  textDecoration: 'none',
+                  fontSize: '0.95rem',
+                  cursor: 'pointer'
+                }}>Partners</span>
               </Link>
-            </nav>
+            </div>
           </div>
 
           {/* Legal Links */}
-          <div>
+          <div className="footer-links-section" style={{ minWidth: '150px' }}>
             <h4 style={{
               fontSize: '0.9rem',
               color: 'var(--theme-text-muted)',
@@ -124,36 +124,36 @@ export default function Footer() {
             }}>
               Legal
             </h4>
-            <nav style={{
+            <div style={{
               display: 'flex',
               flexDirection: 'column',
               gap: '0.75rem'
             }}>
-              <Link href="/terms" style={{
-                color: 'var(--theme-text-muted)',
-                textDecoration: 'none',
-                fontSize: '0.95rem',
-                transition: 'color 0.2s'
-              }}>
-                Terms of Service
+              <Link href="/terms">
+                <span style={{
+                  color: '#6c757d',
+                  textDecoration: 'none',
+                  fontSize: '0.95rem',
+                  cursor: 'pointer'
+                }}>Terms of Service</span>
               </Link>
-              <Link href="/privacy" style={{
-                color: 'var(--theme-text-muted)',
-                textDecoration: 'none',
-                fontSize: '0.95rem',
-                transition: 'color 0.2s'
-              }}>
-                Privacy Policy
+              <Link href="/privacy">
+                <span style={{
+                  color: '#6c757d',
+                  textDecoration: 'none',
+                  fontSize: '0.95rem',
+                  cursor: 'pointer'
+                }}>Privacy Policy</span>
               </Link>
-              <Link href="/contact" style={{
-                color: 'var(--theme-text-muted)',
-                textDecoration: 'none',
-                fontSize: '0.95rem',
-                transition: 'color 0.2s'
-              }}>
-                Contact Us
+              <Link href="/contact">
+                <span style={{
+                  color: '#6c757d',
+                  textDecoration: 'none',
+                  fontSize: '0.95rem',
+                  cursor: 'pointer'
+                }}>Contact Us</span>
               </Link>
-            </nav>
+            </div>
           </div>
 
           {/* Contact Info */}
@@ -368,10 +368,36 @@ export default function Footer() {
           color: var(--theme-text) !important;
         }
         
+        .footer-links-section {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          min-height: 50px;
+        }
+        
+        .footer-links-section nav {
+          display: flex !important;
+          visibility: visible !important;
+        }
+        
+        .footer-links-section nav a {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          min-height: 20px;
+          line-height: 1.5;
+        }
+        
         @media (max-width: 768px) {
           .footer-main {
             flex-direction: column !important;
             align-items: flex-start !important;
+          }
+          
+          .footer-links-section {
+            width: 100%;
+            display: block !important;
+            margin-bottom: 1.5rem;
           }
           
           .copyright-bar {
