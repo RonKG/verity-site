@@ -657,7 +657,7 @@ export default function Services() {
                   fontStyle: 'italic',
                   transition: 'color 0.3s ease'
                 }}>
-                  We do not sell your data.
+                  We do not sell your data. <a href="/privacy" style={{ color: 'var(--theme-accent-strong)', textDecoration: 'underline' }}>Privacy Policy</a>
                 </div>
 
                 {status === 'sent' && (
