@@ -123,7 +123,10 @@ export default function MobileMenu() {
           opacity: isOpen ? 1 : 0,
           visibility: isOpen ? 'visible' : 'hidden',
           transition: 'opacity 0.3s ease, visibility 0.3s ease',
-          pointerEvents: isOpen ? 'auto' : 'none'
+          pointerEvents: isOpen ? 'auto' : 'none',
+          paddingTop: '80px',
+          paddingBottom: 'max(120px, env(safe-area-inset-bottom, 0px) + 100px)',
+          WebkitOverflowScrolling: 'touch'
         }}
       >
           {/* Main Navigation */}
@@ -279,11 +282,15 @@ export default function MobileMenu() {
             alignItems: 'center',
             gap: '1.5rem',
             marginTop: '2rem',
+            marginBottom: '2rem',
             paddingTop: '2rem',
+            paddingBottom: '2rem',
             borderTop: '1px solid #333',
             opacity: isOpen ? 1 : 0,
             transform: isOpen ? 'translateY(0)' : 'translateY(-20px)',
-            transition: 'all 0.4s ease 0.6s'
+            transition: 'all 0.4s ease 0.6s',
+            width: '100%',
+            maxWidth: '400px'
           }}>
             {/* Currency Selector */}
             <div style={{
