@@ -10,10 +10,10 @@ export default function Team() {
       bio: "James started The Registry after losing hours to paperwork and guesswork while helping family buy a home. He builds product to make property decisions faster and less faith-based — a practical idealist who believes clear records beat negotiation theater."
     },
     {
-      name: "Amy Kamau",
-      role: "Co-Founder & Head of Operations",
-      img: "https://images.unsplash.com/photo-1573496527892-904f897eb744?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1169",
-      bio: "If there's a chain of custody, Amy has mapped it, simplified it, and taught five people how to use it. She runs verification, partnerships and the engine room that keeps our data honest — with a soft spot for problem tickets that are actually puzzles."
+      name: "Eunice Wachira",
+      role: "Co-Founder & Design & Photography Lead",
+      img: "https://plus.unsplash.com/premium_photo-1745839715934-3123fc463f1a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171",
+      bio: "Eunice sees properties as narratives waiting to be told — preferably in perfect light at golden hour. She orchestrates shoots that make concrete look poetic and ensures every listing feels like an invitation, not a sales pitch. Rumor has it she once rescheduled a shoot four times for cloud coverage."
     },
     {
       name: "Ronald Wahome",
@@ -22,21 +22,27 @@ export default function Team() {
       bio: "Ronald is our tech and analytics brain: he builds the pipelines that tame noisy records and crafts the models that turn them into decision-ready signals. He loves architecture that scales and insights that surprise — and he pushes us to test the assumptions others take for granted."
     },
     {
-      name: "Eunice Wachira",
-      role: "Design & Photography Lead",
-      img: "https://plus.unsplash.com/premium_photo-1745839715934-3123fc463f1a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171",
-      bio: "Eunice sees properties as narratives waiting to be told — preferably in perfect light at golden hour. She orchestrates shoots that make concrete look poetic and ensures every listing feels like an invitation, not a sales pitch. Rumor has it she once rescheduled a shoot four times for cloud coverage."
+      name: "Teddy Wachira",
+      role: "Market Intelligence • Senior Partner",
+      img: "https://images.unsplash.com/photo-1656051134131-fb03ba79965b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687",
+      bio: "Teddy translates macroeconomic signals into property market forecasts that clients can actually use. He tracks interest rates, infrastructure spend, and policy shifts — then distills them into insights that shape our valuation models. He believes the best analysis tells you what matters next, not just what happened yesterday."
+    },
+    {
+      name: "Amy Kamau",
+      role: "Co-Founder & Head of Operations",
+      img: "https://images.unsplash.com/photo-1573496527892-904f897eb744?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1169",
+      bio: "If there's a chain of custody, Amy has mapped it, simplified it, and taught five people how to use it. She runs verification, partnerships and the engine room that keeps our data honest — with a soft spot for problem tickets that are actually puzzles."
     },
     {
       name: "Michael Odhiambo",
-      role: "Client Services • Partner",
+      role: "Client Services • Senior Partner",
       img: "https://images.unsplash.com/photo-1758519290811-b9df6340dc6a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1331",
       bio: "Michael is the voice you hear when things get complicated — which, in property, is often. As our client services partner, he translates jargon, untangles timelines, and turns anxious buyers into informed decision-makers. Equal parts diplomat and detective, he follows up until there's nothing left to follow.",
       isPartner: true
     },
     {
       name: "Wanjiru Githinji",
-      role: "Legal Counsel • Partner",
+      role: "Legal Counsel • Senior Partner",
       img: "https://plus.unsplash.com/premium_photo-1758836220846-b9c50ab939fd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1168",
       bio: "Wanjiru reads title deeds the way others read novels — slowly, carefully, with an eye for plot holes. Our legal partner keeps transactions airtight and clients protected from the fine print that isn't so fine. She believes that good law should be invisible until you need it, then indispensable.",
       isPartner: true
