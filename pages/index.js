@@ -85,16 +85,16 @@ export default function Home() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: "85vh",
+          minHeight: "90vh",
           color: "var(--theme-text)",
           textAlign: "center",
           padding: "40px 20px",
           overflow: "hidden",
         }}
       >
-        {/* Background image */}
+        {/* Background image - higher quality, better visibility */}
         <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80"
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=85"
           alt="Elegant modern home exterior"
           style={{
             position: "absolute",
@@ -102,18 +102,18 @@ export default function Home() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.35,
+            opacity: 0.18,
             zIndex: 0,
           }}
         />
 
-        {/* Subtle overlay for readability */}
+        {/* Gradient overlay for better readability */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background: "var(--theme-bg)",
-            opacity: 0.85,
+            background: `radial-gradient(ellipse at center, transparent 0%, var(--theme-bg) 70%)`,
+            opacity: 0.92,
             zIndex: 1,
             transition: 'background 0.3s ease, opacity 0.3s ease'
           }}
@@ -132,13 +132,14 @@ export default function Home() {
         }}>
           <h1
             style={{
-              fontSize: "clamp(2.8rem, 5vw, 4.2rem)",
-              fontWeight: "400",
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.02em",
-              lineHeight: "1.1",
+              fontSize: "clamp(2.5rem, 5vw, 3.8rem)",
+              fontWeight: "300",
+              marginBottom: "1.5rem",
+              letterSpacing: "0.02em",
+              lineHeight: "1.2",
               color: "var(--theme-text)",
-              transition: 'color 0.3s ease'
+              transition: 'color 0.3s ease',
+              fontFamily: "'Inter', -apple-system, system-ui, sans-serif"
             }}
           >
             The Registry
@@ -146,65 +147,142 @@ export default function Home() {
 
           <p
             style={{
-              fontSize: "clamp(1.2rem, 1.8vw, 1.4rem)",
-              color: "var(--theme-text)",
-              maxWidth: "600px",
-              lineHeight: "1.6",
-              marginBottom: "1.25rem",
-              fontWeight: "300",
-              transition: 'color 0.3s ease'
+              fontSize: "clamp(1.25rem, 2vw, 1.5rem)",
+              color: "var(--theme-accent)",
+              maxWidth: "700px",
+              lineHeight: "1.5",
+              marginBottom: "1.5rem",
+              fontWeight: "500",
+              transition: 'color 0.3s ease',
+              letterSpacing: "0.01em"
             }}
           >
-            Curated. Verified. Data-driven.
+            Every listing verified. Every detail trusted.
           </p>
 
           <p
             style={{
-              fontSize: "clamp(0.95rem, 1.2vw, 1.1rem)",
+              fontSize: "clamp(1rem, 1.3vw, 1.15rem)",
               color: "var(--theme-text-muted)",
-              maxWidth: "540px",
-              lineHeight: "1.7",
+              maxWidth: "680px",
+              lineHeight: "1.8",
               marginBottom: "3rem",
               letterSpacing: "0.01em",
-              fontWeight: "300",
+              fontWeight: "400",
               transition: 'color 0.3s ease'
             }}
           >
-            Because finding a home should begin with trust — and end with certainty.
+            Curated properties from Nairobi's exclusive neighborhoods to Kenya's pristine coastline — each verified through our rigorous 72-hour authentication process.
           </p>
+
+          {/* Hero CTAs */}
+          <div style={{
+            display: "flex",
+            gap: "1.25rem",
+            justifyContent: "center",
+            flexWrap: "wrap",
+            marginBottom: "4rem"
+          }}>
+            <Link 
+              href="/listings"
+              style={{
+                display: "inline-block",
+                padding: "1.1rem 2.5rem",
+                background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
+                color: "#000000",
+                textDecoration: "none",
+                borderRadius: "8px",
+                fontWeight: "600",
+                fontSize: "1.05rem",
+                transition: "all 0.3s ease",
+                boxShadow: "0 4px 20px rgba(245,185,66,0.3)",
+                border: "none"
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.boxShadow = "0 8px 30px rgba(245,185,66,0.4)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 4px 20px rgba(245,185,66,0.3)";
+              }}
+            >
+              Browse Properties
+            </Link>
+            
+            <Link 
+              href="/insights"
+              style={{
+                display: "inline-block",
+                padding: "1.1rem 2.5rem",
+                background: "transparent",
+                color: "var(--theme-text)",
+                textDecoration: "none",
+                borderRadius: "8px",
+                fontWeight: "600",
+                fontSize: "1.05rem",
+                border: `2px solid var(--theme-accent)`,
+                transition: "all 0.3s ease",
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = "rgba(245,185,66,0.1)";
+                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.borderColor = "var(--theme-accent-strong)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "var(--theme-accent)";
+              }}
+            >
+              Market Insights
+            </Link>
+          </div>
 
           {/* Stats display */}
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "2rem",
-            maxWidth: "900px",
+            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+            gap: "1.5rem",
+            maxWidth: "1000px",
             width: "100%",
-            marginTop: "2rem"
           }}>
             {stats.map((stat, index) => (
               <div key={index} style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                background: "var(--theme-card-bg)",
+                background: "rgba(255,255,255,0.03)",
                 backdropFilter: "blur(10px)",
-                padding: "1rem 2rem",
-                borderRadius: "8px",
-                border: `1px solid var(--theme-border)`,
-                transition: 'background 0.3s ease, border-color 0.3s ease'
+                padding: "1.5rem 1.25rem",
+                borderRadius: "12px",
+                border: `1px solid rgba(245,185,66,0.15)`,
+                transition: 'all 0.3s ease',
+                cursor: 'default'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+                e.currentTarget.style.borderColor = "rgba(245,185,66,0.3)";
+                e.currentTarget.style.transform = "translateY(-4px)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+                e.currentTarget.style.borderColor = "rgba(245,185,66,0.15)";
+                e.currentTarget.style.transform = "translateY(0)";
               }}>
                 <span style={{
-                  fontSize: "1.8rem",
-                  fontWeight: "500",
-                  background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
+                  fontSize: "2rem",
+                  fontWeight: "600",
+                  background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
                   WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent"
+                  WebkitTextFillColor: "transparent",
+                  marginBottom: "0.5rem"
                 }}>{stat.number}</span>
                 <span style={{
-                  fontSize: "0.9rem",
+                  fontSize: "0.85rem",
                   color: "var(--theme-text-muted)",
-                  marginTop: "0.3rem"
+                  textAlign: "center",
+                  lineHeight: "1.4"
                 }}>{stat.label}</span>
               </div>
             ))}
@@ -281,10 +359,10 @@ export default function Home() {
         `}</style>
       </section>
 
-      {/* Quick Search Section */}
+      {/* How It Works Section */}
       <section style={{
         backgroundColor: "var(--theme-surface)",
-        padding: "60px 20px",
+        padding: "80px 20px",
         transition: 'background-color 0.3s ease'
       }}>
         <div style={{
@@ -292,244 +370,147 @@ export default function Home() {
           margin: "0 auto",
         }}>
           <h2 style={{
-            fontSize: "1.8rem",
+            fontSize: "2.2rem",
             fontWeight: "400",
-            marginBottom: "2rem",
+            marginBottom: "1rem",
             textAlign: "center",
             color: "var(--theme-text)",
             transition: 'color 0.3s ease'
           }}>
-            Find Your Perfect Property
+            How The Registry Works
           </h2>
           
-          <div style={{
-            background: "var(--theme-bg)",
-            padding: "2rem",
-            borderRadius: "12px",
-            border: `1px solid var(--theme-border)`,
-            transition: 'background 0.3s ease, border-color 0.3s ease'
+          <p style={{
+            color: "var(--theme-text-muted)",
+            maxWidth: "700px",
+            margin: "0 auto 4rem",
+            textAlign: "center",
+            fontSize: "1.05rem",
+            lineHeight: "1.7",
+            transition: 'color 0.3s ease'
           }}>
-            {/* Search Bar */}
-            <div style={{ marginBottom: "2rem" }}>
-              <input
-                type="text"
-                placeholder="Search by location, features, or keywords..."
-                style={{
-                  width: "100%",
-                  padding: "1rem",
-                  background: "var(--theme-surface)",
-                  border: "2px solid rgba(128, 128, 128, 0.3)",
-                  borderRadius: "8px",
-                  color: "var(--theme-text)",
-                  fontSize: "1rem",
-                  outline: "none",
-                  transition: 'all 0.3s ease'
-                }}
-                onFocus={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
-                  e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
-                }}
-                onBlur={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              />
-            </div>
+            Our proprietary verification process ensures every property listing meets the highest standards of accuracy and transparency.
+          </p>
 
-            {/* Filter Controls */}
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-              gap: "1rem",
-            }}>
-              {/* Location Filter */}
-              <div>
-                <label style={{ 
-                  display: "block", 
-                  marginBottom: "0.5rem", 
-                  color: "var(--theme-text-muted)",
-                  fontSize: "0.9rem",
-                  transition: 'color 0.3s ease'
+          {/* Process Steps */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "3rem",
+            position: "relative"
+          }}>
+            {[
+              {
+                step: "01",
+                icon: "🔍",
+                title: "Property Inspection",
+                description: "Our certified inspectors conduct comprehensive on-site verification including title deed authentication, boundary confirmation, and infrastructure assessment."
+              },
+              {
+                step: "02",
+                icon: "📊",
+                title: "Data Validation",
+                description: "Cross-reference with land registries, conduct market analysis, verify ownership history, and validate all property specifications against official records."
+              },
+              {
+                step: "03",
+                icon: "📸",
+                title: "Professional Media",
+                description: "Cinematic photography, drone footage, and virtual tours capture every detail. Professional staging consultation available for premium listings."
+              },
+              {
+                step: "04",
+                icon: "✨",
+                title: "Live Listing",
+                description: "Properties go live with verified badge, comprehensive documentation, market insights, and dedicated support for viewings and inquiries."
+              }
+            ].map((item, index) => (
+              <div key={index} style={{
+                background: "var(--theme-bg)",
+                padding: "2.5rem 2rem",
+                borderRadius: "16px",
+                border: `1px solid var(--theme-border)`,
+                transition: 'all 0.3s ease',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = "translateY(-8px)";
+                e.currentTarget.style.borderColor = "var(--theme-accent)";
+                e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,0,0,0.15)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "var(--theme-border)";
+                e.currentTarget.style.boxShadow = "none";
+              }}>
+                {/* Step number */}
+                <div style={{
+                  position: 'absolute',
+                  top: '1.5rem',
+                  right: '1.5rem',
+                  fontSize: '3rem',
+                  fontWeight: '700',
+                  background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  opacity: 0.15
                 }}>
-                  Location
-                </label>
-                <select
-                  style={{
-                    width: "100%",
-                    padding: "0.75rem",
-                    background: "var(--theme-surface)",
-                    border: "2px solid rgba(128, 128, 128, 0.3)",
-                    borderRadius: "6px",
-                    color: "var(--theme-text)",
-                    cursor: "pointer",
-                    outline: "none",
-                    transition: 'all 0.3s ease'
-                  }}
-                  onFocus={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
-                    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
-                  <option>All Locations</option>
-                  <option>Karen</option>
-                  <option>Kitisuru</option>
-                  <option>Lavington</option>
-                  <option>Muthaiga</option>
-                  <option>Runda</option>
-                  <option>Coastal Region</option>
-                </select>
-              </div>
-
-              {/* Price Range Filter */}
-              <div>
-                <label style={{ 
-                  display: "block", 
-                  marginBottom: "0.5rem", 
-                  color: "var(--theme-text-muted)",
-                  fontSize: "0.9rem",
-                  transition: 'color 0.3s ease'
+                  {item.step}
+                </div>
+                
+                <span style={{ 
+                  fontSize: "3rem", 
+                  marginBottom: "1.5rem", 
+                  display: "block" 
                 }}>
-                  Price Range
-                </label>
-                <select
-                  style={{
-                    width: "100%",
-                    padding: "0.75rem",
-                    background: "var(--theme-surface)",
-                    border: "2px solid rgba(128, 128, 128, 0.3)",
-                    borderRadius: "6px",
-                    color: "var(--theme-text)",
-                    cursor: "pointer",
-                    outline: "none",
-                    transition: 'all 0.3s ease'
-                  }}
-                  onFocus={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
-                    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
-                  <option>All Prices</option>
-                  <option>KSh 200M - 300M</option>
-                  <option>KSh 300M - 400M</option>
-                  <option>KSh 400M - 500M</option>
-                  <option>KSh 500M+</option>
-                </select>
-              </div>
-
-              {/* Property Type Filter */}
-              <div>
-                <label style={{ 
-                  display: "block", 
-                  marginBottom: "0.5rem", 
-                  color: "var(--theme-text-muted)",
-                  fontSize: "0.9rem",
-                  transition: 'color 0.3s ease'
-                }}>
-                  Property Type
-                </label>
-                <select
-                  style={{
-                    width: "100%",
-                    padding: "0.75rem",
-                    background: "var(--theme-surface)",
-                    border: "2px solid rgba(128, 128, 128, 0.3)",
-                    borderRadius: "6px",
-                    color: "var(--theme-text)",
-                    cursor: "pointer",
-                    outline: "none",
-                    transition: 'all 0.3s ease'
-                  }}
-                  onFocus={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
-                    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
-                  <option>All Types</option>
-                  <option>Villa</option>
-                  <option>Penthouse</option>
-                  <option>Estate</option>
-                  <option>Beachfront</option>
-                </select>
-              </div>
-
-              {/* Sort Options */}
-              <div>
-                <label style={{ 
-                  display: "block", 
-                  marginBottom: "0.5rem", 
-                  color: "var(--theme-text-muted)",
-                  fontSize: "0.9rem",
-                  transition: 'color 0.3s ease'
-                }}>
-                  Sort By
-                </label>
-                <select
-                  style={{
-                    width: "100%",
-                    padding: "0.75rem",
-                    background: "var(--theme-surface)",
-                    border: "2px solid rgba(128, 128, 128, 0.3)",
-                    borderRadius: "6px",
-                    color: "var(--theme-text)",
-                    cursor: "pointer",
-                    outline: "none",
-                    transition: 'all 0.3s ease'
-                  }}
-                  onFocus={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.6)";
-                    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(128, 128, 128, 0.1)";
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(128, 128, 128, 0.3)";
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
-                  <option>Featured</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                  <option>Newest First</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Search Button */}
-            <div style={{ marginTop: "2rem", textAlign: "center" }}>
-              <Link href="/listings" style={{ textDecoration: "none" }}>
-                <button style={{
-                  background: `linear-gradient(45deg, var(--theme-accent), var(--theme-accent-strong))`,
-                  color: "var(--theme-bg)",
-                  padding: "1rem 3rem",
-                  border: "none",
-                  borderRadius: "8px",
-                  fontSize: "1rem",
+                  {item.icon}
+                </span>
+                
+                <h3 style={{
+                  color: "var(--theme-accent)",
+                  fontSize: "1.4rem",
+                  marginBottom: "1rem",
                   fontWeight: "500",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "0 8px 16px rgba(0,0,0,0.2)";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}>
-                  Search Properties
-                </button>
-              </Link>
-            </div>
+                  transition: 'color 0.3s ease'
+                }}>{item.title}</h3>
+                
+                <p style={{
+                  color: "var(--theme-text-muted)",
+                  lineHeight: "1.7",
+                  fontSize: "0.95rem",
+                  transition: 'color 0.3s ease'
+                }}>{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div style={{ marginTop: "4rem", textAlign: "center" }}>
+            <Link href="/services" style={{ textDecoration: "none" }}>
+              <button style={{
+                background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
+                color: "#000000",
+                padding: "1rem 2.5rem",
+                border: "none",
+                borderRadius: "8px",
+                fontSize: "1.05rem",
+                fontWeight: "600",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                boxShadow: "0 4px 16px rgba(245,185,66,0.25)"
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.boxShadow = "0 8px 24px rgba(245,185,66,0.35)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 4px 16px rgba(245,185,66,0.25)";
+              }}>
+                Learn About Our Services
+              </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -538,28 +519,30 @@ export default function Home() {
       <section style={{
         backgroundColor: "var(--theme-bg)",
         padding: "80px 20px",
-        textAlign: "center",
         transition: 'background-color 0.3s ease'
       }}>
-        <p style={{
-          color: 'var(--theme-text-muted)',
-          maxWidth: '760px',
-          margin: '0 auto 1.25rem',
-          lineHeight: '1.6'
-        }}>
-          A concise selection of recently verified properties — each inspected, documented and presented with data you can trust.
-        </p>
-        <h2 style={{
-          fontSize: "2rem",
-          fontWeight: "400",
-          marginBottom: "2rem",
-          color: "var(--theme-text)"
-        }}>Latest Verified Properties</h2>
+        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <h2 style={{
+            fontSize: "2.2rem",
+            fontWeight: "400",
+            marginBottom: "1rem",
+            color: "var(--theme-text)"
+          }}>Latest Verified Properties</h2>
+          <p style={{
+            color: 'var(--theme-text-muted)',
+            maxWidth: '760px',
+            margin: '0 auto',
+            lineHeight: '1.7',
+            fontSize: '1.05rem'
+          }}>
+            A curated selection of recently verified properties — each inspected, documented and presented with data you can trust.
+          </p>
+        </div>
         
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "2rem",
+          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gap: "2.5rem",
           maxWidth: "1200px",
           margin: "0 auto",
           padding: "0 20px"
@@ -569,75 +552,179 @@ export default function Home() {
               id: "1",
               image: "https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4",
               title: "Modern Villa",
-              location: "Karen",
-              price: "$1.2M",
+              location: "Karen, Nairobi",
+              price: "KSh 420M",
+              beds: 5,
+              baths: 6,
+              sqft: "6,500",
               badge: "premium"
             },
             {
               id: "2",
               image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
               title: "Luxury Penthouse",
-              location: "Westlands",
-              price: "$850K",
+              location: "Westlands, Nairobi",
+              price: "KSh 310M",
+              beds: 4,
+              baths: 5,
+              sqft: "5,800",
               badge: "elite"
             },
             {
               id: "3",
               image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
               title: "Garden Estate",
-              location: "Kitisuru",
-              price: "$2.1M",
+              location: "Kitisuru, Nairobi",
+              price: "KSh 385M",
+              beds: 6,
+              baths: 7,
+              sqft: "8,200",
               badge: "verified"
             }
           ].map((property, index) => (
             <Link href={`/listings/${property.id}`} key={index} style={{ textDecoration: "none" }}>
               <div style={{
                 background: "var(--theme-surface)",
-                borderRadius: "12px",
+                borderRadius: "16px",
                 overflow: "hidden",
-                transition: "transform 0.3s, background 0.3s ease",
+                transition: "all 0.3s ease",
                 cursor: "pointer",
                 border: `1px solid var(--theme-border)`,
-                position: "relative"
+                position: "relative",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column"
               }}
-              onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-5px)"}
-              onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = "translateY(-8px)";
+                e.currentTarget.style.boxShadow = "0 16px 40px rgba(0,0,0,0.15)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
               >
               <div style={{ position: "relative" }}>
                 <img 
                   src={property.image}
                   alt={property.title}
+                  loading="lazy"
                   style={{
                     width: "100%",
-                    height: "200px",
+                    height: "240px",
                     objectFit: "cover"
                   }}
                 />
                 {/* Verification Badge */}
                 <div style={{
                   position: "absolute",
-                  top: "12px",
-                  left: "12px",
+                  top: "14px",
+                  left: "14px",
                   zIndex: 10
                 }}>
                   <VerificationBadge level={property.badge} />
                 </div>
+                {/* Price tag */}
+                <div style={{
+                  position: "absolute",
+                  bottom: "14px",
+                  right: "14px",
+                  background: "rgba(0,0,0,0.75)",
+                  backdropFilter: "blur(10px)",
+                  padding: "0.6rem 1.1rem",
+                  borderRadius: "8px",
+                  fontSize: "1.1rem",
+                  fontWeight: "600",
+                  color: "var(--theme-accent)"
+                }}>{property.price}</div>
               </div>
-              <div style={{ padding: "1.5rem" }}>
+              <div style={{ 
+                padding: "1.75rem",
+                flex: 1,
+                display: "flex",
+                flexDirection: "column"
+              }}>
                 <h3 style={{
-                  fontSize: "1.3rem",
+                  fontSize: "1.35rem",
                   color: "var(--theme-text)",
-                  marginBottom: "0.5rem"
+                  marginBottom: "0.75rem",
+                  fontWeight: "500"
                 }}>{property.title}</h3>
                 <p style={{
                   color: "var(--theme-text-muted)",
-                  fontSize: "0.9rem",
-                  marginBottom: "1rem"
-                }}>{property.location}</p>
-                <p style={{
-                  color: "var(--theme-accent)",
-                  fontWeight: "500"
-                }}>{property.price}</p>
+                  fontSize: "0.95rem",
+                  marginBottom: "1.25rem",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem"
+                }}>
+                  <span>📍</span> {property.location}
+                </p>
+                
+                {/* Property specs */}
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, 1fr)",
+                  gap: "1rem",
+                  paddingTop: "1rem",
+                  borderTop: `1px solid var(--theme-border)`,
+                  marginTop: "auto"
+                }}>
+                  <div style={{ textAlign: "center" }}>
+                    <div style={{
+                      fontSize: "1.4rem",
+                      marginBottom: "0.25rem"
+                    }}>🛏️</div>
+                    <div style={{
+                      fontSize: "1.1rem",
+                      fontWeight: "600",
+                      color: "var(--theme-accent)",
+                      marginBottom: "0.15rem"
+                    }}>{property.beds}</div>
+                    <div style={{
+                      fontSize: "0.75rem",
+                      color: "var(--theme-text-muted)",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.5px"
+                    }}>Beds</div>
+                  </div>
+                  <div style={{ textAlign: "center" }}>
+                    <div style={{
+                      fontSize: "1.4rem",
+                      marginBottom: "0.25rem"
+                    }}>🚿</div>
+                    <div style={{
+                      fontSize: "1.1rem",
+                      fontWeight: "600",
+                      color: "var(--theme-accent)",
+                      marginBottom: "0.15rem"
+                    }}>{property.baths}</div>
+                    <div style={{
+                      fontSize: "0.75rem",
+                      color: "var(--theme-text-muted)",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.5px"
+                    }}>Baths</div>
+                  </div>
+                  <div style={{ textAlign: "center" }}>
+                    <div style={{
+                      fontSize: "1.4rem",
+                      marginBottom: "0.25rem"
+                    }}>📐</div>
+                    <div style={{
+                      fontSize: "1.1rem",
+                      fontWeight: "600",
+                      color: "var(--theme-accent)",
+                      marginBottom: "0.15rem"
+                    }}>{property.sqft}</div>
+                    <div style={{
+                      fontSize: "0.75rem",
+                      color: "var(--theme-text-muted)",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.5px"
+                    }}>Sq Ft</div>
+                  </div>
+                </div>
               </div>
             </div>
           </Link>
@@ -646,33 +733,33 @@ export default function Home() {
 
         <div style={{ 
           display: "flex", 
-          gap: "1rem", 
+          gap: "1.25rem", 
           justifyContent: "center", 
           flexWrap: "wrap",
-          marginTop: "3rem" 
+          marginTop: "4rem" 
         }}>
           <Link 
             href="/listings"
             style={{
               display: "inline-block",
-              padding: "0.9rem 1.75rem",
+              padding: "1rem 2.5rem",
               background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
               color: "#000000",
               textDecoration: "none",
-              borderRadius: "6px",
+              borderRadius: "8px",
               fontWeight: "600",
-              fontSize: "1rem",
+              fontSize: "1.05rem",
               transition: "all 0.3s ease",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+              boxShadow: "0 4px 16px rgba(245,185,66,0.25)",
               border: "none"
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.transform = "translateY(-1px)";
-              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+              e.currentTarget.style.transform = "translateY(-3px)";
+              e.currentTarget.style.boxShadow = "0 8px 24px rgba(245,185,66,0.35)";
             }}
             onMouseOut={(e) => {
               e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.15)";
+              e.currentTarget.style.boxShadow = "0 4px 16px rgba(245,185,66,0.25)";
             }}
           >
             View All Properties
@@ -682,28 +769,23 @@ export default function Home() {
             href="/services"
             style={{
               display: "inline-block",
-              padding: "0.9rem 1.75rem",
-              background: "var(--theme-bg)",
+              padding: "1rem 2.5rem",
+              background: "transparent",
               color: "var(--theme-text)",
               textDecoration: "none",
-              borderRadius: "6px",
+              borderRadius: "8px",
               fontWeight: "600",
-              fontSize: "1rem",
+              fontSize: "1.05rem",
               border: `2px solid var(--theme-accent)`,
               transition: "all 0.3s ease",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.08)"
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.background = "var(--theme-accent)";
-              e.currentTarget.style.color = "#000000";
-              e.currentTarget.style.transform = "translateY(-1px)";
-              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+              e.currentTarget.style.background = "rgba(245,185,66,0.1)";
+              e.currentTarget.style.transform = "translateY(-3px)";
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.background = "var(--theme-bg)";
-              e.currentTarget.style.color = "var(--theme-text)";
+              e.currentTarget.style.background = "transparent";
               e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
             }}
           >
             Our Services
@@ -782,6 +864,166 @@ export default function Home() {
                   color: "var(--theme-text-muted)",
                   lineHeight: "1.6"
                 }}>{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section style={{
+        backgroundColor: "var(--theme-surface)",
+        padding: "80px 20px",
+        transition: 'background-color 0.3s ease'
+      }}>
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}>
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <h2 style={{
+              fontSize: "2.2rem",
+              fontWeight: "400",
+              marginBottom: "1rem",
+              color: "var(--theme-text)"
+            }}>Client Success Stories</h2>
+            <p style={{
+              color: 'var(--theme-text-muted)',
+              maxWidth: '700px',
+              margin: '0 auto',
+              lineHeight: '1.7',
+              fontSize: '1.05rem'
+            }}>
+              Hear from clients who found their perfect property through The Registry's verified listings and expert guidance.
+            </p>
+          </div>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "2.5rem"
+          }}>
+            {[
+              {
+                quote: "The verification process gave us complete peace of mind. Every detail they promised was accurate, and the transaction was seamless. We found our dream home in Karen within three weeks.",
+                author: "Sarah & James Mwangi",
+                role: "Homeowners, Karen Villa",
+                rating: 5
+              },
+              {
+                quote: "As an investor, accuracy is everything. The Registry's market insights and verified data helped me make a confident decision on a KSh 400M portfolio. Outstanding professionalism.",
+                author: "David Kimani",
+                role: "Real Estate Investor",
+                rating: 5
+              },
+              {
+                quote: "After months of searching elsewhere, we discovered The Registry. The difference was night and day — verified titles, accurate square footage, and transparent pricing. Highly recommended.",
+                author: "Amina Hassan",
+                role: "Homeowner, Diani Penthouse",
+                rating: 5
+              }
+            ].map((testimonial, index) => (
+              <div key={index} style={{
+                background: "var(--theme-bg)",
+                padding: "2.5rem",
+                borderRadius: "16px",
+                border: `1px solid var(--theme-border)`,
+                transition: 'all 0.3s ease',
+                display: 'flex',
+                flexDirection: 'column',
+                position: 'relative'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = "translateY(-5px)";
+                e.currentTarget.style.borderColor = "var(--theme-accent)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "var(--theme-border)";
+              }}>
+                {/* Quote icon */}
+                <div style={{
+                  fontSize: "3rem",
+                  color: "var(--theme-accent)",
+                  opacity: 0.2,
+                  lineHeight: 1,
+                  marginBottom: "1rem"
+                }}>"</div>
+
+                {/* Rating stars */}
+                <div style={{
+                  display: "flex",
+                  gap: "0.25rem",
+                  marginBottom: "1.5rem"
+                }}>
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i} style={{ color: "var(--theme-accent)", fontSize: "1.2rem" }}>★</span>
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <p style={{
+                  color: "var(--theme-text)",
+                  lineHeight: "1.8",
+                  fontSize: "1rem",
+                  marginBottom: "2rem",
+                  flex: 1,
+                  fontStyle: "italic"
+                }}>
+                  {testimonial.quote}
+                </p>
+
+                {/* Author info */}
+                <div style={{
+                  paddingTop: "1.5rem",
+                  borderTop: `1px solid var(--theme-border)`
+                }}>
+                  <div style={{
+                    fontWeight: "600",
+                    color: "var(--theme-text)",
+                    marginBottom: "0.25rem",
+                    fontSize: "1.05rem"
+                  }}>{testimonial.author}</div>
+                  <div style={{
+                    color: "var(--theme-text-muted)",
+                    fontSize: "0.9rem"
+                  }}>{testimonial.role}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Trust indicators */}
+          <div style={{
+            marginTop: "4rem",
+            padding: "2.5rem",
+            background: "var(--theme-bg)",
+            borderRadius: "16px",
+            border: `1px solid var(--theme-border)`,
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "2rem",
+            textAlign: "center"
+          }}>
+            {[
+              { number: "500+", label: "Happy Clients" },
+              { number: "4.9/5", label: "Average Rating" },
+              { number: "98%", label: "Would Recommend" },
+              { number: "KSh 82B+", label: "Property Value Sold" }
+            ].map((stat, index) => (
+              <div key={index}>
+                <div style={{
+                  fontSize: "2rem",
+                  fontWeight: "600",
+                  background: `linear-gradient(135deg, var(--theme-accent), var(--theme-accent-strong))`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  marginBottom: "0.5rem"
+                }}>{stat.number}</div>
+                <div style={{
+                  color: "var(--theme-text-muted)",
+                  fontSize: "0.9rem"
+                }}>{stat.label}</div>
               </div>
             ))}
           </div>
