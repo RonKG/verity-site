@@ -23,7 +23,7 @@ export default function CredibilitySection() {
   return (
     <section style={{
       backgroundColor: "var(--theme-surface)",
-      padding: "60px 0",
+      padding: "60px 20px",
       color: "var(--theme-text)",
       borderTop: `1px solid var(--theme-border)`,
       background: `linear-gradient(to bottom, var(--theme-surface), var(--theme-bg))`,
@@ -32,11 +32,11 @@ export default function CredibilitySection() {
       <div style={{
         maxWidth: "1200px",
         margin: "0 auto",
-        padding: "0 40px",
-        display: "flex",
-        alignItems: "stretch",
-        gap: "3rem",
-        justifyContent: "center"
+        padding: "0 20px",
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+        gap: "2rem",
+        alignItems: "stretch"
       }}>
         {testimonials.map((testimonial, index) => (
           <div 
@@ -44,8 +44,9 @@ export default function CredibilitySection() {
             style={{
               display: "flex",
               flexDirection: "column",
-              flex: "1 1 0",
-              maxWidth: "360px"
+              maxWidth: "360px",
+              margin: "0 auto",
+              width: "100%"
             }}
           >
             <p style={{
