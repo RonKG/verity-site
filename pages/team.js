@@ -22,10 +22,10 @@ export default function Team() {
       bio: "Ronald is our tech and analytics brain: he builds the pipelines that tame noisy records and crafts the models that turn them into decision-ready signals. He loves architecture that scales and insights that surprise — and he pushes us to test the assumptions others take for granted."
     },
     {
-      name: "Sophie Muthoni",
+      name: "Eunice Wachira",
       role: "Design & Photography Lead",
       img: "https://plus.unsplash.com/premium_photo-1675419012023-44e6dbd55701?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1174",
-      bio: "Sophie sees properties as narratives waiting to be told — preferably in perfect light at golden hour. She orchestrates shoots that make concrete look poetic and ensures every listing feels like an invitation, not a sales pitch. Rumor has it she once rescheduled a shoot four times for cloud coverage."
+      bio: "Eunice sees properties as narratives waiting to be told — preferably in perfect light at golden hour. She orchestrates shoots that make concrete look poetic and ensures every listing feels like an invitation, not a sales pitch. Rumor has it she once rescheduled a shoot four times for cloud coverage."
     },
     {
       name: "Michael Odhiambo",
