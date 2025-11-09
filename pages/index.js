@@ -290,8 +290,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Modern Scroll Indicator - Moved outside main content div */}
+        {/* Modern Scroll Indicator - Hidden on mobile */}
         <div 
+          className="scroll-indicator"
           onClick={() => window.scrollTo({
             top: window.innerHeight,
             behavior: "smooth"
@@ -355,6 +356,13 @@ export default function Home() {
               opacity: 0;
               transform: scaleY(0);
               transform-origin: bottom;
+            }
+          }
+
+          /* Hide scroll indicator on mobile */
+          @media (max-width: 768px) {
+            .scroll-indicator {
+              display: none !important;
             }
           }
         `}</style>
