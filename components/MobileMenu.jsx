@@ -1,11 +1,28 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useCurrency } from '../contexts/CurrencyContext';
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState('light');
+  const { currency, changeCurrency } = useCurrency();
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    // Initialize theme from localStorage
+    const stored = localStorage.getItem('theme');
+    const initialTheme = stored || 'light';
+    setTheme(initialTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
   };
 
   // Handle body scroll lock
@@ -253,6 +270,99 @@ export default function MobileMenu() {
                 {label}
               </Link>
             ))}
+          </div>
+
+          {/* Currency Selector & Theme Toggle - Mobile Only */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1.5rem',
+            marginTop: '2rem',
+            paddingTop: '2rem',
+            borderTop: '1px solid #333',
+            opacity: isOpen ? 1 : 0,
+            transform: isOpen ? 'translateY(0)' : 'translateY(-20px)',
+            transition: 'all 0.4s ease 0.6s'
+          }}>
+            {/* Currency Selector */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '0.75rem'
+            }}>
+              <div style={{
+                fontSize: '0.75rem',
+                color: '#888',
+                textTransform: 'uppercase',
+                letterSpacing: '1px'
+              }}>
+                Currency
+              </div>
+              <div style={{
+                display: 'flex',
+                gap: '0.5rem',
+                flexWrap: 'wrap',
+                justifyContent: 'center'
+              }}>
+                {['KSH', 'USD', 'EUR', 'GBP'].map((curr) => (
+                  <button
+                    key={curr}
+                    onClick={() => changeCurrency(curr)}
+                    style={{
+                      background: currency === curr ? '#f5b942' : 'transparent',
+                      color: currency === curr ? '#0e0e0e' : '#aaa',
+                      border: `1px solid ${currency === curr ? '#f5b942' : '#444'}`,
+                      borderRadius: '6px',
+                      padding: '8px 16px',
+                      fontSize: '0.9rem',
+                      fontWeight: currency === curr ? '600' : '500',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      minWidth: '60px'
+                    }}
+                  >
+                    {curr}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Theme Toggle */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '0.75rem'
+            }}>
+              <div style={{
+                fontSize: '0.75rem',
+                color: '#888',
+                textTransform: 'uppercase',
+                letterSpacing: '1px'
+              }}>
+                Theme
+              </div>
+              <button
+                onClick={toggleTheme}
+                style={{
+                  background: 'transparent',
+                  border: '1.5px solid #f5b942',
+                  borderRadius: '50%',
+                  width: '44px',
+                  height: '44px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  fontSize: '1.2rem',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                {theme === 'dark' ? '☀️' : '🌙'}
+              </button>
+            </div>
           </div>
         </nav>
 

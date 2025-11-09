@@ -262,12 +262,15 @@ export default function Layout({ children }) {
         </button>
 
         {/* Currency Selector */}
-        <div style={{ 
-          marginLeft: '0.75rem',
-          display: 'flex',
-          gap: '0.25rem',
-          alignItems: 'center'
-        }}>
+        <div 
+          className="currency-selector"
+          style={{ 
+            marginLeft: '0.75rem',
+            display: 'flex',
+            gap: '0.25rem',
+            alignItems: 'center'
+          }}
+        >
           {['KSH', 'USD', 'EUR', 'GBP'].map((curr) => (
             <button
               key={curr}
@@ -328,8 +331,11 @@ export default function Layout({ children }) {
           display: none !important;
         }
         
-        /* Hide theme toggle on mobile to avoid overlap with hamburger menu */
+        /* Hide theme toggle and currency selector on mobile to avoid overlap with hamburger menu */
         .theme-toggle {
+          display: none !important;
+        }
+        .currency-selector {
           display: none !important;
         }
         
@@ -341,6 +347,9 @@ export default function Layout({ children }) {
             display: flex !important;
           }
           .theme-toggle {
+            display: flex !important;
+          }
+          .currency-selector {
             display: flex !important;
           }
         }
