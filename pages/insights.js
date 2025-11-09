@@ -135,12 +135,14 @@ export default function Insights() {
                 transition: 'color 0.3s ease'
               }}>
                 <strong>Looking for more?</strong> This data — and deeper cuts — are available as a service.
+                {" "}
                 <a href="/services" style={{ 
                   color: "var(--theme-accent-strong)", 
-                  textDecoration: "none", 
+                  textDecoration: "underline", 
                   fontWeight: "500",
-                  marginLeft: "0.3rem",
-                  borderBottom: "1px solid var(--theme-accent-strong)"
+                  textDecorationColor: "var(--theme-accent-strong)",
+                  textDecorationThickness: "1px",
+                  textUnderlineOffset: "2px"
                 }}>
                   Explore options
                 </a>
@@ -202,34 +204,6 @@ export default function Insights() {
                 }}
               >
                 {tab.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Timeframe Selection */}
-          <div style={{
-            display: "flex",
-            gap: "0.5rem",
-            position: "absolute",
-            top: 0,
-            right: 0,
-          }}>
-            {["3M", "6M", "1Y"].map(time => (
-              <button
-                key={time}
-                onClick={() => setSelectedTimeframe(time)}
-                style={{
-                  background: selectedTimeframe === time ? "var(--theme-accent)" : "var(--theme-surface)",
-                  color: selectedTimeframe === time ? "var(--theme-bg)" : "var(--theme-text-muted)",
-                  border: "none",
-                  borderRadius: "4px",
-                  padding: "4px 8px",
-                  fontSize: "0.8rem",
-                  cursor: "pointer",
-                  transition: "all 0.3s",
-                }}
-              >
-                {time}
               </button>
             ))}
           </div>
@@ -605,13 +579,15 @@ export default function Insights() {
               transition: 'color 0.3s ease',
               marginTop: '1rem'
             }}>
-              These analyst notes are intended as directional guidance. 
+              These analyst notes are intended as directional guidance.
+              {" "}
               <a href="/services" style={{ 
                 color: 'var(--theme-accent-strong)', 
-                textDecoration: 'none', 
+                textDecoration: 'underline', 
                 fontWeight: '500',
-                marginLeft: '0.25rem',
-                borderBottom: '1px solid var(--theme-accent-strong)'
+                textDecorationColor: 'var(--theme-accent-strong)',
+                textDecorationThickness: '1px',
+                textUnderlineOffset: '2px'
               }}>
                 Explore our data services
               </a> for custom research, bespoke extracts, or API access.
@@ -724,12 +700,14 @@ export default function Insights() {
                     </div>
                     <div style={{ color: 'var(--theme-text-muted)', fontSize: '0.9rem', lineHeight: 1.5, transition: 'color 0.3s ease' }}>
                       Need custom extracts, API access, or deeper analytics? We offer verified property data through flexible delivery methods — from bespoke one-time queries to real-time programmatic access.
+                      {" "}
                       <a href="/services" style={{ 
                         color: 'var(--theme-accent-strong)', 
-                        textDecoration: 'none', 
+                        textDecoration: 'underline', 
                         fontWeight: '500',
-                        marginLeft: '0.3rem',
-                        borderBottom: '1px solid var(--theme-accent-strong)'
+                        textDecorationColor: 'var(--theme-accent-strong)',
+                        textDecorationThickness: '1px',
+                        textUnderlineOffset: '2px'
                       }}>
                         View data services
                       </a>
