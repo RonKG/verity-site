@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 /* eslint-disable react-hooks/rules-of-hooks */
 import Layout from "../components/Layout";
+import CurrencyDisplay from "../components/CurrencyDisplay";
+import { useCurrency } from "../contexts/CurrencyContext";
 import { useState, useEffect } from 'react';
 
 // Verification Badge Component
@@ -51,6 +53,7 @@ const VerificationBadge = ({ level }) => {
 
 export default function Listings() {
   const router = useRouter();
+  const { formatPrice } = useCurrency();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('all');
   const [priceRange, setPriceRange] = useState('all');
@@ -58,6 +61,7 @@ export default function Listings() {
   const [sortBy, setSortBy] = useState('default');
   const [viewMode, setViewMode] = useState('grid');
   const [filteredListings, setFilteredListings] = useState([]);
+  const [showFilters, setShowFilters] = useState(false);
 
   const locations = [
     { value: 'all', label: 'All Locations' },
@@ -69,12 +73,13 @@ export default function Listings() {
     { value: 'coastal', label: 'Coastal Region' },
   ];
 
+  // Dynamic price ranges based on current currency
   const priceRanges = [
     { value: 'all', label: 'All Prices' },
-    { value: '200-300', label: 'KSh 200M - 300M' },
-    { value: '300-400', label: 'KSh 300M - 400M' },
-    { value: '400-500', label: 'KSh 400M - 500M' },
-    { value: '500+', label: 'KSh 500M+' },
+    { value: '200-300', label: `${formatPrice(200000000)} - ${formatPrice(300000000)}` },
+    { value: '300-400', label: `${formatPrice(300000000)} - ${formatPrice(400000000)}` },
+    { value: '400-500', label: `${formatPrice(400000000)} - ${formatPrice(500000000)}` },
+    { value: '500+', label: `${formatPrice(500000000)}+` },
   ];
 
   const propertyTypes = [
@@ -97,7 +102,7 @@ export default function Listings() {
       id: 1,
       title: "The Ridge Residence – Kitisuru",
       location: "Kitisuru, Nairobi",
-      price: "KSh 420M",
+      price: 420000000,
       specs: "5 Bed • 0.6 Acre",
       badge: "premium",
       image:
@@ -109,7 +114,7 @@ export default function Listings() {
       id: 2,
       title: "Coastal Haven – Diani Beach",
       location: "Diani Beach, Kwale County",
-      price: "KSh 310M",
+      price: 310000000,
       specs: "4 Bed • 1.2 Acre • Beachfront",
       badge: "elite",
       image:
@@ -121,7 +126,7 @@ export default function Listings() {
       id: 3,
       title: "Forest Edge Glasshouse – Karen",
       location: "Karen, Nairobi",
-      price: "KSh 385M",
+      price: 385000000,
       specs: "4 Bed • 0.8 Acre",
       badge: "verified",
       image:
@@ -133,7 +138,7 @@ export default function Listings() {
       id: 4,
       title: "Nyali Coral Estate",
       location: "Nyali, Mombasa",
-      price: "KSh 295M",
+      price: 295000000,
       specs: "6 Bed • 0.5 Acre • Sea View",
       badge: "premium",
       image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80",
@@ -143,7 +148,7 @@ export default function Listings() {
       id: 5,
       title: "Muthaiga Ambassador's Villa",
       location: "Muthaiga, Nairobi",
-      price: "KSh 480M",
+      price: 480000000,
       specs: "7 Bed • 1.5 Acre • Embassy Row",
       badge: "elite",
       image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
@@ -153,7 +158,7 @@ export default function Listings() {
       id: 6,
       title: "Diani Coral Penthouse",
       location: "Diani Beach, Kwale County",
-      price: "KSh 225M",
+      price: 225000000,
       specs: "4 Bed • 6000 sq ft • Oceanfront",
       image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
       description: "Luxury penthouse with 360° views of the Indian Ocean. Floor-to-ceiling windows, private rooftop garden, and direct beach access. Fully furnished with designer pieces.",
@@ -162,7 +167,7 @@ export default function Listings() {
       id: 7,
       title: "Spring Valley Modern Manor",
       location: "Spring Valley, Nairobi",
-      price: "KSh 395M",
+      price: 395000000,
       specs: "5 Bed • 0.75 Acre • Pool",
       image: "https://plus.unsplash.com/premium_photo-1661963212517-830bbb7d76fc?auto=format&fit=crop&w=1600&q=80",
       description: "Architectural masterpiece with double-height ceilings and dramatic open spaces. Smart home integration, wine cellar, and resort-style pool area with entertainment deck.",
@@ -171,7 +176,7 @@ export default function Listings() {
       id: 8,
       title: "Watamu Beach Villa",
       location: "Watamu, Kilifi County",
-      price: "KSh 280M",
+      price: 280000000,
       specs: "5 Bed • 0.9 Acre • Beachfront",
       image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80",
       description: "Balinese-inspired luxury villa with direct access to Watamu Marine Park. Featuring traditional makuti roofing, infinity pool, and private beach cove.",
@@ -180,7 +185,7 @@ export default function Listings() {
       id: 9,
       title: "Runda Water Gardens",
       location: "Runda, Nairobi",
-      price: "KSh 320M",
+      price: 320000000,
       specs: "6 Bed • 0.5 Acre • Waterfront",
       image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
       description: "Contemporary waterfront residence overlooking Runda dam. Features cascading water gardens, meditation pavilion, and state-of-the-art home theatre.",
@@ -189,7 +194,7 @@ export default function Listings() {
       id: 10,
       title: "English Point Marina Penthouse",
       location: "Tudor, Mombasa",
-      price: "KSh 265M",
+      price: 265000000,
       specs: "4 Bed • 5500 sq ft • Marina View",
       image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1600&q=80",
       description: "Ultra-luxury penthouse in Mombasa's premier marina development. Private elevator, yacht berth, and panoramic harbor views. Smart home technology throughout.",
@@ -198,7 +203,7 @@ export default function Listings() {
       id: 11,
       title: "Loresho Heights Estate",
       location: "Loresho, Nairobi",
-      price: "KSh 355M",
+      price: 355000000,
       specs: "5 Bed • 0.4 Acre • City View",
       image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80",
       description: "Elevated living with panoramic city views. Features include vertical gardens, glass elevator, and infinity edge pool overlooking the Nairobi skyline.",
@@ -207,7 +212,7 @@ export default function Listings() {
       id: 12,
       title: "Karen Horse Estate",
       location: "Karen, Nairobi",
-      price: "KSh 445M",
+      price: 445000000,
       specs: "6 Bed • 2.5 Acre • Equestrian",
       image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
       description: "Exclusive equestrian estate with world-class stables and training facilities. Main house features wine cellar, library, and staff quarters. Adjacent to Karen Horse Club.",
@@ -216,7 +221,7 @@ export default function Listings() {
       id: 13,
       title: "Kilifi Bay Villa",
       location: "Kilifi, Kilifi County",
-      price: "KSh 255M",
+      price: 255000000,
       specs: "4 Bed • 1.0 Acre • Oceanfront",
       image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
       description: "Modern coastal retreat with private beach access. Featuring indigenous gardens, infinity pool, and guest cottage. Perfect blend of luxury and coastal living.",
@@ -225,7 +230,7 @@ export default function Listings() {
       id: 14,
       title: "Lavington Green Estate",
       location: "Lavington, Nairobi",
-      price: "KSh 375M",
+      price: 375000000,
       specs: "5 Bed • 0.7 Acre • Pool",
       image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
       description: "Contemporary family compound with emphasis on sustainable living. Solar-powered, rainwater harvesting, and organic kitchen garden. Complete with home automation and security systems.",
@@ -234,7 +239,7 @@ export default function Listings() {
       id: 15,
       title: "Vipingo Ridge Golf Villa",
       location: "Vipingo, Kilifi County",
-      price: "KSh 290M",
+      price: 290000000,
       specs: "4 Bed • 0.8 Acre • Golf Course",
       image: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1600&q=80",
       description: "Luxury golf villa overlooking the PGA Baobab Course. Premium finishes, indoor-outdoor living spaces, and private golf cart garage. Access to exclusive club amenities.",
@@ -264,9 +269,9 @@ export default function Listings() {
 
     // Apply price range filter
     if (priceRange !== 'all') {
-      const [min, max] = priceRange.split('-').map(p => parseInt(p));
+      const [min, max] = priceRange.split('-').map(p => parseInt(p) * 1000000);
       filtered = filtered.filter(home => {
-        const price = parseInt(home.price.replace(/[^0-9]/g, ''));
+        const price = home.price;
         if (max) {
           return price >= min && price <= max;
         }
@@ -285,14 +290,10 @@ export default function Listings() {
     // Apply sorting
     switch (sortBy) {
       case 'price-asc':
-        filtered.sort((a, b) => 
-          parseInt(a.price.replace(/[^0-9]/g, '')) - parseInt(b.price.replace(/[^0-9]/g, ''))
-        );
+        filtered.sort((a, b) => a.price - b.price);
         break;
       case 'price-desc':
-        filtered.sort((a, b) => 
-          parseInt(b.price.replace(/[^0-9]/g, '')) - parseInt(a.price.replace(/[^0-9]/g, ''))
-        );
+        filtered.sort((a, b) => b.price - a.price);
         break;
       case 'newest':
         filtered.sort((a, b) => b.id - a.id);
@@ -342,8 +343,8 @@ export default function Listings() {
           border: `1px solid var(--theme-border)`,
           transition: 'background 0.3s ease, border-color 0.3s ease'
         }}>
-          {/* Search Bar */}
-          <div style={{ marginBottom: "2rem" }}>
+          {/* Search Bar - Always visible */}
+          <div style={{ marginBottom: "1.5rem" }}>
             <input
               type="text"
               placeholder="Search by location, features, or keywords..."
@@ -371,13 +372,61 @@ export default function Listings() {
             />
           </div>
 
-          {/* Filter Controls */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "1rem",
-            alignItems: "end"
-          }}>
+          {/* Mobile Filter Toggle Button */}
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className="mobile-filter-toggle"
+            style={{
+              width: "100%",
+              padding: "0.875rem",
+              background: "var(--theme-bg)",
+              border: `2px solid var(--theme-border)`,
+              borderRadius: "8px",
+              color: "var(--theme-text)",
+              fontSize: "1rem",
+              fontWeight: "500",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: "1rem",
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--theme-accent)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--theme-border)";
+            }}
+          >
+            <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              🔍 Filters & Sort
+              {(selectedLocation !== 'all' || priceRange !== 'all' || propertyType !== 'all' || sortBy !== 'default') && (
+                <span style={{
+                  background: "var(--theme-accent)",
+                  color: "var(--theme-bg)",
+                  fontSize: "0.75rem",
+                  padding: "0.2rem 0.5rem",
+                  borderRadius: "12px",
+                  fontWeight: "600"
+                }}>
+                  {[selectedLocation !== 'all', priceRange !== 'all', propertyType !== 'all', sortBy !== 'default'].filter(Boolean).length}
+                </span>
+              )}
+            </span>
+            <span style={{ fontSize: "1.2rem" }}>{showFilters ? '▲' : '▼'}</span>
+          </button>
+
+          {/* Filter Controls - Collapsible on mobile */}
+          <div 
+            className="filter-controls"
+            style={{
+              display: showFilters ? "grid" : "none",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: "1rem",
+              alignItems: "end"
+            }}
+          >
             {/* Location Filter */}
             <div>
               <label style={{ 
@@ -666,7 +715,9 @@ export default function Listings() {
                     borderRadius: "6px",
                     fontSize: "0.9rem",
                     fontWeight: "500",
-                  }}>{home.price}</span>
+                  }}>
+                    <CurrencyDisplay amountInKSH={home.price} showBoth={true} />
+                  </span>
                 </div>
                 <p style={{ 
                   color: "var(--theme-text-muted)", 
@@ -792,6 +843,26 @@ export default function Listings() {
           ))}
         </div>
       </section>
+      
+      {/* Mobile Responsive Styles */}
+      <style jsx>{`
+        /* Desktop: Always show filters, hide toggle button */
+        @media (min-width: 769px) {
+          .mobile-filter-toggle {
+            display: none !important;
+          }
+          .filter-controls {
+            display: grid !important;
+          }
+        }
+        
+        /* Mobile: Show toggle, filters are collapsible */
+        @media (max-width: 768px) {
+          .mobile-filter-toggle {
+            display: flex !important;
+          }
+        }
+      `}</style>
     </Layout>
   );
 }

@@ -2,10 +2,12 @@ import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import Footer from "./Footer";
 import { useState, useEffect } from "react";
+import { useCurrency } from "@/contexts/CurrencyContext";
 
 export default function Layout({ children }) {
   const [scrolled, setScrolled] = useState(false);
   const [theme, setTheme] = useState('light');
+  const { currency, changeCurrency } = useCurrency();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 36);
@@ -258,6 +260,52 @@ export default function Layout({ children }) {
         >
           {theme === 'dark' ? '☀️' : '🌙'}
         </button>
+
+        {/* Currency Selector */}
+        <div style={{ 
+          marginLeft: '0.75rem',
+          display: 'flex',
+          gap: '0.25rem',
+          alignItems: 'center'
+        }}>
+          {['KSH', 'USD', 'EUR', 'GBP'].map((curr) => (
+            <button
+              key={curr}
+              onClick={() => changeCurrency(curr)}
+              aria-label={`Switch to ${curr}`}
+              aria-pressed={currency === curr}
+              style={{
+                background: currency === curr 
+                  ? 'var(--theme-accent-strong)' 
+                  : 'transparent',
+                color: currency === curr 
+                  ? (theme === 'dark' ? '#0e0e0e' : '#ffffff')
+                  : 'var(--theme-text-muted)',
+                border: `1px solid ${currency === curr ? 'var(--theme-accent-strong)' : 'var(--theme-border)'}`,
+                borderRadius: '6px',
+                padding: scrolled ? '4px 8px' : '5px 10px',
+                fontSize: scrolled ? '0.7rem' : '0.75rem',
+                fontWeight: currency === curr ? '600' : '500',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                if (currency !== curr) {
+                  e.currentTarget.style.borderColor = 'var(--theme-accent)';
+                  e.currentTarget.style.color = 'var(--theme-accent-strong)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (currency !== curr) {
+                  e.currentTarget.style.borderColor = 'var(--theme-border)';
+                  e.currentTarget.style.color = 'var(--theme-text-muted)';
+                }
+              }}
+            >
+              {curr}
+            </button>
+          ))}
+        </div>
       </header>
 
       {/* spacer to prevent content sitting under fixed header */}

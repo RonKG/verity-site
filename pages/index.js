@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 import Link from 'next/link';
 import CredibilitySection from "../components/CredibilitySection";
+import CurrencyDisplay from "../components/CurrencyDisplay";
 
 // Verification Badge Component
 const VerificationBadge = ({ level }) => {
@@ -553,7 +554,7 @@ export default function Home() {
               image: "https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4",
               title: "Modern Villa",
               location: "Karen, Nairobi",
-              price: "KSh 420M",
+              price: 420000000,
               beds: 5,
               baths: 6,
               sqft: "6,500",
@@ -564,7 +565,7 @@ export default function Home() {
               image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
               title: "Luxury Penthouse",
               location: "Westlands, Nairobi",
-              price: "KSh 310M",
+              price: 310000000,
               beds: 4,
               baths: 5,
               sqft: "5,800",
@@ -575,7 +576,7 @@ export default function Home() {
               image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
               title: "Garden Estate",
               location: "Kitisuru, Nairobi",
-              price: "KSh 385M",
+              price: 385000000,
               beds: 6,
               baths: 7,
               sqft: "8,200",
@@ -636,7 +637,9 @@ export default function Home() {
                   fontSize: "1.1rem",
                   fontWeight: "600",
                   color: "var(--theme-accent)"
-                }}>{property.price}</div>
+                }}>
+                  <CurrencyDisplay amountInKSH={property.price} showBoth={true} />
+                </div>
               </div>
               <div style={{ 
                 padding: "1.75rem",

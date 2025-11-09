@@ -3,6 +3,7 @@ import Router from 'next/router';
 import "@/styles/globals.css";
 import "@/styles/mobile.css";
 import 'leaflet/dist/leaflet.css';
+import { CurrencyProvider } from '@/contexts/CurrencyContext';
 
 export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,7 @@ export default function App({ Component, pageProps }) {
   }, []);
 
   return (
-    <>
+    <CurrencyProvider>
       {loading && (
         <div style={{
           position: 'fixed',
@@ -47,6 +48,6 @@ export default function App({ Component, pageProps }) {
           }
         }
       `}</style>
-    </>
+    </CurrencyProvider>
   );
 }

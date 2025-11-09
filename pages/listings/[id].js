@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useState, useCallback, useEffect } from 'react';
 import Layout from "../../components/Layout";
 import OptimizedImage from "../../components/OptimizedImage";
+import CurrencyDisplay from "../../components/CurrencyDisplay";
 
 // Verification Badge Component
 const VerificationBadge = ({ level, size = "normal" }) => {
@@ -70,7 +71,7 @@ const propertyDetails = {
   1: {
     title: "The Ridge Residence – Kitisuru",
     location: "Kitisuru, Nairobi",
-    price: "KSh 420M",
+    price: 420000000,
     badge: "premium",
     specs: {
       bedrooms: 5,
@@ -205,7 +206,7 @@ const propertyDetails = {
   2: {
     title: "Coastal Haven – Diani Beach",
     location: "Diani Beach, Kwale County",
-    price: "KSh 310M",
+    price: 310000000,
     badge: "elite",
     specs: {
       bedrooms: 4,
@@ -330,7 +331,7 @@ const propertyDetails = {
   3: {
     title: "Forest Edge Glasshouse – Karen",
     location: "Karen, Nairobi",
-    price: "KSh 385M",
+    price: 385000000,
     badge: "verified",
     specs: {
       bedrooms: 4,
@@ -455,7 +456,7 @@ const propertyDetails = {
   4: {
     title: "Nyali Coral Estate",
     location: "Nyali, Mombasa",
-    price: "KSh 295M",
+    price: 295000000,
     badge: "premium",
     specs: {
       bedrooms: 6,
@@ -579,7 +580,7 @@ const propertyDetails = {
   5: {
     title: "Muthaiga Ambassador's Villa",
     location: "Muthaiga, Nairobi",
-    price: "KSh 480M",
+    price: 480000000,
     badge: "elite",
     specs: {
       bedrooms: 7,
@@ -1454,7 +1455,7 @@ const propertyDetails = {
   12: {
     title: "Karen Horse Estate",
     location: "Karen, Nairobi",
-    price: "KSh 445M",
+    price: 445000000,
     badge: "elite",
     specs: {
       bedrooms: 6,
@@ -1705,7 +1706,7 @@ const propertyDetails = {
   14: {
     title: "Lavington Green Estate",
     location: "Lavington, Nairobi",
-    price: "KSh 375M",
+    price: 375000000,
     badge: "elite",
     specs: {
       bedrooms: 5,
@@ -1830,7 +1831,7 @@ const propertyDetails = {
   15: {
     title: "Vipingo Ridge Golf Villa",
     location: "Vipingo, Kilifi County",
-    price: "KSh 290M",
+    price: 290000000,
     badge: "verified",
     specs: {
       bedrooms: 4,
@@ -2074,7 +2075,9 @@ export default function PropertyDetail() {
                 color: "#f5b942",
                 fontWeight: "600",
                 textShadow: "0 2px 8px rgba(0,0,0,0.8)"
-              }}>{property.price}</p>
+              }}>
+                <CurrencyDisplay amountInKSH={property.price} showBoth={true} />
+              </p>
             </div>
           </div>
         </section>
@@ -2378,7 +2381,9 @@ export default function PropertyDetail() {
                           color: "var(--theme-accent)",
                           fontSize: "1.25rem",
                           fontWeight: "600"
-                        }}>{prop.price}</span>
+                        }}>
+                          <CurrencyDisplay amountInKSH={prop.price} showBoth={false} />
+                        </span>
                         <span style={{
                           color: "var(--theme-text-muted)",
                           fontSize: "0.85rem",
